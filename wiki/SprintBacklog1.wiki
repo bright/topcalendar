@@ -1,7 +1,7 @@
 #summary Sprint Backlog 1
 #labels Featured
 
-= Introduction =
+= Stories i zadania do sprintu 1 =
 
 
 || *User story ID* || *Story/task* || *Story points* ||
@@ -10,3 +10,7 @@
 ||  || b || 32 ||
 ||  || c || 10 ||
 ||  || d || 40 ||
+|| 2 || Użytkownik może usunąć istniejące zadanie lub zmienić jego parametry. || - ||
+||  || a || 10 ||
+|| 3 || Użytkownik może przeglądać istniejące zadania w widoku kalendarza. Widok kalendarza pozwala na przeglądanie zadań z bieżącego dnia, tygodnia, miesiąca. || - ||
+||  || a || 10 ||
