@@ -3,18 +3,10 @@
 
 = Introduction =
 
-Add your content here.
 
-|| *Year* || *Temperature (low)* || *Temperature (high)* ||
-|| 1900 || -10 || 25 ||
-|| 1910 || -15 || 30 ||
-|| 1920 || -10 || 32 ||
-|| 1930 || _N/A_ || _N/A_ ||
-|| 1940 || -2 || 40 ||
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+|| *User story ID* || *Story/task* || *Story points* ||
+|| 1 || Użytkownik może dodać nowe zadanie do kalendarza podając jego datę, opis i czas trwania. Podczas dodawania zadania istnieje możliwość ustawienia opcji przypomnień (email, sms, gadu-gadu) oraz różnych innych parametrów wydarzenia, np. ustawić je jako cykliczne. || - ||
+||  || a || 30 ||
+||  || b || 32 ||
+||  || c || 10 ||
+||  || d || 40 ||
