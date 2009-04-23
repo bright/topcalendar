@@ -6,7 +6,7 @@
 3. Użytkownik może przeglądać istniejące zadania w widoku kalendarza. Widok kalendarza pozwala na przeglądanie zadań z bieżącego dnia, tygodnia, miesiąca.  
 
 4. Przeglądając kalendarz oraz przy dodawaniu zadania użytkownik ma możliwość oznaczać wybrane zadania kolorami, etykietami, grupować zadania w projekty, dzielić zadania na kilka.
-    
+
 5. Użytkownik może eksportować lub importować swój kalendarz z systemów obsługujących format iCalendar (np. Google Calendar).
 
 6. Użytkownik może synchronizować swój kalendarz z innym kalendarzem obsługującym format iCalendar.
