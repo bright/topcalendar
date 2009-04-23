@@ -6,6 +6,7 @@
 
 || *User story ID* || *Story/task* || *Story points* ||
 || 1 || *Użytkownik może dodać nowe zadanie do kalendarza podając jego datę, opis i czas trwania. Podczas dodawania zadania istnieje możliwość ustawienia opcji przypomnień (email, sms, gadu-gadu) oraz różnych innych parametrów wydarzenia, np. ustawić je jako cykliczne.* || - ||
+||  || Stworzenie projektu, bazowego interfejsu użytkownika || 5 ||
 ||  || Stworzenie interfejsu (formularza) dodawania zadania || 10 ||
 ||  || Stworzenie klasy odbierającej dane z formularza i wysyłającej do "serwera" || 10 ||
 ||  || Stworzenie tyczasowego "serwera" w postaci lokalnej klasy zapisującej dane (z możliwością obsługi przez LINQ) || 15 ||
