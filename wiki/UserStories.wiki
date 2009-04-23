@@ -20,5 +20,5 @@
 10. Użytkownik może zoptymalizować terminarz wg zadanych kryteriów dzięki domyślnie zainstalowanej wtyczce "Optymalizator terminarza" - przykładowo, w menu wtyczki użytkownik ustawia, że zadania oznaczone daną etykietą mają zakończyć się jak najwcześniej, a wtyczka modyfikuje terminarz aby spełnić warunki. 
 
 11. Użytkownik może tworzyć listę zadań do wykonania korzystając z domyślnie zainstalowanej wtyczki "Twoje zadania". Zadania dodane do tej listy mają możliwość ustawienia statusu wykonania (wykonane/niewykonane itp.), wizualnie zadania są wyraźnie odróżnialne w zależności od statusu. Zadania mogą mieć ustawiony termin krytyczny. Użytkownik może otrzymywać listę zadań w formie powiadomienia.
-    
+
 12. Użytkownik może współdzielić swoje zdania z innymi użytkownikami, poprzez określenie nazw kont/adresów e-mail użytkowników, którzy mają mieć dostęp do jego danych. Może zdefiniować dostęp do odczytu/do zapisu do poszczególnych grup zadań.
