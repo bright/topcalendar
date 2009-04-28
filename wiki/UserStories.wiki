@@ -25,4 +25,4 @@
 
 13. Użytkownik może definiować zadania.
 
-14. Użytkownik ma mieć możliwość dowiedzenia się, ile czasu poświęcił na zadanie(zliczanie ilości godzin poświęconych na zdefiniowane zadanie)
+14. Użytkownik ma mieć możliwość zobaczenia, ile łącznie czasu poświęcił na zadanie(zliczanie ilości godzin poświęconych na zdefiniowane zadanie)
