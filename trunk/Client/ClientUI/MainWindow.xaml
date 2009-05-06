@@ -8,6 +8,11 @@
         <ResourceDictionary Source="CalendarEntryDataTemplate.xaml" />
     </Window.Resources>
     <Grid>
-        <ui:MonthViewer />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ui:MonthViewer Grid.Row="0"/>
+        <ui:EntriesList Grid.Row="1"/>
     </Grid>
 </Window>

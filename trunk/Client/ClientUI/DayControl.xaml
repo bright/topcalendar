@@ -7,7 +7,7 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>              
-		<TextBlock Text="{Binding Path=Date.Day, ElementName=userControl, Mode=Default}"/>
+		<TextBlock Text="{Binding Path=Date.Day, ElementName=userControl, Mode=Default}" Height="20" VerticalAlignment="Top" />
         <TextBlock Grid.Row="1" Text="Ala ma kota" />        
     </Grid>
 </UserControl>
