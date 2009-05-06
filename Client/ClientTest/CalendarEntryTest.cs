@@ -42,5 +42,14 @@ namespace ClientTest
             sut = new CalendarEntry(title);
             Assert.IsTrue(sut.Title == title);
         }
+        [Test]
+        public void DateIsInitializedProperly()
+        {
+            DateTime expected = DateTime.Now;
+            
+            sut = new CalendarEntry(null,expected);
+
+            Assert.AreEqual(0, DateTime.Compare(expected, sut.DateTime));
+        }
     }
 }
