@@ -13,5 +13,5 @@ Nazwy zadań przeniesione z ProductBacklog
 ||  || Stworzenie interfejsu (formularza) edycji zadania na podst. formularza dodawania || 5 ||  ||
 ||  || Uzupełnienie klasy z logiką modyfikującej dane na "serwerze" || 10 ||  ||
 || 3 || *Użytkownik może przeglądać istniejące zadania w widoku kalendarza. Widok kalendarza pozwala na przeglądanie zadań z bieżącego dnia, tygodnia, miesiąca.* || - || - ||
-||  || Interfejs graficzny listy dodanych zadań || 5 ||  ||
-||  || Klasa pobierająca listę zadań z "serwera" || 10 ||  ||
+||  || Interfejs graficzny listy dodanych zadań || 5 || DM ||
+||  || Klasa pobierająca listę zadań z "serwera" || 10 || DM ||
