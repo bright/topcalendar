@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{74C39B72-91D2-4696-8AD0-F802319C0EB2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -73,6 +73,12 @@
     <Compile Include="DayControl.xaml.cs">
       <DependentUpon>DayControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntriesList.xaml.cs">
+      <DependentUpon>EntriesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntryControl.xaml.cs">
+      <DependentUpon>EntryControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -111,6 +117,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntriesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntryControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
