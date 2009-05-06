@@ -12,26 +12,41 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+using ClientApp.DateTimeExtensions;
+using System.ComponentModel;
+
 namespace ClientUI
 {
     /// <summary>
     /// Interaction logic for MonthControl.xaml
     /// </summary>
-    public partial class MonthControl : UserControl
+    public partial class MonthControl : UserControl, INotifyPropertyChanged
     {
+        private DateTime startDate;
 
-        public DateTime MonthStart { get; set; }
+        public DateTime StartDate
+        {
+            get {
+                return startDate;
+            } 
+            set {
+                startDate = value;
+                initMonthContent();
+                initMonthGrid();
+                RaisePropertyChanged("StartDate");
+            } 
+        }
 
         public MonthControl()
         {            
-            InitializeComponent();            
-            MonthStart = monthStart(DateTime.Now);
-            initMonthContent();
-            initMonthGrid();
+            InitializeComponent();
+            StartDate = DateTime.Now.MonthStart();
         }
 
         private void initMonthGrid()
         {
+            MonthGrid.Children.Clear();
             int i = 0;
             foreach (DayControl dc in MonthContent)
             {
@@ -41,36 +56,43 @@ namespace ClientUI
                 ++i;
             }
         }
-        
-
-        private DateTime monthStart(DateTime dt) {
-            DateTime date = new DateTime(dt.Year, dt.Month, 1);            
-            return date;
-        }
 
         private List<DayControl> MonthContent {get; set;}
 
         private void initMonthContent(){
             List<DayControl> dcList = new List<DayControl>();
-            //TODO trzeba poprawic
-            DateTime prevMonth = new DateTime(MonthStart.Year, MonthStart.Month - 1, 1);
-            int n = (int)MonthStart.DayOfWeek;
+
+            DateTime prevMonth = StartDate.PrevMonth();
+            int n = (int)StartDate.DayOfWeek;
             int prevDaysCount = DateTime.DaysInMonth(prevMonth.Year, prevMonth.Month);
-            for (int i = 0; i < n; ++i) {
+            for (int i = 1; i < n; ++i) {
                 DateTime dt = new DateTime(prevMonth.Year, prevMonth.Month, prevDaysCount - (n - i -1));
                 dcList.Add(new DayControl(dt));
             }
-            for (int i = 0; i < DateTime.DaysInMonth(MonthStart.Year, MonthStart.Month); ++i) {
-                DateTime dt = new DateTime(MonthStart.Year, MonthStart.Month, i + 1);
+            for (int i = 0; i < DateTime.DaysInMonth(StartDate.Year, StartDate.Month); ++i) {
+                DateTime dt = new DateTime(StartDate.Year, StartDate.Month, i + 1);
                 dcList.Add(new DayControl(dt));
             }
             //TODO trzeba poprawic
-            DateTime nextMonth = new DateTime(MonthStart.Year, MonthStart.Month + 1, 1);
+            DateTime nextMonth = StartDate.NextMonth();
             for(int i = 1; dcList.Count < 42; ++i){
                 DateTime dt = new DateTime(nextMonth.Year, nextMonth.Month, i);
                 dcList.Add(new DayControl(dt));
             }
             MonthContent = dcList;
         }
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaisePropertyChanged(string name)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+
+        #endregion
+
     }
 }
