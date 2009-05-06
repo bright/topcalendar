@@ -53,5 +53,9 @@ namespace ClientApp
         {
             get { return dateTime.Month; }
         }
+        public DateTime DateTime
+        {
+            get { return dateTime; }
+        }
     }
 }
