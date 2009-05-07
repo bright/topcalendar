@@ -30,7 +30,7 @@ namespace ClientUI
             CalendarEntry calendarEntry = new CalendarEntry();
             calendarEntry.Title = this.TaskTitleTextBox.Text;
 
-            NewEntryCreator nec = DataServiceContext.Current.NewEntryCreator;
+            NewEntryCreator nec = DIFactory.Resolve<NewEntryCreator>();
             nec.CalendarEntry = calendarEntry;
             nec.Save();
             this.Close();
