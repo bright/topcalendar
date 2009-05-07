@@ -1,0 +1,10 @@
+#labels ninject
+= Opis działania =
+
+W katalogu "Ninject" w module "ClientApp" znajdują się dwie klasy: DataServiceContext oraz DataServiceModule.
+
+DataServiceModule jest konfiguracją Ninjecta, opisuje sposob bindowania typow na rzeczywiste obiekty. Idea jest taka, zeby piszac testy mozna bylo latwo to bindowanie zmieniac, tj. podstawiac pod "bindy" zmockowane obiekty. 
+
+DataServiceContext to klasa, ktora bedzie czyms w rodzaju fabryki obiektow. Jest o tyle specyficzna, ze produkowanie obiektow zleca Ninjectowi. Ninject produkuje obiekty wedlug regul bindowania zdefinionwaych w DataServiceModule. Dopuszczalne sa reguly, ktore stanowic beda, ze dla kazdego zadanai nalezy zwracac singleton albo singleton w ramach jednego watku.
+
+DataServiceContext trzeba będzie nieco przerobic żeby umożliwiał nadpisywanie reguł bindowania przed wykonaniem testu. 
