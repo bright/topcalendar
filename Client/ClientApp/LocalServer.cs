@@ -5,8 +5,9 @@ using System.Text;
 
 namespace ClientApp
 {
-    public class LocalServer : IEnumerable<CalendarEntry>
+    public class LocalServer : IServer
     {
+
         private List<CalendarEntry> data = new List<CalendarEntry>();
 
         /**

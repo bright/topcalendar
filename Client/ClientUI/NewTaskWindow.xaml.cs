@@ -10,6 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClientApp.Ninject;
+using ClientApp;
 
 namespace ClientUI
 {
@@ -25,6 +27,12 @@ namespace ClientUI
 
         private void NewTaskCreateButton_Click(object sender, RoutedEventArgs e)
         {
+            CalendarEntry calendarEntry = new CalendarEntry();
+            calendarEntry.Title = this.TaskTitleTextBox.Text;
+
+            NewEntryCreator nec = DataServiceContext.Current.NewEntryCreator;
+            nec.CalendarEntry = calendarEntry;
+            nec.Save();
             this.Close();
         }
     }
