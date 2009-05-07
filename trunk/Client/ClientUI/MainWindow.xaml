@@ -2,17 +2,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:ClientUI"
-    Title="TopCalendar" AllowsTransparency="False"
-        >
+    Title="TopCalendar" AllowsTransparency="False" Height="384">
     <Window.Resources>
         <ResourceDictionary Source="CalendarEntryDataTemplate.xaml" />
     </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <ui:MonthViewer Grid.Row="0"/>
-        <ui:EntriesList Grid.Row="1"/>
+        <ui:MonthViewer Margin="0,0,0,-170" />
+        <Button HorizontalAlignment="Right" Margin="0,0,29,10" Name="NewTaskButton" Width="75" Height="22.937" VerticalAlignment="Bottom" Click="NewTaskButton_Click">Nowe zadanie...</Button>
     </Grid>
 </Window>
