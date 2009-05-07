@@ -56,9 +56,8 @@
     <Compile Include="IServer.cs" />
     <Compile Include="LocalServer.cs" />
     <Compile Include="NewEntryCreator.cs" />
-    <Compile Include="Ninject\DataServiceContext.cs" />
-    <Compile Include="Ninject\DataServiceModule.cs" />
-    <Compile Include="Ninject\IDataServiceBroker.cs" />
+    <Compile Include="Ninject\DIFactory.cs" />
+    <Compile Include="Ninject\DIModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
