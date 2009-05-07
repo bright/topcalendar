@@ -9,25 +9,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ClientUI
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for NewTaskWindow.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class NewTaskWindow : Window
     {
-        public Window1()
+        public NewTaskWindow()
         {
             InitializeComponent();
         }
 
-        private void NewTaskButton_Click(object sender, RoutedEventArgs e)
+        private void NewTaskCreateButton_Click(object sender, RoutedEventArgs e)
         {
-            NewTaskWindow newTaskWindow = new NewTaskWindow();
-            newTaskWindow.Show();
+            this.Close();
         }
     }
 }
