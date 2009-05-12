@@ -11,6 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClientApp;
+using ClientApp.Ninject;
+using System.Collections.ObjectModel;
 
 namespace ClientUI
 {
@@ -19,9 +22,22 @@ namespace ClientUI
     /// </summary>
     public partial class EntriesList : UserControl
     {
+        private LocalServerBase serv;
+
         public EntriesList()
         {
+
+            serv = DIFactory.Resolve<LocalServerBase>();
+
             InitializeComponent();
+
+            serv.EntriesListChanged += delegate { entriesList.Items.Refresh();};
+            
+        }
+
+        public IEnumerable<CalendarEntry> Entries
+        {
+            get { return serv;}
         }
     }
 }

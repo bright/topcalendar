@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace ClientApp
 {
-    public class LocalServer : IServer
+    public class LocalServer : LocalServerBase
     {
 
         private List<CalendarEntry> data = new List<CalendarEntry>();
@@ -24,31 +25,15 @@ namespace ClientApp
         /**
          * Dodaje wydarzenie do listy
          */
-        public void Add(CalendarEntry e)
+        public override void Add(CalendarEntry e)
         {
             data.Add(e);
+            FireEntriesListChangedEvent(null);
         }
 
-        /**
-         * Implementujemy interfejsik zeby mozna bylo pytac nasz "serwer" przez LINQ,
-         * jednoczesnie nie odkrywajac na zewnatrz calej listy
-         */
-        #region IEnumerable<CalendarEntry> Members
-
-        IEnumerator<CalendarEntry> IEnumerable<CalendarEntry>.GetEnumerator()
+        public override IEnumerator<CalendarEntry> GetEnumerator()
         {
             return data.GetEnumerator();
         }
-
-        #endregion
-
-        #region IEnumerable Members
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return data.GetEnumerator();
-        }
-
-        #endregion
     }
 }
