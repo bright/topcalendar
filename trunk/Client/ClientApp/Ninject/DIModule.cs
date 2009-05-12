@@ -14,8 +14,9 @@ namespace ClientApp.Ninject
     {
         public override void Load()
         {
-            // LocalServer jest teraz singletonem (ale w przyszlosci nie musi)
             Bind<IServer>().To<LocalServer>().Using<SingletonBehavior>();
+            // LocalServer jest teraz singletonem (ale w przyszlosci nie musi)
+            Bind<LocalServerBase>().To<LocalServer>().Using<SingletonBehavior>();
             // Klasa NewEntryCreator bindowana do samej siebie
             Bind<NewEntryCreator>().ToSelf();
         }

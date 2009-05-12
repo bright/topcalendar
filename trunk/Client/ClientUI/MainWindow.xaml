@@ -9,5 +9,6 @@
     <Grid>
         <ui:MonthViewer Margin="0,0,0,-170" />
         <Button HorizontalAlignment="Right" Margin="0,0,29,10" Name="NewTaskButton" Width="75" Height="22.937" VerticalAlignment="Bottom" Click="NewTaskButton_Click">Nowe zadanie...</Button>
+        <ui:EntriesList Margin="1,1,1,1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

@@ -11,5 +11,6 @@ namespace ClientApp
     public interface IServer : IEnumerable<CalendarEntry>
     {
         void Add(CalendarEntry e);
+
     }
 }
