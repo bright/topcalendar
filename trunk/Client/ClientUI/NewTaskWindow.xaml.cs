@@ -20,20 +20,50 @@ namespace ClientUI
     /// </summary>
     public partial class NewTaskWindow : Window
     {
+
+        public String NewEntryTitle { get; set; }
+        public String NewEntryDesc { get; set; }
+        public DateTime NewEntryDate { get; set; }
+
         public NewTaskWindow()
         {
             InitializeComponent();
+
+
         }
+
+     
 
         private void NewTaskCreateButton_Click(object sender, RoutedEventArgs e)
         {
             CalendarEntry calendarEntry = new CalendarEntry();
             calendarEntry.Title = this.TaskTitleTextBox.Text;
 
-            NewEntryCreator nec = DIFactory.Resolve<NewEntryCreator>();
-            nec.CalendarEntry = calendarEntry;
-            nec.Save();
+            NewEntryCreator newEntryCreator = DIFactory.Resolve<NewEntryCreator>();
+            newEntryCreator.CalendarEntry = calendarEntry;
+            newEntryCreator.Save();
+
             this.Close();
+        }
+
+        private bool Validate()
+        {
+            return true;
+        }
+
+        private bool ValidateTitle()
+        {
+            return true;
+        }
+
+        private bool ValidateDesc()
+        {
+            return true;
+        }
+
+        private bool validateDate()
+        {
+            return true;
         }
     }
 }
