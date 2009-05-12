@@ -32,13 +32,15 @@ namespace ClientUI
 
     class DateTimeConverter : IValueConverter
     {
+        public static readonly String DateTimePattern = "dd-MM-yyyy";
+
         public object Convert(object value,
                            Type targetType,
                            object parameter,
                            CultureInfo culture)
         {
             DateTime date = (DateTime)value;
-            return date.ToString("dd-MM-yyyy");
+            return date.ToString(DateTimePattern);
         }
 
         public object ConvertBack(object value,

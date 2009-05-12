@@ -31,14 +31,20 @@ namespace ClientUI
 
 
         }
-
      
-
         private void NewTaskCreateButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Validate())
+            {
+                MessageBox.Show("Pewne dane sa niepoprawne");
+                return;
+            }
+            
             CalendarEntry calendarEntry = new CalendarEntry();
-            calendarEntry.Title = this.TaskTitleTextBox.Text;
-
+            calendarEntry.Title = this.NewEntryTitle;
+            calendarEntry.Desc = this.NewEntryDesc;
+            calendarEntry.DateTime = this.NewEntryDate;
+            
             NewEntryCreator newEntryCreator = DIFactory.Resolve<NewEntryCreator>();
             newEntryCreator.CalendarEntry = calendarEntry;
             newEntryCreator.Save();
@@ -46,14 +52,17 @@ namespace ClientUI
             this.Close();
         }
 
+
+        // todo: ta walidacja jest oczywiscie do calkowitego przerobienia
+        // mysle, ze warto zastanowic sie nad taka walidacja jaka Manus pokazywal na zajeciach
         private bool Validate()
         {
-            return true;
+            return ValidateTitle() && ValidateDesc() && validateDate();
         }
 
         private bool ValidateTitle()
         {
-            return true;
+            return !String.IsNullOrEmpty(NewEntryTitle);
         }
 
         private bool ValidateDesc()
@@ -63,7 +72,7 @@ namespace ClientUI
 
         private bool validateDate()
         {
-            return true;
+            return this.NewEntryDate.ToBinary() > 0;
         }
     }
 }

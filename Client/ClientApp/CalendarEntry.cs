@@ -7,7 +7,10 @@ namespace ClientApp
 {
     public class CalendarEntry
     {
+        // tytul zadania
         public string Title { get; set; }
+        // 
+        public string Desc { get; set; }
 
         public CalendarEntry() { }
 
@@ -56,6 +59,7 @@ namespace ClientApp
         public DateTime DateTime
         {
             get { return dateTime; }
+            set { dateTime = value; }
         }
     }
 }
