@@ -1,13 +1,11 @@
-#summary One-sentence summary of this page.
+#labels Featured
+= Stories i zadania do sprintu 2 =
 
-= Introduction =
+Nazwy zadań przeniesione z ProductBacklog
 
-Add your content here.
+|| *User story ID* || *Zadanie* || *Story points* || Realizacja ||
+|| 2 || *Użytkownik może usunąć istniejące zadanie lub zmienić jego parametry.* || - || - ||
+||  || (ze sprintu 1) Stworzenie interfejsu (formularza) edycji zadania na podst. formularza dodawania || 5 ||  ||
+||  || (ze sprintu 1) Uzupełnienie klasy z logiką modyfikującej dane na "serwerze" || 10 ||  ||
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+_do uzupełnienia_
