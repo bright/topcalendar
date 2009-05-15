@@ -30,5 +30,3 @@ Widok miesiaca  ---
                tak jak w google calendar 
 
 
-
-
