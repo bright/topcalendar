@@ -7,5 +7,8 @@ Nazwy zadań przeniesione z ProductBacklog
 || 2 || *Użytkownik może usunąć istniejące zadanie lub zmienić jego parametry.* || - || - ||
 ||  || (ze sprintu 1) Stworzenie interfejsu (formularza) edycji zadania na podst. formularza dodawania || 5 ||  ||
 ||  || (ze sprintu 1) Uzupełnienie klasy z logiką modyfikującej dane na "serwerze" || 10 ||  ||
+|| 3 || *Użytkownik może przeglądać istniejące zadania w widoku kalendarza. Widok kalendarza pozwala na przeglądanie zadań z bieżącego dnia, tygodnia, miesiąca.* || - || - ||
+||  || Przygotowanie komponentu do wyświetlania "widoku miesiąca". Szczegóły dotyczące komponentu na tej stronie. || 15 ||  ||
+
 
 _do uzupełnienia_
