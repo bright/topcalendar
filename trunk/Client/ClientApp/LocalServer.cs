@@ -31,6 +31,18 @@ namespace ClientApp
             FireEntriesListChangedEvent(null);
         }
 
+        public override void Remove(CalendarEntry e)
+        {
+            data.Remove(e);
+            FireEntriesListChangedEvent(null);
+        }
+
+        public override void EntryEdited(CalendarEntry e)
+        {
+            FireEntriesListChangedEvent(null);
+        }
+
+      
         /// <summary>
         /// Pobranie listy zadan dla podanego dnia 
         /// Z obiektu date odczytywane sa tylko pola day, month i year

@@ -18,7 +18,12 @@ namespace ClientApp
         /// <returns>enumerator to entries list</returns>
         public abstract IEnumerator<CalendarEntry> GetEnumerator();
 
+
         public abstract void Add(CalendarEntry e);
+
+        public abstract void EntryEdited(CalendarEntry e);
+
+        public abstract void Remove(CalendarEntry e);
 
         public abstract List<CalendarEntry> GetTasksForDate(DateTime date);
 
