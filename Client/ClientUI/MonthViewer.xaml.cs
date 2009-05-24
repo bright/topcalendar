@@ -25,7 +25,7 @@ namespace ClientUI
     {
         public MonthViewer()
         {
-            InitializeComponent();            
+            InitializeComponent();       
         }
 
         private void prevMonthBtn_Click(object sender, RoutedEventArgs e)

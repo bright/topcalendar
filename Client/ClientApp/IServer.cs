@@ -12,5 +12,7 @@ namespace ClientApp
     {
         void Add(CalendarEntry e);
 
+        List<CalendarEntry> GetTasksForDate(DateTime date);
+
     }
 }

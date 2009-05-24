@@ -27,9 +27,9 @@ namespace ClientUI
 
         public NewTaskWindow()
         {
+            NewEntryTitle = "Nowe zadanie";
+            NewEntryDate = DateTime.Now;
             InitializeComponent();
-
-
         }
      
         private void NewTaskCreateButton_Click(object sender, RoutedEventArgs e)
@@ -49,6 +49,9 @@ namespace ClientUI
             newEntryCreator.CalendarEntry = calendarEntry;
             newEntryCreator.Save();
 
+            //todo: takie odswiezanie nie moze zostac :)
+            DayControlsService.Instance.RefreshAll();
+
             this.Close();
         }
 
@@ -57,7 +60,7 @@ namespace ClientUI
         // mysle, ze warto zastanowic sie nad taka walidacja jaka Manus pokazywal na zajeciach
         private bool Validate()
         {
-            return ValidateTitle() && ValidateDesc() && validateDate();
+            return ValidateTitle() && ValidateDesc() && ValidateDate();
         }
 
         private bool ValidateTitle()
@@ -70,9 +73,10 @@ namespace ClientUI
             return true;
         }
 
-        private bool validateDate()
+        private bool ValidateDate()
         {
-            return this.NewEntryDate.ToBinary() > 0;
+           // return this.NewEntryDate.ToBinary() > 0;
+            return true;
         }
     }
 }

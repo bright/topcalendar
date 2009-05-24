@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientApp
 {
-    public abstract class LocalServerBase : IServer
+    public abstract class LocalServerBase : IServer, ClientApp.ILocalServerBase
     {
 
         public delegate void EntriesListDelegate(object sender, EventArgs e);
@@ -19,6 +19,8 @@ namespace ClientApp
         public abstract IEnumerator<CalendarEntry> GetEnumerator();
 
         public abstract void Add(CalendarEntry e);
+
+        public abstract List<CalendarEntry> GetTasksForDate(DateTime date);
 
         IEnumerator IEnumerable.GetEnumerator()
         {

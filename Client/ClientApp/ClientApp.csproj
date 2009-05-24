@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="CalendarEntry.cs" />
     <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="ILocalServerBase.cs" />
     <Compile Include="IServer.cs" />
     <Compile Include="LocalServer.cs" />
     <Compile Include="LocalServerBase.cs" />

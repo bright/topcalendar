@@ -31,6 +31,27 @@ namespace ClientApp
             FireEntriesListChangedEvent(null);
         }
 
+        /// <summary>
+        /// Pobranie listy zadan dla podanego dnia 
+        /// Z obiektu date odczytywane sa tylko pola day, month i year
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public override List<CalendarEntry> GetTasksForDate(DateTime date)
+        {
+            return GetTasksForDate(date.Day, date.Month, date.Year);
+        }
+
+        private List<CalendarEntry> GetTasksForDate(int day, int month, int year)
+        {
+            var result = (from item in this.data
+                          where item.DateTime.Day == day
+                              && item.DateTime.Month == month
+                              && item.DateTime.Year == year
+                          select item).ToList<CalendarEntry>();
+            return result as List<CalendarEntry>;
+        }
+
         public override IEnumerator<CalendarEntry> GetEnumerator()
         {
             return data.GetEnumerator();

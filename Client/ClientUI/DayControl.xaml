@@ -1,13 +1,34 @@
 ﻿<UserControl x:Class="ClientUI.DayControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:ui="clr-namespace:ClientUI"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-     x:Name="userControl">
+    xmlns:attached="clr-namespace:ClientUI.AttachedProperties"
+    x:Name="userControl" Width="135"
+             Loaded="userControl_Loaded">
+    <UserControl.Resources>
+        <Style x:Key="ListBoxStyle" TargetType="ListBox">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="90"/>
+        </Style>
+        <DataTemplate x:Key="ListBoxTemplate">
+            <ui:TaskMonthPreview TaskTitle="{Binding Path=Title}" 
+                             attached:Task.Task="{Binding}" />
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
+            <RowDefinition Height="90" />
             <RowDefinition Height="*" />
-        </Grid.RowDefinitions>              
-		<TextBlock Text="{Binding Path=Date.Day, ElementName=userControl, Mode=Default}" Height="20" VerticalAlignment="Top" />
-        <TextBlock Grid.Row="1" Text="Ala ma kota" />        
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Path=Date.Day, ElementName=userControl, Mode=Default}" Height="20" VerticalAlignment="Top" />
+        <TextBlock Grid.Row="1" Text="Ala ma kota" />
+      
+       
+        <ListBox Name="EntriesForDayList"
+                 Style="{StaticResource ListBoxStyle}" Background="Cornsilk" 
+                 ItemsSource="{Binding Path=EntryList, ElementName=userControl}"
+                 ScrollViewer.CanContentScroll="False"
+                 ItemTemplate="{StaticResource ListBoxTemplate}"  />
     </Grid>
 </UserControl>

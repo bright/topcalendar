@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using ClientApp;
+using ClientApp.Ninject;
 
 namespace ClientUI
 {
@@ -29,11 +30,28 @@ namespace ClientUI
         {
             Date = DateTime.Now;
             InitializeComponent();
+            
         }
 
         public DayControl(DateTime dt) {
             Date = dt;
             InitializeComponent();
+            Refresh();
+            
+        }
+
+        public void Refresh()
+        {
+            IServer server = DIFactory.Resolve<IServer>();
+            this.EntriesForDayList.ItemsSource = server.GetTasksForDate(Date);
+        }
+
+        private void userControl_Loaded(object sender, RoutedEventArgs e)
+        {            
+            DayControlsService.Instance.Register(this);
+            DragDestinationsHandler.Instance.RegisterDragDestination(this.EntriesForDayList);
+            AttachedProperties.Date.SetDate(EntriesForDayList, Date);
         }
     }
 }
+
