@@ -30,5 +30,7 @@ namespace ClientApp
         void Remove(CalendarEntry e);
 
         List<CalendarEntry> GetTasksForDate(DateTime date);
+
+        int Count{ get;}
     }
 }

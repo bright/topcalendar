@@ -27,6 +27,8 @@ namespace ClientApp
 
         public abstract List<CalendarEntry> GetTasksForDate(DateTime date);
 
+        public abstract int Count { get;}
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();

@@ -14,7 +14,7 @@ namespace ClientApp
         /**
          * Daje dostep tylko do odczytu do licznika listy
          */
-        public int Count
+        public override int Count
         {
             get
             {
