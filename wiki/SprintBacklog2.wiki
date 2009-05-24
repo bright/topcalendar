@@ -6,7 +6,7 @@ Nazwy zadań przeniesione z ProductBacklog
 || *User story ID* || *Zadanie* || *Story points* || Realizacja ||
 || 2 || *Użytkownik może usunąć istniejące zadanie lub zmienić jego parametry.* || - || - ||
 ||  || (ze sprintu 1) Stworzenie interfejsu (formularza) edycji zadania na podst. formularza dodawania || 5 ||  ||
-||  || (ze sprintu 1) Uzupełnienie klasy z logiką modyfikującej dane na "serwerze" || 10 ||  ||
+||  || (ze sprintu 1) Uzupełnienie klasy z logiką modyfikującej dane na "serwerze" || 10 || DM ||
 || 3 || *Użytkownik może przeglądać istniejące zadania w widoku kalendarza. Widok kalendarza pozwala na przeglądanie zadań z bieżącego dnia, tygodnia, miesiąca.* || - || - ||
 ||  || Przygotowanie komponentu do wyświetlania "widoku miesiąca". Szczegóły dotyczące komponentu na [przemysleniainterfejs tej stronie]. <font color="red">** ten punkt jest moim zdaniem teraz najistotniejszy, można to rozbić na mniejsze zadania, trzeba przemyśleć poważnie kto będzie za to odpowiedzialny - Michał</font> || 15 ||  ||
 ||  || Zrealizowanie przenoszenia zadania metodą drag-and-drop || 25 ||  ||
