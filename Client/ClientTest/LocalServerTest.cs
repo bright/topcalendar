@@ -16,7 +16,7 @@ namespace ClientTest
     public class LocalServerTest
     {
         private LocalServer sut;
-
+        private CalendarEntry someEntry;
         private MockRepository mocks;
 
         [TestFixtureSetUp]
@@ -30,6 +30,7 @@ namespace ClientTest
         {
             mocks = new MockRepository();
             sut = new LocalServer();
+            someEntry = new CalendarEntry("someEntry");
         }
 
         [TearDown]
@@ -38,7 +39,10 @@ namespace ClientTest
             mocks.VerifyAll();
         }
         
-       
+        private CalendarEntry getDefaultCalendarEntry()
+        {
+            return new CalendarEntry();
+        }
 
         [Test]
         public void NewServerShouldHaveNoEntries()
@@ -77,8 +81,33 @@ namespace ClientTest
             Assert.IsTrue(data.Count<CalendarEntry>() == 1);
             Assert.IsTrue(data.First<CalendarEntry>().Title == title);
         }
-        
-        
+        [Test]
+        public void IfEntryIsRemovedFromEmptyServerCountOfEntriesIsStillEqual_0()
+        {
+            sut.Remove(someEntry);
+            Assert.IsTrue(sut.Count == 0);
+        }
+        [Test]
+        public void If_WeAddEntryToEmptyServerAndThenRemoveThisSameEntry_ThenEntriesListIsStillEmpty()
+        {
+            sut.Add(someEntry);
+            sut.Remove(someEntry);
+            Assert.IsTrue(sut.Count == 0);
+        }
+        [Test]
+        public void If_we_remove_entry_then_we_can_not_fetch_this_entry()
+        {
+            sut.Add(getDefaultCalendarEntry());
+            sut.Add(someEntry);
+            sut.Add(getDefaultCalendarEntry());
+
+            sut.Remove(someEntry);
+            var a = from x in sut where x == someEntry select x;
+            Assert.IsTrue(a.Count<CalendarEntry>() == 0);
+
+        }
+
+
 
     }
 }
