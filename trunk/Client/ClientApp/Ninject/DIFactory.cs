@@ -19,20 +19,17 @@ namespace ClientApp.Ninject
 
         public static T Resolve<T>()
         {
-
             if (kernel == null)
             {
                 CreateKernel();
             }
             return kernel.Get<T>();
-
         }
 
         private static void CreateKernel()
         {  
             IModule module = new DIModule();
             kernel = new StandardKernel(module);
-
         }
 
     }
