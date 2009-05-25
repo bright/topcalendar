@@ -21,7 +21,7 @@
 
 11. Użytkownik może tworzyć listę zadań do wykonania korzystając z domyślnie zainstalowanej wtyczki "Twoje zadania". Zadania dodane do tej listy mają możliwość ustawienia statusu wykonania (wykonane/niewykonane itp.), wizualnie zadania są wyraźnie odróżnialne w zależności od statusu. Zadania mogą mieć ustawiony termin krytyczny. Użytkownik może otrzymywać listę zadań w formie powiadomienia.
 
-12. Użytkownik może współdzielić swoje zdania z innymi użytkownikami, poprzez określenie nazw kont/adresów e-mail użytkowników, którzy mają mieć dostęp do jego danych. Może zdefiniować dostęp do odczytu/do zapisu do poszczególnych grup zadań.
+12. Użytkownik może mieć zdalny, autoryzowany dostęp do swojego kalendarza, współdzielić swoje zdania z innymi użytkownikami, poprzez określenie nazw kont/adresów e-mail użytkowników, którzy mają mieć dostęp do jego danych. Może zdefiniować dostęp do odczytu/do zapisu do poszczególnych grup zadań.
 
 13. Użytkownik może definiować zadania.
 
