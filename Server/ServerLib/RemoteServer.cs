@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ServiceModel;
 
 namespace ServerLib
 {
+    [ServiceBehavior(InstanceContextMode=InstanceContextMode.PerSession)]
     public class RemoteServer : RemoteServerBase
     {
-
         private List<CalendarEntry> data = new List<CalendarEntry>();
 
         /**
