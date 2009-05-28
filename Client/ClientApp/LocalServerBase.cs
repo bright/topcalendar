@@ -6,18 +6,15 @@ using System.Text;
 
 namespace ClientApp
 {
-    public abstract class LocalServerBase : IServer, ClientApp.ILocalServerBase
+    public abstract class LocalServerBase : IServer
     {
+        public event EventHandler<EventArgs> EntriesListChanged;
 
-        public delegate void EntriesListDelegate(object sender, EventArgs e);
-
-        public event EntriesListDelegate EntriesListChanged;
         /// <summary>
         /// 
         /// </summary>
         /// <returns>enumerator to entries list</returns>
         public abstract IEnumerator<CalendarEntry> GetEnumerator();
-
 
         public abstract void Add(CalendarEntry e);
 
@@ -27,7 +24,7 @@ namespace ClientApp
 
         public abstract List<CalendarEntry> GetTasksForDate(DateTime date);
 
-        public abstract int Count { get;}
+        public abstract int Count { get; }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -37,8 +34,7 @@ namespace ClientApp
         protected void FireEntriesListChangedEvent (EventArgs e)
         {
             if (EntriesListChanged != null)
-
-                EntriesListChanged(this,e);
+                EntriesListChanged(this, e);
         }
     }
 }

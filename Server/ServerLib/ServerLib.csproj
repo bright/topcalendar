@@ -49,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarEntry.cs" />
-    <Compile Include="IRemoteServerBase.cs" />
     <Compile Include="IServer.cs" />
     <Compile Include="RemoteServer.cs" />
     <Compile Include="RemoteServerBase.cs" />
