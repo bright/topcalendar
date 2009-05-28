@@ -29,8 +29,11 @@ namespace ClientApp
         /// <param name="e">entry to remove</param>
         void Remove(CalendarEntry e);
 
+
         List<CalendarEntry> GetTasksForDate(DateTime date);
 
-        int Count{ get;}
+        int Count { get; }
+
+        event EventHandler<EventArgs> EntriesListChanged;
     }
 }

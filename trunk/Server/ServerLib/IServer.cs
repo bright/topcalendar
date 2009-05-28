@@ -41,5 +41,11 @@ namespace ServerLib
             [OperationContract]
             get;
         }
+
+        /*
+         * TODO: eventow nie da sie udostepniac przez WCF
+         * trzeba je przerobic na interfejs subskrypcji i powiadomien (one-way)
+         */
+        event EventHandler<EventArgs> EntriesListChanged;
     }
 }

@@ -8,7 +8,6 @@ namespace ClientApp
 {
     public class LocalServer : LocalServerBase
     {
-
         private List<CalendarEntry> data = new List<CalendarEntry>();
 
         /**
@@ -42,7 +41,6 @@ namespace ClientApp
             FireEntriesListChangedEvent(null);
         }
 
-      
         /// <summary>
         /// Pobranie listy zadan dla podanego dnia 
         /// Z obiektu date odczytywane sa tylko pola day, month i year

@@ -6,12 +6,10 @@ using System.Text;
 
 namespace ServerLib
 {
-    public abstract class RemoteServerBase : IServer, IRemoteServerBase
+    public abstract class RemoteServerBase : IServer
     {
+        public event EventHandler<EventArgs> EntriesListChanged;
 
-        public delegate void EntriesListDelegate(object sender, EventArgs e);
-
-        public event EntriesListDelegate EntriesListChanged;
         /// <summary>
         /// 
         /// </summary>
@@ -36,8 +34,7 @@ namespace ServerLib
         protected void FireEntriesListChangedEvent (EventArgs e)
         {
             if (EntriesListChanged != null)
-
-                EntriesListChanged(this,e);
+                EntriesListChanged(this, e);
         }
     }
 }

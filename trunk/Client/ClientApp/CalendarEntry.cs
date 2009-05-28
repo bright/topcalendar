@@ -9,7 +9,8 @@ namespace ClientApp
     {
         // tytul zadania
         public string Title { get; set; }
-        // 
+       
+        // opis zadania
         public string Desc { get; set; }
 
         public CalendarEntry() { }
