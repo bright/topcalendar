@@ -5,7 +5,15 @@
     HorizontalAlignment="Stretch" VerticalAlignment="Top"
     >
     <UserControl.Resources>
-        <ui:DateTimeToMonthName x:Key="DateTimeToMonthName" />
+        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ButtonStyle.xaml" />
+                <ResourceDictionary>
+                    <ui:DateTimeToMonthName x:Key="DateTimeToMonthName"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Height="Auto">
         <Grid.RowDefinitions>
@@ -15,13 +23,13 @@
         </Grid.RowDefinitions>
         
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Name="prevMonthBtn" Click="prevMonthBtn_Click">
+            <Button Style="{StaticResource ButtonNormal}" Background="CornflowerBlue" Name="prevMonthBtn" Click="prevMonthBtn_Click">
                 Poprzedni
             </Button>
             <TextBlock Margin="5" x:Name ="CurrentMonthName"  Width="60"
                        Text="{Binding Path=StartDate, ElementName=CurrentMonth, Converter={StaticResource DateTimeToMonthName}}"/>            
             <TextBlock Margin="5" x:Name="CurrentYear" Text="{Binding Path=StartDate.Year, ElementName=CurrentMonth}" />
-            <Button Name="netxMonthBtn" Click="netxMonthBtn_Click" >
+            <Button Style="{StaticResource ButtonNormal}" Background="CornflowerBlue" Name="netxMonthBtn" Click="netxMonthBtn_Click" >
                 Następny
             </Button>
 

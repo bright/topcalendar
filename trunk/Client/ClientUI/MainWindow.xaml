@@ -2,13 +2,19 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:ClientUI"
-    Title="TopCalendar" AllowsTransparency="False" Height="750" Width="1000" WindowStartupLocation="CenterScreen">
+    Title="TopCalendar" AllowsTransparency="False" Height="750" Width="1100" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <ResourceDictionary Source="CalendarEntryDataTemplate.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="CalendarEntryDataTemplate.xaml" />
+                <ResourceDictionary Source="ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Name="MainGrid">
-        <ui:MonthViewer Margin="0,0,0,-596.926" Loaded="MonthViewer_Loaded" />
-       <Button HorizontalAlignment="Right" Margin="0,0,29,10" Name="NewTaskButton" Width="75" Height="22.937" VerticalAlignment="Bottom" Click="NewTaskButton_Click">Nowe zadanie...</Button>
+        <ui:Menu Margin="0,0,0,0" HorizontalAlignment="Left" Width="100" />
+        <ui:MonthViewer Margin="104,0,0,-596.926" Loaded="MonthViewer_Loaded" />
+       <Button Style="{StaticResource ButtonNormal}" HorizontalAlignment="Right" Margin="0,0,9,0" Height="25" Width="90" Background="CornflowerBlue" Name="NewTaskButton" VerticalAlignment="Bottom" Click="NewTaskButton_Click">Nowe zadanie...</Button>
       <!--  <ui:EntriesList Margin="1,1,1,1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>-->
     </Grid>
 </Window>
