@@ -3,7 +3,7 @@
     xmlns:ui="clr-namespace:ClientUI"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:attached="clr-namespace:ClientUI.AttachedProperties"
-    x:Name="userControl" Width="135"
+    x:Name="userControl" Width="144"
              Loaded="userControl_Loaded">
     <UserControl.Resources>
         <Style x:Key="ListBoxStyle" TargetType="ListBox">
@@ -29,6 +29,6 @@
                  Style="{StaticResource ListBoxStyle}" Background="Cornsilk" 
                  ItemsSource="{Binding Path=EntryList, ElementName=userControl}"
                  ScrollViewer.CanContentScroll="False"
-                 ItemTemplate="{StaticResource ListBoxTemplate}"  />
+                 ItemTemplate="{StaticResource ListBoxTemplate}" Margin="24,0,0,0" />
     </Grid>
 </UserControl>

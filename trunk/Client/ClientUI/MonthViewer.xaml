@@ -7,11 +7,11 @@
     <UserControl.Resources>
         <ui:DateTimeToMonthName x:Key="DateTimeToMonthName" />
     </UserControl.Resources>
-    <Grid>
+    <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Height="Auto">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition  />
+            <RowDefinition />
         </Grid.RowDefinitions>
         
         <StackPanel Orientation="Horizontal" Grid.Row="0">
@@ -45,6 +45,6 @@
             <Label Content="Sobota" Grid.Column="5" />
             <Label Content="Niedziela" Grid.Column="6" />
         </Grid>
-        <ui:MonthControl x:Name="CurrentMonth" Grid.Row="2" />
+        <ui:MonthControl x:Name="CurrentMonth" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" />
     </Grid>
 </UserControl>

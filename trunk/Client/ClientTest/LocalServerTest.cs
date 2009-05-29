@@ -22,7 +22,7 @@ namespace ClientTest
         {
             mocks = new MockRepository();
             someEntry = getDefaultCalendarEntry();
-            //sut = DIFactory.Resolve<IServer>();
+            //sut = Factory.Resolve<IServer>();
             sut = new LocalServer();
         }
 

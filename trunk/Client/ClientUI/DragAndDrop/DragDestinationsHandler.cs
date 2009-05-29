@@ -16,25 +16,28 @@ namespace ClientUI
 
         public void RegisterDragDestination(ListBox listBox)
         {
-            DragDestination dragDestination = new DragDestination();
+            try
+            {
+                DragDestination dragDestination = new DragDestination();
 
-            Window1 window = WpfHelper.FindAncestorOrSelf<Window1>(listBox);
-            Visual mainGrid = window.MainGrid;
+                Window1 window = WpfHelper.FindAncestorOrSelf<Window1>(listBox);
+                Visual mainGrid = window.MainGrid;
 
-            Point leftTop = listBox.TransformToAncestor(mainGrid)
-                     .Transform(new Point(0, 0));
+                Point leftTop = listBox.TransformToAncestor(mainGrid)
+                    .Transform(new Point(0, 0));
 
-            Point rightBottom = listBox.TransformToAncestor(mainGrid)
-                            .Transform(new Point(listBox.Width, listBox.Height));
+                Point rightBottom = listBox.TransformToAncestor(mainGrid)
+                    .Transform(new Point(listBox.Width, listBox.Height));
 
-            dragDestination.Control = listBox;
-            dragDestination.X1 = leftTop.X;
-            dragDestination.Y1 = leftTop.Y;
+                dragDestination.Control = listBox;
+                dragDestination.X1 = leftTop.X;
+                dragDestination.Y1 = leftTop.Y;
 
-            dragDestination.X2 = rightBottom.X;
-            dragDestination.Y2 = rightBottom.Y;
+                dragDestination.X2 = rightBottom.X;
+                dragDestination.Y2 = rightBottom.Y;
 
-            dragDestinations.Add(dragDestination);
+                dragDestinations.Add(dragDestination);
+            } catch (Exception){}
         }
 
         public ListBox FindDragDestination(double x, double y)

@@ -21,7 +21,7 @@ namespace ClientUI
 
             Task.DateTime = destinationElementDate;
             
-            IServer server = DIFactory.Resolve<IServer>();
+            IServer server = Factory.Resolve<IServer>();
             Source.ItemsSource = server.GetTasksForDate(sourceElementDate);
             Destination.ItemsSource = server.GetTasksForDate(destinationElementDate);
 

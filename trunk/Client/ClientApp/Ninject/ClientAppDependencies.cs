@@ -10,7 +10,7 @@ namespace ClientApp.Ninject
     /// <summary>
     /// Definiuje reguly bindowania typow przez Ninject.
     /// </summary>
-    public class DIModule : StandardModule
+    public class ClientAppDependencies : StandardModule
     {
         public override void Load()
         {

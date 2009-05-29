@@ -12,25 +12,22 @@ namespace ClientApp.Ninject
     /// za pomoca interfejsu niezaleznego od Ninjecta. 
     /// Mozna dzieki temu np. dowolnie zmieniac framework IoC.
     /// </summary>
-    public static class DIFactory 
+    public static class Factory 
     {
         // glowny modul Ninjecta
-        private static IKernel kernel;
+        private static IKernel kernel = new StandardKernel(new ClientAppDependencies());
 
         public static T Resolve<T>()
-        {
-            if (kernel == null)
-            {
-                CreateKernel();
-            }
+        {           
             return kernel.Get<T>();
         }
 
-        private static void CreateKernel()
-        {  
-            IModule module = new DIModule();
-            kernel = new StandardKernel(module);
+        public static void Load(IModule module)
+        {
+            kernel.Load(module);
         }
+
+     
 
     }
 }
