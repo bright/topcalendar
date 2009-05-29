@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using ClientApp.Ninject;
 using ClientApp;
+using ClientApp.Ninject;
 
 namespace ClientUI
 {
@@ -20,18 +10,17 @@ namespace ClientUI
     /// </summary>
     public partial class NewTaskWindow : Window
     {
-
-        public String NewEntryTitle { get; set; }
-        public String NewEntryDesc { get; set; }
-        public DateTime NewEntryDate { get; set; }
-
         public NewTaskWindow()
         {
             NewEntryTitle = "Nowe zadanie";
             NewEntryDate = DateTime.Now;
             InitializeComponent();
         }
-     
+
+        public String NewEntryTitle { get; set; }
+        public String NewEntryDesc { get; set; }
+        public DateTime NewEntryDate { get; set; }
+
         private void NewTaskCreateButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validate())
@@ -39,20 +28,20 @@ namespace ClientUI
                 MessageBox.Show("Pewne dane sa niepoprawne");
                 return;
             }
-            
-            CalendarEntry calendarEntry = new CalendarEntry();
-            calendarEntry.Title = this.NewEntryTitle;
-            calendarEntry.Desc = this.NewEntryDesc;
-            calendarEntry.DateTime = this.NewEntryDate;
-            
-            NewEntryCreator newEntryCreator = DIFactory.Resolve<NewEntryCreator>();
+
+            var calendarEntry = new CalendarEntry();
+            calendarEntry.Title = NewEntryTitle;
+            calendarEntry.Desc = NewEntryDesc;
+            calendarEntry.DateTime = NewEntryDate;
+
+            var newEntryCreator = Factory.Resolve<NewEntryCreator>();
             newEntryCreator.CalendarEntry = calendarEntry;
             newEntryCreator.Save();
 
             //todo: takie odswiezanie nie moze zostac :)
             DayControlsService.Instance.RefreshAll();
 
-            this.Close();
+            Close();
         }
 
 
@@ -75,7 +64,7 @@ namespace ClientUI
 
         private bool ValidateDate()
         {
-           // return this.NewEntryDate.ToBinary() > 0;
+            // return this.NewEntryDate.ToBinary() > 0;
             return true;
         }
     }

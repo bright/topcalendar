@@ -42,7 +42,7 @@ namespace ClientUI
 
         public void Refresh()
         {
-            IServer server = DIFactory.Resolve<IServer>();
+            IServer server = Factory.Resolve<IServer>();
             this.EntriesForDayList.ItemsSource = server.GetTasksForDate(Date);
         }
 

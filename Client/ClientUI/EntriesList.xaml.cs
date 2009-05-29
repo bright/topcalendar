@@ -27,7 +27,7 @@ namespace ClientUI
         public EntriesList()
         {
 
-            serv = DIFactory.Resolve<LocalServerBase>();
+            serv = Factory.Resolve<LocalServerBase>();
 
             InitializeComponent();
 

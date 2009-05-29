@@ -29,5 +29,10 @@ namespace ClientUI
             NewTaskWindow newTaskWindow = new NewTaskWindow();
             newTaskWindow.Show();
         }
+
+        private void MonthViewer_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

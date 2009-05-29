@@ -49,12 +49,8 @@ namespace ClientUI
                                   CultureInfo culture)
         {
             string strValue = value.ToString();
-            DateTime resultDateTime;
-            if (DateTime.TryParse(strValue, out resultDateTime))
-            {
-                return resultDateTime;
-            }
-            return value;
+            return DateTime.ParseExact(strValue, DateTimePattern, null);
+            
         }
     }
 }
