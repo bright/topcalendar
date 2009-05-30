@@ -17,7 +17,7 @@
                             <Rectangle.Stroke>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                     <GradientStop Color="White" Offset="0" />
-                                    <GradientStop Color="#666666" Offset="1" />
+                                    <GradientStop Color="#B0C4DE" Offset="1" />
                                 </LinearGradientBrush>
                             </Rectangle.Stroke>
                         </Rectangle>
@@ -31,7 +31,7 @@
                                             Height="15px">
                             <Rectangle.Fill>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Color="#ccffffff" Offset="0"/>
+                                    <GradientStop Color="#B0C4DE" Offset="0"/>
                                     <GradientStop Color="Transparent" Offset="1"/>
                                 </LinearGradientBrush>
                             </Rectangle.Fill>
@@ -43,8 +43,8 @@
                             <Setter Property="Fill" TargetName="GelBackground">
                                 <Setter.Value>
                                     <RadialGradientBrush>
-                                        <GradientStop Color="Wheat"  Offset="0" />
-                                        <GradientStop Color="CornflowerBlue" Offset="1" />
+                                        <GradientStop Color="Beige"  Offset="0" />
+                                        <GradientStop Color="#B0C4DE" Offset="1" />
                                     </RadialGradientBrush>
                                 </Setter.Value>
                             </Setter>
@@ -53,7 +53,7 @@
                             <Setter Property="Fill" TargetName="GelBackground">
                                 <Setter.Value>
                                     <RadialGradientBrush>
-                                        <GradientStop Color="#ffcc00" Offset="0"/>
+                                        <GradientStop Color="#B0C4DE" Offset="0"/>
                                         <GradientStop Color="#cc9900" Offset="1"/>
                                     </RadialGradientBrush>
                                 </Setter.Value>

@@ -22,37 +22,39 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Style="{StaticResource ButtonNormal}" Background="CornflowerBlue" Name="prevMonthBtn" Click="prevMonthBtn_Click">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10,2,2,2">
+            <Button Width="60" Style="{StaticResource ButtonNormal}" Background="#B0C4DE" Name="prevMonthBtn" Click="prevMonthBtn_Click">
                 Poprzedni
             </Button>
             <TextBlock Margin="5" x:Name ="CurrentMonthName"  Width="60"
                        Text="{Binding Path=StartDate, ElementName=CurrentMonth, Converter={StaticResource DateTimeToMonthName}}"/>            
             <TextBlock Margin="5" x:Name="CurrentYear" Text="{Binding Path=StartDate.Year, ElementName=CurrentMonth}" />
-            <Button Style="{StaticResource ButtonNormal}" Background="CornflowerBlue" Name="netxMonthBtn" Click="netxMonthBtn_Click" >
+            <Button Width="60" Style="{StaticResource ButtonNormal}" Background="#B0C4DE" Name="netxMonthBtn" Click="netxMonthBtn_Click" >
                 Następny
             </Button>
 
         </StackPanel>
-        
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Content="Poniedziałek" Grid.Column="0" />
-            <Label Content="Wtorek" Grid.Column="1" />
-            <Label Content="Środa" Grid.Column="2" />
-            <Label Content="Czwartek" Grid.Column="3" />
-            <Label Content="Piątek" Grid.Column="4" />
-            <Label Content="Sobota" Grid.Column="5" />
-            <Label Content="Niedziela" Grid.Column="6" />
+       
+
+            <Grid Grid.Row="1" Background="#FFCC33">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Poniedziałek" Grid.Column="0" />
+                <Label Content="Wtorek" Grid.Column="1" />
+                <Label Content="Środa" Grid.Column="2" />
+                <Label Content="Czwartek" Grid.Column="3" />
+                <Label Content="Piątek" Grid.Column="4" />
+                <Label Content="Sobota" Grid.Column="5" />
+                <Label Content="Niedziela" Grid.Column="6" />
+            </Grid>
+            <ui:MonthControl x:Name="CurrentMonth" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" />
         </Grid>
-        <ui:MonthControl x:Name="CurrentMonth" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" />
-    </Grid>
+        
 </UserControl>

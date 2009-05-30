@@ -15,7 +15,7 @@
                             <Rectangle.Stroke>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                     <GradientStop Color="White" Offset="0" />
-                                    <GradientStop Color="#666666" Offset="1" />
+                                    <GradientStop Color="White" Offset="1" />
                                 </LinearGradientBrush>
                             </Rectangle.Stroke>
                         </Rectangle>
@@ -29,7 +29,7 @@
                                             Height="15px">
                             <Rectangle.Fill>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Color="#ccffffff" Offset="0"/>
+                                    <GradientStop Color="White" Offset="0"/>
                                     <GradientStop Color="Transparent" Offset="1"/>
                                 </LinearGradientBrush>
                             </Rectangle.Fill>
