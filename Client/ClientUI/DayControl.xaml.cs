@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 using ClientApp;
 using ClientApp.Ninject;
 
@@ -22,36 +13,49 @@ namespace ClientUI
     /// </summary>
     public partial class DayControl : UserControl
     {
-        public DateTime Date { get; set; }
-
-        public List<CalendarEntry> EntryList { get; set; }
-
         public DayControl()
         {
             Date = DateTime.Now;
             InitializeComponent();
-            
         }
 
-        public DayControl(DateTime dt) {
+        public DayControl(DateTime dt)
+        {
             Date = dt;
             InitializeComponent();
             Refresh();
-            
         }
+
+        public DateTime Date { get; set; }
+
+        public List<CalendarEntry> EntryList { get; set; }
 
         public void Refresh()
         {
-            IServer server = Factory.Resolve<IServer>();
-            this.EntriesForDayList.ItemsSource = server.GetTasksForDate(Date);
+            var server = Factory.Resolve<IServer>();
+            EntriesForDayList.ItemsSource = server.GetTasksForDate(Date);
         }
 
         private void userControl_Loaded(object sender, RoutedEventArgs e)
-        {            
-            DayControlsService.Instance.Register(this);
-            DragDestinationsHandler.Instance.RegisterDragDestination(this.EntriesForDayList);
-            AttachedProperties.Date.SetDate(EntriesForDayList, Date);
+        {
+            try
+            {
+                var dayControlsService = Factory.Resolve<IDayControlsService>();
+                dayControlsService.Register(this);
+
+                var dragDestinationsHandler = Factory.Resolve<IDragDestinationsHandler>();
+                dragDestinationsHandler.RegisterDragDestination(EntriesForDayList);
+                AttachedProperties.Date.SetDate(EntriesForDayList, Date);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void EntriesForDayList_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var listBox = (ListBox) sender;            
+            listBox.ToolTip = "(" + listBox.ActualHeight + ", " + listBox.ActualWidth + ")";
         }
     }
 }
-

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using ClientApp.DateTimeExtensions;
 using System.ComponentModel;
+using ClientApp.Ninject;
 
 namespace ClientUI
 {
@@ -23,17 +24,17 @@ namespace ClientUI
     /// </summary>
     public partial class MonthControl : UserControl, INotifyPropertyChanged
     {
-        private DateTime startDate;
+        private DateTime _startDate;
 
         public DateTime StartDate
         {
             get {
-                return startDate;
+                return _startDate;
             } 
             set {
-                startDate = value;
-                initMonthContent();
-                initMonthGrid();
+                _startDate = value;
+                InitMonthContent();
+                InitMonthGrid();
                 RaisePropertyChanged("StartDate");
             } 
         }
@@ -44,7 +45,7 @@ namespace ClientUI
             StartDate = DateTime.Now.MonthStart();
         }
 
-        private void initMonthGrid()
+        private void InitMonthGrid()
         {
             MonthGrid.Children.Clear();
             int i = 0;
@@ -59,7 +60,11 @@ namespace ClientUI
 
         private List<DayControl> MonthContent {get; set;}
 
-        private void initMonthContent(){
+        private void InitMonthContent(){
+
+            var dragDestinationsHandler = Factory.Resolve<IDragDestinationsHandler>();
+            dragDestinationsHandler.ClearDragDestinations();
+
             List<DayControl> dcList = new List<DayControl>();
 
             DateTime prevMonth = StartDate.PrevMonth();

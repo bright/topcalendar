@@ -11,8 +11,7 @@
             <Setter Property="Height" Value="90"/>
         </Style>
         <DataTemplate x:Key="ListBoxTemplate">
-            <ui:TaskMonthPreview TaskTitle="{Binding Path=Title}" 
-                             attached:Task.Task="{Binding}" />
+            <ui:TaskMonthPreview TaskTitle="{Binding Path=Title}" attached:Task.Task="{Binding}" />
         </DataTemplate>
     </UserControl.Resources>
 
@@ -22,13 +21,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock Text="{Binding Path=Date.Day, ElementName=userControl, Mode=Default}" Height="20" VerticalAlignment="Top" />
-        <TextBlock Grid.Row="1" Text="Ala ma kota" />
+        <TextBlock Grid.Row="1" Text="" />
       
        
         <ListBox Name="EntriesForDayList"
                  Style="{StaticResource ListBoxStyle}" Background="Beige" 
                  ItemsSource="{Binding Path=EntryList, ElementName=userControl}"
                  ScrollViewer.CanContentScroll="False"
-                 ItemTemplate="{StaticResource ListBoxTemplate}" Margin="24,0,0,0" />
+                 ItemTemplate="{StaticResource ListBoxTemplate}" Margin="24,0,0,0" 
+                 MouseEnter="EntriesForDayList_MouseEnter" HorizontalAlignment="Left" VerticalAlignment="Top" />
     </Grid>
 </UserControl>

@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:ClientUI"
-    Title="TopCalendar" AllowsTransparency="False" Height="750" Width="1100" WindowStartupLocation="CenterScreen">
+    Title="TopCalendar" AllowsTransparency="False" Height="750" Width="1100" WindowStartupLocation="CenterScreen"
+        SizeChanged="Window1_OnSizeChanged">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

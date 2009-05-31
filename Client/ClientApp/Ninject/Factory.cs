@@ -18,8 +18,8 @@ namespace ClientApp.Ninject
         private static IKernel kernel = new StandardKernel(new ClientAppDependencies());
 
         public static T Resolve<T>()
-        {           
-            return kernel.Get<T>();
+        {
+           return kernel.Get<T>();          
         }
 
         public static void Load(IModule module)
