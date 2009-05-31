@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
+using ClientApp.Ninject;
 
 namespace ClientUI
 {
@@ -27,10 +28,6 @@ namespace ClientUI
 
         public static DependencyProperty MonthViewerProperty = DependencyProperty.Register(
             "MonthViewer", typeof(MonthViewer), typeof(TaskMonthPreview));
-
-        public ListBox lastHighlighted;
-
-        private DragAndDropService dragAndDropService;
 
         public String TaskTitle
         {
@@ -50,97 +47,99 @@ namespace ClientUI
             set { SetValue(MonthViewerProperty, value); }
         }
 
+        public ListBox LastHighlighted;
 
-        private TaskMonthPreview dragPhantom;
-        private Point relativePoint;
+        private IDragAndDropService _dragAndDropService;
+        private TaskMonthPreview _dragPhantom;
+        private Point _relativePoint;
+        private readonly IDragDestinationsHandler _dragDestinationsHandler;
 
         public TaskMonthPreview()
         {
             InitializeComponent();
+            try
+            {
+                _dragDestinationsHandler = Factory.Resolve<IDragDestinationsHandler>();
+            } catch (Exception)
+            {
+            }
         }
 
         void onDragDelta(object sender, DragDeltaEventArgs e)
         {
 
-            Thickness t2 = new Thickness(0, 0, 0, 0);
-            t2.Left = relativePoint.X + e.HorizontalChange;
-            t2.Top = relativePoint.Y + e.VerticalChange;
-            dragPhantom.Margin = t2;
+            var t2 = new Thickness(0, 0, 0, 0)
+                         {
+                             Left = _relativePoint.X + e.HorizontalChange,
+                             Top = _relativePoint.Y + e.VerticalChange
+                         };
+            _dragPhantom.Margin = t2;
 
-            var dragDestination = DragDestinationsHandler.Instance.FindDragDestination(t2.Left, t2.Top);
+            var dragDestination = _dragDestinationsHandler.FindDragDestination(t2.Left, t2.Top);
 
-            if (lastHighlighted != null)
+            if (LastHighlighted != null)
             {
-                lastHighlighted.Opacity = 1;
+                LastHighlighted.Opacity = 1;
             }
             if (dragDestination != null)
             {
                 dragDestination.Opacity = 0.3;
-                lastHighlighted = dragDestination;
+                LastHighlighted = dragDestination;
             }
 
         }
 
         void onDragStarted(object sender, DragStartedEventArgs e)
         {           
-            Thumb senderThumb = (Thumb)sender;
-            TaskMonthPreview tmp = (TaskMonthPreview)senderThumb.Parent;
+            var senderThumb = (Thumb)sender;
+            var tmp = (TaskMonthPreview)senderThumb.Parent;
 
-            TaskMonthPreview copy = copyThumb(tmp);
+            TaskMonthPreview copy = CopyThumb(tmp);
 
-            Window1 mainWindow = WpfHelper.FindAncestorOrSelf<Window1>(sender as Control);
+            var mainWindow = WpfHelper.FindAncestorOrSelf<Window1>(sender as Control);
             mainWindow.MainGrid.Children.Add(copy);
 
-            this.dragPhantom = copy;
+            _dragPhantom = copy;
 
-            this.dragAndDropService = new DragAndDropService();
+            _dragAndDropService = Factory.Resolve<IDragAndDropService>();
 
             Point p = this.TransformToAncestor(mainWindow)
                            .Transform(new Point(0, 0));
-            dragAndDropService.Source = DragDestinationsHandler.Instance.FindDragDestination(p.X, p.Y);
-            dragAndDropService.Task = AttachedProperties.Task.GetTask(this);
+            _dragAndDropService.Source = _dragDestinationsHandler.FindDragDestination(p.X, p.Y);
+            _dragAndDropService.Task = AttachedProperties.Task.GetTask(this);
         }
 
-        TaskMonthPreview copyThumb(TaskMonthPreview src)
+        TaskMonthPreview CopyThumb(TaskMonthPreview src)
         {
-            TaskMonthPreview dest = new TaskMonthPreview();
-            dest.TaskTitle = src.TaskTitle;
+            var dest = new TaskMonthPreview {TaskTitle = src.TaskTitle};
 
-            Window1 mainWindow = WpfHelper.FindAncestorOrSelf<Window1>(src);
+            var mainWindow = WpfHelper.FindAncestorOrSelf<Window1>(src);
 
-            relativePoint = this.TransformToAncestor(mainWindow)
-                              .Transform(new Point(0, 0));
-
-            Point endPoint = this.TransformToAncestor(mainWindow)
-                            .Transform(new Point(this.Width, this.Height));
+            _relativePoint = TransformToAncestor(mainWindow).Transform(new Point(0, 0));
 
             dest.HorizontalAlignment = HorizontalAlignment.Left;
             dest.VerticalAlignment = VerticalAlignment.Top;
 
-            dest.Margin = new Thickness(relativePoint.X, relativePoint.Y, 0, 0);
+            dest.Margin = new Thickness(_relativePoint.X, _relativePoint.Y, 0, 0);
             return dest;
         }
 
         void onDragCompleted(object sender, DragCompletedEventArgs e)
         {
-            dragAndDropService.Destination = lastHighlighted;
-            dragAndDropService.Move();
-            if (lastHighlighted != null)
+            if (LastHighlighted != null)
             {
-                lastHighlighted.Opacity = 1;
+                _dragAndDropService.Destination = LastHighlighted;
+                _dragAndDropService.Move();
+                if (LastHighlighted != null)
+                {
+                    LastHighlighted.Opacity = 1;
+                }
             }
 
-            Window1 mainWindow = WpfHelper.FindAncestorOrSelf<Window1>(dragPhantom);
-            mainWindow.MainGrid.Children.Remove(dragPhantom);
+            var mainWindow = WpfHelper.FindAncestorOrSelf<Window1>(_dragPhantom);
+            mainWindow.MainGrid.Children.Remove(_dragPhantom);
             myThumb.Background = Brushes.Blue;
         }
-
-        private void myThumb_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("niezle");
-        }
-
-
-
+      
     }
 }

@@ -10,6 +10,7 @@ namespace ClientUI
     /// </summary>
     public partial class NewTaskWindow : Window
     {
+
         public NewTaskWindow()
         {
             NewEntryTitle = "Nowe zadanie";
@@ -39,7 +40,9 @@ namespace ClientUI
             newEntryCreator.Save();
 
             //todo: takie odswiezanie nie moze zostac :)
-            DayControlsService.Instance.RefreshAll();
+
+            var dayControlsService = Factory.Resolve<IDayControlsService>();
+            dayControlsService.RefreshAll();
 
             Close();
         }

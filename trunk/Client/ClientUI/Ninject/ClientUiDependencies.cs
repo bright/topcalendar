@@ -13,7 +13,9 @@ namespace ClientUI.Ninject
     {
         public override void Load()
         {
-           
+            Bind<IDragAndDropService>().To<DragAndDropService>();
+            Bind<IDragDestinationsHandler>().To<DragDestinationsHandler>().Using<SingletonBehavior>();
+            Bind<IDayControlsService>().To<DayControlsService>().Using<SingletonBehavior>();
         }
     }
 }

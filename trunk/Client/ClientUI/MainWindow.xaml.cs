@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClientApp.Ninject;
 
 namespace ClientUI
 {
@@ -33,6 +34,13 @@ namespace ClientUI
         private void MonthViewer_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Window1_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var dragDestinationsHandler = Factory.Resolve<IDragDestinationsHandler>();
+            dragDestinationsHandler.RefreshAllDragDestinations();
+            
         }
     }
 }
