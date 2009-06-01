@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ea11fe83-c230-4431-8277-b8117a462b6e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:18000/CalendarService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="bd9672a1-4351-4063-a118-3b647fb0984d" SourceId="1" SourceUrl="http://localhost:18000/CalendarService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="aab49881-72db-406e-b8b8-9ad8bbc235f1" SourceId="1" SourceUrl="http://localhost:18000/CalendarService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="b258a501-296a-49f9-8b2b-a2f9b7ad9a5b" SourceId="1" SourceUrl="http://localhost:18000/CalendarService/mex" />
+    <MetadataFile FileName="ServerLib.xsd" MetadataType="Schema" ID="0ad0b6d2-d914-45f9-a167-222a0931b3a5" SourceId="1" SourceUrl="http://localhost:18000/CalendarService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

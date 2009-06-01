@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ClientUI.TaskMonthPreview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="CurrentElement"
+    Height="30" Width="80">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ControlTemplate x:Key="TaskView" TargetType="Thumb">
+                <Grid>
+                    <Rectangle                
+                Name="rectangle1" 
+                Stroke="Chocolate" 
+                HorizontalAlignment="Left" 
+                Width="{TemplateBinding Width}" 
+                Height="{TemplateBinding Height}" 
+                Fill="LightSkyBlue"/>
+                    <TextBlock Text="{Binding Path=TaskTitle, ElementName = CurrentElement}" Padding="10,3,0,0" />
+                   
+            </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+
+    <Thumb Name="myThumb"  Background="Blue" 
+      Width="100" Height="20" DragDelta="onDragDelta" 
+      DragStarted="onDragStarted" DragCompleted="onDragCompleted" HorizontalAlignment="Left"
+             Template="{StaticResource TaskView}" ClipToBounds="False" />
+
+
+
+</UserControl>
