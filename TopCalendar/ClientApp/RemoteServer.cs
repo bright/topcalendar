@@ -25,31 +25,34 @@ namespace ClientApp
         /**
          * Dodaje wydarzenie do listy
          */
-        public override void Add(CalendarEntry e)
+        public override void Add(BaseCalendarEntry e)
         {
             server.Add(e);
+            FireEntriesListChangedEvent(null);
         }
 
-        public override void Remove(CalendarEntry e)
+        public override void Remove(BaseCalendarEntry e)
         {
-            server.Remove(e);
+            server.Remove((BaseCalendarEntry)e);
+            FireEntriesListChangedEvent(null);
         }
 
-        public override void EntryEdited(CalendarEntry e)
+        public override void EntryEdited(BaseCalendarEntry e)
         {
-            server.EntryEdited(e);
+            server.EntryEdited((BaseCalendarEntry)e);
+            FireEntriesListChangedEvent(null);
         }
 
         /// <summary>
         /// Pobranie listy zadan dla podanego dnia 
         /// </summary>
         /// <returns></returns>
-        public override List<CalendarEntry> GetTasksForDate(int day, int month, int year)
+        public override List<BaseCalendarEntry> GetTasksForDate(int day, int month, int year)
         {
             return server.GetTasksForDate(day, month, year);
         }
 
-        public override IEnumerable<CalendarEntry> Enumerate()
+        public override IEnumerable<BaseCalendarEntry> Enumerate()
         {
             return server.Enumerate();
         }

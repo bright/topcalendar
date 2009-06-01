@@ -18,7 +18,7 @@ namespace ClientApp
         {
             this.server = server;
         }
-        
+
         public CalendarEntry CalendarEntry { get; set; }
 
         public void Save()

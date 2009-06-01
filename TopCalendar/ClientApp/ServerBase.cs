@@ -11,15 +11,15 @@ namespace ClientApp
     {
         public event EventHandler<EventArgs> EntriesListChanged;
 
-        public abstract IEnumerable<CalendarEntry> Enumerate();
+        public abstract IEnumerable<BaseCalendarEntry> Enumerate();
 
-        public abstract void Add(CalendarEntry e);
+        public abstract void Add(BaseCalendarEntry e);
 
-        public abstract void EntryEdited(CalendarEntry e);
+        public abstract void EntryEdited(BaseCalendarEntry e);
 
-        public abstract void Remove(CalendarEntry e);
+        public abstract void Remove(BaseCalendarEntry e);
 
-        public abstract List<CalendarEntry> GetTasksForDate(int day, int month, int year);
+        public abstract List<BaseCalendarEntry> GetTasksForDate(int day, int month, int year);
 
         public abstract int get_Count();
 

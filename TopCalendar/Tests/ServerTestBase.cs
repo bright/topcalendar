@@ -17,7 +17,7 @@ namespace ClientTest
     public abstract class ServerTestBase
     {
         protected IServer sut;
-        protected CalendarEntry someEntry;
+        protected BaseCalendarEntry someEntry;
         protected MockRepository mocks;
 
         [TestFixtureSetUp]
@@ -37,15 +37,15 @@ namespace ClientTest
         {
             mocks.VerifyAll();
         }
-        
-        protected CalendarEntry getDefaultCalendarEntry()
+
+        protected BaseCalendarEntry getDefaultCalendarEntry()
         {
-            return new CalendarEntry();
+            return new BaseCalendarEntry();
         }
 
-        protected CalendarEntry getCalendarEntryWithTitle(string title)
+        protected BaseCalendarEntry getCalendarEntryWithTitle(string title)
         {
-            CalendarEntry c = new CalendarEntry();
+            BaseCalendarEntry c = new BaseCalendarEntry();
             c.Title = title;
             return c;
         }
@@ -59,7 +59,7 @@ namespace ClientTest
         [Test]
         public void NewItemCanBeAddedAndCounterIncreases()
         {
-            sut.Add(new CalendarEntry());
+            sut.Add(new BaseCalendarEntry());
             Assert.IsTrue(sut.get_Count() == 1);
         }
 
@@ -67,15 +67,15 @@ namespace ClientTest
         public void NoEntryCanBeFetchedFromEmptyServer()
         {
             var data = from x in sut.Enumerate() select x;
-            Assert.IsTrue(data.Count<CalendarEntry>() == 0);
+            Assert.IsTrue(data.Count<BaseCalendarEntry>() == 0);
         }
 
         [Test]
         public void IfOneEntryIsAddedOneCanBeFetched()
         {
-            sut.Add(new CalendarEntry());
+            sut.Add(new BaseCalendarEntry());
             var data = from x in sut.Enumerate() select x;
-            Assert.IsTrue(data.Count<CalendarEntry>() == 1);
+            Assert.IsTrue(data.Count<BaseCalendarEntry>() == 1);
         }
 
         [Test]
@@ -84,8 +84,8 @@ namespace ClientTest
             string title = "test";
             sut.Add(getCalendarEntryWithTitle(title));
             var data = from x in sut.Enumerate() where x.Title == title select x;
-            Assert.IsTrue(data.Count<CalendarEntry>() == 1);
-            Assert.IsTrue(data.First<CalendarEntry>().Title == title);
+            Assert.IsTrue(data.Count<BaseCalendarEntry>() == 1);
+            Assert.IsTrue(data.First<BaseCalendarEntry>().Title == title);
         }
         [Test]
         public void IfEntryIsRemovedFromEmptyServerCountOfEntriesIsStillEqual_0()
@@ -109,7 +109,7 @@ namespace ClientTest
 
             sut.Remove(someEntry);
             var a = from x in sut.Enumerate() where x == someEntry select x;
-            Assert.IsTrue(a.Count<CalendarEntry>() == 0);
+            Assert.IsTrue(a.Count<BaseCalendarEntry>() == 0);
 
         }
 

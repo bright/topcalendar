@@ -16,7 +16,7 @@ namespace ClientTest
     public class CalendarEntryTest
     {
         private MockRepository mocks;
-        private CalendarEntry sut;
+        private BaseCalendarEntry sut;
 
         [TestFixtureSetUp]
         public void Init()
@@ -40,7 +40,7 @@ namespace ClientTest
         public void TitleIsSavedProperly()
         {
             string title = "test";
-            sut = new CalendarEntry(title);
+            sut = new BaseCalendarEntry(title);
             Assert.IsTrue(sut.Title == title);
         }
         [Test]
@@ -48,7 +48,7 @@ namespace ClientTest
         {
             DateTime expected = DateTime.Now;
             
-            sut = new CalendarEntry(null,expected);
+            sut = new BaseCalendarEntry(null,expected);
 
             Assert.AreEqual(0, DateTime.Compare(expected, sut.DateTime));
         }

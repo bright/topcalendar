@@ -17,24 +17,24 @@ namespace ServerLib
         /// </summary>
         /// <param name="e">entry to add</param>
         [OperationContract]
-        void Add(CalendarEntry e);
+        void Add(BaseCalendarEntry e);
 
         /// <summary>
         ///  shoud be called when entry was edited
         /// </summary>
         /// <param name="e">entry that was edited</param>
         [OperationContract]
-        void EntryEdited(CalendarEntry e);
+        void EntryEdited(BaseCalendarEntry e);
 
         /// <summary>
         /// remove entry form server
         /// </summary>
         /// <param name="e">entry to remove</param>
         [OperationContract]
-        void Remove(CalendarEntry e);
+        void Remove(BaseCalendarEntry e);
 
         [OperationContract]
-        List<CalendarEntry> GetTasksForDate(int day, int month, int year);
+        List<BaseCalendarEntry> GetTasksForDate(int day, int month, int year);
 
         int Count
         {
@@ -43,7 +43,7 @@ namespace ServerLib
         }
 
         [OperationContract]
-        IEnumerable<CalendarEntry> Enumerate();
+        IEnumerable<BaseCalendarEntry> Enumerate();
 
         /*
          * TODO: eventow nie da sie udostepniac przez WCF
