@@ -10,7 +10,7 @@ namespace ServerLib
     [ServiceBehavior(InstanceContextMode=InstanceContextMode.PerSession)]
     public class CalendarServer : IServer
     {
-        private List<CalendarEntry> data = new List<CalendarEntry>();
+        private List<BaseCalendarEntry> data = new List<BaseCalendarEntry>();
 
         public event EventHandler<EventArgs> EntriesListChanged;
 
@@ -39,19 +39,19 @@ namespace ServerLib
         /**
          * Dodaje wydarzenie do listy
          */
-        public void Add(CalendarEntry e)
+        public void Add(BaseCalendarEntry e)
         {
             data.Add(e);
             FireEntriesListChangedEvent(null);
         }
 
-        public void Remove(CalendarEntry e)
+        public void Remove(BaseCalendarEntry e)
         {
             data.Remove(e);
             FireEntriesListChangedEvent(null);
         }
 
-        public void EntryEdited(CalendarEntry e)
+        public void EntryEdited(BaseCalendarEntry e)
         {
             FireEntriesListChangedEvent(null);
         }
@@ -61,22 +61,22 @@ namespace ServerLib
         /// Pobranie listy zadan dla podanego dnia 
         /// </summary>
         /// <returns></returns>
-        public List<CalendarEntry> GetTasksForDate(int day, int month, int year)
+        public List<BaseCalendarEntry> GetTasksForDate(int day, int month, int year)
         {
             var result = (from item in this.data
                           where item.DateTime.Day == day
                               && item.DateTime.Month == month
                               && item.DateTime.Year == year
-                          select item).ToList<CalendarEntry>();
-            return result as List<CalendarEntry>;
+                          select item).ToList<BaseCalendarEntry>();
+            return result as List<BaseCalendarEntry>;
         }
 
-        public List<CalendarEntry> GetTasksForDate(DateTime date)
+        public List<BaseCalendarEntry> GetTasksForDate(DateTime date)
         {
             return GetTasksForDate(date.Day, date.Month, date.Year);
         }
 
-        public IEnumerable<CalendarEntry> Enumerate()
+        public IEnumerable<BaseCalendarEntry> Enumerate()
         {
             return data.AsReadOnly();
         }

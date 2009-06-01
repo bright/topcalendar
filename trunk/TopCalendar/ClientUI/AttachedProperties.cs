@@ -13,15 +13,15 @@ namespace ClientUI.AttachedProperties
         public static readonly DependencyProperty TaskProperty =
          DependencyProperty.RegisterAttached(
             "Task",
-            typeof(CalendarEntry),
+            typeof(BaseCalendarEntry),
             typeof(Task));
 
-        public static CalendarEntry GetTask(DependencyObject element)
+        public static BaseCalendarEntry GetTask(DependencyObject element)
         {
-            return (CalendarEntry)element.GetValue(TaskProperty);
+            return (BaseCalendarEntry)element.GetValue(TaskProperty);
         }
 
-        public static void SetTask(DependencyObject element, CalendarEntry value)
+        public static void SetTask(DependencyObject element, BaseCalendarEntry value)
         {
             element.SetValue(TaskProperty, value);
         }

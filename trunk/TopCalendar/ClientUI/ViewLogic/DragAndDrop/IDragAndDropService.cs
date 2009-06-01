@@ -8,7 +8,7 @@ namespace ClientUI
     {
         ListBox Source { get; set; }
         ListBox Destination { get; set; }
-        CalendarEntry Task { get; set; }
+        BaseCalendarEntry Task { get; set; }
         void Move();
     }
 }

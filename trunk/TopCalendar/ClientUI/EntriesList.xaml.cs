@@ -37,7 +37,7 @@ namespace ClientUI
             
         }
 
-        public IEnumerable<CalendarEntry> Entries
+        public IEnumerable<BaseCalendarEntry> Entries
         {
             get { return serv.Enumerate(); }
         }

@@ -11,14 +11,14 @@
 namespace ClientApp.RemoteServerRef {
     using System.Runtime.Serialization;
     using System;
-    using System.Collections.Generic;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CalendarEntry", Namespace="http://schemas.datacontract.org/2004/07/ServerLib")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "BaseCalendarEntry", Namespace = "http://schemas.datacontract.org/2004/07/ServerLib")]
     [System.SerializableAttribute()]
-    public partial class CalendarEntry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class BaseCalendarEntry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+    {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -28,6 +28,9 @@ namespace ClientApp.RemoteServerRef {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
@@ -69,6 +72,19 @@ namespace ClientApp.RemoteServerRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Title {
             get {
                 return this.TitleField;
@@ -96,24 +112,22 @@ namespace ClientApp.RemoteServerRef {
     public interface IServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/Add", ReplyAction="http://tempuri.org/IServer/AddResponse")]
-        void Add(ClientApp.RemoteServerRef.CalendarEntry e);
+        void Add(ClientApp.RemoteServerRef.BaseCalendarEntry e);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/EntryEdited", ReplyAction="http://tempuri.org/IServer/EntryEditedResponse")]
-        void EntryEdited(ClientApp.RemoteServerRef.CalendarEntry e);
+        void EntryEdited(ClientApp.RemoteServerRef.BaseCalendarEntry e);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/Remove", ReplyAction="http://tempuri.org/IServer/RemoveResponse")]
-        void Remove(ClientApp.RemoteServerRef.CalendarEntry e);
+        void Remove(ClientApp.RemoteServerRef.BaseCalendarEntry e);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/GetTasksForDate", ReplyAction="http://tempuri.org/IServer/GetTasksForDateResponse")]
-        System.Collections.Generic.List<ClientApp.RemoteServerRef.CalendarEntry> GetTasksForDate(int day, int month, int year);
+        System.Collections.Generic.List<ClientApp.RemoteServerRef.BaseCalendarEntry> GetTasksForDate(int day, int month, int year);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/get_Count", ReplyAction="http://tempuri.org/IServer/get_CountResponse")]
         int get_Count();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/Enumerate", ReplyAction="http://tempuri.org/IServer/EnumerateResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.RemoteServerRef.CalendarEntry))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.RemoteServerRef.CalendarEntry>))]
-        IEnumerable<CalendarEntry> Enumerate();
+        System.Collections.Generic.IEnumerable<ClientApp.RemoteServerRef.BaseCalendarEntry> Enumerate();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -142,20 +156,24 @@ namespace ClientApp.RemoteServerRef {
         public ServerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
-        
-        public void Add(ClientApp.RemoteServerRef.CalendarEntry e) {
+
+        public void Add(ClientApp.RemoteServerRef.BaseCalendarEntry e)
+        {
             base.Channel.Add(e);
         }
-        
-        public void EntryEdited(ClientApp.RemoteServerRef.CalendarEntry e) {
+
+        public void EntryEdited(ClientApp.RemoteServerRef.BaseCalendarEntry e)
+        {
             base.Channel.EntryEdited(e);
         }
-        
-        public void Remove(ClientApp.RemoteServerRef.CalendarEntry e) {
+
+        public void Remove(ClientApp.RemoteServerRef.BaseCalendarEntry e)
+        {
             base.Channel.Remove(e);
         }
-        
-        public System.Collections.Generic.List<ClientApp.RemoteServerRef.CalendarEntry> GetTasksForDate(int day, int month, int year) {
+
+        public System.Collections.Generic.List<ClientApp.RemoteServerRef.BaseCalendarEntry> GetTasksForDate(int day, int month, int year)
+        {
             return base.Channel.GetTasksForDate(day, month, year);
         }
         
@@ -163,7 +181,7 @@ namespace ClientApp.RemoteServerRef {
             return base.Channel.get_Count();
         }
 
-        public IEnumerable<CalendarEntry> Enumerate()
+        public System.Collections.Generic.IEnumerable<ClientApp.RemoteServerRef.BaseCalendarEntry> Enumerate()
         {
             return base.Channel.Enumerate();
         }

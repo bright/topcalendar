@@ -48,7 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalendarEntry.cs" />
+    <Compile Include="BaseCalendarEntry.cs" />
     <Compile Include="CalendarServer.cs" />
     <Compile Include="IServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

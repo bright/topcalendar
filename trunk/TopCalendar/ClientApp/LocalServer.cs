@@ -9,7 +9,7 @@ namespace ClientApp
 {
     public class LocalServer : ServerBase
     {
-        private List<CalendarEntry> data = new List<CalendarEntry>();
+        private List<BaseCalendarEntry> data = new List<BaseCalendarEntry>();
 
         /**
          * Daje dostep tylko do odczytu do licznika listy
@@ -22,19 +22,19 @@ namespace ClientApp
         /**
          * Dodaje wydarzenie do listy
          */
-        public override void Add(CalendarEntry e)
+        public override void Add(BaseCalendarEntry e)
         {
             data.Add(e);
             FireEntriesListChangedEvent(null);
         }
 
-        public override void Remove(CalendarEntry e)
+        public override void Remove(BaseCalendarEntry e)
         {
             data.Remove(e);
             FireEntriesListChangedEvent(null);
         }
 
-        public override void EntryEdited(CalendarEntry e)
+        public override void EntryEdited(BaseCalendarEntry e)
         {
             FireEntriesListChangedEvent(null);
         }
@@ -43,17 +43,17 @@ namespace ClientApp
         /// Pobranie listy zadan dla podanego dnia 
         /// </summary>
         /// <returns></returns>
-        public override List<CalendarEntry> GetTasksForDate(int day, int month, int year)
+        public override List<BaseCalendarEntry> GetTasksForDate(int day, int month, int year)
         {
             var result = (from item in this.data
                           where item.DateTime.Day == day
                               && item.DateTime.Month == month
                               && item.DateTime.Year == year
-                          select item).ToList<CalendarEntry>();
-            return result as List<CalendarEntry>;
+                          select item).ToList<BaseCalendarEntry>();
+            return result as List<BaseCalendarEntry>;
         }
 
-        public override IEnumerable<CalendarEntry> Enumerate()
+        public override IEnumerable<BaseCalendarEntry> Enumerate()
         {
             return data.AsReadOnly();
         }

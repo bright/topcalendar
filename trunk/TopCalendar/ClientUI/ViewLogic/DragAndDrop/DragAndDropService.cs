@@ -13,7 +13,7 @@ namespace ClientUI
     {
         public ListBox Source { get; set; }
         public ListBox Destination { get; set; }
-        public CalendarEntry Task { get; set; }
+        public BaseCalendarEntry Task { get; set; }
 
         private readonly IDayControlsService _dayControlsService;
 
@@ -32,6 +32,9 @@ namespace ClientUI
             var server = Factory.Resolve<IServer>();
             Source.ItemsSource = server.GetTasksForDate(sourceElementDate.Day, sourceElementDate.Month, sourceElementDate.Year);
             Destination.ItemsSource = server.GetTasksForDate(destinationElementDate.Day, destinationElementDate.Month, destinationElementDate.Year);
+
+            server.Remove(Task);
+            server.Add(Task);
 
             _dayControlsService.RefreshAll();
         }

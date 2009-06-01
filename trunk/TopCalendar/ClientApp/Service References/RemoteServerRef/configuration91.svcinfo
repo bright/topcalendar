@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="1oRa6M77WsZx9K92inn+Xc9kHKc=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="xv04JWO/HWWXjUZI3tiC+YGz8JE=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="wsHttpBinding" name="wsServiceEndpoint1">
+    <bindingConfiguration bindingType="wsHttpBinding" name="wsServiceEndpoint">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>wsServiceEndpoint1</serializedValue>
+          <serializedValue>wsServiceEndpoint</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>00:01:00</serializedValue>
@@ -115,7 +115,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="wsServiceEndpoint1" contract="RemoteServerRef.IServer" bindingType="wsHttpBinding" address="http://localhost:18000/CalendarService/" bindingConfiguration="wsServiceEndpoint1">
+    <endpoint name="wsServiceEndpoint" contract="RemoteServerRef.IServer" bindingType="wsHttpBinding" address="http://localhost:18000/CalendarService/" bindingConfiguration="wsServiceEndpoint">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:18000/CalendarService/</serializedValue>
@@ -127,7 +127,7 @@
           <serializedValue>wsHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>wsServiceEndpoint1</serializedValue>
+          <serializedValue>wsServiceEndpoint</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>RemoteServerRef.IServer</serializedValue>
@@ -190,7 +190,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>wsServiceEndpoint1</serializedValue>
+          <serializedValue>wsServiceEndpoint</serializedValue>
         </property>
       </properties>
     </endpoint>
