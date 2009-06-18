@@ -53,9 +53,9 @@ namespace ClientApp
             return result as List<BaseCalendarEntry>;
         }
 
-        public override IEnumerable<BaseCalendarEntry> Enumerate()
+        public override List<BaseCalendarEntry> Enumerate()
         {
-            return data.AsReadOnly();
+            return data.AsReadOnly().ToList<BaseCalendarEntry>();
         }
     }
 }

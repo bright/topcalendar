@@ -76,7 +76,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Service References\RemoteServerRef\service.wsdl" />
     <None Include="Service References\RemoteServerRef\service.xsd" />
     <None Include="Service References\RemoteServerRef\service1.xsd" />
@@ -91,8 +90,9 @@
     <None Include="Service References\RemoteServerRef\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Properties\DataSources\CalendarCommon.CalendarEntry.datasource" />
-    <None Include="Service References\RemoteServerRef\ClientApp.RemoteServerRef.CalendarEntry.datasource">
+    <None Include="Service References\RemoteServerRef\ClientApp.RemoteServerRef.BaseCalendarEntry.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RemoteServerRef\Reference.svcmap">
@@ -109,4 +109,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>
