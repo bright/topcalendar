@@ -11,7 +11,7 @@ namespace ClientApp
     {
         public event EventHandler<EventArgs> EntriesListChanged;
 
-        public abstract IEnumerable<BaseCalendarEntry> Enumerate();
+        public abstract List<BaseCalendarEntry> Enumerate();
 
         public abstract void Add(BaseCalendarEntry e);
 

@@ -42,7 +42,7 @@ namespace ServerLib
             get;
         }
 
-        [OperationContract]
+        [OperationContract]        
         IEnumerable<BaseCalendarEntry> Enumerate();
 
         /*

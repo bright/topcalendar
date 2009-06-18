@@ -14,6 +14,13 @@ namespace ClientApp
     {
         private IServer server = new ServerClient();
 
+
+        public RemoteServer() {
+            ((ServerClient)server).ClientCredentials.UserName.UserName = "test";
+            ((ServerClient)server).ClientCredentials.UserName.Password = "test";
+        }
+
+
         /**
          * Daje dostep tylko do odczytu do licznika listy
          */
@@ -52,7 +59,7 @@ namespace ClientApp
             return server.GetTasksForDate(day, month, year);
         }
 
-        public override IEnumerable<BaseCalendarEntry> Enumerate()
+        public override List<BaseCalendarEntry> Enumerate()
         {
             return server.Enumerate();
         }
