@@ -58,6 +58,7 @@ namespace ServerLib
 
         public void EntryEdited(BaseCalendarEntry e)
         {
+            _repository.Update(e);
             FireEntriesListChangedEvent(null);
         }
 

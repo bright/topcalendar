@@ -27,7 +27,8 @@
     <Thumb Name="myThumb"  Background="Blue" 
       Width="100" Height="20" DragDelta="onDragDelta" 
       DragStarted="onDragStarted" DragCompleted="onDragCompleted" HorizontalAlignment="Left"
-             Template="{StaticResource TaskView}" ClipToBounds="False" />
+             Template="{StaticResource TaskView}" ClipToBounds="False"
+           MouseDoubleClick="onDoubleClick"/>
 
 
 

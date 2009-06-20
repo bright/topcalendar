@@ -11,17 +11,41 @@ namespace ClientUI
     /// </summary>
     public partial class NewTaskWindow : Window
     {
+     
+        public String NewEntryTitle
+        {
+            get { return _calendarEntry.Title; }
+            set { _calendarEntry.Title = value;}
+        }
+        public String NewEntryDesc
+        {
+            get { return _calendarEntry.Desc; }
+            set { _calendarEntry.Desc = value; }
+        }
+        public DateTime NewEntryDate
+        {
+            get { return _calendarEntry.DateTime; }
+            set { _calendarEntry.DateTime = value; }
+        }
+
+        private readonly CalendarEntry _calendarEntry;
 
         public NewTaskWindow()
         {
+            _calendarEntry = new CalendarEntry();
             NewEntryTitle = "Nowe zadanie";
             NewEntryDate = DateTime.Now;
             InitializeComponent();
         }
 
-        public String NewEntryTitle { get; set; }
-        public String NewEntryDesc { get; set; }
-        public DateTime NewEntryDate { get; set; }
+        /// <summary>
+        /// Edycja
+        /// </summary>
+        public NewTaskWindow(CalendarEntry calendarEntry)
+        {
+            _calendarEntry = calendarEntry;
+            InitializeComponent();
+        }
 
         private void NewTaskCreateButton_Click(object sender, RoutedEventArgs e)
         {
@@ -31,13 +55,8 @@ namespace ClientUI
                 return;
             }
 
-            var calendarEntry = new CalendarEntry();
-            calendarEntry.Title = NewEntryTitle;
-            calendarEntry.Desc = NewEntryDesc;
-            calendarEntry.DateTime = NewEntryDate;
-
             var newEntryCreator = Factory.Resolve<NewEntryCreator>();
-            newEntryCreator.CalendarEntry = calendarEntry;
+            newEntryCreator.CalendarEntry = _calendarEntry;
             newEntryCreator.Save();
 
             //todo: takie odswiezanie nie moze zostac :)

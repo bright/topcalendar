@@ -29,7 +29,7 @@ namespace ClientApp.RemoteServerRef {
         private string DescField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long IdField;
+        private System.Guid IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
@@ -71,7 +71,7 @@ namespace ClientApp.RemoteServerRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Id {
+        public System.Guid Id {
             get {
                 return this.IdField;
             }

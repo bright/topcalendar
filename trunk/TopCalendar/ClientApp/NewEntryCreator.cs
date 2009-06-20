@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Ninject.Core;
 using ClientApp.RemoteServerRef;
 
 namespace ClientApp
@@ -12,11 +8,12 @@ namespace ClientApp
     /// </summary>
     public class NewEntryCreator
     {
-        private IServer server;
+        private readonly IServer _server;
+
 
         public NewEntryCreator(IServer server)
         {
-            this.server = server;
+            this._server = server;
         }
 
         public CalendarEntry CalendarEntry { get; set; }
@@ -28,8 +25,15 @@ namespace ClientApp
                 throw new InvalidOperationException("CalendarEntry is null");
             }
 
-            server.Add(CalendarEntry);
-        }
+            if (CalendarEntry.Id == Guid.Empty)
+            {
+                _server.Add(CalendarEntry);
+            } else
+            {
+                _server.EntryEdited(CalendarEntry);
+            }
 
+
+        }
     }
 }
