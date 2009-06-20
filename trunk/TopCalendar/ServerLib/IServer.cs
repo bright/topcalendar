@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ServiceModel;
+using ServerLib.Domain;
 
 namespace ServerLib
 {
@@ -34,7 +35,7 @@ namespace ServerLib
         void Remove(BaseCalendarEntry e);
 
         [OperationContract]
-        List<BaseCalendarEntry> GetTasksForDate(int day, int month, int year);
+        IList<BaseCalendarEntry> GetTasksForDate(int day, int month, int year);
 
         int Count
         {

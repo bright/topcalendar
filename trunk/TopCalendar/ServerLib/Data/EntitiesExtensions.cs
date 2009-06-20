@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.Objects.DataClasses;
+using ServerLib.Domain;
 
 namespace ServerLib.Data
 {

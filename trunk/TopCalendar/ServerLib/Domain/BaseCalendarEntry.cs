@@ -5,7 +5,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using ServerLib.Data;
 
-namespace ServerLib
+namespace ServerLib.Domain
 {
     [DataContract]
     public class BaseCalendarEntry
@@ -14,19 +14,19 @@ namespace ServerLib
 
         // identyfikator zadania
         [DataMember]
-        public long Id { get; set; }
+        public virtual long Id { get; set; }
 
         // tytul zadania
         [DataMember]
-        public string Title { get; set; }
+        public virtual string Title { get; set; }
 
         // opis zadania
         [DataMember]
-        public string Desc { get; set; }
+        public virtual string Desc { get; set; }
 
         // czas zadania
         [DataMember]
-        public DateTime DateTime { get; set; }
+        public virtual DateTime DateTime { get; set; }
 
         public BaseCalendarEntry()
         {
@@ -78,30 +78,6 @@ namespace ServerLib
             return base.GetHashCode();
         }
 
-        // dzień miesiąca - po co? 
-        public int Day
-        {
-            get { return DateTime.Day; }
-        }
-
-        public int Hour
-        {
-            get { return DateTime.Hour; }
-        }
-
-        public int Minute
-        {
-            get { return DateTime.Minute; }
-        }
-
-        public int Year
-        {
-            get { return DateTime.Year; }
-        }
-
-        public int Month
-        {
-            get { return DateTime.Month; }
-        }
+     
     }
 }

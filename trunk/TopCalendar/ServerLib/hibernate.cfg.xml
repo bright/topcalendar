@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+
+Konfiguracja "rzeczywista" (nie korzystamy z niej w testach jednostkowych ;)
+
+-->
+
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="dialect">NHibernate.Dialect.MsSqlCeDialect</property>
+    <property name="hbm2ddl.auto">update</property>
+    <property name="connection.driver_class">NHibernate.Driver.SqlServerCeDriver</property>
+    <property name="connection.connection_string">Data Source=c:\TestDatabase.sdf</property>
+    <property name="show_sql">true</property>
+  </session-factory>
+</hibernate-configuration>
