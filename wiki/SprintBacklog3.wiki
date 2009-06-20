@@ -8,7 +8,7 @@ Nazwy zadań przeniesione z ProductBacklog
 ||  || (ze sprintu 1) Stworzenie interfejsu (formularza) edycji zadania na podst. formularza dodawania || 5 || DM ||
 ||  || (ze sprintu 1) Uzupełnienie klasy z logiką modyfikującej dane na "serwerze" || 10 || DM ||
 || 3 || *Użytkownik może przeglądać istniejące zadania w widoku kalendarza. Widok kalendarza pozwala na przeglądanie zadań z bieżącego dnia, tygodnia, miesiąca.* || - || - ||
-||  || Wyświetlanie widuku dnia i tygodnia || 15 ||  ||
+||  || Wyświetlanie widuku dnia i tygodnia || 15 || DM ||
 || 12 || *Użytkownik może mieć zdalny, autoryzowany dostęp do swojego kalendarza.* || - || - ||
 ||  || Zapewnienie autoryzacji i autentykacji komunikacji z serwerem || 15 ||  ||
 ||  || Uruchomienie i konfiguracja bazy danych po stronie serwera || 25 || AB ||
