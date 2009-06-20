@@ -2,13 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cb="clr-namespace:ClientUI"
-    Title="NewTaskWindow" Height="300" Width="300" ShowInTaskbar="False" ResizeMode="NoResize" Topmost="False" WindowStartupLocation="Manual"
+    Title="Task Wizard" Height="300" Width="300" ShowInTaskbar="False" ResizeMode="NoResize" Topmost="False" WindowStartupLocation="Manual"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
         <cb:DateTimeConverter x:Key="MyDateTimeConverter" />
     </Window.Resources>
     <Grid>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,23,11" Name="NewTaskCreateButton" VerticalAlignment="Bottom" Width="75" Click="NewTaskCreateButton_Click">Dodaj zadanie</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,23,11" Name="NewTaskCreateButton" VerticalAlignment="Bottom" Width="75" Click="NewTaskCreateButton_Click">Zapisz</Button>
         <Label Margin="9,10,0,224" Name="TaskTitleLabel" HorizontalAlignment="Left" Width="120">Tytuł zadania</Label>
         
         <TextBox Height="23" Margin="9,34,23,0" Name="TaskTitleTextBox" VerticalAlignment="Top" 

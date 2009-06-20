@@ -4,8 +4,8 @@
                    namespace="ServerLib.Domain">
 
   <class name="BaseCalendarEntry">
-    <id name="Id" type="Int64">
-      <generator class="hilo" />
+    <id name="Id" >
+      <generator class="guid" />
     </id>
     <property name="Title" type="String"/>
     <property name="Desc" type="String" column="description"/>

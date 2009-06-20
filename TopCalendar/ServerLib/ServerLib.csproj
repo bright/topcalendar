@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarServer.cs" />
-    <Compile Include="Data\EntitiesExtensions.cs" />
     <Compile Include="Data\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -12,7 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
+using ClientApp;
 using ClientApp.Ninject;
+using ClientApp.RemoteServerRef;
 
 namespace ClientUI
 {
@@ -63,6 +65,7 @@ namespace ClientUI
             } catch (Exception)
             {
             }
+
         }
 
         void onDragDelta(object sender, DragDeltaEventArgs e)
@@ -139,6 +142,13 @@ namespace ClientUI
             var mainWindow = WpfHelper.FindAncestorOrSelf<Window1>(_dragPhantom);
             mainWindow.MainGrid.Children.Remove(_dragPhantom);
             myThumb.Background = Brushes.Blue;
+        }
+
+        private void onDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var baseCalendarEntry = AttachedProperties.Task.GetTask(this);
+            var newTaskWindow = new NewTaskWindow(new CalendarEntry(baseCalendarEntry));
+            newTaskWindow.Show();
         }
       
     }

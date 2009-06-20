@@ -11,14 +11,17 @@ namespace ClientApp
     /// </summary>
     public class CalendarEntry
     {
-        private static long lastId = 0;
 
         public BaseCalendarEntry entry { get; private set; }
 
         public CalendarEntry()
         {
             entry = new BaseCalendarEntry();
-            Id = ++lastId; // pierwszy wolny w kliencie - tymczasowo
+        }
+
+        public CalendarEntry(BaseCalendarEntry entry)
+        {
+            this.entry = entry;
         }
 
         /// <summary>
@@ -32,7 +35,7 @@ namespace ClientApp
         }
 
         // identyfikator zadania
-        public long Id {
+        public Guid Id {
             get { return entry.Id; }
             private set { entry.Id = value; }
         }

@@ -10,11 +10,10 @@ namespace ServerLib.Domain
     [DataContract]
     public class BaseCalendarEntry
     {
-        private static long lastId = 0;
 
         // identyfikator zadania
         [DataMember]
-        public virtual long Id { get; set; }
+        public virtual Guid Id { get; set; }
 
         // tytul zadania
         [DataMember]
@@ -30,7 +29,7 @@ namespace ServerLib.Domain
 
         public BaseCalendarEntry()
         {
-            Id = ++lastId; // ustawia id na pierwsze wolne
+           
         }
 
         public BaseCalendarEntry(string title)
@@ -45,19 +44,7 @@ namespace ServerLib.Domain
             DateTime = date;
         }
 
-        /// <summary>
-        /// Operator rzutowania z obiektu eventu uzywanego w komunikacji na bazodanowy
-        /// </summary>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static implicit operator DbEntry(BaseCalendarEntry b)
-        {
-            // @TODO userID
-            DbEntry d = DbEntry.CreateDbEntry(b.Id, b.Title, b.DateTime, 1);
-            d.Description = b.Desc;
-            return d;
-        }
-
+      
         public override bool Equals(object obj)
         {
             // If parameter is null return false.
@@ -65,7 +52,7 @@ namespace ServerLib.Domain
                 return false;
 
             // If parameter cannot be cast to CalendarEntry return false.
-            BaseCalendarEntry p = obj as BaseCalendarEntry;
+            var p = obj as BaseCalendarEntry;
             if (p == null)
                 return false;
 

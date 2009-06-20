@@ -44,7 +44,7 @@ namespace ServerLib.Repositories
             }
         }
 
-        public BaseCalendarEntry FindById(long id)
+        public BaseCalendarEntry FindById(Guid id)
         {
             using(ISession session = NHibernateHelper.OpenSession())
             {

@@ -12,7 +12,7 @@ namespace ServerLib
         void Update(BaseCalendarEntry baseCalendarEntry);
         void Remove(BaseCalendarEntry baseCalendarEntry);
         IList<BaseCalendarEntry> FindAll();
-        BaseCalendarEntry FindById(long id);
+        BaseCalendarEntry FindById(Guid id);
         IList<BaseCalendarEntry> FindByDay(int year, int month, int day);
     }
 }

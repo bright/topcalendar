@@ -16,10 +16,12 @@ namespace ClientUI
         public BaseCalendarEntry Task { get; set; }
 
         private readonly IDayControlsService _dayControlsService;
+        private readonly IServer _server;
 
-        public DragAndDropService(IDayControlsService dayControlsService)
+        public DragAndDropService(IDayControlsService dayControlsService, IServer server)
         {
             _dayControlsService = dayControlsService;
+            _server = server;
         }
 
         public void Move()
@@ -28,16 +30,17 @@ namespace ClientUI
             var destinationElementDate = AttachedProperties.Date.GetDate(Destination);
 
             Task.DateTime = destinationElementDate;
-            
-            var server = Factory.Resolve<IServer>();
-            Source.ItemsSource = server.GetTasksForDate(sourceElementDate.Day, sourceElementDate.Month, sourceElementDate.Year);
-            Destination.ItemsSource = server.GetTasksForDate(destinationElementDate.Day, destinationElementDate.Month, destinationElementDate.Year);
+                        
+            Source.ItemsSource = _server.GetTasksForDate(sourceElementDate.Day, sourceElementDate.Month, sourceElementDate.Year);
+            Destination.ItemsSource = _server.GetTasksForDate(destinationElementDate.Day, destinationElementDate.Month, destinationElementDate.Year);
 
-            server.Remove(Task);
-            server.Add(Task);
+            _server.Remove(Task);
+            _server.Add(Task);
 
             _dayControlsService.RefreshAll();
+            
         }
+
 
     }
 }
