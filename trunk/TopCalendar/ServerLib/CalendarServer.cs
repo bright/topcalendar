@@ -51,13 +51,10 @@ namespace ServerLib
 
         public void Edit(BaseCalendarEntry e) {
 
-            foreach (var item in data) {
-                if (item.Id == e.Id)
-                {
-                    data[data.IndexOf(item)] = e;
-                    break;
-                }
-            }
+            _repository.Update(e);
+
+            FireEntriesListChangedEvent(null);
+            
         }
 
         public void Remove(BaseCalendarEntry e)
