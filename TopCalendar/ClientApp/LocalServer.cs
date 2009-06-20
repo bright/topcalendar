@@ -28,6 +28,11 @@ namespace ClientApp
             FireEntriesListChangedEvent(null);
         }
 
+        public override void Edit(BaseCalendarEntry e)
+        {
+            EntryEdited(e);
+        }
+
         public override void Remove(BaseCalendarEntry e)
         {
             data.Remove(e);

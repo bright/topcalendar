@@ -34,6 +34,15 @@ namespace ClientApp
             return e.entry;
         }
 
+        /// <summary>
+        /// Operator rzutowania do zmiany BaseCalendarEntry na CalendatEntry
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public static implicit operator CalendarEntry(BaseCalendarEntry e) {
+            return new CalendarEntry(e);
+        }
+
         // identyfikator zadania
         public Guid Id {
             get { return entry.Id; }
