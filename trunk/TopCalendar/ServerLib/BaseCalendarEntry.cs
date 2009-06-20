@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using ServerLib.Data;
 
 namespace ServerLib
 {
@@ -42,6 +43,19 @@ namespace ServerLib
             : this(title)
         {
             DateTime = date;
+        }
+
+        /// <summary>
+        /// Operator rzutowania z obiektu eventu uzywanego w komunikacji na bazodanowy
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static implicit operator DbEntry(BaseCalendarEntry b)
+        {
+            // @TODO userID
+            DbEntry d = DbEntry.CreateDbEntry(b.Id, b.Title, b.DateTime, 1);
+            d.Description = b.Desc;
+            return d;
         }
 
         public override bool Equals(object obj)

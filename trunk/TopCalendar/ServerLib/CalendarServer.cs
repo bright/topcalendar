@@ -4,20 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ServiceModel;
+using ServerLib.Data;
 
 namespace ServerLib
 {
     [ServiceBehavior(InstanceContextMode=InstanceContextMode.PerSession)]
     public class CalendarServer : IServer
     {
-        private List<BaseCalendarEntry> data = new List<BaseCalendarEntry>();
+        // obiekt zapewniajacy obsluge warstwy bazodanowej
+        private DatabaseEntities dao = new DatabaseEntities();
 
         public event EventHandler<EventArgs> EntriesListChanged;
-
-        /*IEnumerator IEnumerable.GetEnumerator()
-        {
-            return data.GetEnumerator();
-        }*/
 
         protected void FireEntriesListChangedEvent(EventArgs e)
         {
@@ -25,29 +22,40 @@ namespace ServerLib
                 EntriesListChanged(this, e);
         }
 
-        /**
-         * Daje dostep tylko do odczytu do licznika listy
-         */
+        /// <summary>
+        /// Daje dostep tylko do odczytu do licznika listy
+        /// </summary>
         public int Count
         {
             get
             {
-                return data.Count;
+                return dao.DbEntrySet.Count<DbEntry>();
             }
         }
 
-        /**
-         * Dodaje wydarzenie do listy
-         */
+        /// <summary>
+        /// Dodaje wydarzenie do listy
+        /// </summary>
+        /// <param name="e"></param>
         public void Add(BaseCalendarEntry e)
         {
-            data.Add(e);
+            // rzutowanie odbywa sie automatycznie za pomoca operatora
+            // rzutowania zdefiniowanego w BaseCalendarEntry
+            dao.AddToDbEntrySet(e);
+            dao.SaveChanges();
+
             FireEntriesListChangedEvent(null);
         }
 
         public void Remove(BaseCalendarEntry e)
         {
-            data.Remove(e);
+            DbEntry entryToDelete = (from entry in dao.DbEntrySet
+                  where entry.Id == e.Id
+                  select entry).First();
+
+            dao.DeleteObject(entryToDelete);
+            dao.SaveChanges();
+
             FireEntriesListChangedEvent(null);
         }
 
@@ -63,12 +71,20 @@ namespace ServerLib
         /// <returns></returns>
         public List<BaseCalendarEntry> GetTasksForDate(int day, int month, int year)
         {
-            var result = (from item in this.data
-                          where item.DateTime.Day == day
-                              && item.DateTime.Month == month
-                              && item.DateTime.Year == year
-                          select item).ToList<BaseCalendarEntry>();
-            return result as List<BaseCalendarEntry>;
+            var result = (from item in dao.DbEntrySet
+                          where item.DateFrom.Day == day
+                              && item.DateFrom.Month == month
+                              && item.DateFrom.Year == year
+                          select item).ToList<DbEntry>();
+
+            List<DbEntry> tmpList = result as List<DbEntry>;
+
+            // niestety listy nie umieja sie ladnie przekonwertowac :(
+            List<BaseCalendarEntry> retList = new List<BaseCalendarEntry>();
+            foreach (BaseCalendarEntry e in tmpList)
+                retList.Add(e);
+
+            return retList;
         }
 
         public List<BaseCalendarEntry> GetTasksForDate(DateTime date)
@@ -78,7 +94,14 @@ namespace ServerLib
 
         public IEnumerable<BaseCalendarEntry> Enumerate()
         {
-            return data.AsReadOnly();
+            List<DbEntry> tmpList = dao.DbEntrySet.ToList<DbEntry>();
+
+            // niestety listy nie umieja sie ladnie przekonwertowac :(
+            List<BaseCalendarEntry> retList = new List<BaseCalendarEntry>();
+            foreach (BaseCalendarEntry e in tmpList)
+                retList.Add(e);
+
+            return retList.AsReadOnly();
         }
     }
 }
