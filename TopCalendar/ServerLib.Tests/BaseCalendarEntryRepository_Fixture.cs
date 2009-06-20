@@ -4,8 +4,8 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
-using ServerLib.Domain;
 using ServerLib.Repositories;
+using ServerLib.Domain;
 
 namespace ServerLib.Tests
 {
