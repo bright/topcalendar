@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
+using ClientApp.RemoteServerRef;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Rhino.Mocks.Constraints;
@@ -16,7 +17,7 @@ namespace ClientTest
     [TestFixture]
     public class CalendarEntryTest
     {
-        private MockRepository mocks;
+      /*  private MockRepository mocks;
         private BaseCalendarEntry sut;
 
         [TestFixtureSetUp]
@@ -76,6 +77,6 @@ namespace ClientTest
             Assert.AreEqual(sut.Title, db.Title);
             Assert.AreEqual(sut.DateTime, db.DateFrom);
             Assert.AreEqual(sut.Id, db.Id);
-        }
+        }*/
     }
 }

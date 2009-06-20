@@ -13,7 +13,7 @@
     </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
-    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies />
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
@@ -25,7 +25,7 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="bd9672a1-4351-4063-a118-3b647fb0984d" SourceId="1" SourceUrl="http://localhost:18000/CalendarService/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="aab49881-72db-406e-b8b8-9ad8bbc235f1" SourceId="1" SourceUrl="http://localhost:18000/CalendarService/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="b258a501-296a-49f9-8b2b-a2f9b7ad9a5b" SourceId="1" SourceUrl="http://localhost:18000/CalendarService/mex" />
-    <MetadataFile FileName="ServerLib.xsd" MetadataType="Schema" ID="0ad0b6d2-d914-45f9-a167-222a0931b3a5" SourceId="1" SourceUrl="http://localhost:18000/CalendarService/mex" />
+    <MetadataFile FileName="ServerLib.Domain.xsd" MetadataType="Schema" ID="dc734aa9-de45-4eb8-a418-9a0f02db6cc7" SourceId="1" SourceUrl="http://localhost:18000/CalendarService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
