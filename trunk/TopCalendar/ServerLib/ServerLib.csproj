@@ -97,9 +97,6 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDatabase.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="Mappings\BaseCalendarEntry.hbm.xml">
     </EmbeddedResource>
   </ItemGroup>
