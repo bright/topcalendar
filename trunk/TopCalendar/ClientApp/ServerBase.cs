@@ -15,6 +15,8 @@ namespace ClientApp
 
         public abstract void Add(BaseCalendarEntry e);
 
+        public abstract void Edit(BaseCalendarEntry e);
+
         public abstract void EntryEdited(BaseCalendarEntry e);
 
         public abstract void Remove(BaseCalendarEntry e);

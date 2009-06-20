@@ -111,8 +111,8 @@
     <Compile Include="MonthViewer.xaml.cs">
       <DependentUpon>MonthViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewTaskWindow.xaml.cs">
-      <DependentUpon>NewTaskWindow.xaml</DependentUpon>
+    <Compile Include="TaskWindow.xaml.cs">
+      <DependentUpon>TaskWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ninject\ClientUiDependencies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -185,7 +185,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewTaskWindow.xaml">
+    <Page Include="TaskWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

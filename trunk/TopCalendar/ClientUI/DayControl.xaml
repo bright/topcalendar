@@ -29,6 +29,8 @@
                  ItemsSource="{Binding Path=EntryList, ElementName=userControl}"
                  ScrollViewer.CanContentScroll="False"
                  ItemTemplate="{StaticResource ListBoxTemplate}" Margin="24,0,0,0" 
-                 MouseEnter="EntriesForDayList_MouseEnter" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                 MouseEnter="EntriesForDayList_MouseEnter" HorizontalAlignment="Left" VerticalAlignment="Top"
+                 MouseDoubleClick="EntriesForDayList_MouseRightButtonDown"
+                 />
     </Grid>
 </UserControl>

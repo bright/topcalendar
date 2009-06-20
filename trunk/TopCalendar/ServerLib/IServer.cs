@@ -20,6 +20,14 @@ namespace ServerLib
         [OperationContract]
         void Add(BaseCalendarEntry e);
 
+
+        /// <summary>
+        /// Edit entry
+        /// </summary>
+        /// <param name="e"></param>
+        [OperationContract]
+        void Edit(BaseCalendarEntry e);
+
         /// <summary>
         ///  shoud be called when entry was edited
         /// </summary>
