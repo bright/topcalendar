@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Entries" EntityType="DatabaseModel.Store.Entries" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="DatabaseModel.Store.Users" store:Type="Tables" />
+        </EntityContainer>
+        <EntityType Name="Entries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="title" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="date_from" Type="datetime" Nullable="false" />
+          <Property Name="date_to" Type="datetime" />
+          <Property Name="extensions_data" Type="ntext" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="password" Type="nchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="DatabaseEntities">
+          <EntitySet Name="DbEntrySet" EntityType="DatabaseModel.DbEntry" />
+          <EntitySet Name="DbUserSet" EntityType="DatabaseModel.DbUser" />
+        </EntityContainer>
+        <EntityType Name="DbEntry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateFrom" Type="DateTime" Nullable="false" />
+          <Property Name="DateTo" Type="DateTime" />
+          <Property Name="ExtensionsData" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" /></EntityType>
+        <EntityType Name="DbUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="DbEntrySet">
+            <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.DbEntry)">
+              <MappingFragment StoreEntitySet="Entries">
+                <ScalarProperty Name="DateFrom" ColumnName="date_from" />
+                <ScalarProperty Name="UserId" ColumnName="user_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="DateTo" ColumnName="date_to" />
+                <ScalarProperty Name="ExtensionsData" ColumnName="extensions_data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DbUserSet">
+            <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.DbUser)">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="DatabaseModel.DbEntry" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9210009765625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.DbUser" Width="1.5" PointX="2.75" PointY="0.75" Height="1.427958984375" IsExpanded="true" /></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
