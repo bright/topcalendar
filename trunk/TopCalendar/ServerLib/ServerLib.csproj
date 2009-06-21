@@ -68,11 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarServer.cs" />
-    <Compile Include="Data\Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Domain\BaseCalendarEntry.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Repositories\BaseCalendarEntryRepository.cs" />
@@ -84,15 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Data\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Database.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
