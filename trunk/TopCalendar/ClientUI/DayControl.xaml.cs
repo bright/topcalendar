@@ -59,21 +59,5 @@ namespace ClientUI
             var listBox = (ListBox) sender;            
             listBox.ToolTip = "(" + listBox.ActualHeight + ", " + listBox.ActualWidth + ")";
         }
-
-        /// <summary>
-        /// This event should edit calendar entry
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntriesForDayList_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            
-            CalendarEntry entry = (CalendarEntry)((BaseCalendarEntry)EntriesForDayList.SelectedValue);
-
-            taskWindow = new TaskWindow(entry);
-            taskWindow.Show();
-            
-
-        }
     }
 }
