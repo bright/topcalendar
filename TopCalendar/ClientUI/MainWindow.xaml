@@ -23,6 +23,9 @@
             <!--        
             <ui:WeekViewer />
             -->
+            
+            <!--<ui:DayViewer /> -->
+            
         </ContentControl>
         <!--  <ui:EntriesList Margin="1,1,1,1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>-->
     </Grid>

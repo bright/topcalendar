@@ -87,6 +87,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachedProperties.cs" />
+    <Compile Include="DayView.xaml.cs">
+      <DependentUpon>DayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DayViewer.xaml.cs">
+      <DependentUpon>DayViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\BasicHelper.cs" />
+    <Compile Include="TaskDayPreview.xaml.cs">
+      <DependentUpon>TaskDayPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewLogic\DayControlsService.cs" />
     <Compile Include="ViewLogic\DragAndDrop\IDragAndDropService.cs" />
     <Compile Include="ViewLogic\DragAndDrop\IDragDestinationsHandler.cs" />
@@ -156,6 +166,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DayViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MenuButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MonthViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TaskDayPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
