@@ -53,10 +53,6 @@ namespace ServerLib
 
         [OperationContract]
         IList<BaseCalendarEntry> GetTasksBeetweenDates(DateTime from, DateTime to);
-
-        [OperationContract]        
-        IEnumerable<BaseCalendarEntry> Enumerate();
-
         /*
          * TODO: eventow nie da sie udostepniac przez WCF
          * trzeba je przerobic na interfejs subskrypcji i powiadomien (one-way)

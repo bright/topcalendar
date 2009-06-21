@@ -36,10 +36,6 @@ namespace ClientUI
             serv.EntriesListChanged += delegate { entriesList.Items.Refresh();};
             
         }
-
-        public IEnumerable<BaseCalendarEntry> Entries
-        {
-            get { return serv.Enumerate(); }
-        }
+      
     }
 }

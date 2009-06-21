@@ -28,7 +28,7 @@
   <xs:element name="EntryEdited">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServerLib" minOccurs="0" name="e" nillable="true" type="q3:BaseCalendarEntry" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServerLib.Domain" minOccurs="0" name="e" nillable="true" type="q3:BaseCalendarEntry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -40,7 +40,7 @@
   <xs:element name="Remove">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ServerLib" minOccurs="0" name="e" nillable="true" type="q4:BaseCalendarEntry" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ServerLib.Domain" minOccurs="0" name="e" nillable="true" type="q4:BaseCalendarEntry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -61,7 +61,7 @@
   <xs:element name="GetTasksForDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServerLib" minOccurs="0" name="GetTasksForDateResult" nillable="true" type="q5:ArrayOfBaseCalendarEntry" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServerLib.Domain" minOccurs="0" name="GetTasksForDateResult" nillable="true" type="q5:ArrayOfBaseCalendarEntry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -74,18 +74,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="get_CountResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Enumerate">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EnumerateResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServerLib" minOccurs="0" name="EnumerateResult" nillable="true" type="q6:ArrayOfBaseCalendarEntry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

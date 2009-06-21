@@ -8,7 +8,7 @@ namespace ClientTest
     [TestFixture]
     public class CalendarEntryTest
     {
-        /*  private MockRepository mocks;
+        /* private MockRepository mocks;
         private BaseCalendarEntry sut;
 
         [TestFixtureSetUp]

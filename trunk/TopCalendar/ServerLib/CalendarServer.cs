@@ -12,7 +12,16 @@ namespace ServerLib
         // obiekt zapewniajacy obsluge warstwy bazodanowej
         //private DatabaseEntities dao = new DatabaseEntities();
 
-        private readonly IBaseCalendarEntryRepository _repository = new BaseCalendarEntryRepository();
+        private readonly IBaseCalendarEntryRepository _repository;
+
+        public CalendarServer() : this(new BaseCalendarEntryRepository())
+        {           
+        }
+
+        public CalendarServer(IBaseCalendarEntryRepository repository)
+        {
+            _repository = repository;
+        }
 
         #region IServer Members
 
@@ -70,17 +79,6 @@ namespace ServerLib
         public IList<BaseCalendarEntry> GetTasksBeetweenDates(DateTime from, DateTime to)
         {
             return _repository.FindBetweenDates(from, to);
-        }
-
-        public IEnumerable<BaseCalendarEntry> Enumerate()
-        {
-            IList<BaseCalendarEntry> tmpList = _repository.FindAll();
-
-            // niestety listy nie umieja sie ladnie przekonwertowac :(
-            var retList = new List<BaseCalendarEntry>();
-            retList.AddRange(tmpList);            
-
-            return retList.AsReadOnly();
         }
 
         #endregion
