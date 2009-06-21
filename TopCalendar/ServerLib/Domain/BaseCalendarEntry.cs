@@ -43,7 +43,13 @@ namespace ServerLib.Domain
             DateTime = date;
         }
 
-      
+        public BaseCalendarEntry(string title, string desc, DateTime dateTime)
+        {
+            Title = title;
+            Desc = desc;
+            DateTime = dateTime;
+        }
+
         public override bool Equals(object obj)
         {
             // If parameter is null return false.

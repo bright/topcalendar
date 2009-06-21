@@ -64,9 +64,5 @@ namespace ClientApp
             return server.GetTasksForDate(day, month, year);
         }
 
-        public override List<BaseCalendarEntry> Enumerate()
-        {
-            return server.Enumerate();
-        }
     }
 }
