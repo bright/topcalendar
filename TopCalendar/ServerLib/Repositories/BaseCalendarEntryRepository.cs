@@ -84,6 +84,17 @@ namespace ServerLib.Repositories
             }
         }
 
+        public IList<BaseCalendarEntry> FindBetweenDates(DateTime from, DateTime to)
+        {            
+            using(ISession session= NHibernateHelper.OpenSession())
+            {
+                return session
+                    .CreateCriteria(typeof(BaseCalendarEntry))
+                    .Add(Restrictions.Ge("DateTime", from))
+                    .Add(Restrictions.Le("DateTime", to))
+                    .List<BaseCalendarEntry>();
+            }
+        }
 
         #endregion
     }
