@@ -66,7 +66,7 @@ namespace ClientUI
                              && item.X2 > x
                              && item.Y1 < y
                              && item.Y2 > y
-                          select item.Control).SingleOrDefault();
+                          select item.Control).FirstOrDefault();
 
             return result;
         }

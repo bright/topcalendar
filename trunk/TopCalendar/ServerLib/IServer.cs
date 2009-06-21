@@ -51,6 +51,9 @@ namespace ServerLib
             get;
         }
 
+        [OperationContract]
+        IList<BaseCalendarEntry> GetTasksBeetweenDates(DateTime from, DateTime to);
+
         [OperationContract]        
         IEnumerable<BaseCalendarEntry> Enumerate();
 

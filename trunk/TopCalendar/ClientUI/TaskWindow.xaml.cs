@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Windows;
+
 using ClientApp;
 using ClientApp.Ninject;
 using ClientApp.RemoteServerRef;
+
+
 
 namespace ClientUI
 {

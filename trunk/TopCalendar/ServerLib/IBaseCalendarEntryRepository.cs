@@ -14,5 +14,6 @@ namespace ServerLib
         IList<BaseCalendarEntry> FindAll();
         BaseCalendarEntry FindById(Guid id);
         IList<BaseCalendarEntry> FindByDay(int year, int month, int day);
+        IList<BaseCalendarEntry> FindBetweenDates(DateTime from, DateTime to);
     }
 }

@@ -2,25 +2,44 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cb="clr-namespace:ClientUI"
+    xmlns:avalon="http://schemas.AvalonControls/AvalonControlsLibrary/Controls"
     Title="TaskWindow" Height="300" Width="300" ShowInTaskbar="False" ResizeMode="NoResize" Topmost="False" WindowStartupLocation="Manual"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
         <cb:DateTimeConverter x:Key="MyDateTimeConverter" />
     </Window.Resources>
-    <Grid>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,23,11" Name="NewTaskCreateButton" VerticalAlignment="Bottom" Width="75" Click="NewTaskCreateButton_Click">Dodaj zadanie</Button>
-        <Label Margin="9,10,0,224" Name="TaskTitleLabel" HorizontalAlignment="Left" Width="120">Tytuł zadania</Label>
+    <Grid Margin="5,5,5,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         
-        <TextBox Height="23" Margin="9,34,23,0" Name="TaskTitleTextBox" VerticalAlignment="Top" 
-                 Text="{Binding Path=EntryTitle, Mode=TwoWay}"/>
-        
-        <Label Height="28" HorizontalAlignment="Left" Margin="11,69,0,0" Name="TaskDescLabel" VerticalAlignment="Top" Width="120">Opis zadania</Label>
-        <TextBox Margin="9,93,23,107" Name="TaskDescTextBox" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="False" AcceptsReturn="True" TextWrapping="Wrap"
-                 Text="{Binding Path=EntryDesc, Mode=TwoWay}"/>
-        
-        <TextBox Height="23" Margin="11,0,61,49" Name="TaskDateTextBox" VerticalAlignment="Bottom" 
-                 Text="{Binding Path=EntryDate, Mode=TwoWay, Converter={StaticResource MyDateTimeConverter}}"/>
-        <Label Height="28" HorizontalAlignment="Left" Margin="9,0,0,69" Name="TaskDateLabel" VerticalAlignment="Bottom" Width="120">Data zadania</Label>
-        <Button Height="23" Margin="12,0,0,11" Name="TaskEditButton" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="93" Click="EditButton_Click">Edytuj zadanie</Button>
+        <StackPanel Orientation="Vertical">
+            <Label Name="TaskTitleLabel" HorizontalAlignment="Left" Width="120">Tytuł zadania</Label>        
+            <TextBox Height="23" HorizontalAlignment="Stretch" Name="TaskTitleTextBox" 
+                     Text="{Binding Path=EntryTitle, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <Label HorizontalAlignment="Left"  Name="TaskDescLabel" Content="Opis Zadania"
+                   />
+            <TextBox Name="TaskDescTextBox" Margin="2,2,2,2"
+                     HorizontalScrollBarVisibility="Disabled" 
+                     VerticalScrollBarVisibility="Auto" 
+                     AcceptsTab="False" 
+                     AcceptsReturn="True" 
+                     TextWrapping="Wrap"
+                     Height="100"
+                     Text="{Binding Path=EntryDesc, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2">
+            <Label  HorizontalAlignment="Left" Name="TaskDateLabel"  >Data zadania</Label>
+            <avalon:DateTimePicker DateTimeSelected="{Binding Path=DateTime,Mode=TwoWay}" />
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <Button Height="23" Margin="12,0,0,11" Name="TaskEditButton" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="93" Click="EditButton_Click">Edytuj zadanie</Button>
+            <Button Height="23" HorizontalAlignment="Right" Margin="0,0,23,11" Name="NewTaskCreateButton" VerticalAlignment="Bottom" Width="75" Click="NewTaskCreateButton_Click">Dodaj zadanie</Button>
+        </StackPanel>
     </Grid>
 </Window>

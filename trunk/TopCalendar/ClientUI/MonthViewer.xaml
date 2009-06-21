@@ -20,6 +20,7 @@
             <RowDefinition Height="50" />
             <RowDefinition  />
             <RowDefinition />
+            
         </Grid.RowDefinitions>
         
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10,2,2,2">

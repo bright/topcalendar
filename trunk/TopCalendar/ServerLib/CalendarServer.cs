@@ -67,14 +67,18 @@ namespace ServerLib
             return _repository.FindByDay(year, month, day);
         }
 
+        public IList<BaseCalendarEntry> GetTasksBeetweenDates(DateTime from, DateTime to)
+        {
+            return _repository.FindBetweenDates(from, to);
+        }
+
         public IEnumerable<BaseCalendarEntry> Enumerate()
         {
             IList<BaseCalendarEntry> tmpList = _repository.FindAll();
 
             // niestety listy nie umieja sie ladnie przekonwertowac :(
             var retList = new List<BaseCalendarEntry>();
-            foreach (BaseCalendarEntry e in tmpList)
-                retList.Add(e);
+            retList.AddRange(tmpList);            
 
             return retList.AsReadOnly();
         }

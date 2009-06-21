@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using ClientApp;
+
 namespace ClientUI
 {
     /// <summary>
@@ -19,6 +21,15 @@ namespace ClientUI
     /// </summary>
     public partial class EntryControl : UserControl
     {
+        public static readonly DependencyProperty CalendarEntryProperty
+            = DependencyProperty.Register("Entry",typeof(CalendarEntry),typeof(EntryControl));
+
+        public CalendarEntry Entry
+        {
+            get { return (CalendarEntry) GetValue(CalendarEntryProperty); }
+            set { SetValue(CalendarEntryProperty,value);}
+        }
+
         public EntryControl()
         {
             InitializeComponent();

@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="ClientUI.WeekViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:clientapp="clr-namespace:ClientApp;assembly=ClientApp"
+    xmlns:ui="clr-namespace:ClientUI"
+    x:Name="Me"
+    >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ButtonStyle.xaml" />
+                <ResourceDictionary>
+                    <ui:DateTimeToMonthName x:Key="DateTimeToMonthName"/>
+                    <ui:DateTimeConverter x:Key="DateTimeToString" />                    
+                    <ui:DateTimeToColumnConverter  x:Key="DateTimeToColumn"/>                                                                
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid  x:Name="MainGrid">
+        <Grid.RowDefinitions>            
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />            
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+       </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="PreviousWeekBtn" Click="PreviousWeekBtn_Click" >Poprzedni</Button>  
+            <TextBlock Grid.Column="1" HorizontalAlignment="Center" >
+                <TextBlock Text="{Binding ElementName=Me, Path=WeekStartDate, Converter={StaticResource DateTimeToString}}" />
+                <Run> - </Run>
+                <TextBlock Text="{Binding ElementName=Me, Path=WeekEndDate, Converter={StaticResource DateTimeToString}}" /> 
+            </TextBlock>
+            <Button x:Name="NextWeekBtn" Click="NextWeekBtn_Click" Grid.Column="2">Następny</Button>
+        </Grid>
+
+            <Label Content="Poniedziałek" Grid.Column="1" Grid.Row="1"/>
+            <Label Content="Wtorek" Grid.Column="2"  Grid.Row="1"/>
+            <Label Content="Środa" Grid.Column="3"  Grid.Row="1"/>
+            <Label Content="Czwartek" Grid.Column="4" Grid.Row="1" />
+            <Label Content="Piątek" Grid.Column="5"  Grid.Row="1"/>
+            <Label Content="Sobota" Grid.Column="6"  Grid.Row="1"/>
+            <Label Content="Niedziela" Grid.Column="7"  Grid.Row="1"/>
+
+            <Label Content="{Binding ElementName=Me, Path=WeekDays[0], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="1"/>
+            <Label Content="{Binding ElementName=Me, Path=WeekDays[1], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="2"/>
+            <Label Content="{Binding ElementName=Me, Path=WeekDays[2], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="3"/>
+            <Label Content="{Binding ElementName=Me, Path=WeekDays[3], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="4"/>
+            <Label Content="{Binding ElementName=Me, Path=WeekDays[4], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="5"/>
+            <Label Content="{Binding ElementName=Me, Path=WeekDays[5], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="6"/>
+            <Label Content="{Binding ElementName=Me, Path=WeekDays[6], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="7"/>
+        
+        
+        <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                           VerticalScrollBarVisibility="Auto"
+                          HorizontalAlignment="Stretch" 
+                      Grid.Row="3" Grid.ColumnSpan="8">
+            <Grid x:Name="HoursTaskGrid" ShowGridLines="True">            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+                
+                                                                                               
+                
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
