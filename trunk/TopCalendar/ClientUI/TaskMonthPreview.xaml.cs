@@ -146,9 +146,9 @@ namespace ClientUI
 
         private void onDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var baseCalendarEntry = AttachedProperties.Task.GetTask(this);
-            var newTaskWindow = new TaskWindow(new CalendarEntry(baseCalendarEntry));
-            newTaskWindow.Show();
+     //       var baseCalendarEntry = AttachedProperties.Task.GetTask(this);
+      //      var newTaskWindow = new TaskWindow(new CalendarEntry(baseCalendarEntry));
+       //     newTaskWindow.Show();
         }
       
     }
