@@ -1,13 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using ClientApp.RemoteServerRef;
-using NUnit.Framework;
-using Rhino.Mocks;
-using Rhino.Mocks.Constraints;
-using ClientApp;
-using ServerLib;
-using ServerLib.Data;
+﻿using NUnit.Framework;
 
 namespace ClientTest
 {
@@ -17,7 +8,7 @@ namespace ClientTest
     [TestFixture]
     public class CalendarEntryTest
     {
-      /*  private MockRepository mocks;
+        /*  private MockRepository mocks;
         private BaseCalendarEntry sut;
 
         [TestFixtureSetUp]
