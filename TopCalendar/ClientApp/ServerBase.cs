@@ -21,6 +21,8 @@ namespace ClientApp
 
         public abstract List<BaseCalendarEntry> GetTasksForDate(int day, int month, int year);
 
+        public abstract List<BaseCalendarEntry> GetTasksBetweenDates(DateTime from, DateTime to);
+
         public abstract int get_Count();
 
         protected void FireEntriesListChangedEvent (EventArgs e)

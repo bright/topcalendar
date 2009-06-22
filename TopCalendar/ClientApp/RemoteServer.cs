@@ -64,5 +64,10 @@ namespace ClientApp
             return server.GetTasksForDate(day, month, year);
         }
 
+        public override List<BaseCalendarEntry> GetTasksBetweenDates(DateTime from, DateTime to)
+        {
+            return server.GetTasksBetweenDates(from, to);
+        }
+
     }
 }

@@ -32,7 +32,14 @@ namespace ClientUI
 
         public EntryControl()
         {
+            InitializeComponent();            
+        }
+
+        public EntryControl(CalendarEntry entry)
+        {
+            Entry = entry;
             InitializeComponent();
+            MyTooltip.DataContext = Entry;
         }
     }
 }

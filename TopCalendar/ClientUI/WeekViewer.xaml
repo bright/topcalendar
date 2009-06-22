@@ -8,11 +8,15 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ButtonStyle.xaml" />
+                <ResourceDictionary Source="ButtonStyle.xaml" />                
                 <ResourceDictionary>
                     <ui:DateTimeToMonthName x:Key="DateTimeToMonthName"/>
-                    <ui:DateTimeConverter x:Key="DateTimeToString" />                    
-                    <ui:DateTimeToColumnConverter  x:Key="DateTimeToColumn"/>                                                                
+                    <ui:DateTimeConverter x:Key="DateTimeToString" />    
+                    
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="Background" Value="#E6E6FA" /> 
+                    </Style>
+                    
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -40,6 +44,7 @@
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
             <Button x:Name="PreviousWeekBtn" Click="PreviousWeekBtn_Click" >Poprzedni</Button>  
             <TextBlock Grid.Column="1" HorizontalAlignment="Center" >
@@ -48,30 +53,31 @@
                 <TextBlock Text="{Binding ElementName=Me, Path=WeekEndDate, Converter={StaticResource DateTimeToString}}" /> 
             </TextBlock>
             <Button x:Name="NextWeekBtn" Click="NextWeekBtn_Click" Grid.Column="2">Następny</Button>
+            <Button Grid.Column="3" x:Name="AddTask" Click="AddTask_Click" >Dodaj zadanie</Button>
         </Grid>
 
-            <Label Content="Poniedziałek" Grid.Column="1" Grid.Row="1"/>
-            <Label Content="Wtorek" Grid.Column="2"  Grid.Row="1"/>
-            <Label Content="Środa" Grid.Column="3"  Grid.Row="1"/>
-            <Label Content="Czwartek" Grid.Column="4" Grid.Row="1" />
-            <Label Content="Piątek" Grid.Column="5"  Grid.Row="1"/>
-            <Label Content="Sobota" Grid.Column="6"  Grid.Row="1"/>
-            <Label Content="Niedziela" Grid.Column="7"  Grid.Row="1"/>
+        <Label Content="Poniedziałek" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Wtorek" Grid.Column="2"  Grid.Row="1"/>
+        <Label Content="Środa" Grid.Column="3"  Grid.Row="1"/>
+        <Label Content="Czwartek" Grid.Column="4" Grid.Row="1" />
+        <Label Content="Piątek" Grid.Column="5"  Grid.Row="1"/>
+        <Label Content="Sobota" Grid.Column="6"  Grid.Row="1"/>
+        <Label Content="Niedziela" Grid.Column="7"  Grid.Row="1"/>
 
-            <Label Content="{Binding ElementName=Me, Path=WeekDays[0], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="1"/>
-            <Label Content="{Binding ElementName=Me, Path=WeekDays[1], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="2"/>
-            <Label Content="{Binding ElementName=Me, Path=WeekDays[2], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="3"/>
-            <Label Content="{Binding ElementName=Me, Path=WeekDays[3], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="4"/>
-            <Label Content="{Binding ElementName=Me, Path=WeekDays[4], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="5"/>
-            <Label Content="{Binding ElementName=Me, Path=WeekDays[5], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="6"/>
-            <Label Content="{Binding ElementName=Me, Path=WeekDays[6], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="7"/>
-        
+        <Label Content="{Binding ElementName=Me, Path=WeekDays[0], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="{Binding ElementName=Me, Path=WeekDays[1], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="2"/>
+        <Label Content="{Binding ElementName=Me, Path=WeekDays[2], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="3"/>
+        <Label Content="{Binding ElementName=Me, Path=WeekDays[3], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="4"/>
+        <Label Content="{Binding ElementName=Me, Path=WeekDays[4], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="5"/>
+        <Label Content="{Binding ElementName=Me, Path=WeekDays[5], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="6"/>
+        <Label Content="{Binding ElementName=Me, Path=WeekDays[6], Converter={StaticResource DateTimeToString}}" Grid.Row="2" Grid.Column="7"/>
+    
         
         <ScrollViewer HorizontalScrollBarVisibility="Hidden"
                            VerticalScrollBarVisibility="Auto"
                           HorizontalAlignment="Stretch" 
                       Grid.Row="3" Grid.ColumnSpan="8">
-            <Grid x:Name="HoursTaskGrid" ShowGridLines="True">            
+            <Grid x:Name="HoursTaskGrid" ShowGridLines="False">            
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />

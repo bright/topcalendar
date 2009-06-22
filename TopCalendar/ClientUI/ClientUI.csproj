@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachedProperties.cs" />
-    <Compile Include="DayView.xaml.cs">
+ 	<Compile Include="CalendarEntryEditor.xaml.cs">      <DependentUpon>CalendarEntryEditor.xaml</DependentUpon>    </Compile>    <Compile Include="DayView.xaml.cs">
       <DependentUpon>DayView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DayViewer.xaml.cs">
@@ -166,7 +166,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DayView.xaml">
+	<Page Include="CalendarEntryEditor.xaml">      <SubType>Designer</SubType>      <Generator>MSBuild:Compile</Generator>    </Page>    <Page Include="DayView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,10 +19,10 @@
         </Grid.ColumnDefinitions>
         <ui:Menu HorizontalAlignment="Stretch" Grid.Column="0" />  
         <ContentControl x:Name="ContentPlace" Grid.Column="1" >
-            <ui:MonthViewer  Loaded="MonthViewer_Loaded" />
-            <!--        
+            <!--   <ui:MonthViewer  Loaded="MonthViewer_Loaded" />
+            -->     
             <ui:WeekViewer />
-            -->
+            
             
             <!--<ui:DayViewer /> -->
             

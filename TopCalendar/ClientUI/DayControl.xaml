@@ -24,7 +24,7 @@
         <TextBlock Grid.Row="1" Text="" />
       
        
-        <ListBox Name="EntriesForDayList"
+        <ListBox x:Name="EntriesForDayList"
                  Style="{StaticResource ListBoxStyle}" Background="Beige" 
                  ItemsSource="{Binding Path=EntryList, ElementName=userControl}"
                  ScrollViewer.CanContentScroll="False"
