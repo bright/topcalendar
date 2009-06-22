@@ -71,6 +71,10 @@ namespace ClientUI
 
         private ObservableCollection<CalendarEntry> _entryList = new ObservableCollection<CalendarEntry>();
 
+        private IServer server = Factory.Resolve<IServer>();
+
+        private NewEntryCreator entryEditor = Factory.Resolve<NewEntryCreator>();
+
         public ObservableCollection<CalendarEntry> EntryList
         {
             get { return _entryList;  }
@@ -79,24 +83,60 @@ namespace ClientUI
 
         public WeekViewer()
         {
-            _entryList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(_entryList_CollectionChanged);
-            InitEntries();                                 
+            _entryList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(_entryList_CollectionChanged);            
             InitializeComponent();                        
-            InitializeHoursLabels();
-            
-            WeekDate = DateTime.Now;   
+            InitializeHoursLabels();            
+            WeekDate = DateTime.Now;
+            InitEntries();                                 
         }
 
         void _entryList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {            
+            if (e.NewItems != null)
+                HandleNewItems(e.NewItems);            
+        }
+
+        private void HandleNewItems(System.Collections.IList iList)
+        {            
+            var dateToColumn = new DateTimeToColumnConverter();
+            var dateToRow = new DateTimeToRowConverter();
+            foreach(CalendarEntry ce in iList)
+            {
+                EntryControl ec = new EntryControl(ce);
+                ec.MouseRightButtonDown += new MouseButtonEventHandler(ec_MouseRightButtonDown);                
+                ec.SetValue(Grid.ColumnProperty, dateToColumn.Convert(ce.DateTime,typeof(int),null,null));
+                ec.SetValue(Grid.RowProperty, dateToRow.Convert(ce.DateTime,typeof(int),null,null));
+                HoursTaskGrid.Children.Add(ec);
+            }
+        }
+
+        void ec_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            EditEntry(((EntryControl)sender).Entry);
+        }
+
+        private void ClearEntryControls()
+        {
+            List<UIElement> list = new List<UIElement>();
+            foreach(UIElement ui in HoursTaskGrid.Children)                
+                if(ui is EntryControl)
+                    list.Add(ui);
+            foreach (var element in list)
+            {
+                HoursTaskGrid.Children.Remove(element);
+            }
         }
 
         private void InitEntries()
-        {
-            IServer server = Factory.Resolve<IServer>();
-
-
+        {  
+            ClearEntryControls();
+            _entryList.Clear();            
+            foreach(CalendarEntry ce in server.GetTasksBetweenDates(WeekStartDate, WeekEndDate))
+            {
+                _entryList.Add(ce);
+            }
         }
+
         public void UpdateWeekDays()
         {
             if( WeekDays == null )
@@ -104,6 +144,7 @@ namespace ClientUI
             for (int i = 0; i < 7; ++i)
                 WeekDays[i] = WeekStartDate.AddDays(i);
         }
+
         private void InitializeWeekDays()
         {
             if (WeekDays == null)
@@ -130,20 +171,6 @@ namespace ClientUI
 
         }
 
-        private void InitializeDateLabels()
-        {
-            var dt = WeekDate.WeekStart();
-            var cdt = new DateTimeConverter();
-            for(int i = 0; i< 7; ++i)
-            {
-                var dlabel = new Label();
-                dlabel.Content = cdt.Convert(dt, typeof (string), null, null);
-                dlabel.SetValue(Grid.RowProperty, 2);
-                dlabel.SetValue(Grid.ColumnProperty, i + 1);
-                dt = dt.AddDays(1);
-                MainGrid.Children.Add(dlabel);
-            }
-        }
 
         private void InitializeHoursLabels()
         {
@@ -162,16 +189,35 @@ namespace ClientUI
         private void PreviousWeekBtn_Click(object sender, RoutedEventArgs e)
         {
             WeekDate = WeekDate.AddDays(-7);
+            InitEntries();
         }
 
         private void NextWeekBtn_Click(object sender, RoutedEventArgs e)
         {
             WeekDate = WeekDate.AddDays(7);
+            InitEntries();
+        }
+
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+            CalendarEntryEditor cee = new CalendarEntryEditor();
+            cee.ShowDialog();
+            entryEditor.CalendarEntry = cee.Entry;
+            entryEditor.Save();
+            InitEntries();
         }      
 
+        private void EditEntry(CalendarEntry entry)
+        {
+            CalendarEntryEditor cee = new CalendarEntryEditor(entry);
+            cee.ShowDialog();
+            entryEditor.CalendarEntry = cee.Entry;
+            entryEditor.Save();
+            InitEntries();
+        }
     }
 
-    [ValueConversion(typeof(DateTime), typeof(int), ParameterType = typeof(DateTime))]
+    [ValueConversion(typeof(DateTime), typeof(int))]
     internal class DateTimeToColumnConverter : IValueConverter
     {
         public static DateTime WeekStartDate = DateTime.Now;
@@ -180,7 +226,28 @@ namespace ClientUI
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return ((DateTime)value).Subtract(WeekStartDate).Days + 1;
+            if( parameter == null) 
+                return ((DateTime)value).Subtract(WeekStartDate).Days + 1;
+            else
+                return ((DateTime)value).Subtract((DateTime)parameter).Days + 1;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+    }
+    [ValueConversion(typeof(DateTime), typeof(int))]
+    internal class DateTimeToRowConverter : IValueConverter
+    {        
+
+        #region IValueConverter Members
+
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return ((DateTime) value).Hour;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

@@ -76,7 +76,7 @@ namespace ServerLib
             return _repository.FindByDay(year, month, day);
         }
 
-        public IList<BaseCalendarEntry> GetTasksBeetweenDates(DateTime from, DateTime to)
+        public IList<BaseCalendarEntry> GetTasksBetweenDates(DateTime from, DateTime to)
         {
             return _repository.FindBetweenDates(from, to);
         }

@@ -77,4 +77,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetTasksBetweenDates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="from" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="to" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTasksBetweenDatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServerLib.Domain" minOccurs="0" name="GetTasksBetweenDatesResult" nillable="true" type="q6:ArrayOfBaseCalendarEntry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

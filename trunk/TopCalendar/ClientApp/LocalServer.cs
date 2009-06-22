@@ -57,6 +57,10 @@ namespace ClientApp
                           select item).ToList<BaseCalendarEntry>();
             return result as List<BaseCalendarEntry>;
         }
-       
+
+        public override List<BaseCalendarEntry> GetTasksBetweenDates(DateTime from, DateTime to)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
