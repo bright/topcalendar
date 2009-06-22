@@ -3,16 +3,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="20" Width="80"
     DataContext="{Binding RelativeSource={RelativeSource Self}}"
-    
+    HorizontalAlignment="Left"
     >
     
     <UserControl.Resources>
         <ResourceDictionary>
             <ControlTemplate x:Key="TaskView" TargetType="Thumb" >
-                <Grid Background="Brown">
+                <Grid Background="Aquamarine">
                     <Rectangle 
                         
-                        Stroke="Chocolate" 
+                        Stroke="Aquamarine" 
                         HorizontalAlignment="Left" 
                         />
                      <TextBlock Text="{Binding Path=TaskTitle}"></TextBlock>

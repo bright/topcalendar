@@ -6,9 +6,10 @@
     Height="Auto" Width="600"
              MinHeight="200"
              MinWidth="150"
+             HorizontalAlignment="Left"
              >
     
-    <Grid x:Name="DayGrid" Background="Green" MinWidth="150" Width="600" HorizontalAlignment="Left" ShowGridLines="True" >
+    <Grid x:Name="DayGrid" Background="AntiqueWhite" MinWidth="150" Width="600" HorizontalAlignment="Left" ShowGridLines="True" >
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
             <RowDefinition Height="50" />
