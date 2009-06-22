@@ -64,8 +64,6 @@ namespace ClientUI
             foreach (TaskDayPreview task in dayContent) {
 
                 task.SetValue(Grid.RowProperty,task.Hour + 2);
-                // wiem to złe
-                //task.SetValue(Grid.HeightProperty, "Auto");
 
                 DayGrid.Children.Add(task);
 
