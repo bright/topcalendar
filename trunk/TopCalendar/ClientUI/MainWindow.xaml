@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="CalendarEntryDataTemplate.xaml" />
                 <ResourceDictionary Source="ButtonStyle.xaml" />
+                <ResourceDictionary Source="MenuButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -17,14 +18,20 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ui:Menu HorizontalAlignment="Stretch" Grid.Column="0" />  
+        <!--<ui:Menu HorizontalAlignment="Stretch" Grid.Column="0" />-->
+        <StackPanel>
+            <TextBlock FontSize="15" Foreground="White" HorizontalAlignment="Center">Menu</TextBlock>
+            <Button x:Name="MonthViewBtn" Style="{StaticResource ButtonMenu}" Click="MonthViewBtn_Click"  Height="35" Width="90" Background="	#B0C4DE" Margin="2,5,3,5">Widok miesiąca</Button>
+            <Button x:Name="WeekViewBtn" Style="{StaticResource ButtonMenu}" Click="WeekViewBtn_Click" Height="35" Width="90" Background="	#B0C4DE" Margin="2,5,3,5">Widok tygodnia</Button>
+            <Button x:Name="DayViewBtn" Style="{StaticResource ButtonMenu}" Click="DayViewBtn_Click" Height="35" Width="90" Background="	#B0C4DE" Margin="2,5,3,5">Widok dnia</Button>
+        </StackPanel>
         <ContentControl x:Name="ContentPlace" Grid.Column="1" >
-            <!--   <ui:MonthViewer  Loaded="MonthViewer_Loaded" />
-            -->     
+              <ui:MonthViewer  Loaded="MonthViewer_Loaded" />
+            <!--     
             <!-- <ui:WeekViewer /> -->
             
             
-            <ui:DayViewer />
+            <ui:DayViewer /> -->
             
         </ContentControl>
         <!--  <ui:EntriesList Margin="1,1,1,1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>-->

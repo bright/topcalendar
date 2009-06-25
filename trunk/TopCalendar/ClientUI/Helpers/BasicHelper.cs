@@ -10,6 +10,8 @@ namespace ClientUI.Helpers
 
         public static string DayOfWeek(int day) {
 
+            
+
             switch (day) {
 
                 case 0: return "Niedziela";

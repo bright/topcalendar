@@ -136,6 +136,13 @@ namespace ServerLib.Tests
         }
 
         [Test]
+        public void test()
+        {
+            var c = DateTime.Today.DayOfWeek.ToString();
+            Console.Write(c);
+        }
+
+        [Test]
         public void Can_find_all_exisitng_BaseCalendarEntries()
         {
             var results = _repository.FindAll();
