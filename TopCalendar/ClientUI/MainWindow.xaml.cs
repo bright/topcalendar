@@ -42,5 +42,21 @@ namespace ClientUI
             dragDestinationsHandler.RefreshAllDragDestinations();
             
         }
+
+        private void MonthViewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContentPlace.Content = new MonthViewer();
+        }
+
+        private void WeekViewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContentPlace.Content = new WeekViewer();
+        }
+
+        private void DayViewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContentPlace.Content = new DayViewer();
+        }
+
     }
 }

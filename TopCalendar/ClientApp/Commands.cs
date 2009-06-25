@@ -7,7 +7,6 @@ namespace ClientApp
 {
     class Commands
     {
-
         public void editEntryEventHandler(object sender, EventArgs e){
             CalendarEntry entry = (CalendarEntry)sender;
 
