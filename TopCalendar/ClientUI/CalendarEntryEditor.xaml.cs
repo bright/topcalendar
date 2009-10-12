@@ -26,13 +26,13 @@ namespace ClientUI
         public CalendarEntryEditor()
         {
             Entry = new CalendarEntry() {DateTime = DateTime.Now, Title = "tytuł", Desc = "opis"};
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         public CalendarEntryEditor(CalendarEntry e)
         {
             Entry = e;
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

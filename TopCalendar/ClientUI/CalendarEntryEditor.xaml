@@ -36,7 +36,7 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="2">
             <Label  HorizontalAlignment="Left" Name="TaskDateLabel"  >Data zadania</Label>
-            <avalon:DateTimePicker DateTimeSelected="{Binding ElementName=Me, Path=Entry.DateTime,Mode=TwoWay}" />
+            <avalon:DateTimePicker x:Name="DateTimePicker" DateTimeSelected="{Binding ElementName=Me, Path=Entry.DateTime,Mode=TwoWay}" />
         </StackPanel>
         <StackPanel Grid.Row="3">
             <Button Height="23" x:Name="SaveButton" Click="SaveButton_Click"  >Zapisz</Button>            
