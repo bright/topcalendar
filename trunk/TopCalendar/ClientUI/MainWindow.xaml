@@ -27,11 +27,11 @@
         </StackPanel>
         <ContentControl x:Name="ContentPlace" Grid.Column="1" >
               <ui:MonthViewer  Loaded="MonthViewer_Loaded" />
-            <!--     
-            <!-- <ui:WeekViewer /> -->
+                 
+             <!--<ui:WeekViewer />--> 
             
             
-            <ui:DayViewer /> -->
+            <!--<ui:DayViewer />--> 
             
         </ContentControl>
         <!--  <ui:EntriesList Margin="1,1,1,1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>-->
