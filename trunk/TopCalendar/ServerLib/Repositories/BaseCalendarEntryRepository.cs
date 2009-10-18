@@ -33,15 +33,18 @@ namespace ServerLib.Repositories
                 transaction.Commit();
             }
         }
-
-        public void Remove(BaseCalendarEntry baseCalendarEntry)
+        public void WithTransactionDo(Action<ISession> doJob) 
         {
             using (ISession session = NHibernateHelper.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
-                session.Delete(baseCalendarEntry);
+                doJob(session);
                 transaction.Commit();
             }
+        }
+        public void Remove(BaseCalendarEntry baseCalendarEntry)
+        {
+            WithTransactionDo(s => s.Delete(baseCalendarEntry));
         }
 
         public BaseCalendarEntry FindById(Guid id)
