@@ -1,0 +1,33 @@
+﻿<Window x:Class="TopCalendar.UI.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:inf="clr-namespace:TopCalendar.UI.Infrastructure;assembly=TopCalendar.UI.Infrastructure"
+    xmlns:region="clr-namespace:Microsoft.Practices.Composite.Presentation.Regions;assembly=Microsoft.Practices.Composite.Presentation"
+    Title="Shell" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch">
+            <!-- tool bar -->            
+        </Grid>
+        
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch">
+            
+            <ContentControl x:Name="MainContent" 
+                            region:RegionManager.RegionName="{x:Static inf:RegionNames.MainContent}">
+                <ContentControl.Template>
+                    <ControlTemplate TargetType="ContentControl">
+                        <Grid >
+                            <ContentPresenter Margin="10,10,10,10" Content="{TemplateBinding Content}" />
+                        </Grid>
+                    </ControlTemplate>
+                </ContentControl.Template>
+            </ContentControl>
+            
+        </Grid>
+    </Grid>
+</Window>

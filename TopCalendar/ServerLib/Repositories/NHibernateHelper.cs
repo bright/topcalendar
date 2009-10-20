@@ -1,5 +1,6 @@
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 using ServerLib.Domain;
 
 namespace ServerLib.Repositories
@@ -21,8 +22,9 @@ namespace ServerLib.Repositories
                 {
                     var configuration = new Configuration();
                     configuration.Configure();
-                    configuration.AddAssembly(typeof(BaseCalendarEntry).Assembly);
+                    configuration.AddAssembly(typeof(BaseCalendarEntry).Assembly);					
                     _sessionFactory = configuration.BuildSessionFactory();
+                	//new SchemaExport(configuration).Execute(false, true, false);
                 }
                 return _sessionFactory;
             }

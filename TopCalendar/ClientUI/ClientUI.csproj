@@ -39,9 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\AvalonControlsLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Core, Version=1.1.3458.19248, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+    <Reference Include="Ninject, Version=2.0.0.152, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\Ninject.Core.dll</HintPath>
+      <HintPath>..\..\Lib\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -87,7 +87,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachedProperties.cs" />
- 	<Compile Include="CalendarEntryEditor.xaml.cs">      <DependentUpon>CalendarEntryEditor.xaml</DependentUpon>    </Compile>    <Compile Include="DayView.xaml.cs">
+    <Compile Include="CalendarEntryEditor.xaml.cs">
+      <DependentUpon>CalendarEntryEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DayView.xaml.cs">
       <DependentUpon>DayView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DayViewer.xaml.cs">
@@ -166,7 +169,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-	<Page Include="CalendarEntryEditor.xaml">      <SubType>Designer</SubType>      <Generator>MSBuild:Compile</Generator>    </Page>    <Page Include="DayView.xaml">
+    <Page Include="CalendarEntryEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DayView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

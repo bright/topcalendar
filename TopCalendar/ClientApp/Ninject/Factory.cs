@@ -1,4 +1,5 @@
-﻿using Ninject.Core;
+﻿using Ninject;
+using Ninject.Modules;
 
 namespace ClientApp.Ninject
 {
@@ -20,7 +21,7 @@ namespace ClientApp.Ninject
 
         public static void Load(IModule module)
         {
-            kernel.Load(module);
+            kernel.LoadModule(module);
         }
 
      
