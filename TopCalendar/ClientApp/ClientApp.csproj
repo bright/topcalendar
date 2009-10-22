@@ -77,8 +77,7 @@
     <Compile Include="CalendarEntry.cs" />
     <Compile Include="Commands.cs" />
     <Compile Include="DateTimeExtensions.cs" />
-    <Compile Include="LocalServer.cs" />
-    <Compile Include="Ninject\Extensions\NinjectExtensions.cs" />
+    <Compile Include="LocalServer.cs" />    
     <Compile Include="RemoteServer.cs" />
     <Compile Include="ServerBase.cs" />
     <Compile Include="NewEntryCreator.cs" />

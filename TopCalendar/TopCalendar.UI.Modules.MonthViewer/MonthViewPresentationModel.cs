@@ -4,7 +4,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 	{
 		public IMonthView View
 		{
-			get { return null; }
+			get { return new MonthView(); }
 		}
 	}
 }
