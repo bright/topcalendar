@@ -56,7 +56,7 @@ namespace TopCalendar.Utility.Tests
 		protected TSut Sut;
 		
 		[SetUp]
-		public void setup()
+		public new void Setup()
 		{
 			EstablishContext();
 			Sut = CreateSut();
@@ -98,7 +98,7 @@ namespace TopCalendar.Utility.Tests
 			_mockingKernel.DefaultMockingStrategy = new ReplayedMockingStrategy(_mockingKernel);
 			Kernel.Bind<IServiceLocator>().To<NinjectServiceLocator>().InSingletonScope();
 			ServiceLocator.SetLocatorProvider(() => Kernel.Get<IServiceLocator>());
-			base.setup();
+			base.Setup();
 		}
 
 		protected IAutoMockingRepository AutoMockingRepository { get { return _mockingKernel; } }
