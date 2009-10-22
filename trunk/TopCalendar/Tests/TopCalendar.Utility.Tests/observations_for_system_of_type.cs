@@ -15,7 +15,7 @@ namespace TopCalendar.Utility.Tests
 	public abstract class observations_for_sut
 	{
 		[SetUp]
-		public void setup()
+		public void Setup()
 		{
 			EstablishContext();						
 			Because();
@@ -63,15 +63,7 @@ namespace TopCalendar.Utility.Tests
 			AfterSutCreation();
 			Because();
 		}
-
-		/// <summary>
-		/// Wywolywana po kazdym tescie
-		/// </summary>
-		[TearDown]
-		protected virtual void AfterEachObservation()
-		{
-		}
-				
+		
 		protected virtual void AfterSutCreation()
 		{
 		}
