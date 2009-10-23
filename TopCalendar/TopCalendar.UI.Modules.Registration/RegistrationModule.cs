@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Microsoft.Practices.Composite.Modularity;
 using Microsoft.Practices.Composite.Regions;
-using Microsoft.Practices.ServiceLocation;
 using Ninject;
 using TopCalendar.UI.Infrastructure;
 
-namespace TopCalendar.UI.Modules.MonthViewer
+namespace TopCalendar.UI.Modules.Registration
 {
-	public class MonthViewerModule : IModule
-	{
+    public class RegistrationModule : IModule
+    {
 		private readonly IKernel _kernel;
 		private readonly IRegionManager _regionManager;
 
-		public MonthViewerModule(IKernel kernel, IRegionManager regionManager)
+        public RegistrationModule(IKernel kernel, IRegionManager regionManager)
 		{
 			_kernel = kernel;
 			_regionManager = regionManager;
@@ -22,13 +24,15 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		{
 			RegisterViewsAndServices();			
 			_regionManager.RegisterViewWithRegion(RegionNames.MainContent, 
-				() => _kernel.Get<IMonthViewPresentationModel>().View);
+				() => _kernel.Get<IRegistrationPresenter>().View);
 		}
 
 		private void RegisterViewsAndServices()
 		{			
-			_kernel.Bind<IMonthView>().To<MonthView>();
-			_kernel.Bind<IMonthViewPresentationModel>().To<MonthViewPresentationModel>();
+			_kernel.Bind<IRegistrationView>().To<RegistrationView>();
+			_kernel.Bind<IRegistrationPresenter>().To<RegistrationPresenter>();
 		}
-	}
+    }
+
+  
 }

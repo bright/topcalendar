@@ -135,6 +135,10 @@
       <Project>{B0AC560C-26B0-4D87-9CFA-2A1308149863}</Project>
       <Name>NinjectContrib.CompositePresentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Client.Connector\TopCalendar.Client.Connector.csproj">
+      <Project>{15968E5F-9795-4391-BD4E-3D51247BCFCF}</Project>
+      <Name>TopCalendar.Client.Connector</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
       <Name>TopCalendar.UI.Infrastructure</Name>
@@ -142,6 +146,10 @@
     <ProjectReference Include="..\TopCalendar.UI.Modules.MonthViewer\TopCalendar.UI.Modules.MonthViewer.csproj">
       <Project>{A016861B-AE17-413F-B93F-5345401EEF7B}</Project>
       <Name>TopCalendar.UI.Modules.MonthViewer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.Modules.Registration\TopCalendar.UI.Modules.Registration.csproj">
+      <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
+      <Name>TopCalendar.UI.Modules.Registration</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
