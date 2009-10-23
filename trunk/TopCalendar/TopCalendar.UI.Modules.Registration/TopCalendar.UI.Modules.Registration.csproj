@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A016861B-AE17-413F-B93F-5345401EEF7B}</ProjectGuid>
+    <ProjectGuid>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TopCalendar.UI.Modules.MonthViewer</RootNamespace>
-    <AssemblyName>TopCalendar.UI.Modules.MonthViewer</AssemblyName>
+    <RootNamespace>TopCalendar.UI.Modules.Registration</RootNamespace>
+    <AssemblyName>TopCalendar.UI.Modules.Registration</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -57,34 +57,51 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMonthView.cs" />
-    <Compile Include="IMonthViewPresentationModel.cs" />
-    <Compile Include="MonthView.xaml.cs">
-      <DependentUpon>MonthView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MonthViewerModule.cs" />
-    <Compile Include="MonthViewPresentationModel.cs" />
+    <Compile Include="LoginPasswordPresentationModel.cs" />
+    <Compile Include="RegistrationModule.cs" />
+    <Compile Include="IRegistrationPresenter.cs" />
+    <Compile Include="IRegistrationView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationPresentationModel.cs" />
+    <Compile Include="RegistrationPresenter.cs" />
+    <Compile Include="RegistrationView.xaml.cs">
+      <DependentUpon>RegistrationView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MonthView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="RegistrationView.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
+      <Project>{F807062D-6FC9-4FF0-A9F5-5F94653EDC4D}</Project>
+      <Name>Composite.Presentation.Desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
       <Name>Composite.Desktop</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Client.Connector\TopCalendar.Client.Connector.csproj">
+      <Project>{15968E5F-9795-4391-BD4E-3D51247BCFCF}</Project>
+      <Name>TopCalendar.Client.Connector</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
       <Name>TopCalendar.UI.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.Modules.MonthViewer\TopCalendar.UI.Modules.MonthViewer.csproj">
+      <Project>{A016861B-AE17-413F-B93F-5345401EEF7B}</Project>
+      <Name>TopCalendar.UI.Modules.MonthViewer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

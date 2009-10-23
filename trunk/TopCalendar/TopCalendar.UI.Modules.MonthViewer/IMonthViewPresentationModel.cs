@@ -1,6 +1,6 @@
 namespace TopCalendar.UI.Modules.MonthViewer
 {
-	public interface IMonthViewPersentationModel
+	public interface IMonthViewPresentationModel
 	{
 		IMonthView View { get; }
 	}

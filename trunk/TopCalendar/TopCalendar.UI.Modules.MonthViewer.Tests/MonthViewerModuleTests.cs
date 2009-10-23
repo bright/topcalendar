@@ -24,7 +24,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 
 		protected override void EstablishContext()
 		{
-			Stub<IMonthViewPersentationModel>()
+			Stub<IMonthViewPresentationModel>()
 				.Stub(mvp => mvp.View).Return(Stub<IMonthView>());
 		}
 
