@@ -6,7 +6,7 @@ Wywaliłem odwołania do User stories i story pointy, bo i tak nic się nie zgad
 
 || *Zadanie* || *Kto?* ||
 || Wydzielić wspólne elementy modułów do abstrakcyjnego modułu, po którym będą dziedziczyć inne moduły UI + przetestować ||  ||
-|| Wdrożyć, zaprezentować działanie EventAggregatora ||  ||
+|| Wdrożyć, zaprezentować działanie EventAggregatora || DM ||
 || Udokumentować i narysować schemat przepływu w pojedynczym module || AB ||
 || Uzupełnić Shella o nowe regiony i menu (toolbar), do którego moduły będą mogły łatwo się rejestrować ||  ||
 || Dokończyć moduł rejestracji ||  ||
