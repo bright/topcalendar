@@ -1,0 +1,14 @@
+#labels Featured
+= Zadania do sprintu 4 =
+
+Tak pro forma kontynuuję numerację sprintów ;)
+Wywaliłem odwołania do User stories i story pointy, bo i tak nic się nie zgadza.
+
+|| *Zadanie* || *Kto?* ||
+|| Wydzielić wspólne elementy modułów do abstrakcyjnego modułu, po którym będą dziedziczyć inne moduły UI + przetestować ||  ||
+|| Wdrożyć, zaprezentować działanie EventAggregatora ||  ||
+|| Udokumentować i narysować schemat przepływu w pojedynczym module || AB ||
+|| Uzupełnić Shella o nowe regiony i menu (toolbar), do którego moduły będą mogły łatwo się rejestrować ||  ||
+|| Dokończyć moduł rejestracji ||  ||
+
+Może umówmy się, że realizujemy to w jakimś określonym terminie (2 tygodnie?) i spotykamy się na godzinę, żeby osobiście omówić co dalej?
