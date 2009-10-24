@@ -1,4 +1,3 @@
-#labels Featured
 = Stories i zadania do sprintu 2 =
 
 Nazwy zadań przeniesione z ProductBacklog
