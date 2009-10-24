@@ -1,0 +1,10 @@
+#labels Featured
+= Lista eventów =
+
+Trzeba rzetelnie spisywać wszystkie Eventy, jakie dane moduły publikują i co z nich korzysta, bo nie połapiemy się w tym ;)
+
+|| *Event Name* || *Moduł publikujący* || *Moduły subskrybujące* ||
+|| OnRegister ||  ||  ||
+|| OnLogin ||  ||  ||
+
+...
