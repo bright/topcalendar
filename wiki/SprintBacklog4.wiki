@@ -1,5 +1,5 @@
 #labels Featured
-= Zadania do sprintu 4 =
+= Zadania do sprintu 4 - termin 1 listopada =
 
 Tak pro forma kontynuuję numerację sprintów ;)
 Wywaliłem odwołania do User stories i story pointy, bo i tak nic się nie zgadza.
