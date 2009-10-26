@@ -75,6 +75,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Resources\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\TabItemResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\WindowRegionResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +110,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Resources\ResourceNames.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -151,6 +164,17 @@
       <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
       <Name>TopCalendar.UI.Modules.Registration</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background.png" />
+    <Resource Include="Resources\shadow_b.png" />
+    <Resource Include="Resources\shadow_bl.png" />
+    <Resource Include="Resources\shadow_br.png" />
+    <Resource Include="Resources\shadow_l.png" />
+    <Resource Include="Resources\shadow_r.png" />
+    <Resource Include="Resources\shadow_t.png" />
+    <Resource Include="Resources\shadow_tl.png" />
+    <Resource Include="Resources\shadow_tr.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
