@@ -5,7 +5,7 @@ Tak pro forma kontynuuję numerację sprintów ;)
 Wywaliłem odwołania do User stories i story pointy, bo i tak nic się nie zgadza.
 
 || *Zadanie* || *Kto?* ||
-|| Wydzielić wspólne elementy modułów do abstrakcyjnego modułu, po którym będą dziedziczyć inne moduły UI + przetestować ||  ||
+|| Wydzielić wspólne elementy modułów do abstrakcyjnego modułu, po którym będą dziedziczyć inne moduły UI + przetestować || PM ||
 || Wdrożyć, zaprezentować działanie EventAggregatora || DM ||
 || Udokumentować i narysować schemat przepływu w pojedynczym module || AB (jak będą wydzielone ogólne klasy) ||
 || Uzupełnić Shella o nowe regiony i menu (toolbar), do którego moduły będą mogły łatwo się rejestrować || AB ||
