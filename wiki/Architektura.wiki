@@ -1,8 +1,8 @@
-#summary Polecam przeczytac ten artykuł, wzorce z mvp,mvc,mvvm w przystępnej formie zebrane w jednym miejscu.
+#summary Polecam przeczytać ten artykuł, wzorce z mvp,mvc,mvvm w przystępnej formie zebrane w jednym miejscu.
 
 = Architektura kalendarzyka i wzorce =
 
-Polecam przeczytac ten artykuł, wzorce z mvp,mvc,mvvm w przystępnej formie zebrane w jednym miejscu.
+Polecam przeczytać ten artykuł, wzorce z mvp,mvc,mvvm w przystępnej formie zebrane w jednym miejscu w kontekście WPF.
 
 
 *[http://msdn.microsoft.com/pl-pl/magazine/cc785479(en-us).aspx Patterns For Building Composite Applications With WPF]*
