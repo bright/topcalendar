@@ -24,13 +24,13 @@ namespace TopCalendar.UI.Modules.Registration
 		{
 			RegisterViewsAndServices();			
 			_regionManager.RegisterViewWithRegion(RegionNames.MainContent, 
-				() => _kernel.Get<IRegistrationPresenter>().View);
+				() => _kernel.Get<IRegistrationPresentationModel>().View);
 		}
 
 		private void RegisterViewsAndServices()
 		{			
 			_kernel.Bind<IRegistrationView>().To<RegistrationView>();
-			_kernel.Bind<IRegistrationPresenter>().To<RegistrationPresenter>();
+			_kernel.Bind<IRegistrationPresentationModel>().To<RegistrationPresentationModel>();
 		}
     }
 

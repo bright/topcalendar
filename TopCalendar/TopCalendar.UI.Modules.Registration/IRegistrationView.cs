@@ -1,9 +1,9 @@
-using System;
+using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.Registration
 {
-    public interface IRegistrationView
-    {
-        RegistrationPresentationModel Model { get; set; } 
-    }
+	public interface IRegistrationView 
+		: IViewForModel<IRegistrationView,RegistrationPresentationModel>
+	{
+	}
 }
