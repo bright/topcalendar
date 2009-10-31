@@ -41,6 +41,7 @@ namespace TopCalendar.UI.Modules.Registration
 		{
 			_eventAggregator.GetEvent<ViewShouldDie<IRegistrationView>>()
 				.Publish(View);
+			Log.Log("Rejestracja anulowana", Category.Info, Priority.None);
 		}
 
 		private DelegateCommand<object> _cancelCommand;
@@ -48,7 +49,10 @@ namespace TopCalendar.UI.Modules.Registration
 		public ICommand CancelCommand
 		{
 			get { return _cancelCommand; }
-			set { _cancelCommand = (DelegateCommand<object>)value; }
+			set { 
+				_cancelCommand = (DelegateCommand<object>)value;
+				OnPropertyChanged("CancelCommand");
+			}
 		}
 
 		private string _login;
