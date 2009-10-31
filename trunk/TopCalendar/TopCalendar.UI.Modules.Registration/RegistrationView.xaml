@@ -30,7 +30,7 @@
         />
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
             <Button x:Name="RegisterButton" Command="{Binding RegisterCommand}" >Register</Button>
-            <Button Name="CancelButton" IsCancel="True">Cancel</Button>
+            <Button Name="CancelButton" IsCancel="True" Command="{Binding CancelCommand}">Cancel</Button>
         </StackPanel>
 
 
