@@ -19,16 +19,17 @@
             Login
         </Label>
         <TextBox x:Name="LoginTextBox" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" 
-             Text="{Binding Path=Login, Mode=OneWayToSource}"
+             Text="{Binding Path=Login, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
         />
 
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right">
             Password
         </Label>
-        <TextBox x:Name="PasswordTextBox" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"                Text="{Binding Path=Password, Mode=OneWayToSource}"
+        <TextBox x:Name="PasswordTextBox" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"                
+                 Text="{Binding Path=Password, Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"
         />
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-            <Button x:Name="RegisterButton" Command="{Binding RegisterCommand}" CommandParameter="{Binding}">Register</Button>
+            <Button x:Name="RegisterButton" Command="{Binding RegisterCommand}" >Register</Button>
             <Button Name="CancelButton" IsCancel="True">Cancel</Button>
         </StackPanel>
 
