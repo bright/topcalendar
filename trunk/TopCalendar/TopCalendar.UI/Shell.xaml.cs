@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace TopCalendar.UI
 {
@@ -20,12 +9,19 @@ namespace TopCalendar.UI
 	{
 		public Shell()
 		{
-			InitializeComponent();
+		    InitializeComponent();
 		}
 
-		public void ShowView()
-		{
-			Show();
-		}
+        public ShellPresentationModel Model
+        {
+            get
+            {
+                return DataContext as ShellPresentationModel;
+            }
+            set
+            {
+                DataContext = value;
+            }
+        }
 	}
 }

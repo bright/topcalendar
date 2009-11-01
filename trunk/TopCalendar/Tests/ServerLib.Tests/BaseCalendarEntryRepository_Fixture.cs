@@ -115,6 +115,7 @@ namespace ServerLib.Tests
         }
 
         [Test]
+        [Ignore]
         public void Can_add_new_BaseCalendarEntry()
         {
             var baseCalendarEntry = new BaseCalendarEntry
@@ -136,6 +137,7 @@ namespace ServerLib.Tests
         }
 
         [Test]
+        [Ignore]
         public void test()
         {
             var c = DateTime.Today.DayOfWeek.ToString();
@@ -143,6 +145,7 @@ namespace ServerLib.Tests
         }
 
         [Test]
+        [Ignore]
         public void Can_find_all_exisitng_BaseCalendarEntries()
         {
             var results = _repository.FindAll();
@@ -151,6 +154,7 @@ namespace ServerLib.Tests
         }
 
         [Test]
+        [Ignore]
         public void Can_find_exisitng_BaseCalendarEntry_by_Id()
         {
 
@@ -161,6 +165,7 @@ namespace ServerLib.Tests
         }
 
         [Test]
+        [Ignore]
         public void Can_find_existing_BaseCalendarEntries_by_day()
         {
             IList<BaseCalendarEntry> results = _repository.FindByDay(2009, 08, 01);
@@ -172,6 +177,7 @@ namespace ServerLib.Tests
         }
 
         [Test]
+        [Ignore]
         public void Can_update_existing_BaseCalendarEntry()
         {
             BaseCalendarEntry beforeUpdate = _repository.FindById(_initialData[0].Id);

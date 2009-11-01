@@ -12,13 +12,12 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
-        
         <Grid Grid.Row="0" HorizontalAlignment="Stretch">
-            <!-- tool bar -->            
+            <Menu x:Name="MainMenu" Height="20" ItemsSource="{Binding MainMenu}" />
         </Grid>
         
         <Grid Grid.Row="1" HorizontalAlignment="Stretch">
