@@ -50,6 +50,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.Regi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.Registration.Tests", "TopCalendar.UI.Modules.Registration.Tests\TopCalendar.UI.Modules.Registration.Tests.csproj", "{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.MenuInfrastructure", "TopCalendar.UI.MenuInfrastructure\TopCalendar.UI.MenuInfrastructure.csproj", "{8F89764F-5880-4735-B15D-A1AD962105C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.MenuInfrastructure.Tests", "Tests\TopCalendar.UI.MenuInfrastructure.Tests\TopCalendar.UI.MenuInfrastructure.Tests.csproj", "{C6C94832-9A9F-421E-996A-679A32119187}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -136,6 +140,14 @@ Global
 		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F89764F-5880-4735-B15D-A1AD962105C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F89764F-5880-4735-B15D-A1AD962105C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F89764F-5880-4735-B15D-A1AD962105C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F89764F-5880-4735-B15D-A1AD962105C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C94832-9A9F-421E-996A-679A32119187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C94832-9A9F-421E-996A-679A32119187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C94832-9A9F-421E-996A-679A32119187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C94832-9A9F-421E-996A-679A32119187}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,5 +165,6 @@ Global
 		{2DD936B1-4635-4A59-BFA4-385A76BDE801} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{6FC919AE-317E-40C8-9DBF-B947394156FE} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
+		{C6C94832-9A9F-421E-996A-679A32119187} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 	EndGlobalSection
 EndGlobal

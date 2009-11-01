@@ -1,10 +1,10 @@
 using System.Windows;
-using CommonServiceLocator.NinjectAdapter;
 using Microsoft.Practices.Composite.Modularity;
 using Microsoft.Practices.ServiceLocation;
 using Ninject;
 using NinjectContrib.CompositePresentation;
 using TopCalendar.Client.Connector;
+using TopCalendar.UI.MenuInfrastructure;
 using TopCalendar.UI.Modules.MonthViewer;
 using TopCalendar.UI.Modules.Registration;
 
@@ -23,17 +23,22 @@ namespace TopCalendar.UI
 		protected override void ConfigureKernel()
 		{
 			base.ConfigureKernel();
-			// Todo: nie wiem czy to dobre miejsce na konfiguracje ServiceLocatora
-			ServiceLocator.SetLocatorProvider(()=>Kernel.Get<IServiceLocator>());
+			ServiceLocator.SetLocatorProvider(() => Kernel.Get<IServiceLocator>());
+
+            // Todo: moduly docelowo powinny ladowane przy uzyciu managera pluginow :)
 			Kernel.LoadModulesFromAssembly(typeof(IUserRegistrator).Assembly);
-			Kernel.Bind<IShellView>().To<Shell>();						
+
+			Kernel.Bind<IShellView>().To<Shell>();
+
+		    Kernel.Bind<IMenuManager>().To<MenuManager>();
+		    Kernel.Bind<IMenuProvider>().To<MenuProvider>();
 		}
 
 		protected override DependencyObject CreateShell()
 		{
-			ShellPresenter presenter = Kernel.Get<ShellPresenter>();
-			IShellView view = presenter.View;
-			view.ShowView();
+		    var view = Kernel.Get<IShellView>();
+		    view.Model = Kernel.Get<ShellPresentationModel>();
+			view.Show();
 			return view as DependencyObject;
 		}
 	}
