@@ -3,6 +3,8 @@ using System.Windows.Input;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Logging;
 using Microsoft.Practices.Composite.Presentation.Commands;
+using Microsoft.Practices.EnterpriseLibrary.Validation;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using Ninject;
 using TopCalendar.Utility.BasicExtensions;
 using TopCalendar.Utility.UI;
@@ -56,6 +58,8 @@ namespace TopCalendar.UI.Modules.Registration
 		}
 
 		private string _login;
+
+		[StringLengthValidator(4,30)]
     	public string Login
     	{
 			get { return _login; }
@@ -67,6 +71,8 @@ namespace TopCalendar.UI.Modules.Registration
     	}
 
     	private string _password;
+
+		[StringLengthValidator(4,30)]
     	public string Password
     	{
     		get
@@ -82,7 +88,7 @@ namespace TopCalendar.UI.Modules.Registration
 
     	private bool CanRegister(object arg)
     	{
-    		return _login.IsNotEmpty() && _password.IsNotEmpty();
+    		return Validation.Validate(this).IsValid;
     	}
 
     	private void Register(object obj)
