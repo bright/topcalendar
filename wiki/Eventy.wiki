@@ -3,8 +3,17 @@
 
 Trzeba rzetelnie spisywać wszystkie Eventy, jakie dane moduły publikują i co z nich korzysta, bo nie połapiemy się w tym ;)
 
-|| *Event Name* || *Moduł publikujący* || *Moduły subskrybujące* ||
-|| OnRegister ||  ||  ||
-|| OnLogin ||  ||  ||
+Wszystkie eventy powinny być zdefiniowane w TopCalendar.UI.Infrastructure.Events i muszą dziedziczyć po CompositePresentationEvent.
 
-...
+|| *Event Name* || *Opis* || *Moduł publikujący* || *Moduły subskrybujące* ||
+|| CloseAppEvent || Polecenie "Zakończ" z menu || Shell (menu) || Shell ||
+|| ... ||  ||  ||  ||
+
+= Eventy w menu =
+
+Eventy wpina się do menu w następujący sposób:
+
+ # pobieramy instancję IMenuManager z service locatora
+ # wywołujemy AddTopLevelMenu("identyfikator", "tekst wyświetlany") jeśli chemy menu głównego poziomu
+ # wywołujemy AddItemToMenu < TypEventa > ("identyfikator menu głównego poziomu", "identyfikator wpisu", "tekst wyświetlany")
+ # menu automatycznie publikuje dany event po kliknięciu, wystarczy gdzieś go subskrybować
