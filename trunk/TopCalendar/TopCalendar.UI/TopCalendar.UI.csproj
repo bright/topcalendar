@@ -169,6 +169,10 @@
       <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
       <Name>TopCalendar.UI.Modules.Registration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
+      <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
+      <Name>TopCalendar.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\background.png" />
