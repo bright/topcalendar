@@ -1,13 +1,15 @@
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Windows.Controls;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.ServiceLocation;
 using TopCalendar.UI.Infrastructure;
 using TopCalendar.UI.MenuInfrastructure;
+using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI
 {
-	public class ShellPresentationModel
+	public class ShellPresentationModel : NotifyPropertyChanged
 	{
 	    private readonly IMenuProvider _menuProvider;
 	    private readonly IServiceLocator _serviceLocator;
@@ -18,6 +20,9 @@ namespace TopCalendar.UI
             _menuProvider = _serviceLocator.GetInstance<IMenuProvider>();
 
 	        SubscribeToDefaultEvents();
+
+			// observe changes in menu
+			_menuProvider.Menus.CollectionChanged += MenusCollectionChanged;
 	    }
 
 	    private void SubscribeToDefaultEvents()
@@ -45,5 +50,10 @@ namespace TopCalendar.UI
 	            return menus;
 	        }
 	    }
+
+		private void MenusCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			OnPropertyChanged("MainMenu");
+		}
 	}
 }
