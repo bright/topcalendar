@@ -75,10 +75,6 @@
       <Project>{E97C20A1-D4CB-4ACA-9C81-956D44CAF8D6}</Project>
       <Name>ClientApp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ServerLib\ServerLib.csproj">
-      <Project>{3B2C5A95-E6F4-4E54-9C8B-0467B315E127}</Project>
-      <Name>ServerLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
