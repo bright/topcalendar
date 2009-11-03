@@ -27,6 +27,9 @@ namespace NinjectContrib.CompositePresentation.KernelModules
 		/// <summary>
 		/// Loads the module into the kernel.
 		/// </summary>
-		public override void Load() { Bind<ILoggerFacade>().ToConstant(this.loggerFacade); }
+		public override void Load()
+		{
+		    Bind<ILoggerFacade>().ToConstant(this.loggerFacade);
+		}
 	}
 }

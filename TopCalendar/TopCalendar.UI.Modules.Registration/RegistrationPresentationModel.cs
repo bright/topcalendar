@@ -6,6 +6,7 @@ using Microsoft.Practices.Composite.Presentation.Commands;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using Ninject;
+using TopCalendar.Client.Connector;
 using TopCalendar.Utility.BasicExtensions;
 using TopCalendar.Utility.UI;
 
@@ -19,6 +20,9 @@ namespace TopCalendar.UI.Modules.Registration
 
 		[Inject]
 		public ILoggerFacade Log { get; set; }
+
+        [Inject]
+        public IUserRegistrator Registrator { get; set; }
 
         public ICommand RegisterCommand
         {
@@ -94,6 +98,9 @@ namespace TopCalendar.UI.Modules.Registration
     	private void Register(object obj)
     	{
     		_eventAggregator.GetEvent<ViewShouldDie<IRegistrationView>>().Publish(View);
+
+            Registrator.Register("michal","test2");
+
     		Log.Log(string.Format("{0}, {1} - zarejestrwonay", Login, Password), Category.Info, Priority.None);
     	}
     }
