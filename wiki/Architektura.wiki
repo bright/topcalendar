@@ -10,3 +10,14 @@ Polecam przeczytać ten artykuł, wzorce z mvp,mvc,mvvm w przystępnej formie ze
 
 
 Myślę, że warto było by umieszczać wszelkie nowinki projektowe na wiki, miedzy innymi w tym miejscu ;]
+
+
+----
+
+= Architektura modułu =
+
+Pojedyncze moduły mogą komunikować się tylko z fasadami w projekcie TopCalendar.Client.Connector + przez eventy. Z zewnątrz jedyne odwołanie jest z Bootstrapera, docelowo z managera pluginów (bo coś musi wywołać klasę definiującą moduł).
+
+Na schemacie wpisane jest z grubsza co poszczególne klasy robią. Strzałka oznacza "korzysta z".
+
+http://www.lotosgdansk.pl/tmp/TopCalendarModule.png
