@@ -1,4 +1,3 @@
-#labels Featured
 = Zadania do sprintu 4 - termin 1 listopada =
 
 Tak pro forma kontynuuję numerację sprintów ;)
