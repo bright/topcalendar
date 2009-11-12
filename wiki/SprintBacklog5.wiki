@@ -1,0 +1,13 @@
+#labels Featured
+= Zadania do sprintu 5 - termin 22 listopada? =
+
+Działamy działamy!
+W przyszłym tygodniu wypadałoby pokazać coś :)
+
+|| *Zadanie* || *Kto?* ||
+|| Prosty widok miesiąca ||  ||
+|| Dodawanie zadań ||  ||
+|| Manager pluginów - początek || AB ||
+|| Dodawanie i pobieranie zadań po stronie serwera + fasada kliencka || MŁ ||
+
+I nie komitujemy bez testów :)
