@@ -35,12 +35,6 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
 
 	public class when_adding_null_top_level_by_mp : observations_for_auto_created_sut_of_type<MenuProvider>
 	{
-		protected override void AfterSutCreation()
-		{
-			// wywalam defaultowe wpisy
-			Sut.Menus.Clear();
-		}
-
 		protected override void Because()
 		{
 			Sut.AddTopLevelMenu(null);

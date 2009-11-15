@@ -7,9 +7,18 @@ using TopCalendar.Utility.Tests;
 namespace TopCalendar.UI.Tests
 {
 	/// <summary>
-	/// nie wiedziec czemu nagle ten test przestal dzialac z dziwnym komunikate
+	/// Baaardzo brzydkie rozwiazanie, ale nie da sie chyba tego zrobic lepiej.
+	/// Test bootstrapera nie powinien ladowac pluginow, bo to inna bajka.
+	/// Nie da sie zamockowac metody wewnatrz Sut-a, nie jest chyba tez dobrym pomyslem
+	/// wynoszenie ladowania pluginow poza bootstraper, bo przeciez po to on jest.
 	/// </summary>
-	[Ignore]
+	public class TopCalendarUIBootstrapperForTest : TopCalendarUIBootstrapper
+	{
+		protected override void LoadPlugins()
+		{
+		}
+	}
+
 	public class when_running_topcalendaruibootstrapper
 		: observations_for_sut_of_type<TopCalendarUIBootstrapper>
 	{
@@ -20,7 +29,7 @@ namespace TopCalendar.UI.Tests
 
 		protected override TopCalendarUIBootstrapper CreateSut()
 		{
-			return new TopCalendarUIBootstrapper();
+			return new TopCalendarUIBootstrapperForTest();
 		}
 
 		[Test]
@@ -39,12 +48,6 @@ namespace TopCalendar.UI.Tests
 		public void should_configure_module_catalog()
 		{
 			Sut.Kernel.Get<IModuleCatalog>().ShouldNotBeNull();
-		}
-
-		[Test]
-		public void should_add_month_viewer_module()
-		{
-			Sut.Kernel.Get<IModuleCatalog>().Modules.ShouldContain(mi=> mi.ModuleType.Equals(typeof(MonthViewerModule).AssemblyQualifiedName));
 		}
 	}
 }

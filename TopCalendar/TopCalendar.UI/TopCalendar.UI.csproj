@@ -141,10 +141,6 @@
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
       <Name>Composite.Desktop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClientUI\ClientUI.csproj">
-      <Project>{74C39B72-91D2-4696-8AD0-F802319C0EB2}</Project>
-      <Name>ClientUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NinjectContrib.CompositePresentation\NinjectContrib.CompositePresentation.csproj">
       <Project>{B0AC560C-26B0-4D87-9CFA-2A1308149863}</Project>
       <Name>NinjectContrib.CompositePresentation</Name>
@@ -161,13 +157,9 @@
       <Project>{8F89764F-5880-4735-B15D-A1AD962105C0}</Project>
       <Name>TopCalendar.UI.MenuInfrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.UI.Modules.MonthViewer\TopCalendar.UI.Modules.MonthViewer.csproj">
-      <Project>{A016861B-AE17-413F-B93F-5345401EEF7B}</Project>
-      <Name>TopCalendar.UI.Modules.MonthViewer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.UI.Modules.Registration\TopCalendar.UI.Modules.Registration.csproj">
-      <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
-      <Name>TopCalendar.UI.Modules.Registration</Name>
+    <ProjectReference Include="..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
+      <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>
+      <Name>TopCalendar.UI.PluginManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
       <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
