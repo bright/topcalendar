@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows.Controls;
@@ -19,13 +20,22 @@ namespace TopCalendar.UI
 	        _serviceLocator = serviceLocator;
             _menuProvider = _serviceLocator.GetInstance<IMenuProvider>();
 
+	    	AddDefaultMenuEntries();
 	        SubscribeToDefaultEvents();
 
 			// observe changes in menu
 			_menuProvider.Menus.CollectionChanged += MenusCollectionChanged;
 	    }
 
-	    private void SubscribeToDefaultEvents()
+		private void AddDefaultMenuEntries()
+		{
+			var menu = _serviceLocator.GetInstance<IMenuManager>();
+			menu.AddTopLevelMenu("Program", "Program");
+			menu.AddItemToMenu<CloseAppEvent>("Program", "Finish", "Zakoñcz");
+			menu.AddTopLevelMenu("TasksMenu", "Zadania");
+		}
+
+		private void SubscribeToDefaultEvents()
 	    {
 	        var eventAggregator = _serviceLocator.GetInstance<IEventAggregator>();
 

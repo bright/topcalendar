@@ -16,29 +16,6 @@ namespace TopCalendar.UI.MenuInfrastructure
 
             Menus = new ObservableCollection<MenuEntry>();
             _itemsDict = new Dictionary<string, MenuEntry>();
-
-            SetDefaultMenu();
-        }
-
-        private void SetDefaultMenu()
-        {
-            var appMenu = AddTopLevelMenu(new MenuEntry()
-                              {
-                                  Name = "AppMenu", 
-                                  Header = "Program"
-                              });
-
-            AddItemToMenu(appMenu, new MenuEntry()
-                                  {
-                                      Header = "Zakoñcz",
-                                      Command = new MenuEventCommand<CloseAppEvent>(_serviceLocator)
-                                  });
-
-            AddTopLevelMenu(new MenuEntry()
-                            {
-                                Name = "TasksMenu",
-                                Header = "Zadania"
-                            });
         }
 
         public ObservableCollection<MenuEntry> Menus { get; set; }

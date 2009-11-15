@@ -3,21 +3,18 @@ using Microsoft.Practices.Composite.Modularity;
 using Microsoft.Practices.ServiceLocation;
 using Ninject;
 using NinjectContrib.CompositePresentation;
-using TopCalendar.Client.Connector;
 using TopCalendar.UI.MenuInfrastructure;
-using TopCalendar.UI.Modules.MonthViewer;
-using TopCalendar.UI.Modules.Registration;
+using TopCalendar.UI.PluginManager;
 
 namespace TopCalendar.UI
 {
 	public class TopCalendarUIBootstrapper : NinjectBootstrapper
-	{		
+	{
+		private readonly ModuleCatalog _moduleCatalog = new ModuleCatalog();
+
 		protected override IModuleCatalog GetModuleCatalog()
 		{
-			var cat = new ModuleCatalog();
-		    cat.AddModule(typeof (RegistrationModule));
-			cat.AddModule(typeof (MonthViewerModule));
-			return cat;
+			return _moduleCatalog;
 		}
 
 		protected override void ConfigureKernel()
@@ -25,9 +22,7 @@ namespace TopCalendar.UI
 			base.ConfigureKernel();
 			ServiceLocator.SetLocatorProvider(() => Kernel.Get<IServiceLocator>());
 
-            // Todo: moduly docelowo powinny ladowane przy uzyciu managera pluginow :)
-			Kernel.LoadModulesFromAssembly(typeof(IUserRegistrator).Assembly);
-
+			Kernel.Bind<IPluginLoader>().To<PluginLoader>();
 			Kernel.Bind<IShellView>().To<Shell>();
 
 		    Kernel.Bind<IMenuManager>().To<MenuManager>();
@@ -36,10 +31,19 @@ namespace TopCalendar.UI
 
 		protected override DependencyObject CreateShell()
 		{
+			LoadPlugins();
+
 		    var view = Kernel.Get<IShellView>();
 		    view.Model = Kernel.Get<ShellPresentationModel>();
 			view.Show();
+
 			return view as DependencyObject;
+		}
+
+		protected virtual void LoadPlugins()
+		{
+			var loader = Kernel.Get<IPluginLoader>();
+			loader.Load(_moduleCatalog);
 		}
 	}
 }
