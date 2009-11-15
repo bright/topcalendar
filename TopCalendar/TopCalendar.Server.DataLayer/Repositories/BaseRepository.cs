@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 using NHibernate;
 
@@ -37,16 +38,23 @@ namespace TopCalendar.Server.DataLayer.Repositories
             }
         }
 
-        public T Add(T entity)
+        public virtual T Add(T entity)
         {
             using (ISession session = GetSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
-                session.Save(entity);
-                transaction.Commit();
+                try
+                {
+                    session.Save(entity);
+                    transaction.Commit();
+                    return entity;
+                }
+                catch (Exception)
+                {      
+                   transaction.Rollback();
+                   throw;
+                }
             }
-
-            return entity;
         }
 
         public void Remove(T entity)

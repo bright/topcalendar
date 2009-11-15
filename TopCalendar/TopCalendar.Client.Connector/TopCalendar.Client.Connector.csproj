@@ -63,7 +63,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="UserRegistrator.cs" />
-    <Compile Include="UserRegistratorModule.cs" />
+    <Compile Include="UserRegistratorNinjectModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

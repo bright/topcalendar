@@ -15,7 +15,8 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserBaseRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserBaseRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.CheckUserRequest))]
@@ -78,21 +79,24 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RegisterUserRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RegisterUserRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
     [System.SerializableAttribute()]
     public partial class RegisterUserRequest : TopCalendar.Client.Connector.TopCalendarCommunicationService.UserBaseRequest {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CheckUserRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CheckUserRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
     [System.SerializableAttribute()]
     public partial class CheckUserRequest : TopCalendar.Client.Connector.TopCalendarCommunicationService.UserBaseRequest {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.CheckUserResponse))]
@@ -100,6 +104,9 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusReasonField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool SuccessField;
@@ -111,6 +118,19 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StatusReason {
+            get {
+                return this.StatusReasonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusReasonField, value) != true)) {
+                    this.StatusReasonField = value;
+                    this.RaisePropertyChanged("StatusReason");
+                }
             }
         }
         
@@ -139,14 +159,16 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RegisterUserResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RegisterUserResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
     [System.SerializableAttribute()]
     public partial class RegisterUserResponse : TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CheckUserResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CheckUserResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
     [System.SerializableAttribute()]
     public partial class CheckUserResponse : TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse {
     }
