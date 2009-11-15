@@ -1,54 +1,47 @@
 ﻿#region
 
-using System;
-using System.ServiceModel;
-using System.ServiceModel.Description;
+#endregion
+
+#region
+
+using Ninject;
+using TopCalendar.Server.Bootstrap.NinjectWcf;
+using TopCalendar.Server.DataLayer;
 using TopCalendar.Server.ServiceLibrary;
 
 #endregion
 
 namespace TopCalendar.Server.Bootstrap
 {
-
     /// <summary>
     /// 
     /// Bootstrapper, do ktorego zadan nalezy:
-    ///     1. odpalenie i skonfigurowanie nhibernate
+    ///     1. odpalenie i skonfigurowanie ninject
     ///     2. odpalenie serwisu wcf (url: http://localhost:80)
     /// 
     /// </summary>
     public class Program
     {
+
         public static void Main(string[] args)
         {
-            TopCalendarCommunicatioinServiceHost communicatioinServiceHost
-                = new TopCalendarCommunicatioinServiceHost();
-
-            communicatioinServiceHost.RunCommunicationServiceHost();
+            InitiateNinject();
+            RunCommunicationService();
         }
-    }
 
-
-    public class TopCalendarCommunicatioinServiceHost
-    {
-        public void RunCommunicationServiceHost()
+        private static void InitiateNinject()
         {
-            Console.WriteLine("starting communication service host");
+            KernelContainer.Kernel = new StandardKernel();
+            KernelContainer.Kernel.LoadModulesFromAssembly(typeof (DataLayerNinjectModule).Assembly);
+            KernelContainer.Kernel.LoadModulesFromAssembly(typeof (ServiceLibraryNinjectModule).Assembly);
+        }
 
-            Uri baseAddress2 = new Uri("http://localhost:80");
-            using (ServiceHost host = new ServiceHost(typeof (TopCalendarCommunicationServiceImpl), baseAddress2))
-            {
-                host.AddServiceEndpoint(typeof (ITopCalendarCommunicationService), new BasicHttpBinding(), "");
+        private static void RunCommunicationService()
+        {
+            CommunicationServiceHost communicationServiceHost
+                = new CommunicationServiceHost();
 
-                ServiceMetadataBehavior smb = new ServiceMetadataBehavior {HttpGetEnabled = true};
-                host.Description.Behaviors.Add(smb);
-
-                host.Open();
-
-                Console.WriteLine("service started, press any key to halt");
-
-                Console.ReadKey();
-            }
+            communicationServiceHost.RunCommunicationServiceHost();
         }
     }
 }

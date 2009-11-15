@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{46EE4EDF-AB17-408C-ABE9-10E45ECAC614}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{7175BF70-0E9E-47A1-9F61-324CAF068209}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TopCalendar.Server.Bootstrap</RootNamespace>
-    <AssemblyName>TopCalendar.Server.Bootstrap</AssemblyName>
+    <RootNamespace>TopCalendar.Server.DataLayer.Tests</RootNamespace>
+    <AssemblyName>TopCalendar.Server.DataLayer.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\Castle.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\Castle.DynamicProxy2.dll</HintPath>
@@ -46,10 +42,6 @@
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -63,6 +55,26 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.core, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Rhino.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Rhino.Testing.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -70,12 +82,6 @@
     <Reference Include="System.Data.SQLite, Version=1.0.60.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\DataLayer\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.ServiceModel.Web">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -87,23 +93,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NinjectWcf\NinjectServiceHostFactory.cs" />
-    <Compile Include="NinjectWcf\KernelContainer.cs" />
-    <Compile Include="NinjectWcf\NinjectInstanceProvider.cs" />
-    <Compile Include="NinjectWcf\NinjectServiceBehavior.cs" />
-    <Compile Include="NinjectWcf\NinjectServiceHost.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="when_adding_new_user_to_repository.cs" />
+    <Compile Include="observations_for_adding_new_user_to_repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CommunicationServiceHost.cs" />
+    <Compile Include="when_adding_new_user_with_existing_login_to_repository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tests\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj">
+      <Project>{2DD936B1-4635-4A59-BFA4-385A76BDE801}</Project>
+      <Name>TopCalendar.Utility.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Server.DataLayer\TopCalendar.Server.DataLayer.csproj">
       <Project>{D50862E2-68AF-4F70-A641-72D55294D780}</Project>
       <Name>TopCalendar.Server.DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.Server.ServiceLibrary\TopCalendar.Server.ServiceLibrary.csproj">
-      <Project>{F9DC70A0-6A86-4910-80B5-E5E1283E99BF}</Project>
-      <Name>TopCalendar.Server.ServiceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

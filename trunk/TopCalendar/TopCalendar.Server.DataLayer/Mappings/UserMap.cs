@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿#region
+
 using FluentNHibernate.Mapping;
 using TopCalendar.Server.DataLayer.Entities;
+
+#endregion
 
 namespace TopCalendar.Server.DataLayer.Mappings
 {
@@ -12,8 +12,8 @@ namespace TopCalendar.Server.DataLayer.Mappings
         public UserMap()
         {
             Id(x => x.Id);
-            Map(x => x.Login);
-            Map(x => x.Password);
+            Map(x => x.Login).Not.Nullable().Unique();
+            Map(x => x.Password).Not.Nullable();
         }
     }
 }

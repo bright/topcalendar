@@ -99,9 +99,9 @@ namespace TopCalendar.UI.Modules.Registration
     	{
     		_eventAggregator.GetEvent<ViewShouldDie<IRegistrationView>>().Publish(View);
 
-            Registrator.Register("michal","test2");
+            Registrator.Register(Login,Password);
 
-    		Log.Log(string.Format("{0}, {1} - zarejestrwonay", Login, Password), Category.Info, Priority.None);
+    		Log.Log(string.Format("{0}, {1} - zarejestrowany", Login, Password), Category.Info, Priority.None);
     	}
     }
 }

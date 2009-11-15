@@ -47,17 +47,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.MenuInfrastr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.MenuInfrastructure.Tests", "Tests\TopCalendar.UI.MenuInfrastructure.Tests\TopCalendar.UI.MenuInfrastructure.Tests.csproj", "{C6C94832-9A9F-421E-996A-679A32119187}"
 EndProject
-<<<<<<< .mine
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.Bootstrap", "TopCalendar.Server.Bootstrap\TopCalendar.Server.Bootstrap.csproj", "{46EE4EDF-AB17-408C-ABE9-10E45ECAC614}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.ServiceLibrary", "TopCalendar.Server.ServiceLibrary\TopCalendar.Server.ServiceLibrary.csproj", "{F9DC70A0-6A86-4910-80B5-E5E1283E99BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.DataLayer", "TopCalendar.Server.DataLayer\TopCalendar.Server.DataLayer.csproj", "{D50862E2-68AF-4F70-A641-72D55294D780}"
 EndProject
-=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composite.Desktop.EventAggregator", "Tests\Composite.Desktop.EventAggregator\Composite.Desktop.EventAggregator.csproj", "{C23341FA-96B5-4D8A-86BE-47F58EE7E685}"
 EndProject
->>>>>>> .r144
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.ServiceLibrary.Tests", "TopCalendar.Server.ServiceLibrary.Tests\TopCalendar.Server.ServiceLibrary.Tests.csproj", "{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.DataLayer.Tests", "TopCalendar.Server.DataLayer.Tests\TopCalendar.Server.DataLayer.Tests.csproj", "{7175BF70-0E9E-47A1-9F61-324CAF068209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -144,7 +145,6 @@ Global
 		{C6C94832-9A9F-421E-996A-679A32119187}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6C94832-9A9F-421E-996A-679A32119187}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6C94832-9A9F-421E-996A-679A32119187}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< .mine
 		{46EE4EDF-AB17-408C-ABE9-10E45ECAC614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{46EE4EDF-AB17-408C-ABE9-10E45ECAC614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46EE4EDF-AB17-408C-ABE9-10E45ECAC614}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -157,12 +157,18 @@ Global
 		{D50862E2-68AF-4F70-A641-72D55294D780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D50862E2-68AF-4F70-A641-72D55294D780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D50862E2-68AF-4F70-A641-72D55294D780}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{C23341FA-96B5-4D8A-86BE-47F58EE7E685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C23341FA-96B5-4D8A-86BE-47F58EE7E685}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C23341FA-96B5-4D8A-86BE-47F58EE7E685}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C23341FA-96B5-4D8A-86BE-47F58EE7E685}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> .r144
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -181,5 +187,7 @@ Global
 		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{C6C94832-9A9F-421E-996A-679A32119187} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{C23341FA-96B5-4D8A-86BE-47F58EE7E685} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
+		{7175BF70-0E9E-47A1-9F61-324CAF068209} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 	EndGlobalSection
 EndGlobal

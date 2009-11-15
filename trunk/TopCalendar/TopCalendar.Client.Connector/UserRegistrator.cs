@@ -25,7 +25,10 @@ namespace TopCalendar.Client.Connector
 
         public void Register(string login, string password)
         {
-            _service.RegisterUser(new RegisterUserRequest {Login = login, Password = password});
+            RegisterUserResponse response =
+                _service.RegisterUser(new RegisterUserRequest {Login = login, Password = password});
+
+            Console.WriteLine(response);
         }
 
         #endregion

@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=2.0.0.152, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -48,18 +52,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseResponse.cs" />
-    <Compile Include="CheckUserRequest.cs" />
-    <Compile Include="ITopCalendarCommunicationService.cs" />
-    <Compile Include="RegisterUserRequest.cs" />
-    <Compile Include="RegisterUserResponse.cs" />
-    <Compile Include="CheckUserResponse.cs" />
+    <Compile Include="ServiceContract\DataContract\BaseResponse.cs" />
+    <Compile Include="ServiceContract\DataContract\CheckUserRequest.cs" />
+    <Compile Include="ServiceContract\DataContract\StatusReason\StatusReasonFor.cs" />
+    <Compile Include="ServiceContract\ITopCalendarCommunicationService.cs" />
+    <Compile Include="ServiceContract\DataContract\RegisterUserRequest.cs" />
+    <Compile Include="ServiceContract\DataContract\RegisterUserResponse.cs" />
+    <Compile Include="ServiceContract\DataContract\CheckUserResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TopCalendarCommunicationServiceImpl.cs" />
-    <Compile Include="UserBaseRequest.cs" />
+    <Compile Include="ServiceImp\TopCalendarCommunicationServiceImpl.cs" />
+    <Compile Include="ServiceContract\DataContract\UserBaseRequest.cs" />
+    <Compile Include="ServiceLibraryNinjectModule.cs" />
+    <Compile Include="ServiceLogic\RequestToResponseLogic.cs" />
+    <Compile Include="ServiceLogic\UserRegistrationLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TopCalendar.Server.DataLayer\TopCalendar.Server.DataLayer.csproj">
+      <Project>{D50862E2-68AF-4F70-A641-72D55294D780}</Project>
+      <Name>TopCalendar.Server.DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
