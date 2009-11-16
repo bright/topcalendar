@@ -55,23 +55,34 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PluginLoaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
+      <Project>{F807062D-6FC9-4FF0-A9F5-5F94653EDC4D}</Project>
+      <Name>Composite.Presentation.Desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
       <Name>Composite.Desktop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TopCalendar.UI.Modules.Registration\TopCalendar.UI.Modules.Registration.csproj">
-      <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
-      <Name>TopCalendar.UI.Modules.Registration</Name>
+    <ProjectReference Include="..\..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
+      <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
+      <Name>TopCalendar.UI.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
       <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>
       <Name>TopCalendar.UI.PluginManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TopCalendar.Utility\TopCalendar.Utility.csproj">
+      <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
+      <Name>TopCalendar.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj">
       <Project>{2DD936B1-4635-4A59-BFA4-385A76BDE801}</Project>

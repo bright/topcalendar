@@ -15,12 +15,10 @@ namespace TopCalendar.UI
 	{
 	    private readonly IMenuProvider _menuProvider;
 	    private readonly IServiceLocator _serviceLocator;
-		private readonly IShellController _shellController;
 
-		public ShellPresentationModel(IServiceLocator serviceLocator, IRegionManager regionManager, IShellController shellController)
+		public ShellPresentationModel(IServiceLocator serviceLocator)
 	    {
 	        _serviceLocator = serviceLocator;
-			_shellController = shellController;
 			_menuProvider = _serviceLocator.GetInstance<IMenuProvider>();
 
 	    	AddDefaultMenuEntries();
@@ -46,8 +44,6 @@ namespace TopCalendar.UI
 	        eventAggregator.GetEvent<CloseAppEvent>().Subscribe(
                 f => _serviceLocator.GetInstance<IShellView>().Close()
             );
-
-			eventAggregator.GetEvent<ViewCompleted<IRegistrationView>>().Subscribe(view => _shellController.ViewCompleted(view, RegionNames.MainContent));
 	    }		
 
 		public ObservableCollection<MenuItem> MainMenu

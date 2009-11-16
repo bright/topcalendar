@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Practices.Composite.Events;
+﻿using Microsoft.Practices.Composite.Events;
 using NUnit.Framework;
 using Rhino.Mocks;
 using TopCalendar.UI.Infrastructure;
@@ -11,8 +10,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 	public class when_executing_cancel
 		: observations_for_auto_created_sut_of_type<RegistrationPresentationModel>
 	{
-		private IRegistrationView RegisterView;
-		private ViewCompleted<IRegistrationView> subscriber;
+		private UnloadModuleEvent subscriber;
 		
 		private bool _cancelActionExecuted;
 
@@ -23,17 +21,17 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 
 		protected override void EstablishContext()
 		{
-			subscriber = new ViewCompleted<IRegistrationView>();
+			subscriber = new UnloadModuleEvent();
 			subscriber.Subscribe(execute_action);
 			_cancelActionExecuted = false;	
 			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<ViewCompleted<IRegistrationView>>())
+				.Stub(ea => ea.GetEvent<UnloadModuleEvent>())
 				.IgnoreArguments()
 				.Return(subscriber);
 		}
 
 		[Test]
-		public void should_publish_view_should_die_event()
+		public void should_publish_unload_module_event()
 		{
 			_cancelActionExecuted.ShouldBeTrue();
 		}
@@ -47,19 +45,31 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 	public class when_filling_login_and_password
 		: observations_for_auto_created_sut_of_type<RegistrationPresentationModel>
 	{
-		private IRegistrationView RegisterView;
-		private ViewCompleted<IRegistrationView> subscriber;
-		private bool _viewShoulDieExecuted;
+		private RegistrationCompletedEvent regCompletedSubscriber;
+		private UnloadModuleEvent unloadSubscriber;
+
+
+		private bool _viewShouldDieExecuted;
+		private bool _registeredExecuted;
 
 		protected override void EstablishContext()
 		{
-			subscriber = new ViewCompleted<IRegistrationView>();			
-			subscriber.Subscribe(execute_action);
-			_viewShoulDieExecuted = false;
+			unloadSubscriber = new UnloadModuleEvent();			
+			unloadSubscriber.Subscribe(execute_unload);
+
+			regCompletedSubscriber = new RegistrationCompletedEvent();
+			regCompletedSubscriber.Subscribe(execute_register);
+
+			_viewShouldDieExecuted = false;
+
 			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<ViewCompleted<IRegistrationView>>())
+				.Stub(ea => ea.GetEvent<UnloadModuleEvent>())
 				.IgnoreArguments()
-				.Return(subscriber);				
+				.Return(unloadSubscriber);
+			Dependency<IEventAggregator>()
+				.Stub(ea => ea.GetEvent<RegistrationCompletedEvent>())
+				.IgnoreArguments()
+				.Return(regCompletedSubscriber);
 		}		
 
 		protected override void AfterSutCreation()
@@ -82,14 +92,24 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		[Test]
 		public void should_publish_view_should_die()
 		{
-			_viewShoulDieExecuted.ShouldBeTrue();
+			_viewShouldDieExecuted.ShouldBeTrue();
 		}
 
-		private void execute_action(IView obj)
+		[Test]
+		public void should_publish_registration_completed()
 		{
-			_viewShoulDieExecuted = true;
+			_registeredExecuted.ShouldBeTrue();
 		}
 
+		private void execute_unload(IView obj)
+		{
+			_viewShouldDieExecuted = true;
+		}
+
+		private void execute_register(string str)
+		{
+			_registeredExecuted = true;
+		}
 	}
 
 
