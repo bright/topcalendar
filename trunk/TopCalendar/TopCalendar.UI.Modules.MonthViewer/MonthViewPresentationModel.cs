@@ -6,11 +6,6 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		{
 			get { return new MonthView(); }
 		}
-	}
-
-
-    public interface IBaseView {
-        void Show();
-    }
+	}    
 
 }

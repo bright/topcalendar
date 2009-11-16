@@ -97,6 +97,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IShellController.cs" />
     <Compile Include="IShellView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -156,6 +157,14 @@
     <ProjectReference Include="..\TopCalendar.UI.MenuInfrastructure\TopCalendar.UI.MenuInfrastructure.csproj">
       <Project>{8F89764F-5880-4735-B15D-A1AD962105C0}</Project>
       <Name>TopCalendar.UI.MenuInfrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.Modules.MonthViewer\TopCalendar.UI.Modules.MonthViewer.csproj">
+      <Project>{A016861B-AE17-413F-B93F-5345401EEF7B}</Project>
+      <Name>TopCalendar.UI.Modules.MonthViewer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.Modules.Registration\TopCalendar.UI.Modules.Registration.csproj">
+      <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
+      <Name>TopCalendar.UI.Modules.Registration</Name>
     </ProjectReference>
     <ProjectReference Include="..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
       <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>

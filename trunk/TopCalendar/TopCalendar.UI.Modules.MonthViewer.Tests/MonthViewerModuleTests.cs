@@ -32,26 +32,6 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 		{
 			Sut.Initialize();
 		}
-
-		[Test]
-		public void should_register_view_with_main_conent()
-		{
-			Dependency<IRegionViewRegistry>()
-				.AssertWasCalled(irvr=> irvr.RegisterViewWithRegion(
-					Arg.Is(RegionNames.MainContent), Arg<Func<object>>.Is.Anything));
-		}
-
-		[Test]
-		public void should_register_month_view_with_main_content()
-		{
-			Dependency<IRegionViewRegistry>()
-				.AssertWasCalled(irvr => irvr.RegisterViewWithRegion(
-             		Arg.Is(RegionNames.MainContent),
-             		Arg<Func<object>>.Matches(
-             			o => (o.Invoke() as IMonthView) != null
-						)));
-					
-		}
 	}
 	
 }

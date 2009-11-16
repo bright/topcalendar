@@ -69,6 +69,7 @@
     <Compile Include="observations_for_system_of_type.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecificationExtensions.cs" />
+    <Compile Include="UI\NofifyPropertyChangedTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TopCalendar.Utility\TopCalendar.Utility.csproj">

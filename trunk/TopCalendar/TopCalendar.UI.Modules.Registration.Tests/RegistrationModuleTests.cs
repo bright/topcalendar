@@ -2,7 +2,9 @@
 using Microsoft.Practices.Composite.Events;
 using NUnit.Framework;
 using Rhino.Mocks;
+using TopCalendar.UI.Infrastructure;
 using TopCalendar.Utility.Tests;
+using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.Registration.Tests
 {
@@ -10,7 +12,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		: observations_for_auto_created_sut_of_type<RegistrationPresentationModel>
 	{
 		private IRegistrationView RegisterView;
-		private ViewShouldDie<IRegistrationView> subscriber;
+		private ViewCompleted<IRegistrationView> subscriber;
 		
 		private bool _cancelActionExecuted;
 
@@ -21,11 +23,11 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 
 		protected override void EstablishContext()
 		{
-			subscriber = new ViewShouldDie<IRegistrationView>();
+			subscriber = new ViewCompleted<IRegistrationView>();
 			subscriber.Subscribe(execute_action);
 			_cancelActionExecuted = false;	
 			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<ViewShouldDie<IRegistrationView>>())
+				.Stub(ea => ea.GetEvent<ViewCompleted<IRegistrationView>>())
 				.IgnoreArguments()
 				.Return(subscriber);
 		}
@@ -36,7 +38,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 			_cancelActionExecuted.ShouldBeTrue();
 		}
 
-		private void execute_action(IRegistrationView obj)
+		private void execute_action(IView obj)
 		{
 			_cancelActionExecuted = true;
 		}
@@ -46,16 +48,16 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		: observations_for_auto_created_sut_of_type<RegistrationPresentationModel>
 	{
 		private IRegistrationView RegisterView;
-		private ViewShouldDie<IRegistrationView> subscriber;
+		private ViewCompleted<IRegistrationView> subscriber;
 		private bool _viewShoulDieExecuted;
 
 		protected override void EstablishContext()
 		{
-			subscriber = new ViewShouldDie<IRegistrationView>();			
+			subscriber = new ViewCompleted<IRegistrationView>();			
 			subscriber.Subscribe(execute_action);
 			_viewShoulDieExecuted = false;
 			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<ViewShouldDie<IRegistrationView>>())
+				.Stub(ea => ea.GetEvent<ViewCompleted<IRegistrationView>>())
 				.IgnoreArguments()
 				.Return(subscriber);				
 		}		
@@ -83,7 +85,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 			_viewShoulDieExecuted.ShouldBeTrue();
 		}
 
-		private void execute_action(IRegistrationView obj)
+		private void execute_action(IView obj)
 		{
 			_viewShoulDieExecuted = true;
 		}
