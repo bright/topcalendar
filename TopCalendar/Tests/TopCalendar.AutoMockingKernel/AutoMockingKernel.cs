@@ -180,8 +180,8 @@ namespace TopCalendar.NinjectAutoMockingKernel
 			}
 
 
-			if (service.ContainsGenericParameters)
-				return false;
+			//if (service.ContainsGenericParameters)
+			//    return false;
 
 			binding = new Binding(service)
 			          	{

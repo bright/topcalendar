@@ -10,6 +10,7 @@ namespace TopCalendar.Utility.BasicExtensions
 {
 	public static class BasicExtensions
 	{
+
 		public static bool IsEmpty(this string stringValue)
 		{
 			return string.IsNullOrEmpty(stringValue);

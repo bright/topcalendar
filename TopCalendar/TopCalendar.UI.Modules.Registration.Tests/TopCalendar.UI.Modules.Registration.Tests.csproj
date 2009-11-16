@@ -72,6 +72,10 @@
       <Project>{2DD936B1-4635-4A59-BFA4-385A76BDE801}</Project>
       <Name>TopCalendar.Utility.Tests</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
+      <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
+      <Name>TopCalendar.UI.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.UI.Modules.Registration\TopCalendar.UI.Modules.Registration.csproj">
       <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
       <Name>TopCalendar.UI.Modules.Registration</Name>

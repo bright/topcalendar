@@ -86,7 +86,6 @@
     <Compile Include="RegistrationView.xaml.cs">
       <DependentUpon>RegistrationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewShouldDie.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="RegistrationView.xaml">

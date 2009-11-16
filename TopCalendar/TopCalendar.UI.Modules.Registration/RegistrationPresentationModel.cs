@@ -7,6 +7,7 @@ using Microsoft.Practices.EnterpriseLibrary.Validation;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using Ninject;
 using TopCalendar.Client.Connector;
+using TopCalendar.UI.Infrastructure;
 using TopCalendar.Utility.BasicExtensions;
 using TopCalendar.Utility.UI;
 
@@ -45,7 +46,7 @@ namespace TopCalendar.UI.Modules.Registration
 
 		private void Cancel(object obj)
 		{
-			_eventAggregator.GetEvent<ViewShouldDie<IRegistrationView>>()
+			_eventAggregator.GetEvent<ViewCompleted<IRegistrationView>>()
 				.Publish(View);
 			Log.Log("Rejestracja anulowana", Category.Info, Priority.None);
 		}
@@ -95,13 +96,11 @@ namespace TopCalendar.UI.Modules.Registration
     		return Validation.Validate(this).IsValid;
     	}
 
-    	private void Register(object obj)
-    	{
-    		_eventAggregator.GetEvent<ViewShouldDie<IRegistrationView>>().Publish(View);
-
-            Registrator.Register(Login,Password);
-
-    		Log.Log(string.Format("{0}, {1} - zarejestrowany", Login, Password), Category.Info, Priority.None);
-    	}
+		private void Register(object obj)
+		{			
+			Registrator.Register(Login, Password);			
+			Log.Log("{0}, {1} - zarejestrwonay".ToFormat(Login, Password), Category.Info, Priority.None);
+			_eventAggregator.GetEvent<ViewCompleted<IRegistrationView>>().Publish(View);
+		}
     }
 }
