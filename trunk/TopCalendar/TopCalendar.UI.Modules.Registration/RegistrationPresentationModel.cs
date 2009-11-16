@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Input;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Logging;
@@ -8,7 +7,6 @@ using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using Ninject;
 using TopCalendar.Client.Connector;
 using TopCalendar.UI.Infrastructure;
-using TopCalendar.Utility.BasicExtensions;
 using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.Registration
@@ -46,8 +44,7 @@ namespace TopCalendar.UI.Modules.Registration
 
 		private void Cancel(object obj)
 		{
-			_eventAggregator.GetEvent<ViewCompleted<IRegistrationView>>()
-				.Publish(View);
+			_eventAggregator.GetEvent<UnloadModuleEvent>().Publish(View);
 			Log.Log("Rejestracja anulowana", Category.Info, Priority.None);
 		}
 
@@ -68,7 +65,8 @@ namespace TopCalendar.UI.Modules.Registration
     	public string Login
     	{
 			get { return _login; }
-			set { 
+			set 
+			{ 
 				_login = value;
 				OnPropertyChanged("Login");
 				_registerCommand.RaiseCanExecuteChanged();
@@ -84,7 +82,8 @@ namespace TopCalendar.UI.Modules.Registration
     		{
     			return _password;
     		}
-    		set { 
+    		set 
+			{ 
 				_password = value; 
 				OnPropertyChanged("Password");
 				_registerCommand.RaiseCanExecuteChanged();
@@ -96,11 +95,15 @@ namespace TopCalendar.UI.Modules.Registration
     		return Validation.Validate(this).IsValid;
     	}
 
-		private void Register(object obj)
-		{			
-			Registrator.Register(Login, Password);			
-			Log.Log("{0}, {1} - zarejestrwonay".ToFormat(Login, Password), Category.Info, Priority.None);
-			_eventAggregator.GetEvent<ViewCompleted<IRegistrationView>>().Publish(View);
-		}
+    	private void Register(object obj)
+    	{
+            Registrator.Register(Login, Password);
+
+    		Log.Log(string.Format("{0}, {1} - zarejestrowany", Login, Password), Category.Info, Priority.None);
+
+			_eventAggregator.GetEvent<UnloadModuleEvent>().Publish(View);
+			var e = _eventAggregator.GetEvent<RegistrationCompletedEvent>();
+			e.Publish(Login);
+    	}
     }
 }

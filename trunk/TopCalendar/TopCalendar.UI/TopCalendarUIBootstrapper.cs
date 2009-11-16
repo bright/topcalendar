@@ -24,7 +24,6 @@ namespace TopCalendar.UI
 
 			Kernel.Bind<IPluginLoader>().To<PluginLoader>();
 			Kernel.Bind<IShellView>().To<Shell>();
-			Kernel.Bind<IShellController>().To<ShellController>();
 		    Kernel.Bind<IMenuManager>().To<MenuManager>();
 		    Kernel.Bind<IMenuProvider>().To<MenuProvider>();
 		}
