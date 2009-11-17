@@ -1,4 +1,5 @@
 #summary Polecam przeczytać ten artykuł, wzorce z mvp,mvc,mvvm w przystępnej formie zebrane w jednym miejscu.
+#labels Featured
 
 = Architektura kalendarzyka i wzorce =
 
@@ -21,3 +22,8 @@ Pojedyncze moduły mogą komunikować się tylko z fasadami w projekcie TopCalen
 Na schemacie wpisane jest z grubsza co poszczególne klasy robią. Strzałka oznacza "korzysta z".
 
 http://www.lotosgdansk.pl/tmp/TopCalendarModule.png
+
+Do obsługi GUI moduły powinny:
+ * nasłuchiwać na eventy, na które chcą się wyświetlić
+ * w reakcji na event dopisać się do regionu za pomocą IPluginLoader.RegisterViewWithRegion(string regionName, IView view) - nazwy regionów są zdefiniowane w RegionNames i realizowane w XAML-u
+ * jeśli chcą się usunąć z GUI - powinny opublikować event UnloadModuleEvent z obiektem IView jako parametr
