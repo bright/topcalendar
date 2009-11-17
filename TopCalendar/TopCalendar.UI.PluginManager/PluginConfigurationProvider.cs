@@ -1,17 +1,63 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using Microsoft.Practices.Composite.Modularity;
 using TopCalendar.Client.Connector;
-using TopCalendar.UI.Modules.MonthViewer;
-using TopCalendar.UI.Modules.Registration;
 
 namespace TopCalendar.UI.PluginManager
 {
+	public struct Plugin
+	{
+		public string Assembly { get; set; }
+		public bool IsActive { get; set; }
+	}
+
 	public class PluginConfigurationProvider : IPluginConfigurationProvider
 	{
+		private readonly IPluginConfigurationHandler _handler;
+		private readonly List<Type> _pluginsList = new List<Type>();
+
+		public PluginConfigurationProvider(IPluginConfigurationHandler handler)
+		{
+			_handler = handler;
+		}
+
+		private void TryLoadPlugin(Plugin plugin)
+		{
+			if (File.Exists(plugin.Assembly))
+			{
+				try
+				{
+					var ass = Assembly.LoadFrom(plugin.Assembly);
+					var plugins = (from item in ass.GetTypes()
+								   where item.IsClass
+										 && item.IsPublic
+										 && item.GetInterfaces().Contains(typeof(IModule))
+								   select item);
+					if (plugins.Count() > 0)
+					{
+						_pluginsList.AddRange(plugins);
+					}
+				}
+				catch (BadImageFormatException)
+				{
+					// @TODO zglosic userowi ze ma zlego plugina na liscie
+				}
+			}
+		}
+
 		public Type[] PresentationModules
 		{
 			get
 			{
-				return new[] {typeof (RegistrationModule), typeof (MonthViewerModule)};
+				foreach (var plugin in _handler.Plugins)
+				{
+					TryLoadPlugin(plugin);
+				}
+
+				return _pluginsList.ToArray();
 			}
 		}
 

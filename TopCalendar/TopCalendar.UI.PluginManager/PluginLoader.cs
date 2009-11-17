@@ -20,16 +20,21 @@ namespace TopCalendar.UI.PluginManager
 		{
 			_kernel = kernel;
 			_kernel.Bind<IPluginConfigurationProvider>().To<PluginConfigurationProvider>();
+			_kernel.Bind<IPluginConfigurationHandler>().To<PluginConfigurationHandler>();
 
 			_eventAggregator = eventAggregator;
 			_regionManager = regionManager;
 
 			_configuration = _kernel.Get<IPluginConfigurationProvider>();
 
-			_eventAggregator.GetEvent<UnloadModuleEvent>().Subscribe(UnloadModule);
+			_eventAggregator.GetEvent<UnloadModuleEvent>().Subscribe(UnloadModuleView);
 		}
 
-		private void UnloadModule(IView moduleView)
+		/// <summary>
+		/// Wywala podany widok z wszystkich regionow, w ktorych jest zarejestrowany
+		/// </summary>
+		/// <param name="moduleView">Widok do wywalenia</param>
+		private void UnloadModuleView(IView moduleView)
 		{
 			var regions = from item in _kernel.Get<IRegionManager>().Regions
 			              where item.Views.Contains(moduleView)
@@ -41,6 +46,10 @@ namespace TopCalendar.UI.PluginManager
 			}
 		}
 
+		/// <summary>
+		/// Laduje moduly wg konfiguracji
+		/// </summary>
+		/// <param name="moduleCatalog"></param>
 		public void Load(ModuleCatalog moduleCatalog)
 		{
 			LoadNinjectModules();
@@ -70,6 +79,11 @@ namespace TopCalendar.UI.PluginManager
 			}
 		}
 
+		/// <summary>
+		/// Dodaje widok do regionu (wyswietla w UI), w razie potrzeby tworzy region
+		/// </summary>
+		/// <param name="regionName">Nazwa regionu. Regiony sa zdefiniowane w RegionNames</param>
+		/// <param name="view">Obiekt widoku</param>
 		public void RegisterViewWithRegion(string regionName, IView view)
 		{
 			if (!_regionManager.Regions.ContainsRegionWithName(regionName))
