@@ -36,6 +36,7 @@
       <HintPath>..\..\Lib\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -52,8 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPluginConfigurationHandler.cs" />
     <Compile Include="IPluginConfigurationProvider.cs" />
     <Compile Include="IPluginLoader.cs" />
+    <Compile Include="PluginConfigurationHandler.cs" />
     <Compile Include="PluginConfigurationProvider.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,18 +78,15 @@
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
       <Name>TopCalendar.UI.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.UI.Modules.MonthViewer\TopCalendar.UI.Modules.MonthViewer.csproj">
-      <Project>{A016861B-AE17-413F-B93F-5345401EEF7B}</Project>
-      <Name>TopCalendar.UI.Modules.MonthViewer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.UI.Modules.Registration\TopCalendar.UI.Modules.Registration.csproj">
-      <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
-      <Name>TopCalendar.UI.Modules.Registration</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
       <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
       <Name>TopCalendar.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="plugins.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

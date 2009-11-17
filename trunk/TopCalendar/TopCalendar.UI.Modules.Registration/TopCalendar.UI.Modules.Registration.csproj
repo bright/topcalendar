@@ -118,6 +118,10 @@
       <Project>{A016861B-AE17-413F-B93F-5345401EEF7B}</Project>
       <Name>TopCalendar.UI.Modules.MonthViewer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
+      <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>
+      <Name>TopCalendar.UI.PluginManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
       <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
       <Name>TopCalendar.Utility</Name>
