@@ -1,10 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientUI", "ClientUI\ClientUI.csproj", "{74C39B72-91D2-4696-8AD0-F802319C0EB2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApp", "ClientApp\ClientApp.csproj", "{E97C20A1-D4CB-4ACA-9C81-956D44CAF8D6}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CAL", "CAL", "{9EBE86EE-78B8-48BE-8FB2-93DCA9585DAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composite.Desktop", "..\CAL\Desktop\Composite\Composite.Desktop.csproj", "{77138947-1D13-4E22-AEE0-5D0DD046CA34}"
@@ -27,21 +23,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.Mont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Infrastructure", "TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj", "{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApp.Tests", "Tests\ClientApp.Tests\ClientApp.Tests.csproj", "{5367FDB8-5FEC-4EF0-AB67-1A6639B199BD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.AutoMockingKernel", "Tests\TopCalendar.AutoMockingKernel\TopCalendar.AutoMockingKernel.csproj", "{DFF495FB-981D-4AD3-87CA-9D48A3AD2AAB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Tests", "Tests\TopCalendar.UI.Tests\TopCalendar.UI.Tests.csproj", "{C9BB626F-5733-4677-80CB-EF961073E3A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Utility.Tests", "Tests\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj", "{2DD936B1-4635-4A59-BFA4-385A76BDE801}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.MonthViewer.Tests", "TopCalendar.UI.Modules.MonthViewer.Tests\TopCalendar.UI.Modules.MonthViewer.Tests.csproj", "{6FC919AE-317E-40C8-9DBF-B947394156FE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Client.Connector", "TopCalendar.Client.Connector\TopCalendar.Client.Connector.csproj", "{15968E5F-9795-4391-BD4E-3D51247BCFCF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.Registration", "TopCalendar.UI.Modules.Registration\TopCalendar.UI.Modules.Registration.csproj", "{23E3796B-3A26-4142-B0E1-5D01793EC4AE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.Registration.Tests", "TopCalendar.UI.Modules.Registration.Tests\TopCalendar.UI.Modules.Registration.Tests.csproj", "{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.MenuInfrastructure", "TopCalendar.UI.MenuInfrastructure\TopCalendar.UI.MenuInfrastructure.csproj", "{8F89764F-5880-4735-B15D-A1AD962105C0}"
 EndProject
@@ -55,13 +45,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.DataLaye
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composite.Desktop.EventAggregator", "Tests\Composite.Desktop.EventAggregator\Composite.Desktop.EventAggregator.csproj", "{C23341FA-96B5-4D8A-86BE-47F58EE7E685}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.ServiceLibrary.Tests", "TopCalendar.Server.ServiceLibrary.Tests\TopCalendar.Server.ServiceLibrary.Tests.csproj", "{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.DataLayer.Tests", "TopCalendar.Server.DataLayer.Tests\TopCalendar.Server.DataLayer.Tests.csproj", "{7175BF70-0E9E-47A1-9F61-324CAF068209}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.PluginManager", "TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj", "{461E3737-E30B-4C6F-87C3-9FE12969795A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.PluginManager.Tests", "Tests\TopCalendar.UI.PluginManager.Tests\TopCalendar.UI.PluginManager.Tests.csproj", "{2346F023-C341-4D0A-975C-E93BD7260141}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.DataLayer.Tests", "Tests\TopCalendar.Server.DataLayer.Tests\TopCalendar.Server.DataLayer.Tests.csproj", "{7175BF70-0E9E-47A1-9F61-324CAF068209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.Server.ServiceLibrary.Tests", "Tests\TopCalendar.Server.ServiceLibrary.Tests\TopCalendar.Server.ServiceLibrary.Tests.csproj", "{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.MonthViewer.Tests", "Tests\TopCalendar.UI.Modules.MonthViewer.Tests\TopCalendar.UI.Modules.MonthViewer.Tests.csproj", "{6FC919AE-317E-40C8-9DBF-B947394156FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.Registration.Tests", "Tests\TopCalendar.UI.Modules.Registration.Tests\TopCalendar.UI.Modules.Registration.Tests.csproj", "{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,14 +63,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{74C39B72-91D2-4696-8AD0-F802319C0EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74C39B72-91D2-4696-8AD0-F802319C0EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74C39B72-91D2-4696-8AD0-F802319C0EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74C39B72-91D2-4696-8AD0-F802319C0EB2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E97C20A1-D4CB-4ACA-9C81-956D44CAF8D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E97C20A1-D4CB-4ACA-9C81-956D44CAF8D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E97C20A1-D4CB-4ACA-9C81-956D44CAF8D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E97C20A1-D4CB-4ACA-9C81-956D44CAF8D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{77138947-1D13-4E22-AEE0-5D0DD046CA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{77138947-1D13-4E22-AEE0-5D0DD046CA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77138947-1D13-4E22-AEE0-5D0DD046CA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -109,10 +95,6 @@ Global
 		{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5367FDB8-5FEC-4EF0-AB67-1A6639B199BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5367FDB8-5FEC-4EF0-AB67-1A6639B199BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5367FDB8-5FEC-4EF0-AB67-1A6639B199BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5367FDB8-5FEC-4EF0-AB67-1A6639B199BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DFF495FB-981D-4AD3-87CA-9D48A3AD2AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DFF495FB-981D-4AD3-87CA-9D48A3AD2AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFF495FB-981D-4AD3-87CA-9D48A3AD2AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -125,10 +107,6 @@ Global
 		{2DD936B1-4635-4A59-BFA4-385A76BDE801}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DD936B1-4635-4A59-BFA4-385A76BDE801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DD936B1-4635-4A59-BFA4-385A76BDE801}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FC919AE-317E-40C8-9DBF-B947394156FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FC919AE-317E-40C8-9DBF-B947394156FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6FC919AE-317E-40C8-9DBF-B947394156FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6FC919AE-317E-40C8-9DBF-B947394156FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{15968E5F-9795-4391-BD4E-3D51247BCFCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{15968E5F-9795-4391-BD4E-3D51247BCFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15968E5F-9795-4391-BD4E-3D51247BCFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -137,10 +115,6 @@ Global
 		{23E3796B-3A26-4142-B0E1-5D01793EC4AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23E3796B-3A26-4142-B0E1-5D01793EC4AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23E3796B-3A26-4142-B0E1-5D01793EC4AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F89764F-5880-4735-B15D-A1AD962105C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F89764F-5880-4735-B15D-A1AD962105C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F89764F-5880-4735-B15D-A1AD962105C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -165,14 +139,6 @@ Global
 		{C23341FA-96B5-4D8A-86BE-47F58EE7E685}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C23341FA-96B5-4D8A-86BE-47F58EE7E685}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C23341FA-96B5-4D8A-86BE-47F58EE7E685}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Release|Any CPU.Build.0 = Release|Any CPU
 		{461E3737-E30B-4C6F-87C3-9FE12969795A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{461E3737-E30B-4C6F-87C3-9FE12969795A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{461E3737-E30B-4C6F-87C3-9FE12969795A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -181,6 +147,22 @@ Global
 		{2346F023-C341-4D0A-975C-E93BD7260141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2346F023-C341-4D0A-975C-E93BD7260141}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2346F023-C341-4D0A-975C-E93BD7260141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7175BF70-0E9E-47A1-9F61-324CAF068209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FC919AE-317E-40C8-9DBF-B947394156FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FC919AE-317E-40C8-9DBF-B947394156FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FC919AE-317E-40C8-9DBF-B947394156FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FC919AE-317E-40C8-9DBF-B947394156FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,16 +173,15 @@ Global
 		{17831F3B-6B82-4916-BD2B-2CE2071EA622} = {9EBE86EE-78B8-48BE-8FB2-93DCA9585DAF}
 		{A016861B-AE17-413F-B93F-5345401EEF7B} = {04421911-D853-4847-84EA-8F8641AB4F25}
 		{23E3796B-3A26-4142-B0E1-5D01793EC4AE} = {04421911-D853-4847-84EA-8F8641AB4F25}
-		{5367FDB8-5FEC-4EF0-AB67-1A6639B199BD} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{DFF495FB-981D-4AD3-87CA-9D48A3AD2AAB} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{C9BB626F-5733-4677-80CB-EF961073E3A5} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{2DD936B1-4635-4A59-BFA4-385A76BDE801} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
-		{6FC919AE-317E-40C8-9DBF-B947394156FE} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
-		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{C6C94832-9A9F-421E-996A-679A32119187} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{C23341FA-96B5-4D8A-86BE-47F58EE7E685} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
-		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
-		{7175BF70-0E9E-47A1-9F61-324CAF068209} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{2346F023-C341-4D0A-975C-E93BD7260141} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
+		{7175BF70-0E9E-47A1-9F61-324CAF068209} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
+		{3E50C1CE-1BBA-4880-BD9C-80FCCD0DBAC9} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
+		{6FC919AE-317E-40C8-9DBF-B947394156FE} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
+		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 	EndGlobalSection
 EndGlobal
