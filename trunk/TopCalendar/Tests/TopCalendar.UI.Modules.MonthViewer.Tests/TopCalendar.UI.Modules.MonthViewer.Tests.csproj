@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DB45EEF8-632C-4179-B5E7-E42EB829C6C9}</ProjectGuid>
+    <ProjectGuid>{6FC919AE-317E-40C8-9DBF-B947394156FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TopCalendar.UI.Modules.Registration.Tests</RootNamespace>
-    <AssemblyName>TopCalendar.UI.Modules.Registration.Tests</AssemblyName>
+    <RootNamespace>TopCalendar.UI.Modules.MonthViewer.Tests</RootNamespace>
+    <AssemblyName>TopCalendar.UI.Modules.MonthViewer.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,12 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=2.0.0.152, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -54,35 +55,38 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RegistrationModuleTests.cs" />
+    <Compile Include="MonthViewerModuleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
+    <ProjectReference Include="..\..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
       <Project>{F807062D-6FC9-4FF0-A9F5-5F94653EDC4D}</Project>
       <Name>Composite.Presentation.Desktop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
+    <ProjectReference Include="..\..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
       <Name>Composite.Desktop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tests\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj">
+    <ProjectReference Include="..\TopCalendar.AutoMockingKernel\TopCalendar.AutoMockingKernel.csproj">
+      <Project>{DFF495FB-981D-4AD3-87CA-9D48A3AD2AAB}</Project>
+      <Name>TopCalendar.AutoMockingKernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj">
       <Project>{2DD936B1-4635-4A59-BFA4-385A76BDE801}</Project>
       <Name>TopCalendar.Utility.Tests</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
+    <ProjectReference Include="..\..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
       <Name>TopCalendar.UI.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.UI.Modules.Registration\TopCalendar.UI.Modules.Registration.csproj">
-      <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
-      <Name>TopCalendar.UI.Modules.Registration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
-      <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
-      <Name>TopCalendar.Utility</Name>
+    <ProjectReference Include="..\..\TopCalendar.UI.Modules.MonthViewer\TopCalendar.UI.Modules.MonthViewer.csproj">
+      <Project>{A016861B-AE17-413F-B93F-5345401EEF7B}</Project>
+      <Name>TopCalendar.UI.Modules.MonthViewer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
