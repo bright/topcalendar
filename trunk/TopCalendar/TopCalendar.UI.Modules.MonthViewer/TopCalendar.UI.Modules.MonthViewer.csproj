@@ -69,6 +69,7 @@
     <Compile Include="Configuration\TaskToMonthViewTaskMapping.cs" />
     <Compile Include="IMonthView.cs" />
     <Compile Include="IMonthViewPresentationModel.cs" />
+    <Compile Include="Model\DayTaskList.cs" />
     <Compile Include="Model\MonthTask.cs" />
     <Compile Include="MonthView.xaml.cs">
       <DependentUpon>MonthView.xaml</DependentUpon>
@@ -77,6 +78,7 @@
     <Compile Include="MonthViewPresentationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IMonthTaskLoader.cs" />
+    <Compile Include="Services\MonthTaskLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MonthView.xaml">

@@ -14,12 +14,12 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 		: observations_for_presentation_model_with_stubbed_view<MonthViewPresentationModel, IMonthView> 
 	{
 		private IMonthView _view;
-		private ObservableCollection<ObservableCollection<ObservableCollection<MonthTask>>> _returnedList;
+		private ObservableCollection<ObservableCollection<DayTaskList>> _returnedList;
 
 		protected override void EstablishContext()
 		{
 			base.EstablishContext();
-			_returnedList = new ObservableCollection<ObservableCollection<ObservableCollection<MonthTask>>>();
+			_returnedList = new ObservableCollection<ObservableCollection<DayTaskList>>();
 			Dependency<IMonthTaskLoader>()
 				.Stub(loader => loader.GetTasksForMonth(DateTime.Now, 0, 0))
 				.IgnoreArguments()

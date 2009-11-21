@@ -3,12 +3,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Model="clr-namespace:TopCalendar.UI.Modules.MonthViewer.Model"
     xmlns:Converters="clr-namespace:TopCalendar.Utility.UI.Converters;assembly=TopCalendar.Utility"
+    xmlns:Utilites="clr-namespace:TopCalendar.Utility.UI;assembly=TopCalendar.Utility"
     VerticalContentAlignment="Stretch"
     HorizontalAlignment="Stretch"             
              >
     <UserControl.Resources>
         
-        <Converters:DateTimeToShortTimeConverter x:Key="DateConverter"/>
+        <Converters:DateTimeToShortTimeConverter x:Key="DateToTimeStringConverter"/>
+        <Converters:DateTimeToShortDateStringConverter x:Key="DateToDateStringConverter"/>
         <Style x:Key="CellListView" TargetType="{x:Type ListView}">
             <Setter Property="Width" Value="130" />                        
             <Setter Property="Margin" Value="2"/>
@@ -22,21 +24,21 @@
             <StackPanel Orientation="Horizontal" Opacity="1" >                
                 <TextBlock Text="{Binding Name}"  />
                 <TextBlock> </TextBlock>
-                <TextBlock Text="{Binding StartAt, Converter={StaticResource DateConverter}}" />
+                <TextBlock Text="{Binding StartAt, Converter={StaticResource DateToTimeStringConverter}}" />
                 <TextBlock>-</TextBlock>
-                <TextBlock Text="{Binding FinishAt, Converter={StaticResource DateConverter}}" />                
+                <TextBlock Text="{Binding FinishAt, Converter={StaticResource DateToTimeStringConverter}}" />                
             </StackPanel>
         </DataTemplate>
         
         <DataTemplate x:Key="CellDataTemplate" >            
-            <ListView ItemsSource="{Binding}"                       
+            <ListView ItemsSource="{Binding TaskList}"                       
                       ItemTemplate="{DynamicResource TaskDataTemplate}"
                       Style="{StaticResource CellListView}"
                       >
                 <ListView.View>
                     <GridView >
                         <GridViewColumn                                                         
-                            Header="TuBedzieData" 
+                            Header="{Binding Day, Converter={StaticResource DateToDateStringConverter}}" 
                             CellTemplate="{DynamicResource TaskDataTemplate}"            
                                         />
                     </GridView>
@@ -52,15 +54,53 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>                
             </ItemsControl>            
+        </DataTemplate>                                
+        
+        <Utilites:HelperCollections x:Key="HelperCollections" />
+
+        <Style x:Key="DayNameTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Width" Value="130" />            
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="Background" Value="{StaticResource DarkBrush}" />
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="Foreground" Value="{StaticResource LightBrush}" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+
+        <DataTemplate x:Key="DayNamesDataTemplate">
+            <TextBlock Text="{Binding}"                        
+                       
+                       Style="{StaticResource DayNameTextBlockStyle}"/>
         </DataTemplate>
         
         
-       
 
     </UserControl.Resources>
             
-    <Grid>     
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ItemsControl x:Name="_headersDayNames"
+                      ItemTemplate="{StaticResource DayNamesDataTemplate}"
+                      ItemsSource="{Binding 
+                                        Source={StaticResource HelperCollections}, 
+                                        Path=WeekDayNames, 
+                                        Mode=OneTime}"                       
+                      >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"  />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
         <ItemsControl x:Name="_monthViewModel" 
+                      Grid.Row="1"
                       ItemTemplate="{DynamicResource RowDataTemplate}" 
                       ItemsSource="{Binding Tasks}"/>
     </Grid>

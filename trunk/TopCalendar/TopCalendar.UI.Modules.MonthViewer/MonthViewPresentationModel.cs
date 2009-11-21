@@ -14,7 +14,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		public static readonly int WeekCount = 5;
 		public static readonly int DayCount = 7;
 
-		private ObservableCollection<ObservableCollection<ObservableCollection<MonthTask>>> _tasks = new ObservableCollection<ObservableCollection<ObservableCollection<MonthTask>>>();
+		private ObservableCollection<ObservableCollection<DayTaskList>> _tasks = new ObservableCollection<ObservableCollection<DayTaskList>>();
 	
 		public MonthViewPresentationModel(IMonthView view, IMonthTaskLoader taskLoader) : base(view)
 		{
@@ -29,7 +29,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 			Tasks = _taskLoader.GetTasksForMonth(DateTime.Now, WeekCount, DayCount);
 		}
 
-		public ObservableCollection<ObservableCollection<ObservableCollection<MonthTask>>> Tasks
+		public ObservableCollection<ObservableCollection<DayTaskList>> Tasks
 		{
 			get{ return _tasks;}
 			private set
