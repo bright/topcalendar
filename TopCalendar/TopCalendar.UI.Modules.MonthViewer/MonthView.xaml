@@ -2,45 +2,66 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Model="clr-namespace:TopCalendar.UI.Modules.MonthViewer.Model"
+    xmlns:Converters="clr-namespace:TopCalendar.Utility.UI.Converters;assembly=TopCalendar.Utility"
     VerticalContentAlignment="Stretch"
     HorizontalAlignment="Stretch"             
              >
-    <UserControl.Resources>                
+    <UserControl.Resources>
         
+        <Converters:DateTimeToShortTimeConverter x:Key="DateConverter"/>
+        <Style x:Key="CellStackPanel" TargetType="{x:Type StackPanel}">
+            <Setter Property="Width" Value="130" />                        
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Opacity" Value="0.50"  />
+            <Setter Property="Background" Value="{StaticResource LightBrush}" />
+        </Style>
+        <Style x:Key="RowStackPanel" TargetType="{x:Type StackPanel}">
+            <Setter Property="Height" Value="100" />            
+        </Style>
         <DataTemplate x:Key="TaskDataTemplate" DataType="{x:Type Model:MonthTask}">
-            <StackPanel Orientation="Horizontal">                
-                <TextBox Text="{Binding Name}" />
-                <TextBox Text="{Binding StartAt}" />
-                <TextBox Text="{Binding FinishAt}" />                
+            <StackPanel Orientation="Horizontal" Opacity="1" >                
+                <TextBlock Text="{Binding Name}"  />
+                <TextBlock> </TextBlock>
+                <TextBlock Text="{Binding StartAt, Converter={StaticResource DateConverter}}" />
+                <TextBlock>-</TextBlock>
+                <TextBlock Text="{Binding FinishAt, Converter={StaticResource DateConverter}}" />                
             </StackPanel>
         </DataTemplate>
         
         <DataTemplate x:Key="CellDataTemplate" >            
-                <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource TaskDataTemplate}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical" />
+            <ListView ItemsSource="{Binding}"                       
+                      ItemTemplate="{DynamicResource TaskDataTemplate}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="TuBedzieData"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemsPanel>                
+                    <ItemsPanelTemplate>                          
+                        <StackPanel Orientation="Vertical"                                     
+                                    Style="{StaticResource CellStackPanel}"                                     
+                                    />                        
                     </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>            
+                </ListView.ItemsPanel>
+            </ListView>            
         </DataTemplate>
         
         <DataTemplate x:Key="RowDataTemplate" >
             <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource CellDataTemplate}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource RowStackPanel}"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>                
             </ItemsControl>            
         </DataTemplate>
         
+        
+       
+
     </UserControl.Resources>
             
-    <Grid>
-        <TextBlock>
-            Widok miesiaca            
-        </TextBlock>
+    <Grid>     
         <ItemsControl x:Name="_monthViewModel" 
                       ItemTemplate="{DynamicResource RowDataTemplate}" 
                       ItemsSource="{Binding Tasks}"/>
