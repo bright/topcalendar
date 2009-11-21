@@ -5,6 +5,7 @@ using NUnit.Framework;
 using Rhino.Mocks;
 using TopCalendar.UI.Infrastructure;
 using TopCalendar.Utility.Tests;
+using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.MonthViewer.Tests
 {
@@ -24,8 +25,8 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 
 		protected override void EstablishContext()
 		{
-			Stub<IMonthViewPresentationModel>()
-				.Stub(mvp => mvp.View).Return(Stub<IMonthView>());
+			Dependency<IPresentationModelFor<IMonthView>>()
+				.Stub(mvp => mvp.View).Return(Dependency<IMonthView>());
 		}
 
 		protected override void Because()

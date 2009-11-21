@@ -1,4 +1,5 @@
 using System;
+using AutoMapper;
 using CommonServiceLocator.NinjectAdapter;
 using Microsoft.Practices.ServiceLocation;
 using Ninject;
@@ -26,7 +27,7 @@ namespace TopCalendar.Utility.Tests
 		/// </summary>
 		[TearDown]
 		protected virtual void AfterEachObservation()
-		{
+		{			
 		}
 
 		/// <summary>
@@ -39,7 +40,7 @@ namespace TopCalendar.Utility.Tests
 		/// </summary>
 		protected virtual void EstablishContext()
 		{
-		}
+		}		
 	
 	}
 
@@ -96,7 +97,13 @@ namespace TopCalendar.Utility.Tests
 		protected IAutoMockingRepository AutoMockingRepository { get { return _mockingKernel; } }
 
 		protected IKernel Kernel { get { return _mockingKernel; } }		
-				
+		
+		//protected T GenerateStub<T>()
+		//    where T:class 
+		//{
+		//    return MockRepository.GenerateStub<T>();
+		//}
+
 		protected T Stub<T>()
 		{
 			_mockingKernel.MarkStub<T>();
@@ -109,7 +116,10 @@ namespace TopCalendar.Utility.Tests
 			return _mockingKernel.Get<T>();
 		}
 
-
+		protected void ProvideImpelentationOf<TType>(TType implementation)
+		{
+			Kernel.Bind<TType>().ToConstant(implementation);
+		}
 
 		protected T Dependency<T>()
 			where T : class 
@@ -145,4 +155,28 @@ namespace TopCalendar.Utility.Tests
 		}
 	}
 
+
+	public abstract class observations_for_mapping_configuration_defined_in<TMappingDefinition> : observations_for_mapping_configuration
+		where TMappingDefinition : IBootstrapperTask
+	{
+		protected override void EstablishContext()
+		{
+			TasksRunner.Get().Execute<TMappingDefinition>();
+			base.EstablishContext();
+		}
+	}
+
+	public abstract class observations_for_mapping_configuration : observations_for_sut
+	{
+		protected override void AfterEachObservation()
+		{
+			base.AfterEachObservation();
+			Mapper.Reset();
+		}
+
+		protected void assert_mapper_configuration_should_be_valid()
+		{
+			Mapper.AssertConfigurationIsValid();
+		}
+	}
 }

@@ -1,7 +1,8 @@
+using TopCalendar.Utility.UI;
+
 namespace TopCalendar.UI.Modules.MonthViewer
 {
-	public interface IMonthViewPresentationModel
-	{
-		IMonthView View { get; }
+	public interface IMonthViewPresentationModel : IPresentationModelFor<IMonthView>
+	{		
 	}
 }

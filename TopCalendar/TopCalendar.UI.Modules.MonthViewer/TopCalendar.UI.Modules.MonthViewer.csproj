@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=0.4.0.126, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\LIB\Desktop\CommonServiceLocation\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -62,14 +66,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\TaskToMonthViewTaskMapping.cs" />
     <Compile Include="IMonthView.cs" />
     <Compile Include="IMonthViewPresentationModel.cs" />
+    <Compile Include="Model\MonthTask.cs" />
     <Compile Include="MonthView.xaml.cs">
       <DependentUpon>MonthView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MonthViewerModule.cs" />
     <Compile Include="MonthViewPresentationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IMonthTaskLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MonthView.xaml">
@@ -78,13 +85,29 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
+      <Project>{F807062D-6FC9-4FF0-A9F5-5F94653EDC4D}</Project>
+      <Name>Composite.Presentation.Desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
       <Name>Composite.Desktop</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Client.Connector\TopCalendar.Client.Connector.csproj">
+      <Project>{15968E5F-9795-4391-BD4E-3D51247BCFCF}</Project>
+      <Name>TopCalendar.Client.Connector</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
       <Name>TopCalendar.UI.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
+      <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>
+      <Name>TopCalendar.UI.PluginManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
+      <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
+      <Name>TopCalendar.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
