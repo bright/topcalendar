@@ -19,7 +19,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests.Services
 	public class when_task_loader_gets_task_for_month	
 		: observations_for_auto_created_sut_of_type<MonthTaskLoader>
 	{
-		private ObservableCollection<ObservableCollection<ObservableCollection<MonthTask>>> _result;
+		private ObservableCollection<ObservableCollection<DayTaskList>> _result;
 		private DateTime _date;
 		private int _columnCount;
 		private int _rowCount;
@@ -74,9 +74,12 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests.Services
 		[Test]
 		public void should_return_matrix_containing_task_in_proper_cels()
 		{
-			_result[2][5].ShouldContain(mt=> mt.Name.Equals(_listFromRepository[1].Name));
-			_result[2][6].ShouldContain(mt => mt.Name.Equals(_listFromRepository[0].Name));
+			_result[2][5].TaskList.ShouldContain(mt=> mt.Name.Equals(_listFromRepository[1].Name));
+			_result[2][5].Day.Date.ShouldEqual(_listFromRepository[1].StartAt.Date);
+			_result[2][6].TaskList.ShouldContain(mt => mt.Name.Equals(_listFromRepository[0].Name));
+			_result[2][6].Day.Date.ShouldEqual(_listFromRepository[0].StartAt.Date);
 		}
+
 
 	}
 }
