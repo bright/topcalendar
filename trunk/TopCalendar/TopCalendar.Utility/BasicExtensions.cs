@@ -11,6 +11,49 @@ namespace TopCalendar.Utility.BasicExtensions
 	public static class BasicExtensions
 	{
 
+		public static Exception ThrownException(this Action job)
+		{
+			return ThrownException<Exception>(job);
+		}
+
+		public static TException ThrownException<TException>(this Action job)
+			where TException : Exception
+		{			
+			try
+			{
+				job();
+			}catch(TException ex)
+			{
+				return ex;
+			}
+			return null;
+		}
+
+		public static bool IsBetween(this DateTime me, DateTime start, DateTime stop)
+		{
+			return me.CompareTo(start) >= 0 && me.CompareTo(stop) <= 0;
+		}
+
+		public static DateTime AtMonthStart(this DateTime date)
+		{
+			return new DateTime(date.Year, date.Month, 1);
+		}
+
+		public static DateTime AtMonthEnd(this DateTime date)
+		{
+			return new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year,date.Month),23,59,59,999 );
+		}
+
+		public static DateTime AtDayEnd(this DateTime date)
+		{
+			return new DateTime(date.Year,date.Month, date.Day, 23,59,59,999);
+		}
+
+		public static DateTime AtDayStart(this DateTime date)
+		{
+			return new DateTime(date.Year, date.Month, date.Day);
+		}
+
 		public static bool IsEmpty(this string stringValue)
 		{
 			return string.IsNullOrEmpty(stringValue);

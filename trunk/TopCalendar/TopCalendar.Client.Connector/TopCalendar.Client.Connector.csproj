@@ -56,14 +56,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IUserRegistrator.cs" />
+    <Compile Include="Model\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\TopCalendarCommunicationService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="TasksRepository.cs" />
     <Compile Include="UserRegistrator.cs" />
-    <Compile Include="UserRegistratorNinjectModule.cs" />
+    <Compile Include="ConnectorModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -98,6 +100,12 @@
     <None Include="Service References\TopCalendarCommunicationService\TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
+      <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
+      <Name>TopCalendar.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

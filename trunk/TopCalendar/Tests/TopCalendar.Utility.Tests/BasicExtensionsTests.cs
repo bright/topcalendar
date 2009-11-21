@@ -5,9 +5,35 @@ using TopCalendar.Utility.Tests;
 
 namespace TopCalendar.Utility.BasicExtensions.Tests
 {
+
 	[TestFixture]
 	public class BasicExtensionsTests
 	{
+
+		[Test]
+		public void AtMonthEnd_should_return_month_end_date()
+		{
+			var test = new DateTime(2009, 11, 16);
+			var result = test.AtMonthEnd();
+
+			result.Year.ShouldEqual(test.Year);
+			result.Month.ShouldEqual(test.Month);
+			result.Day.ShouldEqual(30);
+			result.Hour.ShouldEqual(23);
+			result.Minute.ShouldEqual(59);
+		}
+
+		[Test]
+		public void AtMonthStart_should_return_month_start_date()
+		{
+			var test = new DateTime(3121, 11, 10);
+			var result = test.AtMonthStart();
+			result.Year.ShouldEqual(test.Year);
+			result.Month.ShouldEqual(test.Month);
+			result.Day.ShouldEqual(1);
+		}
+
+
 		[Test]
 		public void If_should_return_original_value()
 		{
