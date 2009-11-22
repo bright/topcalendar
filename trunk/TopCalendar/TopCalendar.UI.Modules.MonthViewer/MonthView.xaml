@@ -11,6 +11,7 @@
         
         <Converters:DateTimeToShortTimeConverter x:Key="DateToTimeStringConverter"/>
         <Converters:DateTimeToShortDateStringConverter x:Key="DateToDateStringConverter"/>
+
         <Style x:Key="CellListView" TargetType="{x:Type ListView}">
             <Setter Property="Width" Value="130" />                        
             <Setter Property="Margin" Value="2"/>
@@ -76,6 +77,7 @@
                        
                        Style="{StaticResource DayNameTextBlockStyle}"/>
         </DataTemplate>
+        <Converters:DateTimeToMonthAndYearStringConverter x:Key="DateTimeToMonthAndYearStringConverter"/>
         
         
 
@@ -83,16 +85,42 @@
             
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition  />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <Button x:Name="ToPreviousMonthButton" Margin="5"
+                    Command="{Binding GoToPreviousMonth}"
+                    >
+                <TextBlock Style="{StaticResource TextBlockButtonLabel}" >
+                    Poprzedni
+                </TextBlock>
+            </Button>
+            <TextBlock Style="{StaticResource TextBlockButtonLabel}" 
+                       Text="{Binding CurrentMonth, Converter={StaticResource DateTimeToMonthAndYearStringConverter}}"
+                       Width="130"                       
+                       Margin="5"
+                       />
+            <Button x:Name="ToNextMonthButton" Margin="5" 
+                    Command="{Binding GoToNextMonth}"
+                    >
+                <TextBlock Style="{StaticResource TextBlockButtonLabel}">
+                    Następny
+                </TextBlock>
+            </Button>
+        </StackPanel>
+        
         <ItemsControl x:Name="_headersDayNames"
                       ItemTemplate="{StaticResource DayNamesDataTemplate}"
                       ItemsSource="{Binding 
                                         Source={StaticResource HelperCollections}, 
                                         Path=WeekDayNames, 
                                         Mode=OneTime}"                       
-                      >
+                      Grid.Row="1"
+                     >
+            
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"  />
@@ -100,7 +128,7 @@
             </ItemsControl.ItemsPanel>
         </ItemsControl>
         <ItemsControl x:Name="_monthViewModel" 
-                      Grid.Row="1"
+                      Grid.Row="2"
                       ItemTemplate="{DynamicResource RowDataTemplate}" 
                       ItemsSource="{Binding Tasks}"/>
     </Grid>

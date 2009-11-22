@@ -33,6 +33,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 		{
 			Sut.Initialize();
 		}
+
 	}
 	
 }
