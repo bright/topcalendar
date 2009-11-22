@@ -1,7 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Converters="clr-namespace:TopCalendar.Utility.UI.Converters;assembly=TopCalendar.Utility" >
 
     <!-- Focus Visual -->
+
+    <Converters:ValidationErrorToStringConverter x:Key="ValidationErrorToStringConverter" />
 
     <Style x:Key="ButtonFocusVisual">
         <Setter Property="Control.Template">
@@ -15,7 +18,7 @@
         </Setter>
     </Style>
 
-    <!-- Fill Brushes -->
+    <!-- Fill Brushes -->        
 
     <LinearGradientBrush x:Key="NormalBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientBrush.GradientStops>
@@ -63,6 +66,14 @@
             <GradientStopCollection>
                 <GradientStop Color="#FFF" Offset="0.0"/>
                 <GradientStop Color="#AAA" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="VeryDarkBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>                
+                <GradientStop Color="#AAA" Offset="0.5"/>
             </GradientStopCollection>
         </GradientBrush.GradientStops>
     </LinearGradientBrush>
@@ -211,7 +222,7 @@
                         <Trigger Property="Validation.HasError" Value="true">
                             <Setter Property="ToolTip"
                                 Value="{Binding RelativeSource={RelativeSource Self}, 
-                                Path=(Validation.Errors)[0].ErrorContent}"/>
+                                Path=(Validation.Errors), Converter={StaticResource ValidationErrorToStringConverter}}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -266,7 +277,7 @@
                         <Trigger Property="Validation.HasError" Value="true">
                             <Setter Property="ToolTip"
                                 Value="{Binding RelativeSource={RelativeSource Self}, 
-                                Path=(Validation.Errors)[0].ErrorContent}"/>
+                                Path=(Validation.Errors), Converter={StaticResource ValidationErrorToStringConverter}}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -359,6 +370,16 @@
         </Setter>
     </Style>
 
+    
+    <Style x:Key="TextBlockButtonLabel" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Verdana"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{StaticResource VeryDarkBrush}" />        
+    </Style>
+    
+    
     <!-- SideBar Styles -->
 
     <Style x:Key="TextBlockSectionTitle" TargetType="TextBlock">

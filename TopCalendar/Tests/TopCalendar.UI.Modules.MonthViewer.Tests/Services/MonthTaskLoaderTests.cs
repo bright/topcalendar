@@ -27,7 +27,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests.Services
 
 		protected override void Because()
 		{
-			_result = Sut.GetTasksForMonth(_date, _rowCount, _columnCount);
+			_result = Sut.GetTasksForMonth(_date);
 		}
 
 		protected override void EstablishContext()

@@ -12,13 +12,14 @@ namespace TopCalendar.UI.Modules.MonthViewer.Services
 	public class MonthTaskLoader : IMonthTaskLoader
 	{
 		private readonly ITaskRepository _taskRepository;
-
+		private const int RowCount = 5;
+		private const int ColumnCount = 7;
 		public MonthTaskLoader(ITaskRepository taskRepository)
 		{
 			_taskRepository = taskRepository;
 		}
 
-		public ObservableCollection<ObservableCollection<DayTaskList>> GetTasksForMonth(DateTime date, int rowCount, int columnCount)
+		public ObservableCollection<ObservableCollection<DayTaskList>> GetTasksForMonth(DateTime date)
 		{
 			var monthTasks = _taskRepository.GetTasksBetweenDates(date.AtMonthStart(), date.AtMonthEnd());
 			var monthStart = date.AtMonthStart();
@@ -26,10 +27,10 @@ namespace TopCalendar.UI.Modules.MonthViewer.Services
 			var first = (int)monthStart.DayOfWeek;
 			var result = new ObservableCollection<ObservableCollection<DayTaskList>>();
 			var iteratedDate = monthStart.AddDays(-((first-1 + 7)%7));
-			for(int i = 0; i < rowCount; ++i)
+			for(int i = 0; i < RowCount; ++i)
 			{
 				result.Add(new ObservableCollection<DayTaskList>());
-				for(int j=0;j<columnCount;++j)
+				for(int j=0;j<ColumnCount;++j)
 				{
 					result[i].Add(new DayTaskList(iteratedDate));
 					var matchedTasks = monthTasks.Where(task =>

@@ -24,5 +24,29 @@ namespace TopCalendar.Utility.UI
 					);
 			}
 		}
+
+		public static ObservableCollection<string> MonthNames
+		{
+			get
+			{
+				return new ObservableCollection<string>(
+					new[]
+						{
+							"Styczeñ",
+							"Luty",
+							"Marzec",
+							"Kwiecieñ",
+							"Maj",
+							"Czerwiec",
+                            "Lipiec",
+							"Sierpieñ",
+							"Wrzesieñ",
+							"PaŸdziernik",
+							"Listopad",
+							"Grudzieñ"
+						}
+					);
+			}
+		}
 	}
 }

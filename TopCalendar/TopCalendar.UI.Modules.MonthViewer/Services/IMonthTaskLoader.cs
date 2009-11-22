@@ -8,6 +8,6 @@ namespace TopCalendar.UI.Modules.MonthViewer.Services
 {
 	public interface IMonthTaskLoader
 	{
-		ObservableCollection<ObservableCollection<DayTaskList>> GetTasksForMonth(DateTime date, int rowCount, int dayCount);
+		ObservableCollection<ObservableCollection<DayTaskList>> GetTasksForMonth(DateTime date);
 	}
 }
