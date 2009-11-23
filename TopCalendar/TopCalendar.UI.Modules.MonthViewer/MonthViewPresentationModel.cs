@@ -11,7 +11,6 @@ namespace TopCalendar.UI.Modules.MonthViewer
 {
 	public class MonthViewPresentationModel : PresentationModelFor<IMonthView>
 	{
-		private readonly IMonthView _view;
 		private readonly IMonthTaskLoader _taskLoader;
 
 		public static readonly int WeekCount = 5;

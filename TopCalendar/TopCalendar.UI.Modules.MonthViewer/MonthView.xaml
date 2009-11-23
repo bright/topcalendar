@@ -37,10 +37,11 @@
                       Style="{StaticResource CellListView}"
                       >
                 <ListView.View>
-                    <GridView >
+                    <GridView>
                         <GridViewColumn                                                         
                             Header="{Binding Day, Converter={StaticResource DateToDateStringConverter}}" 
-                            CellTemplate="{DynamicResource TaskDataTemplate}"            
+                            CellTemplate="{DynamicResource TaskDataTemplate}"   
+							Width="115"
                                         />
                     </GridView>
                 </ListView.View>                
