@@ -10,4 +10,4 @@ W przyszłym tygodniu wypadałoby pokazać coś :)
 || Manager pluginów - początek || AB ||
 || Dodawanie i pobieranie zadań po stronie serwera + fasada kliencka || MŁ ||
 
-I nie komitujemy bez testów :)
+I nie komitujemy bez testów :) 
