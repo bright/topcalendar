@@ -1,6 +1,6 @@
 namespace TopCalendar.Utility
 {
-	public abstract class Builder<T>
+	public abstract classd Builder<T>
 	{
 		public abstract T Build();
 
