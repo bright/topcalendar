@@ -5,7 +5,7 @@ Działamy działamy!
 W przyszłym tygodniu wypadałoby pokazać coś :)
 
 || *Zadanie* || *Kto?* ||
-|| Prosty widok miesiąca ||  ||
+|| Prosty widok miesiąca || PM ||
 || Dodawanie zadań || DM ||
 || Manager pluginów - początek || AB ||
 || Dodawanie i pobieranie zadań po stronie serwera + fasada kliencka || MŁ ||
