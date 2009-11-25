@@ -1,9 +1,10 @@
 ﻿<UserControl x:Class="TopCalendar.UI.Modules.MonthViewer.MonthView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Model="clr-namespace:TopCalendar.UI.Modules.MonthViewer.Model"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
     xmlns:Converters="clr-namespace:TopCalendar.Utility.UI.Converters;assembly=TopCalendar.Utility"
-    xmlns:Utilites="clr-namespace:TopCalendar.Utility.UI;assembly=TopCalendar.Utility"
+    xmlns:Utilites="clr-namespace:TopCalendar.Utility.UI;assembly=TopCalendar.Utility"        
+    xmlns:Model="clr-namespace:TopCalendar.Client.Connector.Model;assembly=TopCalendar.Client.Connector"        
+    xmlns:CommonCommands="clr-namespace:TopCalendar.UI.Infrastructure.CommonCommands;assembly=TopCalendar.UI.Infrastructure"             
     VerticalContentAlignment="Stretch"
     HorizontalAlignment="Stretch"             
              >
@@ -16,12 +17,12 @@
             <Setter Property="Width" Value="130" />                        
             <Setter Property="Margin" Value="2"/>
             <Setter Property="Opacity" Value="0.50"  />
-            <Setter Property="Background" Value="{StaticResource LightBrush}" />
+            <Setter Property="Background" Value="{StaticResource LightBrush}" />            
         </Style>
         <Style x:Key="RowStackPanel" TargetType="{x:Type StackPanel}">
             <Setter Property="Height" Value="100" />            
         </Style>
-        <DataTemplate x:Key="TaskDataTemplate" DataType="{x:Type Model:MonthTask}">
+        <DataTemplate x:Key="TaskDataTemplate" DataType="{x:Type Model:Task}">
             <StackPanel Orientation="Horizontal" Opacity="1" >                
                 <TextBlock Text="{Binding Name}"  />
                 <TextBlock> </TextBlock>
@@ -30,19 +31,23 @@
                 <TextBlock Text="{Binding FinishAt, Converter={StaticResource DateToTimeStringConverter}}" />                
             </StackPanel>
         </DataTemplate>
+        <CommonCommands:ShowTaskEditorCommand x:Key="ShowTaskEditor" />
         
         <DataTemplate x:Key="CellDataTemplate" >            
             <ListView ItemsSource="{Binding TaskList}"                       
                       ItemTemplate="{DynamicResource TaskDataTemplate}"
-                      Style="{StaticResource CellListView}"
+                      Style="{StaticResource CellListView}"                        
                       >
+                <ListView.InputBindings>                    
+                    <MouseBinding MouseAction="LeftClick"
+                                  Command="{StaticResource ShowTaskEditor}" />
+                </ListView.InputBindings>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn                                                         
                             Header="{Binding Day, Converter={StaticResource DateToDateStringConverter}}" 
-                            CellTemplate="{DynamicResource TaskDataTemplate}"   
-							Width="115"
-                                        />
+                            CellTemplate="{DynamicResource TaskDataTemplate}"   							                                      
+                            />                        
                     </GridView>
                 </ListView.View>                
             </ListView>            
@@ -88,9 +93,8 @@
         <Grid.RowDefinitions>
             <RowDefinition  />
             <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        
+            <RowDefinition />            
+        </Grid.RowDefinitions>        
         <StackPanel Orientation="Horizontal" Margin="5">
             <Button x:Name="ToPreviousMonthButton" Margin="5"
                     Command="{Binding GoToPreviousMonth}"

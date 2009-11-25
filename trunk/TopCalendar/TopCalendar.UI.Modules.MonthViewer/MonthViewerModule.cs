@@ -1,12 +1,8 @@
-﻿using System;
-using Microsoft.Practices.Composite.Events;
+﻿using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Logging;
 using Microsoft.Practices.Composite.Modularity;
-using Microsoft.Practices.Composite.Regions;
-using Microsoft.Practices.ServiceLocation;
 using Ninject;
 using TopCalendar.UI.Infrastructure;
-using TopCalendar.UI.Modules.MonthViewer.Configuration;
 using TopCalendar.UI.Modules.MonthViewer.Services;
 using TopCalendar.UI.PluginManager;
 using TopCalendar.Utility;
@@ -51,7 +47,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		private void ExecuteBootsrapTasks()
 		{
 			_loggerFacade.Log("MonthViewerModule exectues bootrapper tasks", Category.Debug,Priority.None);
-			TasksRunner.Get().Execute<TaskToMonthViewTaskMapping>();
+			
 		}
 
 		private void RegisterViewsAndServices()

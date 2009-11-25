@@ -25,8 +25,11 @@ namespace TopCalendar.UI.Modules.MonthViewer
 			_view.ViewModel = this;
 			_goToNextMonth = new DelegateCommand<object>(GoToNextMonthCommandImpl);
 			_goToPreviousMonth = new DelegateCommand<object>(GoToPreviousMonthCommandImpl);
+			_showAddTask = new DelegateCommand<DateTime?>(ShowAddTaskImpl);
 			Initialize();
-		}		
+		}
+
+		
 
 		private void Initialize()
 		{
@@ -61,7 +64,8 @@ namespace TopCalendar.UI.Modules.MonthViewer
 				_goToNextMonth = (DelegateCommand<object>)value;
 				OnPropertyChanged(() => GoToNextMonth);
 			}
-		}
+		}		
+
 		private void GoToNextMonthCommandImpl(object obj)
 		{
 			CurrentMonth = CurrentMonth.AddMonths(1);
@@ -81,6 +85,20 @@ namespace TopCalendar.UI.Modules.MonthViewer
 			UpdateTaskList(_taskLoader.GetTasksForMonth(CurrentMonth));
 		}
 
+		private DelegateCommand<DateTime?> _showAddTask;
+		public ICommand ShowAddTask
+		{
+			get { return _showAddTask; }
+			set
+			{
+				_showAddTask = (DelegateCommand<DateTime?>)value;
+				OnPropertyChanged(() => ShowAddTask);
+			}
+		}
+		private void ShowAddTaskImpl(DateTime? obj)
+		{
+			throw new NotImplementedException();
+		}
 
 		private void UpdateTaskList(ObservableCollection<ObservableCollection<DayTaskList>> updatedTasks)
 		{

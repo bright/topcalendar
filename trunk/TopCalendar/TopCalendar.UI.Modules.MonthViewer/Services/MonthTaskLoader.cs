@@ -35,7 +35,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Services
 					result[i].Add(new DayTaskList(iteratedDate));
 					var matchedTasks = monthTasks.Where(task =>
 					                                    BasicExtensions.IsBetween(task.StartAt, iteratedDate.AtDayStart(), iteratedDate.AtDayEnd())).ToList();
-					matchedTasks.Each(mt=> result[i][j].AddTask(Mapper.Map<Task,MonthTask>(mt)));
+					matchedTasks.Each(mt=> result[i][j].AddTask(mt));
 					iteratedDate = iteratedDate.AddDays(1);
 				}
 			}

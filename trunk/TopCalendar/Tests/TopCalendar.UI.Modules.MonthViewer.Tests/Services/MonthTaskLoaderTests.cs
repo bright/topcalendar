@@ -6,7 +6,6 @@ using NUnit.Framework;
 using Rhino.Mocks;
 using TopCalendar.Client.Connector;
 using TopCalendar.Client.Connector.Model;
-using TopCalendar.UI.Modules.MonthViewer.Configuration;
 using TopCalendar.UI.Modules.MonthViewer.Model;
 using TopCalendar.UI.Modules.MonthViewer.Services;
 using TopCalendar.Utility;
@@ -31,8 +30,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests.Services
 		}
 
 		protected override void EstablishContext()
-		{
-			TasksRunner.Get().Execute<TaskToMonthViewTaskMapping>();
+		{			
 			_date = new DateTime(2009,12,19);
 			_rowCount = 5;
 			_columnCount = 7;
