@@ -1,5 +1,5 @@
-﻿using Microsoft.Practices.Composite.Presentation.Events;
-using Microsoft.Practices.ServiceLocation;
+﻿using Microsoft.Practices.ServiceLocation;
+using Microsoft.Practices.Composite.Presentation.Events;
 
 namespace TopCalendar.UI.MenuInfrastructure
 {
@@ -23,8 +23,8 @@ namespace TopCalendar.UI.MenuInfrastructure
                                         });
         }
 
-        public void AddItemToMenu<T>(string topLevelMenuName, string menuName, string header)
-            where T : CompositePresentationEvent<object>
+        public void AddItemToMenu<T, P>(string topLevelMenuName, string menuName, string header)
+            where T : CompositePresentationEvent<P>
         {
             var topLevel = _menuProvider.GetTopLevelMenu(topLevelMenuName) ?? AddTopLevelMenu(topLevelMenuName, header);
 
@@ -32,8 +32,14 @@ namespace TopCalendar.UI.MenuInfrastructure
                                    {
                                        Name = menuName,
                                        Header = header,
-                                       Command = new MenuEventCommand<T>(_serviceLocator)
+                                       Command = new MenuEventCommand<T, P>(_serviceLocator)
                                    });
         }
+
+		public void AddItemToMenu<T>(string topLevelMenuName, string menuName, string header)
+			where T : CompositePresentationEvent<object>
+		{
+			AddItemToMenu<T, object>(topLevelMenuName, menuName, header);
+		}
     }
 }
