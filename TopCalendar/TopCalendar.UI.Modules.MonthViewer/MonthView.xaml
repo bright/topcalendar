@@ -83,10 +83,7 @@
                        
                        Style="{StaticResource DayNameTextBlockStyle}"/>
         </DataTemplate>
-        <Converters:DateTimeToMonthAndYearStringConverter x:Key="DateTimeToMonthAndYearStringConverter"/>
-        
-        
-
+        <Converters:DateTimeToMonthAndYearStringConverter x:Key="DateTimeToMonthAndYearStringConverter"/>               
     </UserControl.Resources>
             
     <Grid>
