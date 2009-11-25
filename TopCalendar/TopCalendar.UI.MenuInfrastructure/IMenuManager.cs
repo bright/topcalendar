@@ -19,7 +19,10 @@ namespace TopCalendar.UI.MenuInfrastructure
 		/// <param name="topLevelMenuName">Identyfikator menu g³ównego poziomu, do którego siê wpi¹æ</param>
 		/// <param name="menuName">Identyfikator wpisu</param>
 		/// <param name="header">Tekst wyœwietlany</param>
-        void AddItemToMenu<T>(string topLevelMenuName, string menuName, string header) 
-            where T : CompositePresentationEvent<object>;
+		void AddItemToMenu<T, P>(string topLevelMenuName, string menuName, string header)
+			where T : CompositePresentationEvent<P>;
+
+		void AddItemToMenu<T>(string topLevelMenuName, string menuName, string header)
+			where T : CompositePresentationEvent<object>;
     }
 }

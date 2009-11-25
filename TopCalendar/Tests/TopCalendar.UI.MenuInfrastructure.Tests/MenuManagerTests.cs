@@ -27,7 +27,7 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
         }
     }
 
-	public abstract class when_adding_item_by_mm : observations_for_auto_created_sut_of_type<MenuManager>
+	public class when_adding_item_by_mm : observations_for_auto_created_sut_of_type<MenuManager>
 	{
 		protected const string TopLevel = "TopLevel";
 		protected const string MenuName = "MenuName";
