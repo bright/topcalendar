@@ -1,15 +1,41 @@
 using System;
+using TopCalendar.Utility.UI;
 
 namespace TopCalendar.Client.Connector.Model
 {
-	public class Task
+	public class Task : NotifyPropertyChanged
 	{
-		public string Name { get; set; }
+		private string _name;
+		public string Name
+		{
+			get { return _name; }
+			set
+			{
+				_name = value;
+				OnPropertyChanged(() => Name);
+			}
+		}
 
-		public DateTime StartAt { get; set; }
+		private DateTime _startAt;
+		public DateTime StartAt
+		{
+			get { return _startAt; }
+			set
+			{
+				_startAt = value;
+				OnPropertyChanged(() => StartAt);
+			}
+		}
 
-		public DateTime FinishAt { get; set; }
-
-		public string Description { get; set; }
+		private DateTime _finishAt;
+		public DateTime FinishAt
+		{
+			get { return _finishAt; }
+			set
+			{
+				_finishAt = value;
+				OnPropertyChanged(() => FinishAt);
+			}
+		}
 	}
 }

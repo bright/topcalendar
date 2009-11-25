@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using TopCalendar.Client.Connector.Model;
 using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.MonthViewer.Model
@@ -16,8 +17,8 @@ namespace TopCalendar.UI.Modules.MonthViewer.Model
 			}
 		}
 
-		private ObservableCollection<MonthTask> _taskList = new ObservableCollection<MonthTask>();
-		public ObservableCollection<MonthTask> TaskList
+		private ObservableCollection<Task> _taskList = new ObservableCollection<Task>();
+		public ObservableCollection<Task> TaskList
 		{
 			get { return _taskList; }
 			set { _taskList = value;
@@ -30,7 +31,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Model
 			_day = day;
 		}
 
-		public void AddTask(MonthTask monthTask)
+		public void AddTask(Task monthTask)
 		{
 			_taskList.Add(monthTask);
 		}

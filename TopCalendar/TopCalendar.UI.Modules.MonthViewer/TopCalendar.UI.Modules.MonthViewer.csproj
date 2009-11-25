@@ -66,11 +66,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\TaskToMonthViewTaskMapping.cs" />
     <Compile Include="IMonthView.cs" />
     <Compile Include="IMonthViewPresentationModel.cs" />
     <Compile Include="Model\DayTaskList.cs" />
-    <Compile Include="Model\MonthTask.cs" />
     <Compile Include="MonthView.xaml.cs">
       <DependentUpon>MonthView.xaml</DependentUpon>
     </Compile>
@@ -111,6 +109,9 @@
       <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
       <Name>TopCalendar.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
