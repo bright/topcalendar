@@ -3,19 +3,19 @@
 
 Trzeba rzetelnie spisywać wszystkie Eventy, jakie dane moduły publikują i co z nich korzysta, bo nie połapiemy się w tym ;)
 
-Wszystkie eventy powinny być zdefiniowane w TopCalendar.UI.Infrastructure.Events i muszą dziedziczyć po CompositePresentationEvent.
+Wszystkie eventy powinny być zdefiniowane w {{{TopCalendar.UI.Infrastructure.Events}}} i muszą dziedziczyć po {{{CompositePresentationEvent<T>}}}.
 
 || *Event Name* || *Parametr* || *Opis* || *Moduł publikujący* || *Moduły subskrybujące* ||
-|| CloseAppEvent || - || Polecenie "Zakończ" z menu || Shell (menu) || Shell ||
-|| UnloadModuleEvent || _IView_ Obiekt widoku do wywalenia || Żądanie usunięcia widoku z UI || dowolny || PluginLoader ||
-|| RegistrationCompletedEvent || _string_ Login nowego usera || Po rejestracji zakończonej sukcesem || Registration || _docelowo np. widok miesiąca_ ||
+|| {{{CloseAppEvent}}} || - || Polecenie "Zakończ" z menu || Shell (menu) || Shell ||
+|| {{{UnloadModuleEvent}}} || _IView_ Obiekt widoku do wywalenia || Żądanie usunięcia widoku z UI || dowolny || PluginLoader ||
+|| {{{RegistrationCompletedEvent}}} || _string_ Login nowego usera || Po rejestracji zakończonej sukcesem || Registration || _docelowo np. widok miesiąca_ ||
 || ... ||   ||  ||  ||  ||
 
 = Eventy w menu =
 
 Eventy wpina się do menu w następujący sposób:
 
- # pobieramy instancję IMenuManager z service locatora
- # wywołujemy AddTopLevelMenu("identyfikator", "tekst wyświetlany") jeśli chemy menu głównego poziomu
- # wywołujemy AddItemToMenu < TypEventa > ("identyfikator menu głównego poziomu", "identyfikator wpisu", "tekst wyświetlany")
+ # pobieramy instancję {{{IMenuManager}}} z service locatora
+ # wywołujemy {{{AddTopLevelMenu("identyfikator", "tekst wyświetlany")}}} jeśli chemy menu głównego poziomu
+ # wywołujemy {{{AddItemToMenu<TypEventa>("identyfikator menu głównego poziomu", "identyfikator wpisu", "tekst wyświetlany")}}} - jeśli parametr ma być typu {{{object}}}, lub {{{AddItemToMenu<TypEventa, TypParametru>("identyfikator menu głównego poziomu", "identyfikator wpisu", "tekst wyświetlany")}}} - jeśli inny typ parametru
  # menu automatycznie publikuje dany event po kliknięciu, wystarczy gdzieś go subskrybować
