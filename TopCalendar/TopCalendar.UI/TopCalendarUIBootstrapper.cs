@@ -22,10 +22,10 @@ namespace TopCalendar.UI
 			base.ConfigureKernel();
 			ServiceLocator.SetLocatorProvider(() => Kernel.Get<IServiceLocator>());
 
-			Kernel.Bind<IPluginLoader>().To<PluginLoader>();
-			Kernel.Bind<IShellView>().To<Shell>();
-		    Kernel.Bind<IMenuManager>().To<MenuManager>();
-		    Kernel.Bind<IMenuProvider>().To<MenuProvider>();
+			Kernel.Bind<IPluginLoader>().To<PluginLoader>().InSingletonScope();
+			Kernel.Bind<IShellView>().To<Shell>().InSingletonScope();
+		    Kernel.Bind<IMenuManager>().To<MenuManager>().InSingletonScope();
+		    Kernel.Bind<IMenuProvider>().To<MenuProvider>().InSingletonScope();
 		}
 
 		protected override DependencyObject CreateShell()

@@ -34,8 +34,8 @@ namespace TopCalendar.UI.Modules.MonthViewer
 
 		private void SubscribeToDefaultEvents()
 		{
-			_eventAggregator.GetEvent<RegistrationCompletedEvent>()
-				.Subscribe(login => LoadMonthView());
+			var e = _eventAggregator.GetEvent<RegistrationCompletedEvent>();
+			e.Subscribe(login => LoadMonthView());
 		}
 
 		private void LoadMonthView()
@@ -46,15 +46,15 @@ namespace TopCalendar.UI.Modules.MonthViewer
 
 		private void ExecuteBootsrapTasks()
 		{
-			_loggerFacade.Log("MonthViewerModule exectues bootrapper tasks", Category.Debug,Priority.None);
+			_loggerFacade.Log("MonthViewerModule exectues bootrapper tasks", Category.Debug, Priority.None);
 			
 		}
 
 		private void RegisterViewsAndServices()
 		{			
-			_kernel.Bind<IMonthView>().To<MonthView>();
-			_kernel.Bind<IPresentationModelFor<IMonthView>>().To<MonthViewPresentationModel>();
-			_kernel.Bind<IMonthTaskLoader>().To<MonthTaskLoader>();
+			_kernel.Bind<IMonthView>().To<MonthView>().InSingletonScope();
+			_kernel.Bind<IPresentationModelFor<IMonthView>>().To<MonthViewPresentationModel>().InSingletonScope();
+			_kernel.Bind<IMonthTaskLoader>().To<MonthTaskLoader>().InSingletonScope();
 		}
 	}
 }

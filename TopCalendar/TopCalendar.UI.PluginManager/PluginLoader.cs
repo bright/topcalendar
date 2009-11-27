@@ -19,8 +19,8 @@ namespace TopCalendar.UI.PluginManager
 		public PluginLoader(IKernel kernel, IEventAggregator eventAggregator, IRegionManager regionManager)
 		{
 			_kernel = kernel;
-			_kernel.Bind<IPluginConfigurationProvider>().To<PluginConfigurationProvider>();
-			_kernel.Bind<IPluginConfigurationHandler>().To<PluginConfigurationHandler>();
+			_kernel.Bind<IPluginConfigurationProvider>().To<PluginConfigurationProvider>().InSingletonScope();
+			_kernel.Bind<IPluginConfigurationHandler>().To<PluginConfigurationHandler>().InSingletonScope();
 
 			_eventAggregator = eventAggregator;
 			_regionManager = regionManager;

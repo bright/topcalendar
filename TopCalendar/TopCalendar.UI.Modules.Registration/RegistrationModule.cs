@@ -27,9 +27,9 @@ namespace TopCalendar.UI.Modules.Registration
 		}
 
 		private void RegisterViewsAndServices()
-		{			
-			_kernel.Bind<IRegistrationView>().To<RegistrationView>();
-			_kernel.Bind<IRegistrationPresentationModel>().To<RegistrationPresentationModel>();
+		{
+			_kernel.Bind<IRegistrationView>().To<RegistrationView>().InSingletonScope();
+			_kernel.Bind<IRegistrationPresentationModel>().To<RegistrationPresentationModel>().InSingletonScope();
 		}
     }
 
