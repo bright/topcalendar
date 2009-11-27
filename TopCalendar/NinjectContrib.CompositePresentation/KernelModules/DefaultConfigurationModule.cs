@@ -12,7 +12,7 @@ namespace NinjectContrib.CompositePresentation.KernelModules
 	/// <summary>
 	/// This module binds all the default Composite WPF services
 	/// </summary>
-	public class DefaultConfigurationModule : Module
+	public class DefaultConfigurationModule : NinjectModule
 	{
 		/// <summary>
 		/// Loads the module into the kernel.

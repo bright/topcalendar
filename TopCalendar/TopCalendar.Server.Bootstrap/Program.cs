@@ -32,8 +32,8 @@ namespace TopCalendar.Server.Bootstrap
         private static void InitiateNinject()
         {
             KernelContainer.Kernel = new StandardKernel();
-            KernelContainer.Kernel.LoadModulesFromAssembly(typeof (DataLayerNinjectModule).Assembly);
-            KernelContainer.Kernel.LoadModulesFromAssembly(typeof (ServiceLibraryNinjectModule).Assembly);
+            KernelContainer.Kernel.Load(typeof (DataLayerNinjectModule).Assembly);
+            KernelContainer.Kernel.Load(typeof (ServiceLibraryNinjectModule).Assembly);
         }
 
         private static void RunCommunicationService()

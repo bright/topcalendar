@@ -3,7 +3,7 @@ using TopCalendar.Client.Connector.TopCalendarCommunicationService;
 
 namespace TopCalendar.Client.Connector
 {
-    public class ConnectorModule : Module
+    public class ConnectorModule : NinjectModule
     {
 
         public override void Load()
