@@ -35,7 +35,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		private void SubscribeToDefaultEvents()
 		{
 			var e = _eventAggregator.GetEvent<RegistrationCompletedEvent>();
-			e.Subscribe(login => LoadMonthView());
+			e.Subscribe(login => LoadMonthView(),true);
 		}
 
 		private void LoadMonthView()
