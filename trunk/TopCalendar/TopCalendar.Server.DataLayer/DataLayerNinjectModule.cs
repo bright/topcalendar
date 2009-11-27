@@ -4,7 +4,7 @@ using TopCalendar.Server.DataLayer.Repositories;
 
 namespace TopCalendar.Server.DataLayer
 {
-    public class DataLayerNinjectModule : Module
+    public class DataLayerNinjectModule : NinjectModule
     {
 
         public override void Load()

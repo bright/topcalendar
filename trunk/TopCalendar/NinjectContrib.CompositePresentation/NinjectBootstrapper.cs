@@ -96,11 +96,11 @@ namespace NinjectContrib.CompositePresentation
 		/// type mappings required by the application.
 		/// </summary>
 		protected virtual void ConfigureKernel()
-		{
-			Kernel.LoadModule(new LoggerFacadeModule(LoggerFacade));
-			Kernel.LoadModule(new ModuleCatalogModule(GetModuleCatalog()));			
+		{			
+			Kernel.Load(new LoggerFacadeModule(LoggerFacade));
+			Kernel.Load(new ModuleCatalogModule(GetModuleCatalog()));			
 			if (this._useDefaultConfiguration)
-				Kernel.LoadModule(new DefaultConfigurationModule());
+				Kernel.Load(new DefaultConfigurationModule());
 		}
 
 		/// <summary>

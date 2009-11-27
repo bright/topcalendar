@@ -9,7 +9,7 @@ using TopCalendar.Server.ServiceLibrary.ServiceLogic;
 
 namespace TopCalendar.Server.ServiceLibrary
 {
-    public class ServiceLibraryNinjectModule : Module
+    public class ServiceLibraryNinjectModule : NinjectModule
     {
         public override void Load()
         {

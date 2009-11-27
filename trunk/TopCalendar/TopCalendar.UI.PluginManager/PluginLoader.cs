@@ -75,7 +75,7 @@ namespace TopCalendar.UI.PluginManager
 		{
 			foreach (var module in _configuration.ConnectorModules)
 			{
-				_kernel.LoadModulesFromAssembly(module.Assembly);
+				_kernel.Load(module.Assembly);
 			}
 		}
 

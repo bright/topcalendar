@@ -13,7 +13,7 @@ namespace NinjectContrib.CompositePresentation.KernelModules
 	/// <summary>
 	/// A simple module to bind the default <seealso cref="IModuleCatalog"/>
 	/// </summary>
-	public class ModuleCatalogModule : Module
+	public class ModuleCatalogModule : NinjectModule
 	{
 		private readonly IModuleCatalog moduleCatalog;
 

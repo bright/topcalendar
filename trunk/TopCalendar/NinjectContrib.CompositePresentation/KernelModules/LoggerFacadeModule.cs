@@ -13,7 +13,7 @@ namespace NinjectContrib.CompositePresentation.KernelModules
 	/// <summary>
 	/// A simple module to bind the default <seealso cref="ILoggerFacade"/>
 	/// </summary>
-	public class LoggerFacadeModule : Module
+	public class LoggerFacadeModule : NinjectModule
 	{
 		private readonly ILoggerFacade loggerFacade;
 

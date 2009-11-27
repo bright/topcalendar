@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using Ninject;
 using Ninject.Activation;
-using Ninject.Activation.Providers;
-using Ninject.Events;
+using Ninject.Infrastructure;
 using Ninject.Planning.Bindings;
 using Rhino.Mocks;
 
@@ -29,25 +28,19 @@ namespace TopCalendar.NinjectAutoMockingKernel
 		private IMockingStrategy _defaultMockingStrategy;
 
 
-		public AutoMockingKernel(MockRepository mocks) : this()
+		public AutoMockingKernel(MockRepository mocks)
 		{
 			_mocks = mocks;
 		}
 
-		public AutoMockingKernel()
+		private void AutoMockingKernel_BindingRemoved(IBinding binding)
 		{
-			BindingAdded += (AutoMockingKernel_BindingAdded);
-			BindingRemoved += AutoMockingKernel_BindingRemoved;
+		    _bindedTypes.Remove(binding.Service);
 		}
 
-		private void AutoMockingKernel_BindingRemoved(object sender, BindingEventArgs e)
+		private void AutoMockingKernel_BindingAdded(IBinding binding)
 		{
-			_bindedTypes.Remove(e.Binding.Service);
-		}
-
-		private void AutoMockingKernel_BindingAdded(object sender, BindingEventArgs e)
-		{
-			_bindedTypes[e.Binding.Service] = e.Binding.Target;
+		    _bindedTypes[binding.Service] = binding.Target;
 		}
 
 		public bool IsBinded<T>()
@@ -186,10 +179,23 @@ namespace TopCalendar.NinjectAutoMockingKernel
 			binding = new Binding(service)
 			          	{
 			          		ProviderCallback = c => new MockingProvider(this, service),
-			          		IsImplicit = true
+			          		IsImplicit = true,
+							ScopeCallback = StandardScopeCallbacks.Singleton
 			          	};
 			AddBinding(binding);
 			return true;
+		}
+
+		public override void AddBinding(IBinding binding)
+		{
+			base.AddBinding(binding);
+			AutoMockingKernel_BindingAdded(binding);
+		}
+
+		public override void RemoveBinding(IBinding binding)
+		{
+			base.RemoveBinding(binding);
+			AutoMockingKernel_BindingRemoved(binding);
 		}
 		
 	}
