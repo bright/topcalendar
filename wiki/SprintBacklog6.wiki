@@ -8,6 +8,6 @@ Sprint do mikołajek, żeby przed świętami zmieścić dwa ;)
 || Edycja i usuwanie zadań, podłączenie pod widoki miesiąca itd. || DM (?) ||
 || Manager pluginów - GUI || AB ||
 || Usuwanie i edycja zadań po stronie serwera + fasada kliencka + zaległości :) || MŁ ||
-|| Logowanie[1] || ||
+|| Logowanie[1] || KB (?) ||
 
 [1] Czy my w ogóle potrzebujemy osobnego ekranu logowania? Będzie wyglądał identycznie, jak rejestracja. Może połączmy te funkcjonalności w jedną, tzn. najpierw próbujemy logować na podane dane, a jeśli nie ma takiego usera, to go automatycznie rejestrujemy?
