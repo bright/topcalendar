@@ -2,6 +2,7 @@
 using Microsoft.Practices.Composite.Presentation.Events;
 using TopCalendar.Client.DataModel;
 using TopCalendar.Utility.UI;
+using Microsoft.Practices.Composite.Modularity;
 
 namespace TopCalendar.UI.Infrastructure
 {
@@ -19,6 +20,14 @@ namespace TopCalendar.UI.Infrastructure
 	/// W parametrze obiekt widoku do wywalenia
 	/// </summary>
 	public class UnloadViewEvent : CompositePresentationEvent<IView>
+	{
+	}
+
+	/// <summary>
+	/// Event publikowany przez moduly, ktore chca, zeby je calkiem wywalic z pamieci
+	/// W parametrze obiekt modulu do wywalenia
+	/// </summary>
+	public class UnloadModuleEvent : CompositePresentationEvent<IModule>
 	{
 	}
 
