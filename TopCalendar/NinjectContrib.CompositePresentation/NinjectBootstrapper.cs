@@ -98,9 +98,13 @@ namespace NinjectContrib.CompositePresentation
 		protected virtual void ConfigureKernel()
 		{			
 			Kernel.Load(new LoggerFacadeModule(LoggerFacade));
-			Kernel.Load(new ModuleCatalogModule(GetModuleCatalog()));			
+
 			if (this._useDefaultConfiguration)
+			{
 				Kernel.Load(new DefaultConfigurationModule());
+			}
+
+			Kernel.Load(new ModuleCatalogModule(GetModuleCatalog()));
 		}
 
 		/// <summary>

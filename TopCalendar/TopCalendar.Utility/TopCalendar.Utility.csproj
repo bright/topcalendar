@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="BasicExtensions.cs" />
     <Compile Include="Builder.cs" />
+    <Compile Include="RefreshableObservableCollection.cs" />
     <Compile Include="TasksRunner.cs" />
     <Compile Include="IBootstrapperTask.cs" />
     <Compile Include="Check.cs" />

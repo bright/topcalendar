@@ -36,38 +36,6 @@ namespace TopCalendar.UI.PluginManager.Tests
 		}
 	}
 
-	public class when_loading_modules : observations_for_PluginLoader
-	{
-		private ModuleCatalog _moduleCatalog;
-		private IModule _module;
-
-		protected override void EstablishContext()
-		{
-			base.EstablishContext();
-
-			_module = Dependency<IModule>();
-			_moduleCatalog = new ModuleCatalog();
-
-			Dependency<IPluginConfigurationProvider>().Stub(
-				pcp => pcp.PresentationModules).Return(new[] {_module.GetType()});
-			Dependency<IPluginConfigurationProvider>().Stub(
-				pcp => pcp.ConnectorModules).Return(new Type[] {});
-		}
-
-		protected override void Because()
-		{
-			Sut.Load(_moduleCatalog);
-		}
-
-		[Test]
-		public void should_load_test_module()
-		{
-			_moduleCatalog.Modules.ShouldContain(
-				mc => mc.ModuleType.Equals(_module.GetType().AssemblyQualifiedName)
-			);
-		}
-	}
-
 	public class when_publishing_unload_module_event : observations_for_PluginLoader
 	{
 		protected override void AfterSutCreation()

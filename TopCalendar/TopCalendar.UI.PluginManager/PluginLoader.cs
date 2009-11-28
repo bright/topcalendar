@@ -15,20 +15,37 @@ namespace TopCalendar.UI.PluginManager
 		private readonly IKernel _kernel;
 		private readonly IEventAggregator _eventAggregator;
 		private readonly IRegionManager _regionManager;
-		private readonly IPluginConfigurationProvider _configuration;
+		private readonly IConnectorsListProvider _connectors;
+
+		private IModuleCatalog _moduleCatalog;
 
 		public PluginLoader(IKernel kernel, IEventAggregator eventAggregator, IRegionManager regionManager)
 		{
 			_kernel = kernel;
-			_kernel.Bind<IPluginConfigurationProvider>().To<PluginConfigurationProvider>();
-			_kernel.Bind<IPluginConfigurationHandler>().To<PluginConfigurationHandler>();
+			_kernel.Bind<IConnectorsListProvider>().To<ConnectorsListProvider>();
 
 			_eventAggregator = eventAggregator;
 			_regionManager = regionManager;
 
-			_configuration = _kernel.Get<IPluginConfigurationProvider>();
+			_connectors = _kernel.Get<IConnectorsListProvider>();
 
 			_eventAggregator.GetEvent<UnloadViewEvent>().Subscribe(UnloadView);
+		}
+
+		/// <summary>
+		/// Udostepnia ModuleCatalog tworzony na podstawie konfiguracji
+		/// </summary>
+		public IModuleCatalog ModuleCatalog
+		{
+			get
+			{
+				if (_moduleCatalog == null)
+				{
+					_moduleCatalog = new ConfigurationModuleCatalog();
+				}
+
+				return _moduleCatalog;
+			}
 		}
 
 		/// <summary>
@@ -48,33 +65,11 @@ namespace TopCalendar.UI.PluginManager
 		}
 
 		/// <summary>
-		/// Laduje moduly wg konfiguracji
-		/// </summary>
-		/// <param name="moduleCatalog"></param>
-		public void Load(ModuleCatalog moduleCatalog)
-		{
-			LoadNinjectModules();
-			LoadPresentationModules(moduleCatalog);
-		}
-		
-		/// <summary>
-		/// Laduje moduly (Microsoft.Practices.Composite.Modularity.IModule) UI do katalogu
-		/// </summary>
-		/// <param name="moduleCatalog">Katalog modulow, sluzy do ich inicjalizacji</param>
-		private void LoadPresentationModules(ModuleCatalog moduleCatalog)
-		{
-			foreach (var module in _configuration.PresentationModules)
-			{
-				moduleCatalog.AddModule(module);
-			}
-		}
-
-		/// <summary>
 		/// Laduje moduly (Ninject.Module) fasady klienckiej.
 		/// </summary>
-		private void LoadNinjectModules()
+		public void LoadConnectors()
 		{
-			foreach (var module in _configuration.ConnectorModules)
+			foreach (var module in _connectors.ConnectorModules)
 			{
 				_kernel.Load(module.Assembly);
 			}

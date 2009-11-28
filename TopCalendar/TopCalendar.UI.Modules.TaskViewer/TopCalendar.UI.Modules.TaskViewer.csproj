@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{064DFFC5-BDDA-49CD-8B53-C362676376ED}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -104,6 +104,10 @@
     <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
       <Name>TopCalendar.UI.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.MenuInfrastructure\TopCalendar.UI.MenuInfrastructure.csproj">
+      <Project>{8F89764F-5880-4735-B15D-A1AD962105C0}</Project>
+      <Name>TopCalendar.UI.MenuInfrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
       <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>
