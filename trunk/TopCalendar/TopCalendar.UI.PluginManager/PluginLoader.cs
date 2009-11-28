@@ -28,14 +28,14 @@ namespace TopCalendar.UI.PluginManager
 
 			_configuration = _kernel.Get<IPluginConfigurationProvider>();
 
-			_eventAggregator.GetEvent<UnloadViewEvent>().Subscribe(UnloadModuleView);
+			_eventAggregator.GetEvent<UnloadViewEvent>().Subscribe(UnloadView);
 		}
 
 		/// <summary>
 		/// Wywala podany widok z wszystkich regionow, w ktorych jest zarejestrowany
 		/// </summary>
 		/// <param name="moduleView">Widok do wywalenia</param>
-		private void UnloadModuleView(IView moduleView)
+		private void UnloadView(IView moduleView)
 		{
 			var regions = from item in _kernel.Get<IRegionManager>().Regions
 			              where item.Views.Contains(moduleView)
