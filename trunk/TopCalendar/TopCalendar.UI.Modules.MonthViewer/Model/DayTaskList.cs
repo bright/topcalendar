@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TopCalendar.Client.Connector.Model;
+using TopCalendar.Client.DataModel;
 using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.MonthViewer.Model

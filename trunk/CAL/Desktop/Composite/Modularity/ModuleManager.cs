@@ -99,7 +99,7 @@ namespace Microsoft.Practices.Composite.Modularity
             {
                 // If we can instantiate the type, that means the module's assembly is already loaded into 
                 // the AppDomain and we don't need to retrieve it. 
-                bool isAvailable = Type.GetType(moduleInfo.ModuleType) != null;
+                bool isAvailable = Type.GetType(moduleInfo.ModuleType,true) != null;
                 if (isAvailable)
                 {
                     moduleInfo.State = ModuleState.ReadyForInitialization;

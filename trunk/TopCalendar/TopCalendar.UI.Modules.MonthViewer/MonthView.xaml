@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
     xmlns:Converters="clr-namespace:TopCalendar.Utility.UI.Converters;assembly=TopCalendar.Utility"
     xmlns:Utilites="clr-namespace:TopCalendar.Utility.UI;assembly=TopCalendar.Utility"        
-    xmlns:Model="clr-namespace:TopCalendar.Client.Connector.Model;assembly=TopCalendar.Client.Connector"        
+    xmlns:Model="clr-namespace:TopCalendar.Client.DataModel;assembly=TopCalendar.Client.DataModel"        
     xmlns:CommonCommands="clr-namespace:TopCalendar.UI.Infrastructure.CommonCommands;assembly=TopCalendar.UI.Infrastructure"             
     VerticalContentAlignment="Stretch"
     HorizontalAlignment="Stretch"             

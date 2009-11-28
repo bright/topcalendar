@@ -1,4 +1,6 @@
-﻿using Microsoft.Practices.Composite.Presentation.Events;
+﻿using System;
+using Microsoft.Practices.Composite.Presentation.Events;
+using TopCalendar.Client.DataModel;
 using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Infrastructure
@@ -27,4 +29,18 @@ namespace TopCalendar.UI.Infrastructure
     public class RegistrationCompletedEvent : CompositePresentationEvent<string>
     {
     }
+
+    /// <summary>
+    /// Event publikowany gdy ma pojawić się okno nowego zadania
+    /// W parametrze data początkowa zadania
+    /// </summary>
+    public class ShowAddNewTaskViewEvent : CompositePresentationEvent<DateTime>
+    {
+        
+    }
+
+    /// <summary>
+    /// Event is Published if new task is added to repository
+    /// </summary>
+    public class NewTaskAddedEvent : CompositePresentationEvent<Task>{}
 }
