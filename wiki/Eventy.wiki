@@ -9,6 +9,8 @@ Wszystkie eventy powinny być zdefiniowane w {{{TopCalendar.UI.Infrastructure.Ev
 || {{{CloseAppEvent}}} || - || Polecenie "Zakończ" z menu || Shell (menu) || Shell ||
 || {{{UnloadModuleEvent}}} || _IView_ Obiekt widoku do wywalenia || Żądanie usunięcia widoku z UI || dowolny || PluginLoader ||
 || {{{RegistrationCompletedEvent}}} || _string_ Login nowego usera || Po rejestracji zakończonej sukcesem || Registration || _docelowo np. widok miesiąca_ ||
+|| {{ShowAddNewTaskViewEvent}} || _DateTime_ data rozpoczęcia zadania  || Pokazuje w regionie MainContent formularz dodania nowego zadania  || TaskViewer || - ||
+|| {{NewTaskAddedEvent}} || _Task_ dodane zadanie || Event jest publikowany po pomyślnym dodaniu zadania do repozytorium || tylko Repozytorium || MonthViewer ||
 || ... ||   ||  ||  ||  ||
 
 = Eventy w menu =
