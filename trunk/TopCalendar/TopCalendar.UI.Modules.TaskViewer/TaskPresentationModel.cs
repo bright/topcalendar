@@ -59,7 +59,6 @@ namespace TopCalendar.UI.Modules.TaskViewer
         #region private variables
 
         private readonly IEventAggregator _eventAggregator;
-        private readonly IPluginLoader _pluginLoader;
         private readonly ITaskRepository _taskRepository;
         private Task _task;
 

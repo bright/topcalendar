@@ -83,6 +83,10 @@
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
       <Name>TopCalendar.UI.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
+      <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
+      <Name>TopCalendar.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

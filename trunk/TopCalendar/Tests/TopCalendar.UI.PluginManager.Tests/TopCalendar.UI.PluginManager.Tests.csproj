@@ -60,8 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PluginConfigurationHandlerTests.cs" />
-    <Compile Include="PluginConfigurationProviderTests.cs" />
     <Compile Include="PluginLoaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

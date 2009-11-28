@@ -2,9 +2,8 @@ using System;
 
 namespace TopCalendar.UI.PluginManager
 {
-	public interface IPluginConfigurationProvider
+	public interface IConnectorsListProvider
 	{
-		Type[] PresentationModules { get; }
 		Type[] ConnectorModules { get; }
 	}
 }

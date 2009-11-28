@@ -8,13 +8,13 @@ namespace TopCalendar.UI.Tests
 {
 	/// <summary>
 	/// Baaardzo brzydkie rozwiazanie, ale nie da sie chyba tego zrobic lepiej.
-	/// Test bootstrapera nie powinien ladowac pluginow, bo to inna bajka.
+	/// Test bootstrapera nie powinien ladowac connectorow, bo to inna bajka.
 	/// Nie da sie zamockowac metody wewnatrz Sut-a, nie jest chyba tez dobrym pomyslem
-	/// wynoszenie ladowania pluginow poza bootstraper, bo przeciez po to on jest.
+	/// wynoszenie ladowania connectorow poza bootstraper, bo przeciez po to on jest.
 	/// </summary>
 	public class TopCalendarUIBootstrapperForTest : TopCalendarUIBootstrapper
 	{
-		protected override void LoadPlugins()
+		protected override void LoadConnectors()
 		{
 		}
 	}

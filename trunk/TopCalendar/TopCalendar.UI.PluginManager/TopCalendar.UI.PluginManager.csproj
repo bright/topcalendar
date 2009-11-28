@@ -57,11 +57,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPluginConfigurationHandler.cs" />
-    <Compile Include="IPluginConfigurationProvider.cs" />
+    <Compile Include="ConnectorsListProvider.cs" />
+    <Compile Include="IConnectorsListProvider.cs" />
     <Compile Include="IPluginLoader.cs" />
-    <Compile Include="PluginConfigurationHandler.cs" />
-    <Compile Include="PluginConfigurationProvider.cs" />
     <Compile Include="PluginInitializer.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

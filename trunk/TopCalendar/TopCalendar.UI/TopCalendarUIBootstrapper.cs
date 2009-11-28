@@ -10,27 +10,25 @@ namespace TopCalendar.UI
 {
 	public class TopCalendarUIBootstrapper : NinjectBootstrapper
 	{
-		private readonly ModuleCatalog _moduleCatalog = new ModuleCatalog();
-
 		protected override IModuleCatalog GetModuleCatalog()
 		{
-			return _moduleCatalog;
+			return Kernel.Get<IPluginLoader>().ModuleCatalog;
 		}
 
 		protected override void ConfigureKernel()
 		{
-			base.ConfigureKernel();
-			ServiceLocator.SetLocatorProvider(() => Kernel.Get<IServiceLocator>());
-
 			Kernel.Bind<IPluginLoader>().To<PluginLoader>().InSingletonScope();
 			Kernel.Bind<IShellView>().To<Shell>().InSingletonScope();
 		    Kernel.Bind<IMenuManager>().To<MenuManager>().InSingletonScope();
 		    Kernel.Bind<IMenuProvider>().To<MenuProvider>().InSingletonScope();
+
+			base.ConfigureKernel();
+			ServiceLocator.SetLocatorProvider(() => Kernel.Get<IServiceLocator>());
 		}
 
 		protected override DependencyObject CreateShell()
 		{
-			LoadPlugins();
+			LoadConnectors();
 
 		    var view = Kernel.Get<IShellView>();
 		    view.Model = Kernel.Get<ShellPresentationModel>();
@@ -39,10 +37,9 @@ namespace TopCalendar.UI
 			return view as DependencyObject;
 		}
 
-		protected virtual void LoadPlugins()
+		protected virtual void LoadConnectors()
 		{
-			var loader = Kernel.Get<IPluginLoader>();
-			loader.Load(_moduleCatalog);
+			Kernel.Get<IPluginLoader>().LoadConnectors();
 		}
 	}
 }

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Practices.Composite.Events;
@@ -10,6 +8,7 @@ using Ninject;
 using TopCalendar.UI.Infrastructure;
 using TopCalendar.UI.PluginManager;
 using TopCalendar.Utility.UI;
+using TopCalendar.UI.MenuInfrastructure;
 
 namespace TopCalendar.UI.Modules.TaskViewer
 {
@@ -29,6 +28,10 @@ namespace TopCalendar.UI.Modules.TaskViewer
         public void Initialize()
         {
             RegisterViewsAndServices();
+
+			_kernel.Get<IMenuManager>().AddItemToMenu<ShowAddNewTaskViewEvent, DateTime>(
+				"TasksMenu", "AddTask", "Dodaj zadanie"
+			);
         }
 
         private void RegisterViewsAndServices()

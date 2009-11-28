@@ -1,24 +1,32 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Microsoft.Practices.ServiceLocation;
 using TopCalendar.UI.Infrastructure;
+using TopCalendar.Utility;
+using System.Collections.ObjectModel;
 
 namespace TopCalendar.UI.MenuInfrastructure
 {
     public class MenuProvider : IMenuProvider
     {
         private readonly IServiceLocator _serviceLocator;
+		private readonly RefreshableObservableCollection<MenuEntry> _menus;
         private readonly Dictionary<string, MenuEntry> _itemsDict;
 
         public MenuProvider(IServiceLocator serviceLocator)
         {
             _serviceLocator = serviceLocator;
 
-            Menus = new ObservableCollection<MenuEntry>();
+            _menus = new RefreshableObservableCollection<MenuEntry>();
             _itemsDict = new Dictionary<string, MenuEntry>();
         }
 
-        public ObservableCollection<MenuEntry> Menus { get; set; }
+        public ObservableCollection<MenuEntry> Menus
+		{
+			get
+			{
+				return (ObservableCollection<MenuEntry>)_menus;
+			}
+		}
 
         public MenuEntry GetTopLevelMenu(string name)
         {
@@ -34,7 +42,7 @@ namespace TopCalendar.UI.MenuInfrastructure
         {
             if (item != null)
             {
-                Menus.Add(item);
+                _menus.Add(item);
                 _itemsDict[item.Name] = item;
             }
 
@@ -46,6 +54,7 @@ namespace TopCalendar.UI.MenuInfrastructure
             if (newItem != null)
             {
                 topLevel.Items.Add(newItem);
+				_menus.Refresh();
             }
         }
     }
