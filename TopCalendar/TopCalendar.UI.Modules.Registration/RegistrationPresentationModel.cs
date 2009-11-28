@@ -44,7 +44,7 @@ namespace TopCalendar.UI.Modules.Registration
 
 		private void Cancel(object obj)
 		{
-			_eventAggregator.GetEvent<UnloadModuleEvent>().Publish(View);
+			_eventAggregator.GetEvent<UnloadViewEvent>().Publish(View);
 			Log.Log("Rejestracja anulowana", Category.Info, Priority.None);
 		}
 
@@ -101,7 +101,7 @@ namespace TopCalendar.UI.Modules.Registration
 
     		Log.Log(string.Format("{0}, {1} - zarejestrowany", Login, Password), Category.Info, Priority.None);
 
-			_eventAggregator.GetEvent<UnloadModuleEvent>().Publish(View);
+			_eventAggregator.GetEvent<UnloadViewEvent>().Publish(View);
 			var e = _eventAggregator.GetEvent<RegistrationCompletedEvent>();
 			e.Publish(Login);
     	}

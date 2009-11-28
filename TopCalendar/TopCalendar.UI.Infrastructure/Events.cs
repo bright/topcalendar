@@ -15,10 +15,10 @@ namespace TopCalendar.UI.Infrastructure
     }
 
 	/// <summary>
-	/// Event publikowany przed moduly, ktore chca, zeby je ubic i wyladowac z regionu
+	/// Event publikowany przez moduly, ktore chca, zeby je wyladowac z regionu
 	/// W parametrze obiekt widoku do wywalenia
 	/// </summary>
-	public class UnloadModuleEvent : CompositePresentationEvent<IView>
+	public class UnloadViewEvent : CompositePresentationEvent<IView>
 	{
 	}
 
@@ -36,11 +36,12 @@ namespace TopCalendar.UI.Infrastructure
     /// </summary>
     public class ShowAddNewTaskViewEvent : CompositePresentationEvent<DateTime>
     {
-        
     }
 
     /// <summary>
     /// Event is Published if new task is added to repository
     /// </summary>
-    public class NewTaskAddedEvent : CompositePresentationEvent<Task>{}
+    public class NewTaskAddedEvent : CompositePresentationEvent<Task>
+	{
+	}
 }

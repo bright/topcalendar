@@ -14,15 +14,15 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
 {
     public abstract class TaskViewPresentationModelTestsBase : observations_for_auto_created_sut_of_type<TaskPresentationModel>
     {
-        protected UnloadModuleEvent _unloadModuleEvent;
+		protected UnloadViewEvent _unloadViewEvent;
         protected ITaskView _taskView;
 
         protected override void EstablishContext()
         {
             base.EstablishContext();
-            _unloadModuleEvent = MockRepository.GenerateMock<UnloadModuleEvent>();
-            Dependency<IEventAggregator>().Stub(aggregator => aggregator.GetEvent<UnloadModuleEvent>()).Return(
-                _unloadModuleEvent);
+			_unloadViewEvent = MockRepository.GenerateMock<UnloadViewEvent>();
+			Dependency<IEventAggregator>().Stub(aggregator => aggregator.GetEvent<UnloadViewEvent>()).Return(
+				_unloadViewEvent);
             _taskView = Dependency<ITaskView>();
         }
     }
@@ -42,7 +42,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
 
             var viewToUnload = Dependency<ITaskView>();
 
-            _unloadModuleEvent.AssertWasCalled(x => x.Publish(viewToUnload));
+			_unloadViewEvent.AssertWasCalled(x => x.Publish(viewToUnload));
         }
     }
 
@@ -81,7 +81,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         [Test]
         public void TaskView_should_be_unregistered()
         {
-            _unloadModuleEvent.AssertWasCalled(x => x.Publish(_taskView));
+			_unloadViewEvent.AssertWasCalled(x => x.Publish(_taskView));
         }
     }
 
@@ -104,7 +104,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         [Test]
         public void TaskView_should_not_be_unregistered()
         {
-            _unloadModuleEvent.AssertWasNotCalled(x => x.Publish(_taskView));
+			_unloadViewEvent.AssertWasNotCalled(x => x.Publish(_taskView));
         }
     }
 
@@ -140,7 +140,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         [Test]
         public void TaskView_should_be_unregistered()
         {
-            _unloadModuleEvent.AssertWasCalled(x => x.Publish(_taskView));
+            _unloadViewEvent.AssertWasCalled(x => x.Publish(_taskView));
         }
     }
 
@@ -161,7 +161,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         [Test]
         public void TaskView_should_not_be_unregistered()
         {
-            _unloadModuleEvent.AssertWasNotCalled(x => x.Publish(_taskView));
+			_unloadViewEvent.AssertWasNotCalled(x => x.Publish(_taskView));
         }
     }
 

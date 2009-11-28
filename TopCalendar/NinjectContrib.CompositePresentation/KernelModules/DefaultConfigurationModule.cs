@@ -5,6 +5,7 @@ using Microsoft.Practices.Composite.Regions;
 using Microsoft.Practices.ServiceLocation;
 using CommonServiceLocator.NinjectAdapter;	
 using Ninject.Modules;
+using TopCalendar.UI.PluginManager;
 
 namespace NinjectContrib.CompositePresentation.KernelModules
 {	
@@ -20,7 +21,7 @@ namespace NinjectContrib.CompositePresentation.KernelModules
 		public override void Load()
 		{
 			Bind<IServiceLocator>().To<NinjectServiceLocator>().InSingletonScope();
-			Bind<IModuleInitializer>().To<ModuleInitializer>().InSingletonScope();
+			Bind<IModuleInitializer>().To<PluginInitializer>().InSingletonScope();
 			Bind<IModuleManager>().To<ModuleManager>().InSingletonScope();
 			Bind<RegionAdapterMappings>().ToSelf().InSingletonScope();
 			Bind<IRegionManager>().To<RegionManager>().InSingletonScope();

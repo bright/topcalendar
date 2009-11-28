@@ -168,7 +168,7 @@ namespace TopCalendar.UI.Modules.TaskViewer
 
         private void Cancel(object obj)
         {
-            _eventAggregator.GetEvent<UnloadModuleEvent>().Publish(View);
+            _eventAggregator.GetEvent<UnloadViewEvent>().Publish(View);
             Log.Log("Operacja na zadaniu anulowana", Category.Info, Priority.None);
         }
 
