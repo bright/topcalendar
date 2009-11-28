@@ -10,7 +10,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 	public class when_executing_cancel
 		: observations_for_auto_created_sut_of_type<RegistrationPresentationModel>
 	{
-		private UnloadModuleEvent subscriber;
+		private UnloadViewEvent subscriber;
 		
 		private bool _cancelActionExecuted;
 
@@ -21,11 +21,11 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 
 		protected override void EstablishContext()
 		{
-			subscriber = new UnloadModuleEvent();
+			subscriber = new UnloadViewEvent();
 			subscriber.Subscribe(execute_action);
 			_cancelActionExecuted = false;	
 			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<UnloadModuleEvent>())
+				.Stub(ea => ea.GetEvent<UnloadViewEvent>())
 				.IgnoreArguments()
 				.Return(subscriber);
 		}
@@ -46,7 +46,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		: observations_for_auto_created_sut_of_type<RegistrationPresentationModel>
 	{
 		private RegistrationCompletedEvent regCompletedSubscriber;
-		private UnloadModuleEvent unloadSubscriber;
+		private UnloadViewEvent unloadSubscriber;
 
 
 		private bool _viewShouldDieExecuted;
@@ -54,7 +54,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 
 		protected override void EstablishContext()
 		{
-			unloadSubscriber = new UnloadModuleEvent();			
+			unloadSubscriber = new UnloadViewEvent();			
 			unloadSubscriber.Subscribe(execute_unload);
 
 			regCompletedSubscriber = new RegistrationCompletedEvent();
@@ -63,7 +63,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 			_viewShouldDieExecuted = false;
 
 			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<UnloadModuleEvent>())
+				.Stub(ea => ea.GetEvent<UnloadViewEvent>())
 				.IgnoreArguments()
 				.Return(unloadSubscriber);
 			Dependency<IEventAggregator>()

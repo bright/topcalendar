@@ -33,24 +33,22 @@ namespace TopCalendar.UI.Modules.TaskViewer
 
         private void RegisterViewsAndServices()
         {
-            _kernel.Bind<ITaskView>().To<TaskView>();
-            _kernel.Bind<IPresentationModelFor<ITaskView>>().To<TaskPresentationModel>();
-            _kernel.Bind<IViewForModel<ITaskView, TaskPresentationModel>>().To<TaskView>();
-            _kernel.Bind<ITaskPresentationModel>().To<TaskPresentationModel>();
+            _kernel.Bind<ITaskView>().To<TaskView>().InSingletonScope();
+			_kernel.Bind<IPresentationModelFor<ITaskView>>().To<TaskPresentationModel>().InSingletonScope();
+			_kernel.Bind<IViewForModel<ITaskView, TaskPresentationModel>>().To<TaskView>().InSingletonScope();
+			_kernel.Bind<ITaskPresentationModel>().To<TaskPresentationModel>().InSingletonScope();
             
             _eventAggregator.GetEvent<ShowAddNewTaskViewEvent>().Subscribe(HandleShowAddNewTaskViewEvent);
         }
 
         private void HandleShowAddNewTaskViewEvent(DateTime time)
         {
-
             var taskPresentationModel = _kernel.Get<ITaskPresentationModel>();
 
             _pluginLoader.RegisterViewWithRegion(
                 RegionNames.MainContent, taskPresentationModel.View);
 
             taskPresentationModel.ShowAddNewTaskView(time);
-
         }
     }
 }

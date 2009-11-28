@@ -28,20 +28,17 @@ namespace TopCalendar.UI.Modules.MonthViewer
 			ExecuteBootsrapTasks();
 			RegisterViewsAndServices();
 			SubscribeToDefaultEvents();
-			//_regionManager.RegisterViewWithRegion(RegionNames.MainContent, 
-			//    () => _kernel.Get<IMonthViewPresentationModel>().View);
 		}
 
 		private void SubscribeToDefaultEvents()
 		{
-			var e = _eventAggregator.GetEvent<RegistrationCompletedEvent>();
-			e.Subscribe(login => LoadMonthView(),true);
+			_eventAggregator.GetEvent<RegistrationCompletedEvent>().Subscribe(login => LoadMonthView());
 		}
 
 		private void LoadMonthView()
 		{
 			_kernel.Get<IPluginLoader>()
-				.RegisterViewWithRegion(RegionNames.MainContent,_kernel.Get<IPresentationModelFor<IMonthView>>().View );
+				.RegisterViewWithRegion(RegionNames.MainContent, _kernel.Get<IPresentationModelFor<IMonthView>>().View);
 		}
 
 		private void ExecuteBootsrapTasks()

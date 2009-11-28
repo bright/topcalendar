@@ -15,7 +15,7 @@ namespace TopCalendar.UI.PluginManager.Tests
 	public abstract class observations_for_PluginLoader
 		: observations_for_auto_created_sut_of_type<PluginLoader>
 	{
-		protected UnloadModuleEvent _unloadEvent;
+		protected UnloadViewEvent _unloadEvent;
 		protected IRegionManager _regionManager;
 
 		protected string _testRegion = "testRegion";
@@ -23,7 +23,7 @@ namespace TopCalendar.UI.PluginManager.Tests
 
 		protected override void EstablishContext()
 		{
-			_unloadEvent = new UnloadModuleEvent();
+			_unloadEvent = new UnloadViewEvent();
 			_view = Dependency<IView>();
 
 			Kernel.Bind<IRegionManager>().To<RegionManager>().InSingletonScope();
@@ -31,7 +31,7 @@ namespace TopCalendar.UI.PluginManager.Tests
 			_regionManager = Kernel.Get<IRegionManager>();
 
 			Dependency<IEventAggregator>().Stub(
-				ea => ea.GetEvent<UnloadModuleEvent>()
+				ea => ea.GetEvent<UnloadViewEvent>()
 			).IgnoreArguments().Return(_unloadEvent);
 		}
 	}

@@ -87,6 +87,10 @@
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
       <Name>Composite.Desktop</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
+      <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>
+      <Name>TopCalendar.UI.PluginManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

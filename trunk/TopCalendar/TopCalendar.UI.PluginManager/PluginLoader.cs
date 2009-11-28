@@ -6,6 +6,7 @@ using Microsoft.Practices.Composite.Regions;
 using Ninject;
 using TopCalendar.UI.Infrastructure;
 using TopCalendar.Utility.UI;
+using Microsoft.Practices.ServiceLocation;
 
 namespace TopCalendar.UI.PluginManager
 {
@@ -19,15 +20,15 @@ namespace TopCalendar.UI.PluginManager
 		public PluginLoader(IKernel kernel, IEventAggregator eventAggregator, IRegionManager regionManager)
 		{
 			_kernel = kernel;
-			_kernel.Bind<IPluginConfigurationProvider>().To<PluginConfigurationProvider>().InSingletonScope();
-			_kernel.Bind<IPluginConfigurationHandler>().To<PluginConfigurationHandler>().InSingletonScope();
+			_kernel.Bind<IPluginConfigurationProvider>().To<PluginConfigurationProvider>();
+			_kernel.Bind<IPluginConfigurationHandler>().To<PluginConfigurationHandler>();
 
 			_eventAggregator = eventAggregator;
 			_regionManager = regionManager;
 
 			_configuration = _kernel.Get<IPluginConfigurationProvider>();
 
-			_eventAggregator.GetEvent<UnloadModuleEvent>().Subscribe(UnloadModuleView);
+			_eventAggregator.GetEvent<UnloadViewEvent>().Subscribe(UnloadModuleView);
 		}
 
 		/// <summary>
