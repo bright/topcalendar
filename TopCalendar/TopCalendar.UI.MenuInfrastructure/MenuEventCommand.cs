@@ -27,7 +27,15 @@ namespace TopCalendar.UI.MenuInfrastructure
 
         public void Execute(object parameter)
         {
-            _event.Publish((TParam) parameter);
+            object arg = null;
+            try
+            {
+                arg = (TParam) parameter;
+                _event.Publish((TParam)arg);
+                return;
+            }catch(Exception){}
+
+            _event.Publish(default(TParam));
         }
 
         public bool CanExecute(object parameter)

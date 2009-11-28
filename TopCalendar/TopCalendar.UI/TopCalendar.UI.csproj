@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B3A8B8D7-A744-41B3-B1F7-B18BE2EEDCD2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -120,6 +120,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -164,6 +165,10 @@
     <ProjectReference Include="..\TopCalendar.UI.Modules.Registration\TopCalendar.UI.Modules.Registration.csproj">
       <Project>{23E3796B-3A26-4142-B0E1-5D01793EC4AE}</Project>
       <Name>TopCalendar.UI.Modules.Registration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.Modules.TaskViewer\TopCalendar.UI.Modules.TaskViewer.csproj">
+      <Project>{064DFFC5-BDDA-49CD-8B53-C362676376ED}</Project>
+      <Name>TopCalendar.UI.Modules.TaskViewer</Name>
     </ProjectReference>
     <ProjectReference Include="..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
       <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>

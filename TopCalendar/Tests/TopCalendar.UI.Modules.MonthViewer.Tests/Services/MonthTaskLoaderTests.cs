@@ -5,7 +5,7 @@ using AutoMapper;
 using NUnit.Framework;
 using Rhino.Mocks;
 using TopCalendar.Client.Connector;
-using TopCalendar.Client.Connector.Model;
+using TopCalendar.Client.DataModel;
 using TopCalendar.UI.Modules.MonthViewer.Model;
 using TopCalendar.UI.Modules.MonthViewer.Services;
 using TopCalendar.Utility;

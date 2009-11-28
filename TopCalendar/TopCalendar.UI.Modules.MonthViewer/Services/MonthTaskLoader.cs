@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using AutoMapper;
 using TopCalendar.Client.Connector;
-using TopCalendar.Client.Connector.Model;
 using TopCalendar.UI.Modules.MonthViewer.Model;
 using TopCalendar.Utility.BasicExtensions;
 
