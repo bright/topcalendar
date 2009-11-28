@@ -7,7 +7,8 @@ Wszystkie eventy powinny być zdefiniowane w {{{TopCalendar.UI.Infrastructure.Ev
 
 || *Event Name* || *Parametr* || *Opis* || *Moduł publikujący* || *Moduły subskrybujące* ||
 || {{{CloseAppEvent}}} || - || Polecenie "Zakończ" z menu || Shell (menu) || Shell ||
-|| {{{UnloadViewEvent}}} || _IView_ Obiekt widoku do wywalenia || Żądanie usunięcia widoku z UI || dowolny moduł || PluginLoader ||
+|| {{{UnloadViewEvent}}} || _IView_ Obiekt widoku do wywalenia || Żądanie usunięcia widoku z UI || dowolny moduł || PluginManager ||
+|| {{{UnloadModuleEvent}}} || _IModule_ Moduł do wywalenia || Żądanie usunięcia referencji do modułu || dowolny moduł || PluginManager ||
 || {{{RegistrationCompletedEvent}}} || _string_ Login nowego usera || Po rejestracji zakończonej sukcesem || Registration || MonthViewer ||
 || {{{ShowAddNewTaskViewEvent}}} || _DateTime_ data rozpoczęcia zadania  || Pokazuje w regionie MainContent formularz dodania nowego zadania  || Shell (menu) || TaskViewer || 
 || {{{NewTaskAddedEvent}}} || _Task_ dodane zadanie || Event jest publikowany po pomyślnym dodaniu zadania do repozytorium || tylko Repozytorium || MonthViewer ||
