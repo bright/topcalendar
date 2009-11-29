@@ -9,7 +9,7 @@ namespace TopCalendar.Utility.Tests.UI
 	{
 		protected override void EstablishContext()
 		{
-			ProvideImpelentationOf(Stub<TViewType>());
+			ProvideImplementationOf(Stub<TViewType>());
 			base.EstablishContext();
 		}
 	}
