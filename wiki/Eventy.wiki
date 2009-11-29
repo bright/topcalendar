@@ -22,3 +22,5 @@ Eventy wpina się do menu w następujący sposób:
  # wywołujemy {{{AddTopLevelMenu("identyfikator", "tekst wyświetlany")}}} jeśli chemy menu głównego poziomu
  # wywołujemy {{{AddItemToMenu<TypEventa>("identyfikator menu głównego poziomu", "identyfikator wpisu", "tekst wyświetlany")}}} - jeśli parametr ma być typu {{{object}}}, lub {{{AddItemToMenu<TypEventa, TypParametru>("identyfikator menu głównego poziomu", "identyfikator wpisu", "tekst wyświetlany")}}} - jeśli inny typ parametru
  # menu automatycznie publikuje dany event po kliknięciu, wystarczy gdzieś go subskrybować
+
+W celu zarządzania, czy dana pozycja w menu jest wyszarzona, czy nie, jako czwarty parametr {{{AddItemToMenu}}} można podać obiekt klasy {{{CommandCanExecuteHelper}}}, która ma wajchę {{{CanExecute}}} - przestawienie jej w dowolnym momencie na false wyszarza wpis, na true - uaktywnia.
