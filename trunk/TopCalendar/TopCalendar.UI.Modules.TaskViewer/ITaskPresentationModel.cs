@@ -8,6 +8,6 @@ namespace TopCalendar.UI.Modules.TaskViewer
 {
     public interface ITaskPresentationModel : IPresentationModelFor<ITaskView>
     {
-        void ShowAddNewTaskView(DateTime startDate);
+        void ShowAddNewTaskView(DateTime? startDate);
     }
 }

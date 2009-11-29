@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Logging;
@@ -17,119 +18,75 @@ namespace TopCalendar.UI.Modules.TaskViewer
 {
     public class TaskPresentationModel : PresentationModelFor<ITaskView>, ITaskPresentationModel
     {
-
-        #region Constructors
-
         public TaskPresentationModel(ITaskView view, IEventAggregator eventAggregator, 
             ITaskRepository taskRepository)
             : base(view)
         {
             _eventAggregator = eventAggregator;
-            _taskRepository = taskRepository;
-            _view.ViewModel = this;
-
-
-            _task = new Task();
+            _taskRepository = taskRepository;            
             _cancelCommand = new DelegateCommand<object>(Cancel);
-            _updateCommand = new DelegateCommand<object>(Update, CanUpdate);
-            _addCommand = new DelegateCommand<object>(Add, CanAdd);
-
+            _updateCommand = new DelegateCommand<Task>(Update, CanUpdate);
+			_addCommand = new DelegateCommand<Task>(Add, CanAdd);
+			_view.ViewModel = this;        	
         }
 
-        #endregion
+   
+    
 
-        #region interface ITaskPresentationModel
-
-        public void ShowAddNewTaskView(DateTime newDateTime)
+    	public void ShowAddNewTaskView(DateTime? newDateTime)
         {
-            _task = new Task();
-            _task.Description = string.Empty;
-            if (newDateTime.Equals(new DateTime()))
-                newDateTime = DateTime.Now;
-
-            _task.StartAt = newDateTime;
-
-            Description = _task.Description;
-            Name = _task.Name;
-            StartAt = _task.StartAt;
+        	IsNewTask = true;
+            Task = new Task("Nazwa", newDateTime != null ? (DateTime)newDateTime : DateTime.Now);            
         }
 
-        #endregion
+    	public bool IsNewTask
+    	{    		
+			get
+			{
+				return AddButtonVisible;
+			}
+    		set
+    		{
+    			UpdateButtonVisible = !value;
+    			AddButtonVisible = value;
+    		}
+    	}
 
-        #region private variables
-
-        private readonly IEventAggregator _eventAggregator;
+    	private readonly IEventAggregator _eventAggregator;
         private readonly ITaskRepository _taskRepository;
-        private Task _task;
+        
 
-        #endregion
+        
+		private Task _task;
+    	public Task Task
+    	{
+			get { return _task; }
+			set {
+				SetTask(value);
+			}
+    	}
 
-        #region Properies
+    	private void SetTask(Task value)
+    	{
+    		if(_task != null)
+    			UnBindCanExecuteCommands();
+    		_task = value;
+    		BindCanExecuteCommands();
+    		OnPropertyChanged(()=>Task);
+    	}
 
 
-        [StringLengthValidator(0, 200)]
-        public string Description
-        {
-            get { return _task.Description; }
-            set
-            {
-                _task.Description = value;
-                OnPropertyChanged("Description");
-                _updateCommand.RaiseCanExecuteChanged();
-                _addCommand.RaiseCanExecuteChanged();
-            }
-        }
-
-        [StringLengthValidator(3, 40)]
-        public string Name
-        {
-            get { return _task.Name; }
-            set
-            {
-                _task.Name = value;
-                OnPropertyChanged("Name");
-                _updateCommand.RaiseCanExecuteChanged();
-                _addCommand.RaiseCanExecuteChanged();
-            }
-        }
-
-        //[DateTimeRangeValidator("1960-01-01T00:00:00")]
-        public DateTime StartAt
-        {
-            get { return _task.StartAt; }
-            set
-            {
-                _task.StartAt = value;
-                OnPropertyChanged("StartAt");
-                _updateCommand.RaiseCanExecuteChanged();
-                _addCommand.RaiseCanExecuteChanged();
-            }
-        }
-
-        public DateTime EndAt
-        {
-            get { return _task.StartAt; }
-            set
-            {
-                _task.StartAt = value;
-                OnPropertyChanged("EndAt");
-                _updateCommand.RaiseCanExecuteChanged();
-                _addCommand.RaiseCanExecuteChanged();
-            }
-        }
-
-        [Inject]
+    	[Inject]
         public ILoggerFacade Log { get; set; }
 
-        #endregion
-
-        #region Commands
+    
 
         private DelegateCommand<object> _cancelCommand;
-        private DelegateCommand<object> _updateCommand;
-        private DelegateCommand<object> _addCommand;
+		private DelegateCommand<Task> _updateCommand;
+		private DelegateCommand<Task> _addCommand;
+    	
 
-        public ICommand CancelCommand
+    	public ICommand CancelCommand
         {
             get { return _cancelCommand; }
             set
@@ -144,7 +101,7 @@ namespace TopCalendar.UI.Modules.TaskViewer
             get { return _updateCommand; }
             set
             {
-                _updateCommand = (DelegateCommand<object>)value;
+				_updateCommand = (DelegateCommand<Task>)value;
                 OnPropertyChanged("UpdateCommand");
             }
         }
@@ -154,51 +111,77 @@ namespace TopCalendar.UI.Modules.TaskViewer
             get { return _addCommand; }
             set
             {
-                _addCommand = (DelegateCommand<object>)value;
+				_addCommand = (DelegateCommand<Task>)value;
                 OnPropertyChanged("AddCommand");
             }
         }
 
-        #endregion
+    	private bool _addButtonVisible;
+    	public bool AddButtonVisible
+    	{
+    		get { return _addButtonVisible; }
+    		set { _addButtonVisible = value; 
+				OnPropertyChanged(()=> AddButtonVisible);
+			}
+    	}
 
-        #region private methods
+    	private bool _updateButtonVisible;
+    	public bool UpdateButtonVisible
+    	{
+    		get { return _updateButtonVisible; }
+    		set { _updateButtonVisible = value; 
+				OnPropertyChanged(()=> UpdateButtonVisible);
+			}
+    	}
 
-        
-
-        private void Cancel(object obj)
+    	private void Cancel(object obj)
         {
             _eventAggregator.GetEvent<UnloadViewEvent>().Publish(View);
             Log.Log("Operacja na zadaniu anulowana", Category.Info, Priority.None);
         }
 
-        private void Update(object obj)
+        private void Update(Task task)
         {
-            bool success = _taskRepository.UpdateTask(_task);
+			bool success = _taskRepository.UpdateTask(task);
             if (success)
             {
                 Cancel(null);
             }
         }
 
-        private void Add(object obj)
+        private void Add(Task task)
         {
-            bool success = _taskRepository.AddTask(_task);
+			bool success = _taskRepository.AddTask(task);
 
             if (success)
                 Cancel(null);
         }
 
-        private bool CanAdd(object arg)
+        private bool CanAdd(Task task)
         {
-            return CanUpdate(null);
+			return CanUpdate(task);
         }
-        private bool CanUpdate(object arg)
+        private bool CanUpdate(Task task)
         {
-            bool isValid = Validation.Validate(this).IsValid;
+			bool isValid = Validation.Validate(task).IsValid;
             return isValid;
         }
 
-        #endregion
+		private void BindCanExecuteCommands()
+		{
+			_task.PropertyChanged += RaiseCommandCanExecuteChanged;
+		}
 
+		private void RaiseCommandCanExecuteChanged(object sender, PropertyChangedEventArgs args)
+		{
+			_addCommand.RaiseCanExecuteChanged();
+			_updateCommand.RaiseCanExecuteChanged();
+		}
+
+
+		private void UnBindCanExecuteCommands()
+		{
+			_task.PropertyChanged -= RaiseCommandCanExecuteChanged;
+		}
     }
 }

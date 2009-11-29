@@ -43,7 +43,7 @@ namespace TopCalendar.UI.Infrastructure
     /// Event publikowany gdy ma pojawić się okno nowego zadania
     /// W parametrze data początkowa zadania
     /// </summary>
-    public class ShowAddNewTaskViewEvent : CompositePresentationEvent<DateTime>
+    public class ShowAddNewTaskViewEvent : CompositePresentationEvent<DateTime?>
     {
     }
 

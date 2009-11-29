@@ -26,7 +26,7 @@ namespace TopCalendar.UI.Modules.Registration
 
 			_pluginLoader.RegisterViewWithRegion(
 				RegionNames.MainContent, 
-				 _kernel.Get<IRegistrationPresentationModel>().View
+				 ()=>_kernel.Get<IRegistrationPresentationModel>().View
 			);
 
 			_eventAggregator.GetEvent<UnloadViewEvent>().Subscribe(UnloadModule);

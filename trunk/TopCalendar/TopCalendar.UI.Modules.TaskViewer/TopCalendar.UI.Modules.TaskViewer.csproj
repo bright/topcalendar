@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AvalonControlsLibrary, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\AvalonControlsLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Bennedik.Validation.Integration.WPF, Version=2.0.3592.5018, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\Bennedik.Validation.Integration.WPF.dll</HintPath>

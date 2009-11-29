@@ -8,7 +8,7 @@ using Microsoft.Practices.Composite.Modularity;
 
 namespace TopCalendar.UI.Modules.Registration.Tests
 {
-	public abstract class when_removing_view
+	public abstract class observations_for_removing_view
 		: observations_for_auto_created_sut_of_type<RegistrationModule>
 	{
 		protected UnloadModuleEvent moduleEvent;
@@ -46,11 +46,11 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		}
 	}
 
-	public class when_removing_registration_view : when_removing_view
+	public class when_removing_registration_view : observations_for_removing_view
 	{
 		protected override void Because()
 		{
-			var view = Stub<IRegistrationView>();
+			var view = GenerateStub<IRegistrationView>();
 			viewEvent.Publish(view);
 		}
 
@@ -61,7 +61,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		}
 	}
 
-	public class when_removing_other_than_registration_view : when_removing_view
+	public class when_removing_other_than_registration_view : observations_for_removing_view
 	{
 		protected override void Because()
 		{

@@ -4,6 +4,7 @@ using System.Linq;
 using AutoMapper;
 using TopCalendar.Client.Connector;
 using TopCalendar.UI.Modules.MonthViewer.Model;
+using TopCalendar.Utility;
 using TopCalendar.Utility.BasicExtensions;
 
 namespace TopCalendar.UI.Modules.MonthViewer.Services
@@ -20,7 +21,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Services
 
 		public ObservableCollection<ObservableCollection<DayTaskList>> GetTasksForMonth(DateTime date)
 		{
-			var monthTasks = _taskRepository.GetTasksBetweenDates(date.AtMonthStart(), date.AtMonthEnd());
+			var monthTasks = _taskRepository.GetTasksBetweenDates(new DateTimeRange(date.AtMonthStart(),date.AtMonthEnd()));
 			var monthStart = date.AtMonthStart();
 			var monthEnd = date.AtMonthEnd();
 			var first = (int)monthStart.DayOfWeek;

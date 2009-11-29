@@ -25,9 +25,14 @@ namespace TopCalendar.Utility.Tests
 		/// <summary>
 		/// Wywolywana po kazdym tescie
 		/// </summary>
-		[TearDown]
 		protected virtual void AfterEachObservation()
-		{			
+		{
+		}
+
+		[TearDown]
+		private void TearDown()
+		{
+			AfterEachObservation();
 		}
 
 		/// <summary>
@@ -48,8 +53,7 @@ namespace TopCalendar.Utility.Tests
 	/// <summary>
 	/// Bazowa klasa testow konkretnej klasy, zgodna z AAA
 	/// </summary>
-	/// <typeparam name="TSut">Testowana klasa</typeparam>
-	[TestFixture]
+	/// <typeparam name="TSut">Testowana klasa</typeparam>	
 	public abstract class observations_for_sut_of_type<TSut>
 		: observations_for_sut
 	{
@@ -75,7 +79,7 @@ namespace TopCalendar.Utility.Tests
 		protected abstract TSut CreateSut();
 
 	}	
-	[TestFixture]
+	
 	public abstract class observations_for_auto_created_sut_of_type<TSut>
 		: observations_for_sut_of_type<TSut>
 		where TSut : class
@@ -84,41 +88,79 @@ namespace TopCalendar.Utility.Tests
 		private AutoMockingKernel _mockingKernel;
 
 		[SetUp]
-		public void setup()
+		public new void Setup()
 		{
 			_mocks = new MockRepository();
 			_mockingKernel = new AutoMockingKernel(_mocks);
 			_mockingKernel.DefaultMockingStrategy = new ReplayedMockingStrategy(_mockingKernel);
-			Kernel.Bind<IServiceLocator>().To<NinjectServiceLocator>().InSingletonScope();
-			ServiceLocator.SetLocatorProvider(() => Kernel.Get<IServiceLocator>());
+			_mockingKernel.Bind<IServiceLocator>().To<NinjectServiceLocator>().InSingletonScope();
+			ServiceLocator.SetLocatorProvider(() => _mockingKernel.Get<IServiceLocator>());
 			base.Setup();
 		}
 
+/*
 		protected IAutoMockingRepository AutoMockingRepository { get { return _mockingKernel; } }
+*/
 
+/*
 		protected IKernel Kernel { get { return _mockingKernel; } }		
+*/
 		
-		//protected T GenerateStub<T>()
-		//    where T:class 
-		//{
-		//    return MockRepository.GenerateStub<T>();
-		//}
-
+		/// <summary>
+		/// Instruuje AutoMockingKernel ze typ ma byc stubem
+		/// jesli jednak typ byl juz zbindowany to zostanie zwrocony obiekt zgodnie z poprzednim bindingiem
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
 		protected T Stub<T>()
 		{
 			_mockingKernel.MarkStub<T>();
 			return _mockingKernel.Get<T>();
 		}
 
+		/// <summary>
+		/// Generuje stuba w oderwaniu od automocking kernela
+		/// </summary>
+		/// <typeparam name="T">Typ stuba</typeparam>
+		/// <returns>Stub typu t</returns>
+		protected T GenerateStub<T>()
+		{
+			return _mocks.Stub<T>();
+		}
+
+
+		protected void MarkNonMocked<T>()
+		{
+			_mockingKernel.MarkNonMocked(typeof(T));
+		}
+
+		protected bool IsTypeBinded<T>()
+		{
+			return _mockingKernel.IsBinded<T>();
+		}
+
+/*
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
 		protected T DynamickMock<T>()
 		{
 			_mockingKernel.MarkDynamickMock<T>();
 			return _mockingKernel.Get<T>();
 		}
+*/
 
+
+		/// <summary>
+		/// Binduje typ do sta³ej
+		/// </summary>
+		/// <typeparam name="TType"></typeparam>
+		/// <param name="implementation"></param>
 		protected void ProvideImplementationOf<TType>(TType implementation)
 		{
-			Kernel.Bind<TType>().ToConstant(implementation);
+			_mockingKernel.Bind<TType>().ToConstant(implementation);
 		}
 
 		protected T Dependency<T>()
@@ -174,7 +216,7 @@ namespace TopCalendar.Utility.Tests
 			Mapper.Reset();
 		}
 
-		protected void assert_mapper_configuration_should_be_valid()
+		protected void assert_mapper_configuration_is_valid()
 		{
 			Mapper.AssertConfigurationIsValid();
 		}

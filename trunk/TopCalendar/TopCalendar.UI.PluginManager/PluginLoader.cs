@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Modularity;
 using Microsoft.Practices.Composite.Presentation.Regions;
@@ -88,6 +89,11 @@ namespace TopCalendar.UI.PluginManager
 			}
 
 			_regionManager.AddToRegion(regionName, view);
+		}
+
+		public void RegisterViewWithRegion(string regionName, Func<IView> viewProvider)
+		{
+			RegisterViewWithRegion(regionName, viewProvider());
 		}
 	}
 }
