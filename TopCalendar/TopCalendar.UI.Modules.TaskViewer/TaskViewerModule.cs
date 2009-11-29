@@ -33,7 +33,7 @@ namespace TopCalendar.UI.Modules.TaskViewer
         {
             RegisterViewsAndServices();
 
-			_kernel.Get<IMenuManager>().AddItemToMenu<ShowAddNewTaskViewEvent, DateTime>(
+			_kernel.Get<IMenuManager>().AddItemToMenu<ShowAddNewTaskViewEvent, DateTime?>(
 				"TasksMenu", "AddTask", "Dodaj zadanie", _canBeRun
 			);
         }
@@ -54,7 +54,7 @@ namespace TopCalendar.UI.Modules.TaskViewer
 			_canBeRun.CanExecute = true;
 		}
 
-        private void HandleShowAddNewTaskViewEvent(DateTime time)
+        private void HandleShowAddNewTaskViewEvent(DateTime? time)
         {
             var taskPresentationModel = _kernel.Get<ITaskPresentationModel>();
 

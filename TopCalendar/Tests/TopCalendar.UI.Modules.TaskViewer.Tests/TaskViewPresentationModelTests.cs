@@ -12,7 +12,7 @@ using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.TaskViewer.Tests
 {
-    public abstract class TaskViewPresentationModelTestsBase : observations_for_auto_created_sut_of_type<TaskPresentationModel>
+    public abstract class observations_for_task_view_presentation_model : observations_for_auto_created_sut_of_type<TaskPresentationModel>
     {
 		protected UnloadViewEvent _unloadViewEvent;
         protected ITaskView _taskView;
@@ -28,7 +28,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
     }
 
     [TestFixture]
-    public class TaskViewPresentationModel_when_CancelCommand_is_executed : TaskViewPresentationModelTestsBase
+    public class TaskViewPresentationModel_when_CancelCommand_is_executed : observations_for_task_view_presentation_model
     {
 
         protected override void Because()
@@ -47,7 +47,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
     }
 
     [TestFixture]
-    public class TaskViewPresentationModel_when_UpdateCommand_is_executed : TaskViewPresentationModelTestsBase
+    public class TaskViewPresentationModel_when_UpdateCommand_is_executed : observations_for_task_view_presentation_model
     {
 
         protected override void Because()
@@ -64,7 +64,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
 
     [TestFixture]
     public class TaskViewPresentationModel_when_UpdateCommand_is_executed_and_UpdateTask_ended_successfull
-        : TaskViewPresentationModelTestsBase
+        : observations_for_task_view_presentation_model
     {
 
         protected override void EstablishContext()
@@ -87,7 +87,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
 
     [TestFixture]
     public class TaskViewPresentationModel_when_UpdateCommand_is_executed_and_UpdateTask_fail
-        : TaskViewPresentationModelTestsBase
+        : observations_for_task_view_presentation_model
     {
 
         protected override void EstablishContext()
@@ -109,7 +109,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
     }
 
     [TestFixture]
-    public class TaskPresentationModel_when_AddCommand_is_executed : TaskViewPresentationModelTestsBase
+    public class TaskPresentationModel_when_AddCommand_is_executed : observations_for_task_view_presentation_model
     {
         protected override void Because()
         {
@@ -124,7 +124,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
     }
 
     [TestFixture]
-    public class TaskPresentationModel_when_AddCommand_is_executed_and_AddTask_success : TaskViewPresentationModelTestsBase
+    public class TaskPresentationModel_when_AddCommand_is_executed_and_AddTask_success : observations_for_task_view_presentation_model
     {
         protected override void EstablishContext()
         {
@@ -145,7 +145,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
     }
 
     [TestFixture]
-    public class TaskPresentationModel_when_AddCommand_is_executed_and_AddTask_fail : TaskViewPresentationModelTestsBase
+    public class TaskPresentationModel_when_AddCommand_is_executed_and_AddTask_fail : observations_for_task_view_presentation_model
     {
         protected override void EstablishContext()
         {

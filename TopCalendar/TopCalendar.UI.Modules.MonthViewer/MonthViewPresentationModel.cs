@@ -1,7 +1,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Presentation.Commands;
+using TopCalendar.UI.Infrastructure;
 using TopCalendar.UI.Modules.MonthViewer.Model;
 using TopCalendar.UI.Modules.MonthViewer.Services;
 using TopCalendar.Utility.BasicExtensions;
@@ -12,20 +14,22 @@ namespace TopCalendar.UI.Modules.MonthViewer
 	public class MonthViewPresentationModel : PresentationModelFor<IMonthView>
 	{
 		private readonly IMonthTaskLoader _taskLoader;
+		private readonly IEventAggregator _eventAggregator;
 
 		public static readonly int WeekCount = 5;
 		public static readonly int DayCount = 7;
 
 		private ObservableCollection<ObservableCollection<DayTaskList>> _tasks = new ObservableCollection<ObservableCollection<DayTaskList>>();
 	
-		public MonthViewPresentationModel(IMonthView view, IMonthTaskLoader taskLoader) : base(view)
+		public MonthViewPresentationModel(IMonthView view, IMonthTaskLoader taskLoader, IEventAggregator eventAggregator) : base(view)
 		{
 			_view = view;
 			_taskLoader = taskLoader;
+			_eventAggregator = eventAggregator;
 			_view.ViewModel = this;
-			_goToNextMonth = new DelegateCommand<object>(GoToNextMonthCommandImpl);
-			_goToPreviousMonth = new DelegateCommand<object>(GoToPreviousMonthCommandImpl);
-			_showAddTask = new DelegateCommand<DateTime?>(ShowAddTaskImpl);
+			GoToNextMonth = new DelegateCommand<object>(GoToNextMonthCommandImpl);
+			GoToPreviousMonth = new DelegateCommand<object>(GoToPreviousMonthCommandImpl);
+			ShowAddTask = new DelegateCommand<DateTime?>(ShowAddTaskImpl);
 			Initialize();
 		}
 
@@ -59,7 +63,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		public ICommand GoToNextMonth
 		{
 			get { return _goToNextMonth; }
-			set
+			private set
 			{
 				_goToNextMonth = (DelegateCommand<object>)value;
 				OnPropertyChanged(() => GoToNextMonth);
@@ -76,7 +80,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		public ICommand GoToPreviousMonth
 		{
 			get { return _goToPreviousMonth; }
-			set { _goToPreviousMonth = (DelegateCommand<object>)value; }
+			private set { _goToPreviousMonth = (DelegateCommand<object>)value; }
 		}
 
 		private void GoToPreviousMonthCommandImpl(object obj)
@@ -89,7 +93,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		public ICommand ShowAddTask
 		{
 			get { return _showAddTask; }
-			set
+			private set
 			{
 				_showAddTask = (DelegateCommand<DateTime?>)value;
 				OnPropertyChanged(() => ShowAddTask);
@@ -97,7 +101,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		}
 		private void ShowAddTaskImpl(DateTime? obj)
 		{
-			throw new NotImplementedException();
+			_eventAggregator.GetEvent<ShowAddNewTaskViewEvent>().Publish(obj);
 		}
 
 		private void UpdateTaskList(ObservableCollection<ObservableCollection<DayTaskList>> updatedTasks)

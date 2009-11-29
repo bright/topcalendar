@@ -1,7 +1,9 @@
 using System;
 using System.Collections.ObjectModel;
+using Microsoft.Practices.Composite.Events;
 using NUnit.Framework;
 using Rhino.Mocks;
+using TopCalendar.UI.Infrastructure;
 using TopCalendar.UI.Modules.MonthViewer.Model;
 using TopCalendar.UI.Modules.MonthViewer.Services;
 using TopCalendar.Utility.BasicExtensions;
@@ -11,7 +13,34 @@ using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.MonthViewer.Tests
 {
-	[TestFixture]
+	
+	public class when_showing_add_new_task_from_month_view_presentation_model
+		: observations_for_presentation_model_with_stubbed_view<MonthViewPresentationModel,IMonthView>
+	{
+		private DateTime? _date;
+		private ShowAddNewTaskViewEvent _addNewTaskEvent;
+		private DateTime? _calledDate;
+
+		protected override void Because()
+		{
+			Sut.ShowAddTask.Execute(_date);
+		}
+
+		protected override void EstablishContext()
+		{
+			base.EstablishContext();
+			_addNewTaskEvent = new ShowAddNewTaskViewEvent();
+			_addNewTaskEvent.Subscribe(dateTime =>  _calledDate = dateTime );
+			Dependency<IEventAggregator>().Stub(aggr => aggr.GetEvent<ShowAddNewTaskViewEvent>()).Return(_addNewTaskEvent);
+		}
+
+		[Test]
+		public void should_raise_show_addnew_task_event()
+		{
+			_calledDate.ShouldEqual(_date);
+		}
+	}
+
 	public class when_getting_view_from_presentation_model
 		: observations_for_presentation_model_with_stubbed_view<MonthViewPresentationModel, IMonthView> 
 	{

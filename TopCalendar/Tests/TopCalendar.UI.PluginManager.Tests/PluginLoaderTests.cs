@@ -25,10 +25,9 @@ namespace TopCalendar.UI.PluginManager.Tests
 		{
 			_unloadEvent = new UnloadViewEvent();
 			_view = Dependency<IView>();
-
-			Kernel.Bind<IRegionManager>().To<RegionManager>().InSingletonScope();
-
-			_regionManager = Kernel.Get<IRegionManager>();
+			_regionManager = new RegionManager();
+			//Kernel.Bind<IRegionManager>().To<RegionManager>().InSingletonScope();
+			ProvideImplementationOf(_regionManager);			
 
 			Dependency<IEventAggregator>().Stub(
 				ea => ea.GetEvent<UnloadViewEvent>()

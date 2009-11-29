@@ -4,10 +4,11 @@
     >
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary.MergedDictionaries>                
                 <ResourceDictionary Source="Resources/TabItemResource.xaml"/>
-                <ResourceDictionary Source="Resources/WindowRegionResource.xaml"/>
+                <ResourceDictionary Source="Resources/WindowRegionResource.xaml"/>                
                 <ResourceDictionary Source="Resources/Styles.xaml"/>
+                <ResourceDictionary Source="/AvalonControlsLibrary;component/Themes/Generic.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

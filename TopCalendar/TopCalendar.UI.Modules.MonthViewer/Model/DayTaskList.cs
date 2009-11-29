@@ -12,7 +12,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Model
 		public DateTime Day
 		{
 			get { return _day; }
-			set { _day = value;
+			private set { _day = value;
 				OnPropertyChanged(()=>Day);
 			}
 		}
@@ -21,14 +21,14 @@ namespace TopCalendar.UI.Modules.MonthViewer.Model
 		public ObservableCollection<Task> TaskList
 		{
 			get { return _taskList; }
-			set { _taskList = value;
+			private set { _taskList = value;
 				OnPropertyChanged(()=>TaskList);
 			}
 		}
 
 		public DayTaskList(DateTime day)
 		{
-			_day = day;
+			Day = day;
 		}
 
 		public void AddTask(Task monthTask)

@@ -21,9 +21,9 @@ namespace TopCalendar.Client.Connector
 		}
 
 
-	    public IList<Task> GetTasksBetweenDates(DateTime start, DateTime stop)
+	    public IList<Task> GetTasksBetweenDates(DateTimeRange dateTimeRange)
 		{
-			Check.Guard(stop.CompareTo(start)>0,  "Data {0} powinna byc wczeœniejsza od {1}".ToFormat(start, stop));
+			//Check.Guard(stop.CompareTo(start)>0,  "Data {0} powinna byc wczeœniejsza od {1}".ToFormat(start, stop));
 			//Todo: Michal
 			return Fake.TaskList();
 		}
@@ -55,7 +55,7 @@ namespace TopCalendar.Client.Connector
 
 	public interface ITaskRepository
 	{
-		IList<Task> GetTasksBetweenDates(DateTime start, DateTime stop);
+		IList<Task> GetTasksBetweenDates(DateTimeRange dateTimeRange);
         bool UpdateTask(Task task);
         bool AddTask(Task task);
 	}
@@ -64,8 +64,8 @@ namespace TopCalendar.Client.Connector
 	{
         static IList<Task> _taskList = new List<Task>
 			       	{
-			       		new Task {Name = "Pierwsze", StartAt = DateTime.Now, FinishAt = DateTime.Now.AddDays(1)},
-			       		new Task {Name = "Drugie", StartAt = DateTime.Now, FinishAt = DateTime.Now.AddHours(1)}
+			       		new Task("Pierwsze",DateTime.Now){ FinishAt = DateTime.Now.AddDays(1)},
+			       		new Task("Drugie",DateTime.Now){ FinishAt = DateTime.Now.AddHours(1)}
 			       	};
 
 		public static IList<Task> TaskList()

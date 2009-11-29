@@ -38,7 +38,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		private void LoadMonthView()
 		{
 			_kernel.Get<IPluginLoader>()
-				.RegisterViewWithRegion(RegionNames.MainContent, _kernel.Get<IPresentationModelFor<IMonthView>>().View);
+				.RegisterViewWithRegion(RegionNames.MainContent, ()=> _kernel.Get<IPresentationModelFor<IMonthView>>().View);
 		}
 
 		private void ExecuteBootsrapTasks()

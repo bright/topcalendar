@@ -34,9 +34,9 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests.Services
 			_date = new DateTime(2009,12,19);
 			_rowCount = 5;
 			_columnCount = 7;
-			_listFromRepository = new List<Task> { new Task{StartAt = _date.AddDays(1), Name="SecondTask"}, new Task(){StartAt = _date, Name="FirstTask"}};			
+			_listFromRepository = new List<Task> { new Task("SecondTask", _date.AddDays(1)), new Task("FirstTask", _date)};			
 			Dependency<ITaskRepository>()
-				.Stub(repo => repo.GetTasksBetweenDates(DateTime.Now, DateTime.Now))
+				.Stub(repo => repo.GetTasksBetweenDates(null))
 				.IgnoreArguments()
 				.Return(_listFromRepository);
 		}
@@ -51,9 +51,10 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests.Services
 		public void should_get_tasks_from_repository()
 		{
 			Dependency<ITaskRepository>()
-				.AssertWasCalled(repo=> repo.GetTasksBetweenDates(
-						Arg.Is(_date.AtMonthStart()),
-						Arg.Is(_date.AtMonthEnd())
+				.AssertWasCalled(
+				repo=> repo.GetTasksBetweenDates(Arg<DateTimeRange>.Matches(
+							range=> range.StartAt.Equals(_date.AtMonthStart()) && range.FinishAt.Equals(_date.AtMonthEnd())
+						)
 					));
 		}
 
