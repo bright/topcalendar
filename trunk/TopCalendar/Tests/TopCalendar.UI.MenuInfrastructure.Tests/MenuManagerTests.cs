@@ -3,6 +3,9 @@ using NUnit.Framework;
 using Rhino.Mocks;
 using Rhino.Mocks.Constraints;
 using TopCalendar.Utility.Tests;
+using Microsoft.Practices.ServiceLocation;
+using System.Windows.Input;
+using System.Collections.Generic;
 
 namespace TopCalendar.UI.MenuInfrastructure.Tests
 {
@@ -27,7 +30,8 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
         }
     }
 
-	public class when_adding_item_by_mm : observations_for_auto_created_sut_of_type<MenuManager>
+	public abstract class abstract_when_adding_item_by_mm
+		: observations_for_auto_created_sut_of_type<MenuManager>
 	{
 		protected const string TopLevel = "TopLevel";
 		protected const string MenuName = "MenuName";
@@ -37,7 +41,10 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
 		{
 			Sut.AddItemToMenu<CompositePresentationEvent<object>>(TopLevel, MenuName, Header);
 		}
+	}
 
+	public class when_adding_item_by_mm : abstract_when_adding_item_by_mm
+	{
 		[Test]
 		public void should_check_for_existence_of_top_level()
 		{
@@ -94,6 +101,55 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
 			Dependency<IMenuProvider>()
 				.AssertWasNotCalled(mp =>
 					mp.AddTopLevelMenu(Arg<MenuEntry>.Is.Anything));
+		}
+	}
+
+	public abstract class when_adding_item_with_canExecuteHelper : abstract_when_adding_item_by_mm
+	{
+		protected IMenuProvider _menuProvider;
+		protected CommandCanExecuteHelper _canExecute;
+
+		protected override void EstablishContext()
+		{
+			_menuProvider = new MenuProvider(Dependency<IServiceLocator>());
+			ProvideImplementationOf<IMenuProvider>(_menuProvider);
+
+			_canExecute = new CommandCanExecuteHelper(false);
+		}
+
+		protected override void AfterSutCreation()
+		{
+			Sut.AddItemToMenu<CompositePresentationEvent<object>>(TopLevel, MenuName, Header, _canExecute);
+		}
+	}
+
+	public class when_adding_item_which_cannot_execute : when_adding_item_with_canExecuteHelper
+	{
+		protected override void Because()
+		{
+			// because canExecute wasn't changed
+		}
+
+		[Test]
+		public void command_should_be_enabled()
+		{
+			var command = _menuProvider.Menus[0].Items.As<List<MenuEntry>>()[0].Command;
+			command.CanExecute(null).ShouldBeFalse();
+		}
+	}
+
+	public class when_adding_item_which_can_execute : when_adding_item_with_canExecuteHelper
+	{
+		protected override void Because()
+		{
+			_canExecute.CanExecute = true;
+		}
+
+		[Test]
+		public void command_should_be_enabled()
+		{
+			var command = _menuProvider.Menus[0].Items.As<List<MenuEntry>>()[0].Command;
+			command.CanExecute(null).ShouldBeTrue();
 		}
 	}
 }

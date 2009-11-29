@@ -1,13 +1,29 @@
 ﻿using NUnit.Framework;
 using TopCalendar.Utility.Tests;
+using System.Collections.Specialized;
 
 namespace TopCalendar.UI.MenuInfrastructure.Tests
 {
-	public class when_adding_top_level_by_mp : observations_for_auto_created_sut_of_type<MenuProvider>
+	public abstract class observations_for_MenuProvider : observations_for_auto_created_sut_of_type<MenuProvider>
 	{
-		private const string MenuName = "MenuName";
-		private const string Header = "Header";
+		protected const string MenuName = "MenuName";
+		protected const string Header = "Header";
 
+		protected bool _notified = false;
+
+		protected override void AfterSutCreation()
+		{
+			Sut.Menus.CollectionChanged += NotifyChange;
+		}
+
+		private void NotifyChange(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			_notified = true;
+		}
+	}
+
+	public class when_adding_top_level_by_mp : observations_for_MenuProvider
+	{
 		private MenuEntry _menuEntry;
 
 		protected override void EstablishContext()
@@ -31,9 +47,15 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
 		{
 			Sut.GetTopLevelMenu(MenuName).ShouldBeTheSameAs(_menuEntry);
 		}
+
+		[Test]
+		public void notification_should_be_raised()
+		{
+			_notified.ShouldBeTrue();
+		}
 	}
 
-	public class when_adding_null_top_level_by_mp : observations_for_auto_created_sut_of_type<MenuProvider>
+	public class when_adding_null_top_level_by_mp : observations_for_MenuProvider
 	{
 		protected override void Because()
 		{
@@ -51,30 +73,33 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
 		{
 			Sut.GetTopLevelMenu("doesn't exist").ShouldBeNull();
 		}
+
+		[Test]
+		public void notification_should_not_be_raised()
+		{
+			_notified.ShouldBeFalse();
+		}
 	}
 
-	public abstract class when_adding_item_by_mp : observations_for_auto_created_sut_of_type<MenuProvider>
+	public abstract class when_adding_item_by_mp : observations_for_MenuProvider
 	{
 		private const string _topLevel = "TopLevel";
-		private const string _menuName = "MenuName";
-		private const string _header = "Header";
 
 		protected MenuEntry topLevel;
 		protected MenuEntry menuEntry;
 
 		protected override void EstablishContext()
 		{
-			topLevel = new MenuEntry() {Name = _topLevel, Header = _header};
-			menuEntry = new MenuEntry() {Name = _menuName, Header = _header};
+			topLevel = new MenuEntry() {Name = _topLevel, Header = Header};
+			menuEntry = new MenuEntry() {Name = MenuName, Header = Header};
 		}
 
 		protected override void AfterSutCreation()
 		{
-			// wywalam defaultowe wpisy
-			Sut.Menus.Clear();
-
 			// dodaje top-level
 			Sut.AddTopLevelMenu(topLevel);
+
+			base.AfterSutCreation();
 		}
 	}
 
@@ -90,6 +115,12 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
 		{
 			Assert.AreEqual(Sut.GetTopLevelMenu(topLevel.Name).Items.Count, 0);
 		}
+
+		[Test]
+		public void notification_should_not_be_raised()
+		{
+			_notified.ShouldBeFalse();
+		}
 	}
 
 	public class when_adding_valid_item_by_mp : when_adding_item_by_mp
@@ -103,6 +134,12 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
 		public void should_save_entry()
 		{
 			Assert.AreEqual(Sut.GetTopLevelMenu(topLevel.Name).Items.Count, 1);
+		}
+
+		[Test]
+		public void notification_should_be_raised()
+		{
+			_notified.ShouldBeTrue();
 		}
 	}
 

@@ -116,7 +116,7 @@ namespace TopCalendar.Utility.Tests
 			return _mockingKernel.Get<T>();
 		}
 
-		protected void ProvideImpelentationOf<TType>(TType implementation)
+		protected void ProvideImplementationOf<TType>(TType implementation)
 		{
 			Kernel.Bind<TType>().ToConstant(implementation);
 		}

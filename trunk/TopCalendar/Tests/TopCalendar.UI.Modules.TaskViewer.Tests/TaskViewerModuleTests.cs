@@ -16,12 +16,12 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
 	{
         protected DateTime _startDate;
 
-		private ShowAddNewTaskViewEvent _event;
+		private ShowAddNewTaskViewEvent _showEvent;
         private ITaskView _taskView;
 
         protected override void Because()
         {
-            _event.Publish(_startDate);
+            _showEvent.Publish(_startDate);
         }
 
         protected override void AfterSutCreation()
@@ -35,10 +35,12 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
             IEventAggregator eventAggregator = Dependency<IEventAggregator>();
             IPluginLoader pluginLoader = Dependency<IPluginLoader>();
 
-			_event = new ShowAddNewTaskViewEvent();
+			_showEvent = new ShowAddNewTaskViewEvent();
 
             eventAggregator.Stub(aggregator => 
-                aggregator.GetEvent<ShowAddNewTaskViewEvent>()).Return(_event);
+                aggregator.GetEvent<ShowAddNewTaskViewEvent>()).Return(_showEvent);
+			eventAggregator.Stub(aggregator =>
+				aggregator.GetEvent<RegistrationCompletedEvent>()).Return(new RegistrationCompletedEvent());
 
 			_taskView = Dependency<ITaskView>();
 			Dependency<ITaskPresentationModel>().Stub(x => x.View).Return(_taskView);

@@ -23,7 +23,7 @@ namespace TopCalendar.UI.MenuInfrastructure
                                         });
         }
 
-        public void AddItemToMenu<T, P>(string topLevelMenuName, string menuName, string header)
+        public void AddItemToMenu<T, P>(string topLevelMenuName, string menuName, string header, CommandCanExecuteHelper canExecute)
             where T : CompositePresentationEvent<P>
         {
             var topLevel = _menuProvider.GetTopLevelMenu(topLevelMenuName) ?? AddTopLevelMenu(topLevelMenuName, header);
@@ -32,14 +32,26 @@ namespace TopCalendar.UI.MenuInfrastructure
                                    {
                                        Name = menuName,
                                        Header = header,
-                                       Command = new MenuEventCommand<T, P>(_serviceLocator)
+                                       Command = new MenuEventCommand<T, P>(_serviceLocator, canExecute)
                                    });
         }
+
+		public void AddItemToMenu<T>(string topLevelMenuName, string menuName, string header, CommandCanExecuteHelper canExecute)
+			where T : CompositePresentationEvent<object>
+		{
+			AddItemToMenu<T, object>(topLevelMenuName, menuName, header, canExecute);
+		}
+
+		public void AddItemToMenu<T, P>(string topLevelMenuName, string menuName, string header)
+			where T : CompositePresentationEvent<P>
+		{
+			AddItemToMenu<T, P>(topLevelMenuName, menuName, header, null);
+		}
 
 		public void AddItemToMenu<T>(string topLevelMenuName, string menuName, string header)
 			where T : CompositePresentationEvent<object>
 		{
-			AddItemToMenu<T, object>(topLevelMenuName, menuName, header);
+			AddItemToMenu<T>(topLevelMenuName, menuName, header, null);
 		}
     }
 }

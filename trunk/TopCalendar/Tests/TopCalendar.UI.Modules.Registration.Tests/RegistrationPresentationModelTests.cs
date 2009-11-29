@@ -122,7 +122,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
     	protected override void EstablishContext()
 		{
 			RegisterView = Stub<IRegistrationView>();
-    		ProvideImpelentationOf(RegisterView);			
+    		ProvideImplementationOf(RegisterView);			
 		}
 
     	protected override void Because()
