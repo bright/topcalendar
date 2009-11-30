@@ -4,7 +4,7 @@
 Sprint do mikołajek, żeby przed świętami zmieścić dwa ;)
 
 || *Zadanie* || *Kto?* ||
-|| Widok tygodnia, dnia || PM (?) ||
+|| Widok tygodnia, dnia || PM ||
 || Edycja i usuwanie zadań, podłączenie pod widoki miesiąca itd. || DM ||
 || Manager pluginów - GUI || AB ||
 || Usuwanie i edycja zadań po stronie serwera + fasada kliencka + zaległości :) || MŁ ||
