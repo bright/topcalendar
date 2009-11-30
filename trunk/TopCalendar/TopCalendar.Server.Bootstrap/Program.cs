@@ -4,6 +4,7 @@
 
 #region
 
+using Microsoft.Practices.ServiceLocation;
 using Ninject;
 using TopCalendar.Server.Bootstrap.NinjectWcf;
 using TopCalendar.Server.DataLayer;
@@ -32,8 +33,12 @@ namespace TopCalendar.Server.Bootstrap
         private static void InitiateNinject()
         {
             KernelContainer.Kernel = new StandardKernel();
+           
+            KernelContainer.Kernel.Load(typeof(Program).Assembly);
             KernelContainer.Kernel.Load(typeof (DataLayerNinjectModule).Assembly);
             KernelContainer.Kernel.Load(typeof (ServiceLibraryNinjectModule).Assembly);
+
+            ServiceLocator.SetLocatorProvider(() => KernelContainer.Kernel.Get<IServiceLocator>());
         }
 
         private static void RunCommunicationService()

@@ -28,8 +28,8 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
         {
             User user = new User
                             {
-                                Login = registerUserRequest.Login,
-                                Password = registerUserRequest.Password
+                                Login = registerUserRequest.UserCredentials.Login,
+                                Password = registerUserRequest.UserCredentials.Password
                             };
 
             try
@@ -44,7 +44,7 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
             }
         }
 
-        public CheckUserResponse CheckUser(CheckUserRequest checkUserRequest)
+        public LoginUserResponse CheckUser(LoginUserRequest loginUserRequest)
         {
             throw new NotImplementedException();
         }

@@ -4,13 +4,12 @@ using System.Runtime.Serialization;
 namespace TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract
 {
     [DataContract]
-    public abstract class BaseResponse
+    public class TaskSpecificationDto
     {
         [DataMember]
-        public bool Success { get; set; }
-
+        public DateTime? StartAtFrom { get; set; }
         [DataMember]
-        public String StatusReason { get; set; }
+        public DateTime? StartAtTo { get; set; }
 
     }
 }

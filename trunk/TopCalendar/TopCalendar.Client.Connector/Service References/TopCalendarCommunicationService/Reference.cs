@@ -15,12 +15,60 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserBaseRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+    [System.Runtime.Serialization.DataContractAttribute(Name="RequestWithCredentials", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
         "Contract.DataContract")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.CheckUserRequest))]
-    public partial class UserBaseRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.AddNewTaskRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.FindTasksRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.LoginUserRequest))]
+    public partial class RequestWithCredentials : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TopCalendar.Client.Connector.TopCalendarCommunicationService.UserCredentials UserCredentialsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TopCalendar.Client.Connector.TopCalendarCommunicationService.UserCredentials UserCredentials {
+            get {
+                return this.UserCredentialsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserCredentialsField, value) != true)) {
+                    this.UserCredentialsField = value;
+                    this.RaisePropertyChanged("UserCredentials");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserCredentials", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class UserCredentials : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -82,15 +130,235 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
     [System.Runtime.Serialization.DataContractAttribute(Name="RegisterUserRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
         "Contract.DataContract")]
     [System.SerializableAttribute()]
-    public partial class RegisterUserRequest : TopCalendar.Client.Connector.TopCalendarCommunicationService.UserBaseRequest {
+    public partial class RegisterUserRequest : TopCalendar.Client.Connector.TopCalendarCommunicationService.RequestWithCredentials {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CheckUserRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+    [System.Runtime.Serialization.DataContractAttribute(Name="AddNewTaskRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
         "Contract.DataContract")]
     [System.SerializableAttribute()]
-    public partial class CheckUserRequest : TopCalendar.Client.Connector.TopCalendarCommunicationService.UserBaseRequest {
+    public partial class AddNewTaskRequest : TopCalendar.Client.Connector.TopCalendarCommunicationService.RequestWithCredentials {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TopCalendar.Client.Connector.TopCalendarCommunicationService.TaskDto TaskField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TopCalendar.Client.Connector.TopCalendarCommunicationService.TaskDto Task {
+            get {
+                return this.TaskField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TaskField, value) != true)) {
+                    this.TaskField = value;
+                    this.RaisePropertyChanged("Task");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FindTasksRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class FindTasksRequest : TopCalendar.Client.Connector.TopCalendarCommunicationService.RequestWithCredentials {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TopCalendar.Client.Connector.TopCalendarCommunicationService.TaskSpecificationDto TaskSpecificationDtoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TopCalendar.Client.Connector.TopCalendarCommunicationService.TaskSpecificationDto TaskSpecificationDto {
+            get {
+                return this.TaskSpecificationDtoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TaskSpecificationDtoField, value) != true)) {
+                    this.TaskSpecificationDtoField = value;
+                    this.RaisePropertyChanged("TaskSpecificationDto");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LoginUserRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class LoginUserRequest : TopCalendar.Client.Connector.TopCalendarCommunicationService.RequestWithCredentials {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TaskDto", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract.Dto")]
+    [System.SerializableAttribute()]
+    public partial class TaskDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FinishAtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartAtField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FinishAt {
+            get {
+                return this.FinishAtField;
+            }
+            set {
+                if ((this.FinishAtField.Equals(value) != true)) {
+                    this.FinishAtField = value;
+                    this.RaisePropertyChanged("FinishAt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartAt {
+            get {
+                return this.StartAtField;
+            }
+            set {
+                if ((this.StartAtField.Equals(value) != true)) {
+                    this.StartAtField = value;
+                    this.RaisePropertyChanged("StartAt");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TaskSpecificationDto", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class TaskSpecificationDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> StartAtFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> StartAtToField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> StartAtFrom {
+            get {
+                return this.StartAtFromField;
+            }
+            set {
+                if ((this.StartAtFromField.Equals(value) != true)) {
+                    this.StartAtFromField = value;
+                    this.RaisePropertyChanged("StartAtFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> StartAtTo {
+            get {
+                return this.StartAtToField;
+            }
+            set {
+                if ((this.StartAtToField.Equals(value) != true)) {
+                    this.StartAtToField = value;
+                    this.RaisePropertyChanged("StartAtTo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -99,7 +367,10 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
         "Contract.DataContract")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.CheckUserResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.DataAccessFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.AddNewTaskResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.FindTasksResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.LoginUserResponse))]
     public partial class BaseResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -167,21 +438,76 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CheckUserResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataAccessFault", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
         "Contract.DataContract")]
     [System.SerializableAttribute()]
-    public partial class CheckUserResponse : TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse {
+    public partial class DataAccessFault : TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AddNewTaskResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class AddNewTaskResponse : TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FindTasksResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class FindTasksResponse : TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TopCalendar.Client.Connector.TopCalendarCommunicationService.TaskDto[] TasksField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TopCalendar.Client.Connector.TopCalendarCommunicationService.TaskDto[] Tasks {
+            get {
+                return this.TasksField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TasksField, value) != true)) {
+                    this.TasksField = value;
+                    this.RaisePropertyChanged("Tasks");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LoginUserResponse", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class LoginUserResponse : TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TopCalendarCommunicationService.ITopCalendarCommunicationService")]
     public interface ITopCalendarCommunicationService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITopCalendarCommunicationService/CheckUser", ReplyAction="http://tempuri.org/ITopCalendarCommunicationService/CheckUserResponse")]
-        TopCalendar.Client.Connector.TopCalendarCommunicationService.CheckUserResponse CheckUser(TopCalendar.Client.Connector.TopCalendarCommunicationService.CheckUserRequest checkUserRequest);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITopCalendarCommunicationService/LoginUser", ReplyAction="http://tempuri.org/ITopCalendarCommunicationService/LoginUserResponse")]
+        TopCalendar.Client.Connector.TopCalendarCommunicationService.LoginUserResponse LoginUser(TopCalendar.Client.Connector.TopCalendarCommunicationService.LoginUserRequest loginUserRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITopCalendarCommunicationService/RegisterUser", ReplyAction="http://tempuri.org/ITopCalendarCommunicationService/RegisterUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.DataAccessFault), Action="http://tempuri.org/ITopCalendarCommunicationService/RegisterUserDataAccessFaultFa" +
+            "ult", Name="DataAccessFault", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+            "Contract.DataContract")]
         TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserResponse RegisterUser(TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserRequest registerUserRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITopCalendarCommunicationService/AddNewTask", ReplyAction="http://tempuri.org/ITopCalendarCommunicationService/AddNewTaskResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.DataAccessFault), Action="http://tempuri.org/ITopCalendarCommunicationService/AddNewTaskDataAccessFaultFaul" +
+            "t", Name="DataAccessFault", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+            "Contract.DataContract")]
+        TopCalendar.Client.Connector.TopCalendarCommunicationService.AddNewTaskResponse AddNewTask(TopCalendar.Client.Connector.TopCalendarCommunicationService.AddNewTaskRequest addNewTaskRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITopCalendarCommunicationService/FindTasks", ReplyAction="http://tempuri.org/ITopCalendarCommunicationService/FindTasksResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.DataAccessFault), Action="http://tempuri.org/ITopCalendarCommunicationService/FindTasksDataAccessFaultFault" +
+            "", Name="DataAccessFault", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+            "Contract.DataContract")]
+        TopCalendar.Client.Connector.TopCalendarCommunicationService.FindTasksResponse FindTasks(TopCalendar.Client.Connector.TopCalendarCommunicationService.FindTasksRequest findTasksRequest);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -211,12 +537,20 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
                 base(binding, remoteAddress) {
         }
         
-        public TopCalendar.Client.Connector.TopCalendarCommunicationService.CheckUserResponse CheckUser(TopCalendar.Client.Connector.TopCalendarCommunicationService.CheckUserRequest checkUserRequest) {
-            return base.Channel.CheckUser(checkUserRequest);
+        public TopCalendar.Client.Connector.TopCalendarCommunicationService.LoginUserResponse LoginUser(TopCalendar.Client.Connector.TopCalendarCommunicationService.LoginUserRequest loginUserRequest) {
+            return base.Channel.LoginUser(loginUserRequest);
         }
         
         public TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserResponse RegisterUser(TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserRequest registerUserRequest) {
             return base.Channel.RegisterUser(registerUserRequest);
+        }
+        
+        public TopCalendar.Client.Connector.TopCalendarCommunicationService.AddNewTaskResponse AddNewTask(TopCalendar.Client.Connector.TopCalendarCommunicationService.AddNewTaskRequest addNewTaskRequest) {
+            return base.Channel.AddNewTask(addNewTaskRequest);
+        }
+        
+        public TopCalendar.Client.Connector.TopCalendarCommunicationService.FindTasksResponse FindTasks(TopCalendar.Client.Connector.TopCalendarCommunicationService.FindTasksRequest findTasksRequest) {
+            return base.Channel.FindTasks(findTasksRequest);
         }
     }
 }

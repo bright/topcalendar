@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="CheckUserRequest">
+  <xs:import schemaLocation="http://localhost/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.Dto" />
+  <xs:complexType name="LoginUserRequest">
     <xs:complexContent mixed="false">
-      <xs:extension base="tns:UserBaseRequest">
+      <xs:extension base="tns:RequestWithCredentials">
         <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="CheckUserRequest" nillable="true" type="tns:CheckUserRequest" />
-  <xs:complexType name="UserBaseRequest">
+  <xs:element name="LoginUserRequest" nillable="true" type="tns:LoginUserRequest" />
+  <xs:complexType name="RequestWithCredentials">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UserCredentials" nillable="true" type="tns:UserCredentials" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestWithCredentials" nillable="true" type="tns:RequestWithCredentials" />
+  <xs:complexType name="UserCredentials">
     <xs:sequence>
       <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="UserBaseRequest" nillable="true" type="tns:UserBaseRequest" />
-  <xs:complexType name="CheckUserResponse">
+  <xs:element name="UserCredentials" nillable="true" type="tns:UserCredentials" />
+  <xs:complexType name="LoginUserResponse">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseResponse">
         <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="CheckUserResponse" nillable="true" type="tns:CheckUserResponse" />
+  <xs:element name="LoginUserResponse" nillable="true" type="tns:LoginUserResponse" />
   <xs:complexType name="BaseResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="StatusReason" nillable="true" type="xs:string" />
@@ -32,7 +39,7 @@
   <xs:element name="BaseResponse" nillable="true" type="tns:BaseResponse" />
   <xs:complexType name="RegisterUserRequest">
     <xs:complexContent mixed="false">
-      <xs:extension base="tns:UserBaseRequest">
+      <xs:extension base="tns:RequestWithCredentials">
         <xs:sequence />
       </xs:extension>
     </xs:complexContent>
@@ -46,4 +53,57 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="RegisterUserResponse" nillable="true" type="tns:RegisterUserResponse" />
+  <xs:complexType name="DataAccessFault">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataAccessFault" nillable="true" type="tns:DataAccessFault" />
+  <xs:complexType name="AddNewTaskRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestWithCredentials">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.Dto" minOccurs="0" name="Task" nillable="true" type="q1:TaskDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddNewTaskRequest" nillable="true" type="tns:AddNewTaskRequest" />
+  <xs:complexType name="AddNewTaskResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddNewTaskResponse" nillable="true" type="tns:AddNewTaskResponse" />
+  <xs:complexType name="FindTasksRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestWithCredentials">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TaskSpecificationDto" nillable="true" type="tns:TaskSpecificationDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FindTasksRequest" nillable="true" type="tns:FindTasksRequest" />
+  <xs:complexType name="TaskSpecificationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StartAtFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartAtTo" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskSpecificationDto" nillable="true" type="tns:TaskSpecificationDto" />
+  <xs:complexType name="FindTasksResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.Dto" minOccurs="0" name="Tasks" nillable="true" type="q2:ArrayOfTaskDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FindTasksResponse" nillable="true" type="tns:FindTasksResponse" />
 </xs:schema>

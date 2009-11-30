@@ -48,5 +48,16 @@ namespace TopCalendar.Server.DataLayer.Repositories
                     .UniqueResult<User>();
             }
         }
+
+        public User GetByLoginAndPassword(string login, string password)
+        {
+            using (var session = GetSession())
+            {
+                return session.CreateCriteria(typeof(User))
+                    .Add(Expression.Eq("Login", login))
+                    .Add(Expression.Eq("Password", password))
+                    .UniqueResult<User>();
+            }
+        }
     }
 }
