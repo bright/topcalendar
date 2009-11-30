@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿#region
+
+
+
+#endregion
 
 namespace TopCalendar.Server.DataLayer.Entities
 {
@@ -10,6 +11,5 @@ namespace TopCalendar.Server.DataLayer.Entities
         public virtual int Id { get; private set; }
         public virtual string Login { get; set; }
         public virtual string Password { get; set; }
-        
     }
 }

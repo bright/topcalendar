@@ -22,6 +22,7 @@
   <Metadata>
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="ac3f784c-eb89-427c-acd8-5de5e1e2191a" SourceId="1" SourceUrl="http://localhost/?xsd=xsd1" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="d5c73016-4a22-4f07-835b-673e9853de69" SourceId="1" SourceUrl="http://localhost/?xsd=xsd0" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="45dc74c5-df77-4b0b-9959-629e7c243283" SourceId="1" SourceUrl="http://localhost/?xsd=xsd3" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="3b7e31ea-a820-401b-96ef-054cc01445b9" SourceId="1" SourceUrl="http://localhost/?xsd=xsd2" />
     <MetadataFile FileName="TopCalendarCommunicationServiceImpl.wsdl" MetadataType="Wsdl" ID="4c980aa6-8c30-4f3f-b4b8-b9bbacdc97e6" SourceId="1" SourceUrl="http://localhost/?wsdl" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="a15b4ad9-1c60-467b-9d83-f74f29571dc5" SourceId="1" SourceUrl="http://localhost/?disco" />

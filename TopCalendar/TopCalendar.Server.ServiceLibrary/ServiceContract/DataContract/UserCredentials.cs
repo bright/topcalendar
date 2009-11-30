@@ -1,16 +1,16 @@
-using System;
 using System.Runtime.Serialization;
 
 namespace TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract
 {
     [DataContract]
-    public abstract class BaseResponse
+    public class UserCredentials
     {
-        [DataMember]
-        public bool Success { get; set; }
 
         [DataMember]
-        public String StatusReason { get; set; }
+        public string Login { get; set; }
+
+        [DataMember]
+        public string Password { get; set; }
 
     }
 }

@@ -12,10 +12,12 @@ namespace TopCalendar.Client.Connector
         #region IUserRegistrator Members
 
         private readonly ITopCalendarCommunicationService _service;
+        private readonly IClientContext _clientContext;
 
-        public UserRegistrator(ITopCalendarCommunicationService service)
+        public UserRegistrator(ITopCalendarCommunicationService service, IClientContext clientContext)
         {
             _service = service;
+            _clientContext = clientContext;
         }
 
         public bool IsLoginFree(string login)
@@ -25,10 +27,20 @@ namespace TopCalendar.Client.Connector
 
         public void Register(string login, string password)
         {
-            RegisterUserResponse response =
-                _service.RegisterUser(new RegisterUserRequest {Login = login, Password = password});
+            try
+            {
+                UserCredentials userCredentials = new UserCredentials{Login = login, Password = password};
+                RegisterUserResponse response =
+                    _service.RegisterUser(new RegisterUserRequest{UserCredentials = userCredentials} );
 
-            Console.WriteLine(response);
+                _clientContext.OnUserLogged(userCredentials);
+
+                Console.WriteLine(response);
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+      
         }
 
         #endregion

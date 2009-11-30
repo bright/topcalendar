@@ -5,13 +5,14 @@
       <xsd:import schemaLocation="http://localhost/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" />
+      <xsd:import schemaLocation="http://localhost/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.Dto" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="ITopCalendarCommunicationService_CheckUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:CheckUser" />
+  <wsdl:message name="ITopCalendarCommunicationService_LoginUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUser" />
   </wsdl:message>
-  <wsdl:message name="ITopCalendarCommunicationService_CheckUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CheckUserResponse" />
+  <wsdl:message name="ITopCalendarCommunicationService_LoginUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUserResponse" />
   </wsdl:message>
   <wsdl:message name="ITopCalendarCommunicationService_RegisterUser_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterUser" />
@@ -19,20 +20,52 @@
   <wsdl:message name="ITopCalendarCommunicationService_RegisterUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterUserResponse" />
   </wsdl:message>
+  <wsdl:message name="ITopCalendarCommunicationService_RegisterUser_DataAccessFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" name="detail" element="q1:DataAccessFault" />
+  </wsdl:message>
+  <wsdl:message name="ITopCalendarCommunicationService_AddNewTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewTask" />
+  </wsdl:message>
+  <wsdl:message name="ITopCalendarCommunicationService_AddNewTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITopCalendarCommunicationService_AddNewTask_DataAccessFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" name="detail" element="q2:DataAccessFault" />
+  </wsdl:message>
+  <wsdl:message name="ITopCalendarCommunicationService_FindTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindTasks" />
+  </wsdl:message>
+  <wsdl:message name="ITopCalendarCommunicationService_FindTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITopCalendarCommunicationService_FindTasks_DataAccessFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" name="detail" element="q3:DataAccessFault" />
+  </wsdl:message>
   <wsdl:portType name="ITopCalendarCommunicationService">
-    <wsdl:operation name="CheckUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/CheckUser" message="tns:ITopCalendarCommunicationService_CheckUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/CheckUserResponse" message="tns:ITopCalendarCommunicationService_CheckUser_OutputMessage" />
+    <wsdl:operation name="LoginUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/LoginUser" message="tns:ITopCalendarCommunicationService_LoginUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/LoginUserResponse" message="tns:ITopCalendarCommunicationService_LoginUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RegisterUser">
       <wsdl:input wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/RegisterUser" message="tns:ITopCalendarCommunicationService_RegisterUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/RegisterUserResponse" message="tns:ITopCalendarCommunicationService_RegisterUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/RegisterUserDataAccessFaultFault" name="DataAccessFaultFault" message="tns:ITopCalendarCommunicationService_RegisterUser_DataAccessFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/AddNewTask" message="tns:ITopCalendarCommunicationService_AddNewTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/AddNewTaskResponse" message="tns:ITopCalendarCommunicationService_AddNewTask_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/AddNewTaskDataAccessFaultFault" name="DataAccessFaultFault" message="tns:ITopCalendarCommunicationService_AddNewTask_DataAccessFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindTasks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/FindTasks" message="tns:ITopCalendarCommunicationService_FindTasks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/FindTasksResponse" message="tns:ITopCalendarCommunicationService_FindTasks_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ITopCalendarCommunicationService/FindTasksDataAccessFaultFault" name="DataAccessFaultFault" message="tns:ITopCalendarCommunicationService_FindTasks_DataAccessFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITopCalendarCommunicationService" type="tns:ITopCalendarCommunicationService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="CheckUser">
-      <soap:operation soapAction="http://tempuri.org/ITopCalendarCommunicationService/CheckUser" style="document" />
+    <wsdl:operation name="LoginUser">
+      <soap:operation soapAction="http://tempuri.org/ITopCalendarCommunicationService/LoginUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -48,6 +81,33 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DataAccessFaultFault">
+        <soap:fault use="literal" name="DataAccessFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewTask">
+      <soap:operation soapAction="http://tempuri.org/ITopCalendarCommunicationService/AddNewTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DataAccessFaultFault">
+        <soap:fault use="literal" name="DataAccessFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FindTasks">
+      <soap:operation soapAction="http://tempuri.org/ITopCalendarCommunicationService/FindTasks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DataAccessFaultFault">
+        <soap:fault use="literal" name="DataAccessFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="TopCalendarCommunicationServiceImpl">

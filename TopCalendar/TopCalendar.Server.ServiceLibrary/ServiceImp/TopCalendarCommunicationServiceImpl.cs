@@ -12,17 +12,22 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceImp
     public class TopCalendarCommunicationServiceImpl : ITopCalendarCommunicationService
     {
         private readonly UserRegistrationLogic _userRegistrationLogic;
+        private readonly AddNewTasksLogic _addNewTaskLogic;
+        private readonly FindTasksLogic _findTasksLogic;
 
-        public TopCalendarCommunicationServiceImpl(UserRegistrationLogic userRegistrationLogic)
+        public TopCalendarCommunicationServiceImpl(UserRegistrationLogic userRegistrationLogic,
+                                                   AddNewTasksLogic addNewTaskLogic, FindTasksLogic findTasksLogic)
         {
             _userRegistrationLogic = userRegistrationLogic;
+            _addNewTaskLogic = addNewTaskLogic;
+            _findTasksLogic = findTasksLogic;
         }
 
-        public CheckUserResponse CheckUser(CheckUserRequest checkUserRequest)
+        public LoginUserResponse LoginUser(LoginUserRequest loginUserRequest)
         {
-            Console.WriteLine("CheckUser, checkUserRequest: " + checkUserRequest);
+            Console.WriteLine("LoginUser, loginUserRequest: " + loginUserRequest);
 
-            return new CheckUserResponse {Success = true};
+            return new LoginUserResponse {Success = true};
         }
 
         public RegisterUserResponse RegisterUser(RegisterUserRequest registerUserRequest)
@@ -33,6 +38,26 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceImp
                 _userRegistrationLogic.RegisterUser(registerUserRequest);
 
             return registerUserResponse;
+        }
+
+        public AddNewTaskResponse AddNewTask(AddNewTaskRequest addNewTaskRequest)
+        {
+            Console.WriteLine("AddNewTask, addNewTaskRequest: " + addNewTaskRequest);
+
+            AddNewTaskResponse addNewTaskResponse =
+                _addNewTaskLogic.AddNewTask(addNewTaskRequest);
+
+            return addNewTaskResponse;
+        }
+
+        public FindTasksResponse FindTasks(FindTasksRequest findTasksRequest)
+        {
+            Console.WriteLine("FindTasks, findTasksRequest: " + findTasksRequest);
+
+            FindTasksResponse findTasksResponse =
+                _findTasksLogic.FindTasks(findTasksRequest);
+
+            return findTasksResponse;
         }
     }
 }

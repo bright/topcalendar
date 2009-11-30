@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{15968E5F-9795-4391-BD4E-3D51247BCFCF}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=0.4.0.126, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=2.0.0.152, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\Ninject.dll</HintPath>
@@ -55,7 +59,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientContext.cs" />
+    <Compile Include="IClientContext.cs" />
+    <Compile Include="ITaskRepository.cs" />
     <Compile Include="IUserRegistrator.cs" />
+    <Compile Include="MappingService\PersistentMappingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\TopCalendarCommunicationService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -63,6 +71,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="TasksRepository.cs" />
+    <Compile Include="Exceptions\UserNotLoggedException.cs" />
     <Compile Include="UserRegistrator.cs" />
     <Compile Include="ConnectorModule.cs" />
   </ItemGroup>
@@ -89,11 +98,18 @@
     <None Include="Service References\TopCalendarCommunicationService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\TopCalendarCommunicationService\item3.xsd" />
     <None Include="Service References\TopCalendarCommunicationService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\TopCalendarCommunicationService\TopCalendar.Client.Connector.TopCalendarCommunicationService.CheckUserResponse.datasource">
+    <None Include="Service References\TopCalendarCommunicationService\TopCalendar.Client.Connector.TopCalendarCommunicationService.AddNewTaskResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TopCalendarCommunicationService\TopCalendar.Client.Connector.TopCalendarCommunicationService.FindTasksResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TopCalendarCommunicationService\TopCalendar.Client.Connector.TopCalendarCommunicationService.LoginUserResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\TopCalendarCommunicationService\TopCalendar.Client.Connector.TopCalendarCommunicationService.RegisterUserResponse.datasource">

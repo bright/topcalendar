@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.ServiceModel;
+using TopCalendar.Server.ServiceLibrary.ServiceBehavior;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
+using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.Dto;
 
 namespace TopCalendar.Server.ServiceLibrary.ServiceContract
 {
@@ -7,11 +10,22 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceContract
     public interface ITopCalendarCommunicationService
     {
         [OperationContract]
-        CheckUserResponse CheckUser(CheckUserRequest checkUserRequest);
+        LoginUserResponse LoginUser(LoginUserRequest loginUserRequest);
 
         [OperationContract]
+        [FaultContract(typeof(DataAccessFault))]
         RegisterUserResponse RegisterUser(RegisterUserRequest registerUserRequest);
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        [FaultContract(typeof(DataAccessFault))]
+        [AttachValidUserInspector]
+        AddNewTaskResponse AddNewTask(AddNewTaskRequest addNewTaskRequest);
+
+        [OperationContract]
+        [FaultContract(typeof(DataAccessFault))]
+        [AttachValidUserInspector]
+        FindTasksResponse FindTasks(FindTasksRequest findTasksRequest);
     }
+
+  
 }

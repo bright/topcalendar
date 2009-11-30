@@ -28,8 +28,11 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
         {
             _inputData = new RegisterUserRequest
                              {
-                                 Login = LoginConst,
-                                 Password = PasswordConst
+                                 UserCredentials = new UserCredentials
+                                                       {
+                                                           Login = LoginConst,
+                                                           Password = PasswordConst
+                                                      }
                              };
             _result = null;
 

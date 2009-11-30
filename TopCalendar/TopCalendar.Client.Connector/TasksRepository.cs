@@ -1,32 +1,57 @@
+#region
+
 using System;
 using System.Collections.Generic;
 using Microsoft.Practices.Composite.Events;
+using TopCalendar.Client.Connector.MappingService;
 using TopCalendar.Client.Connector.TopCalendarCommunicationService;
 using TopCalendar.Client.DataModel;
 using TopCalendar.UI.Infrastructure;
 using TopCalendar.Utility;
 using TopCalendar.Utility.BasicExtensions;
 
+#endregion
+
 namespace TopCalendar.Client.Connector
 {
-	public class TasksRepository : ITaskRepository
-	{
-		private readonly ITopCalendarCommunicationService _service;
-	    private readonly IEventAggregator _eventAggregator;
+    public class TasksRepository : ITaskRepository
+    {
+        private readonly ITopCalendarCommunicationService _service;
+        private readonly IMappingService _mappingService;
+        private readonly IEventAggregator _eventAggregator;
+        private readonly IClientContext _clientContext;
 
-	    public TasksRepository(ITopCalendarCommunicationService service, IEventAggregator eventAggregator)
-		{
-		    _service = service;
-		    _eventAggregator = eventAggregator;
-		}
+        public TasksRepository(ITopCalendarCommunicationService service, IMappingService mappingService,
+                               IEventAggregator eventAggregator, IClientContext clientContext)
+        {
+            _service = service;
+            _mappingService = mappingService;
+            _eventAggregator = eventAggregator;
+            _clientContext = clientContext;
+        }
 
+        public IList<Task> GetTasksBetweenDates(DateTimeRange dateTimeRange)
+        {
 
-	    public IList<Task> GetTasksBetweenDates(DateTimeRange dateTimeRange)
-		{
-			//Check.Guard(stop.CompareTo(start)>0,  "Data {0} powinna byc wczeœniejsza od {1}".ToFormat(start, stop));
-			//Todo: Michal
-			return Fake.TaskList();
-		}
+            TaskSpecificationDto taskSpecificationDto = new TaskSpecificationDto
+                                                            {
+                                                                StartAtFrom = dateTimeRange.StartAt,
+                                                                StartAtTo = dateTimeRange.FinishAt
+                                                            };
+            FindTasksRequest findTasksRequest = new FindTasksRequest
+                                                    {
+                                                        TaskSpecificationDto = taskSpecificationDto,
+                                                        UserCredentials = _clientContext.UserCredentials
+                                                    };
+
+            FindTasksResponse findTasksResponse = _service.FindTasks(findTasksRequest);
+
+            TaskDto[] tasks = findTasksResponse.Tasks;
+
+            IList<Task> tasksList = _mappingService.FromDto(tasks);
+
+            return tasksList;
+        }
 
         /// <summary>
         /// Dodanie nowego zadania
@@ -35,7 +60,8 @@ namespace TopCalendar.Client.Connector
         /// <returns>true - jeœli operacja zakonczy siê pomyœlnie, jak nie to false</returns>
         public bool AddTask(Task task)
         {
-            Fake.TaskList().Add(task);
+            TaskDto taskDto = _mappingService.ToDto(task);
+            _service.AddNewTask(new AddNewTaskRequest {Task = taskDto, UserCredentials = _clientContext.UserCredentials});
             _eventAggregator.GetEvent<NewTaskAddedEvent>().Publish(task);
             return true;
             //Todo: should call TaskAddedEvent
@@ -51,26 +77,29 @@ namespace TopCalendar.Client.Connector
             // TODO 
             return true;
         }
-	}
+    }
 
-	public interface ITaskRepository
-	{
-		IList<Task> GetTasksBetweenDates(DateTimeRange dateTimeRange);
-        bool UpdateTask(Task task);
-        bool AddTask(Task task);
-	}
+   /* public static class Fake
+    {
+        private static IList<Task> _taskList = new List<Task>
+                                                   {
+                                                       new Task
+                                                           {
+                                                               Name = "Pierwsze",
+                                                               StartAt = DateTime.Now,
+                                                               FinishAt = DateTime.Now.AddDays(1)
+                                                           },
+                                                       new Task
+                                                           {
+                                                               Name = "Drugie",
+                                                               StartAt = DateTime.Now,
+                                                               FinishAt = DateTime.Now.AddHours(1)
+                                                           }
+                                                   };
 
-	public static class Fake
-	{
-        static IList<Task> _taskList = new List<Task>
-			       	{
-			       		new Task("Pierwsze",DateTime.Now){ FinishAt = DateTime.Now.AddDays(1)},
-			       		new Task("Drugie",DateTime.Now){ FinishAt = DateTime.Now.AddHours(1)}
-			       	};
-
-		public static IList<Task> TaskList()
-		{
-		    return _taskList;
-		}
-	}
+        public static IList<Task> TaskList()
+        {
+            return _taskList;
+        }
+    }*/
 }

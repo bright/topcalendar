@@ -9,7 +9,11 @@ namespace TopCalendar.Client.DataModel
     {
     	private string _name;
 
-    	public Task(string name, DateTime startAt)
+        public Task()
+        {
+        }
+
+        public Task(string name, DateTime startAt)
     	{
     		_name = name;
     		_startAt = startAt;
