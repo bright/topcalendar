@@ -1,0 +1,96 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>HD</Database>
+    <Server>localhost</Server>
+    <ConnectionString>DataSource=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>Default</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>cJiW7CRkm8UrjtxtNQpayQ==2009-12-02 20:47:402009-12-02 19:47:19</TimeStamp>
+        <ID>
+          <String>Hd</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>710FhCmee9OVuRfvbiXT9w==2009-12-02 20:16:062009-12-02 20:16:04</TimeStamp>
+        <ID>
+          <String>ZamowianiaDsView</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>XT+rfCsbs1kKDKd7u15LTw==2009-12-02 20:17:082009-12-02 20:17:05</TimeStamp>
+        <ID>
+          <String>Dostawca</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>R7iRchZCIxcXsswCrDEbGg==2009-12-02 20:17:082009-12-02 20:17:06</TimeStamp>
+        <ID>
+          <String>Czesc Zamienna</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>mgqUACCGgUTYPd/tBkMIqQ==2009-12-02 20:17:082009-12-02 20:17:06</TimeStamp>
+        <ID>
+          <String>Magazyn</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>y3WVSG/V65ibc2iqphX9bQ==2009-12-02 20:20:022009-12-02 20:20:00</TimeStamp>
+        <ID>
+          <String>Kraj</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>zrtqS6Ikdr149gcdtwGgWQ==2009-12-02 20:17:082009-12-02 20:17:05</TimeStamp>
+        <ID>
+          <String>Przedstawicielstwo</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>jl0dUQOnXEuQ5kGwZ6S10A==2009-12-02 20:39:462009-12-02 20:17:05</TimeStamp>
+        <ID>
+          <String>Data Zamowienia</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>4VcT3l/D3bUVlxp7UvKJBQ==2009-12-02 20:39:462009-12-02 20:17:04GB62I/hd3E12mwv3IvNZmQ==2009-12-02 20:17:082009-12-02 20:17:04</TimeStamp>
+        <ID>
+          <String>Zamowiania</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>QwXJpWUPwgEG1ZOy81AcFQ==2009-12-02 19:46:382009-12-02 19:46:37</TimeStamp>
+      <ID>
+        <String>HD</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2009-12-02T19:47:45Z</LastDeployed>
+</DeploymentSnapshot>
