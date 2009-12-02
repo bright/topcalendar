@@ -1,0 +1,25 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="ca7b281f-fd0a-4c56-8856-b4748d8884f0" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Zamowiania</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>Zamowienie</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="18729f54-6cd3-4985-bfa7-82292488eeb3">
+          <ID>Zamowienie</ID>
+          <Name>Zamowienie</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="3c486d65-802e-4ae7-a12f-6ab50235f899">
+            <DataSourceViewID>ZamowianiaDsView</DataSourceViewID>
+            <TableID>dbo_Zamowienie</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>

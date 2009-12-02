@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "HD", "HD\HD.dwproj", "{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Development|Default.ActiveCfg = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Development|Default.Build.0 = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
