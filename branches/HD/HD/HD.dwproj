@@ -8,20 +8,40 @@
   </Database>
   <Cubes>
     <ProjectItem>
-      <Name>Zamowiania.cube</Name>
-      <FullPath>Zamowiania.cube</FullPath>
+      <Name>Zamowienia.cube</Name>
+      <FullPath>Zamowienia.cube</FullPath>
       <Dependencies>
         <ProjectItem>
-          <Name>Zamowiania.partitions</Name>
-          <FullPath>Zamowiania.partitions</FullPath>
+          <Name>Zamowienia.partitions</Name>
+          <FullPath>Zamowienia.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Sprzedaz.cube</Name>
+      <FullPath>Sprzedaz.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>Sprzedaz.partitions</Name>
+          <FullPath>Sprzedaz.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reklamacje.cube</Name>
+      <FullPath>Reklamacje.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>Reklamacje.partitions</Name>
+          <FullPath>Reklamacje.partitions</FullPath>
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
   </Cubes>
   <Dimensions>
     <ProjectItem>
-      <Name>Data Zamowienia.dim</Name>
-      <FullPath>Data Zamowienia.dim</FullPath>
+      <Name>Data.dim</Name>
+      <FullPath>Data.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Przedstawicielstwo.dim</Name>
@@ -43,6 +63,18 @@
       <Name>Kraj.dim</Name>
       <FullPath>Kraj.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Firma.dim</Name>
+      <FullPath>Firma.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Model.dim</Name>
+      <FullPath>Model.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Kategoria Czesci.dim</Name>
+      <FullPath>Kategoria Czesci.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>
@@ -52,8 +84,8 @@
   </DataSources>
   <DataSourceViews>
     <ProjectItem>
-      <Name>ZamowianiaDsView.dsv</Name>
-      <FullPath>ZamowianiaDsView.dsv</FullPath>
+      <Name>ZamowieniaDsView.dsv</Name>
+      <FullPath>ZamowieniaDsView.dsv</FullPath>
     </ProjectItem>
   </DataSourceViews>
   <Configurations>

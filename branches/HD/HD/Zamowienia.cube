@@ -1,6 +1,6 @@
 ﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="3185121c-b994-4331-9f25-6623a118e9eb" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Zamowiania</ID>
-  <Name>Zamowiania</Name>
+  <Name>Zamowienia</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
   <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
   <Annotations>
@@ -8,7 +8,7 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="32" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-4150" scrolltop="1984" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="20188" y="13361" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="32" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="5120" scrolltop="1984" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="21114" y="13917" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="01ee0000900144420100065461686f6d61" />
             </font>
@@ -74,7 +74,7 @@
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
           </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Data_Zamowienia" left="14451" top="4279" logicalid="21" controlid="6" masterid="0" hint1="0" hint2="0" width="3545" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Data" left="14451" top="4279" logicalid="21" controlid="6" masterid="0" hint1="0" hint2="0" width="3545" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="00080000d90d000088130000" />
             </control>
@@ -256,7 +256,7 @@
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
-      <Value>-4150</Value>
+      <Value>5120</Value>
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
@@ -360,19 +360,6 @@
         </Attribute>
       </Attributes>
     </Dimension>
-    <Dimension dwd:design-time-name="30d2fdd4-a20c-453b-900e-71cc9167fff1">
-      <ID>Kraj</ID>
-      <Name>Kraj</Name>
-      <DimensionID>Kraj</DimensionID>
-      <Attributes>
-        <Attribute dwd:design-time-name="9755eb98-bde5-443b-a7c6-f524d0b3af9d">
-          <AttributeID>Nr Kraju</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="c0093fc2-1360-4630-9eb7-f7203751d517">
-          <AttributeID>Nazwa</AttributeID>
-        </Attribute>
-      </Attributes>
-    </Dimension>
   </Dimensions>
   <MeasureGroups>
     <MeasureGroup dwd:design-time-name="8e684f7b-4f55-4b6c-bcd3-cb760226184b">
@@ -472,8 +459,8 @@
               <AttributeID>PK Date</AttributeID>
               <KeyColumns>
                 <KeyColumn dwd:design-time-name="2ff76b09-010d-449f-b690-e52aa36aa245">
-                  <DataType>Date</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Date</DataType>
                   <Source xsi:type="ColumnBinding" dwd:design-time-name="ef539f26-fd27-4636-8ad4-509b94dc96df">
                     <TableID>dbo_Zamowienie</TableID>
                     <ColumnID>Data_Zamowienia</ColumnID>
@@ -491,8 +478,8 @@
               <AttributeID>Nr Przedstawicielstwa</AttributeID>
               <KeyColumns>
                 <KeyColumn dwd:design-time-name="6a3e5b47-7219-4bf7-b084-d36e50808803">
-                  <DataType>Integer</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
                   <Source xsi:type="ColumnBinding" dwd:design-time-name="7a49b6d7-9a22-498a-9965-2bc753c07154">
                     <TableID>dbo_Zamowienie</TableID>
                     <ColumnID>Nr_Przedstawicielstwa</ColumnID>
@@ -510,8 +497,8 @@
               <AttributeID>Nr Dostawcy</AttributeID>
               <KeyColumns>
                 <KeyColumn dwd:design-time-name="a9cd4011-200f-4950-a341-2ab7caa9c738">
-                  <DataType>Integer</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
                   <Source xsi:type="ColumnBinding" dwd:design-time-name="ff7a96a2-e072-4516-939d-41757ebc0323">
                     <TableID>dbo_Zamowienie</TableID>
                     <ColumnID>Nr_Dostawcy</ColumnID>
@@ -529,8 +516,8 @@
               <AttributeID>Nr Czesci</AttributeID>
               <KeyColumns>
                 <KeyColumn dwd:design-time-name="3656dc5c-5917-450c-8511-7f7ceedad58f">
-                  <DataType>Integer</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
                   <Source xsi:type="ColumnBinding" dwd:design-time-name="6f806867-1e89-48f8-b3d4-a3fdcbac25de">
                     <TableID>dbo_Zamowienie</TableID>
                     <ColumnID>Nr_Czesci</ColumnID>
@@ -548,8 +535,8 @@
               <AttributeID>Nr Magazynu</AttributeID>
               <KeyColumns>
                 <KeyColumn dwd:design-time-name="4cbfb592-521d-4fe5-9fba-e37d4372d271">
-                  <DataType>Integer</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
                   <Source xsi:type="ColumnBinding" dwd:design-time-name="dfba0afb-7096-41cc-87f0-78067295fb1b">
                     <TableID>dbo_Zamowienie</TableID>
                     <ColumnID>Nr_Magazynu</ColumnID>
@@ -559,18 +546,6 @@
               <Type>Granularity</Type>
             </Attribute>
           </Attributes>
-        </Dimension>
-        <Dimension xsi:type="ReferenceMeasureGroupDimension" dwd:design-time-name="a8b79506-1aaa-4643-8022-86b7681a2c8a">
-          <CubeDimensionID>Kraj</CubeDimensionID>
-          <Attributes>
-            <Attribute dwd:design-time-name="2427904d-d9a2-40a1-8676-35dbc5702ed9">
-              <AttributeID>Nr Kraju</AttributeID>
-              <Type>Granularity</Type>
-            </Attribute>
-          </Attributes>
-          <IntermediateCubeDimensionID>Przedstawicielstwo</IntermediateCubeDimensionID>
-          <IntermediateGranularityAttributeID>Nr Kraju</IntermediateGranularityAttributeID>
-          <Materialization>Regular</Materialization>
         </Dimension>
       </Dimensions>
       <Partitions />
