@@ -3,7 +3,7 @@
     <DataSources>
       <DataSource>
         <ID>Hd</ID>
-        <ConnectionString>Provider=SQLNCLI10.1;Data Source=BIURKO;Integrated Security=SSPI;Initial Catalog=hd</ConnectionString>
+        <ConnectionString>Provider=SQLNCLI10.1;Data Source=localhost;Integrated Security=SSPI;Initial Catalog=hd</ConnectionString>
         <ImpersonationInfo>
           <ImpersonationMode>ImpersonateServiceAccount</ImpersonationMode>
           <ImpersonationInfoSecurity>Unchanged</ImpersonationInfoSecurity>
@@ -11,6 +11,12 @@
       </DataSource>
     </DataSources>
     <Dimensions>
+      <Dimension>
+        <ID>Data Zamowienia</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Przedstawicielstwo</ID>
+      </Dimension>
       <Dimension>
         <ID>Dostawca</ID>
       </Dimension>
@@ -24,10 +30,13 @@
         <ID>Kraj</ID>
       </Dimension>
       <Dimension>
-        <ID>Przedstawicielstwo</ID>
+        <ID>Firma</ID>
       </Dimension>
       <Dimension>
-        <ID>Data Zamowienia</ID>
+        <ID>Model</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Kategoria Czesci</ID>
       </Dimension>
     </Dimensions>
     <Cubes>
@@ -39,6 +48,32 @@
             <Partitions>
               <Partition>
                 <ID>Zamowienie</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+      <Cube>
+        <ID>Sprzedaż</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>Sprzedaz</ID>
+            <Partitions>
+              <Partition>
+                <ID>Sprzedaz</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+      <Cube>
+        <ID>Reklamacje</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>Reklamacja</ID>
+            <Partitions>
+              <Partition>
+                <ID>Reklamacja</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
