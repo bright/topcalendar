@@ -64,7 +64,7 @@
           <ConfigurationSetting>
             <Id>Hd</Id>
             <Name>Hd</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=BIURKO;Integrated Security=SSPI;Initial Catalog=hd</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=localhost;Integrated Security=SSPI;Initial Catalog=hd</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionSecurityMappings>
