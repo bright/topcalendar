@@ -24,6 +24,24 @@ namespace DataGenerator
 			}
 		}
 
+		public static IEnumerable<string> Przedstawicielstwa
+		{
+			get
+			{
+				return new[] 
+				{ 
+					"Szczecin - £u¿ycka ",
+                    "LongLake",
+                    "AutoCar",
+                    "MoonLightCar",
+                    "Boost4U",
+                    "EnginePower",
+                    "Wagenner",
+                    "OlaOla"
+				};
+			}
+		}
+
 		public static IEnumerable<string> Lokalizacje
 		{
 			get

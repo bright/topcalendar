@@ -16,18 +16,30 @@ namespace DataGenerator
 			var mappingConfiguration = new Configuration();
 			mappingConfiguration.CreateMappings(typeof(Program).Assembly);
 			var db = new HdDataContext {Log = new Log4NetWriter(typeof (Program))};
-            
+						
+            db.DeleteAllAndSubmit(db.Zamowienies);
+			db.DeleteAllAndSubmit(db.Datas);
 			db.DeleteAllAndSubmit(db.Czesc_Zamiennas);
 			db.DeleteAllAndSubmit(db.Kategoria_Czescis);
 			db.DeleteAllAndSubmit(db.Firmas);
 			db.DeleteAllAndSubmit(db.Magazyns);
+			db.DeleteAllAndSubmit(db.Przedstawicielstwos);
 			db.DeleteAllAndSubmit(db.Lokalizacjas);
 			db.DeleteAllAndSubmit(db.Dostawcas);
 			db.DeleteAllAndSubmit(db.Models);
+			
+			
 
 			var krajs = Mapper.Map<IEnumerable<string>, IEnumerable<Lokalizacja>>(RootEntityNames.Lokalizacje);
 			db.Lokalizacjas.InsertAllOnSubmit(krajs);
 			db.SubmitChanges();
+
+			var przedstawiclestwa =
+				Mapper.Map<IEnumerable<string>, IEnumerable<Przedstawicielstwo>>(RootEntityNames.Przedstawicielstwa);
+			przedstawiclestwa.Each(p => p.Lokalizacja = db.Lokalizacjas.Random());
+			db.Przedstawicielstwos.InsertAllOnSubmit(przedstawiclestwa);
+			db.SubmitChanges();
+
 			var magazyns = Mapper.Map<IEnumerable<string>, IEnumerable<Magazyn>>(RootEntityNames.Magazyny);
 			int magazynIndex = 0;			
 			magazyns.Each(magazyn =>
@@ -72,7 +84,33 @@ namespace DataGenerator
 			czesci.Each(cz => cz.Model = db.Models.Random());
 			db.Czesc_Zamiennas.InsertAllOnSubmit(czesci);
 			db.SubmitChanges();
+			
+			// zamowienia
+			var dateRange = new DateRange(new DateTime(2007, 1, 1), new DateTime(2009, 12, 31));
 
+			dateRange.MonthRange()
+				.Each(month =>
+                    	{
+                    		var data = Mapper.Map<DateTime, Data>(month.RandomDayOfMonth());
+							db.Datas.InsertOnSubmit(data);
+                    		db.SubmitChanges();
+                    		var zamowienie = new Zamowienie
+                    		                 	{
+                    		                 		Czas_Dostarczenia_Do_Magazynu = 10.Random(2),
+                    		                 		Czas_Realizacji = 10.Random(1),
+                    		                 		Czesc_Zamienna = db.Czesc_Zamiennas.Random(),
+                    		                 		Data = data,
+                    		                 		Dostawca = db.Dostawcas.Random(),
+                    		                 		Koszt_Obslugi = 100000.Random(10000)/100M,
+                    		                 		Magazyn = db.Magazyns.Random(),
+                    		                 		Przedstawicielstwo = db.Przedstawicielstwos.Random(),
+                                                    Wielkosc = 100.Random(10),
+                                                    Zysk = 100000.Random(10000)/100M,
+													Wartosc_Zamowienia = 200000.Random(10000) / 100M
+                    		                 	};
+							db.Zamowienies.InsertOnSubmit(zamowienie);
+                    		db.SubmitChanges();
+                    	});
 
 			Console.ReadKey();
 		}
