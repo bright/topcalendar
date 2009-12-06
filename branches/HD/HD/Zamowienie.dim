@@ -1,0 +1,613 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="b2e0058f-46f2-4a8c-b799-a2b31545199b" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Zamowienie</ID>
+  <Name>Zamowienie</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="9814bebc-fdbd-4673-901e-d7672cee5356">
+    <DataSourceViewID>ZamowianiaDsView</DataSourceViewID>
+  </Source>
+  <Type>Time</Type>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="d80ec0e6-140a-44d3-96b2-3d9757d05aa5">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="160aae98-1488-4684-af8d-e97f35ec43b1">
+      <ID>Nr Zamowienia</ID>
+      <Name>Nr Zamowienia</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5610524c-8556-4d22-91f9-9296d43971ba">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="40094450-64a6-4c5d-b009-db40208a8b44">
+            <TableID>dbo_Zamowienie</TableID>
+            <ColumnID>Nr_Zamowienia</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="4d35f101-eee9-4599-9d52-d6083392431b">
+          <AttributeID>Czas Realizacji</AttributeID>
+          <Name>Czas Realizacji</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="bb944998-49f0-4c7e-98ff-7c3e4c3ae382">
+          <AttributeID>Zysk</AttributeID>
+          <Name>Zysk</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="dc21d7f2-b9a4-4aba-aa79-2abfdcf2cc51">
+          <AttributeID>Wielkosc</AttributeID>
+          <Name>Wielkosc</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="62e6d5b9-2800-4eb6-9ecd-de4f030d53b5">
+          <AttributeID>Koszt Obslugi</AttributeID>
+          <Name>Koszt Obslugi</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7293ccb4-547c-4e94-af52-977cf6efc423">
+          <AttributeID>Czas Dostarczenia Do Magazynu</AttributeID>
+          <Name>Czas Dostarczenia Do Magazynu</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0f020c44-785a-4b95-b475-5d5fe00bec7d">
+          <AttributeID>Wartosc Zamowienia</AttributeID>
+          <Name>Wartosc Zamowienia</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8324e70a-3070-43f6-bd10-e279416acd1b">
+          <AttributeID>PK Date</AttributeID>
+          <Name>PK Date</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="042b238b-8ac0-455f-b647-d3fe0ca33c4f">
+          <AttributeID>Nr Przedstawicielstwa</AttributeID>
+          <Name>Nr Przedstawicielstwa</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4570f7d4-82c5-4332-9689-02153afa4f2f">
+          <AttributeID>Nr Dostawcy</AttributeID>
+          <Name>Nr Dostawcy</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d350d54e-5558-47af-99b2-b8f83314fd54">
+          <AttributeID>Nr Czesci</AttributeID>
+          <Name>Nr Czesci</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3e098073-6849-4fb2-816f-de5c885b9bc3">
+          <AttributeID>Nr Magazynu</AttributeID>
+          <Name>Nr Magazynu</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="4f103d9e-919e-4242-803f-73531a16b96a">
+      <ID>Czas Realizacji</ID>
+      <Name>Czas Realizacji</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0d550230-3066-4f39-8ccf-2ec64d3122c5">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b8f16d75-394e-47bc-96a4-0320bb712c0f">
+            <TableID>dbo_Zamowienie</TableID>
+            <ColumnID>Czas_Realizacji</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="6c00a89d-32ed-46b6-b46c-4720654a3a30">
+      <ID>Zysk</ID>
+      <Name>Zysk</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cfb491f9-b07b-4644-81b4-6bb48721d96c">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="486aa2c2-8d1c-4b26-9980-8a2fa1d29285">
+            <TableID>dbo_Zamowienie</TableID>
+            <ColumnID>Zysk</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="2be5e06f-638a-4d93-bda1-db36d11d3ec2">
+      <ID>Wielkosc</ID>
+      <Name>Wielkosc</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e99e7d41-bce3-439e-b5e8-17da7a7c6666">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5502eaff-0713-4078-a864-0c55eb62cf7c">
+            <TableID>dbo_Zamowienie</TableID>
+            <ColumnID>Wielkosc</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="556da3ab-bb6b-4221-874d-d44758aa1efe">
+      <ID>Koszt Obslugi</ID>
+      <Name>Koszt Obslugi</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="53a2f213-1164-49fc-84e0-f14aa38313ea">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5d84f9bb-9162-41d8-93c2-82bd63201bbc">
+            <TableID>dbo_Zamowienie</TableID>
+            <ColumnID>Koszt_Obslugi</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="acf121ed-cc26-4866-939e-8d89dc120fe1">
+      <ID>Czas Dostarczenia Do Magazynu</ID>
+      <Name>Czas Dostarczenia Do Magazynu</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e8a00a46-de66-4edd-9840-5e0f70c49342">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="54c559f3-6cee-4a5e-9947-c40320fff651">
+            <TableID>dbo_Zamowienie</TableID>
+            <ColumnID>Czas_Dostarczenia_Do_Magazynu</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="2feb1898-fe5d-47b4-ac6b-70cd5facc8bf">
+      <ID>Wartosc Zamowienia</ID>
+      <Name>Wartosc Zamowienia</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4d967317-18a7-48d9-bb69-a8e47c6a12c4">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c2cefc6b-46ea-4503-a1b3-36526d70ff99">
+            <TableID>dbo_Zamowienie</TableID>
+            <ColumnID>Wartosc_Zamowienia</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="6799e2d1-6d7d-4cad-b26b-03d6a170c142">
+      <ID>PK Date</ID>
+      <Name>PK Date</Name>
+      <Type>Date</Type>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6f90b4b7-b3fa-48fc-9a17-c89a29ab765b">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="412c59ce-3f61-47c1-a274-c4015d678410">
+            <TableID>dbo_Data_Zamowienia</TableID>
+            <ColumnID>PK_Date</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="0c23925a-91ba-44f6-bdda-0c72d2a4155c">
+          <AttributeID>Year</AttributeID>
+          <Name>Year</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f7c30f49-c8da-4646-b1c9-9afbcdd746f7">
+          <AttributeID>Day Of Month</AttributeID>
+          <Name>Day Of Month</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="95b8d992-1279-4798-9983-8bf94ee1c345">
+          <AttributeID>Month Of Year</AttributeID>
+          <Name>Month Of Year</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d0ee3b23-a55a-4e12-8a7c-e8bed874d048">
+          <AttributeID>Quarter Of Year</AttributeID>
+          <Name>Quarter Of Year</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="b38b12c5-1e6a-4b3f-8188-c42f99766b7f">
+      <ID>Year</ID>
+      <Name>Year</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="31966f84-c356-46c4-8647-5db2e8efcb3a">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5a0e7a97-1006-48f9-a131-7c532497a634">
+            <TableID>dbo_Data_Zamowienia</TableID>
+            <ColumnID>Year</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="943e33d7-c1a6-41f8-9aff-6c857f8fca83">
+      <ID>Day Of Month</ID>
+      <Name>Day Of Month</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="030a4da2-e652-4761-9672-caf97697ad79">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="836f4678-3446-40f4-b136-43ec38cbc2f0">
+            <TableID>dbo_Data_Zamowienia</TableID>
+            <ColumnID>Day_Of_Month</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="03ceffab-1f28-4d1f-80fd-e467e25dc198">
+      <ID>Month Of Year</ID>
+      <Name>Month Of Year</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9ca46b4f-9ed7-42ad-ade1-639fbbcf5b15">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e33a99a5-e9ab-478a-bd9b-edfdbb52d932">
+            <TableID>dbo_Data_Zamowienia</TableID>
+            <ColumnID>Month_Of_Year</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="da538292-1b5b-43c7-b2c0-3f287eaf2fbd">
+      <ID>Quarter Of Year</ID>
+      <Name>Quarter Of Year</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="56b501b6-ecfd-4115-acce-acd32a522c5c">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="04cfc234-e1f1-4408-879a-2f1c72ef98e8">
+            <TableID>dbo_Data_Zamowienia</TableID>
+            <ColumnID>Quarter_Of_Year</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="7738011a-d9d9-46e3-8176-009013c8dea6">
+      <ID>Nr Przedstawicielstwa</ID>
+      <Name>Nr Przedstawicielstwa</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f6c92c0f-7f1c-48e7-ace1-3502368064bd">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6edbd3ed-72ba-4f6b-a625-9c86c1f9157e">
+            <TableID>dbo_Przedstawicielstwo</TableID>
+            <ColumnID>Nr_Przedstawicielstwa</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="197655d7-d309-4d2a-bcb1-2c6130a7ff45">
+          <AttributeID>Nazwa</AttributeID>
+          <Name>Nazwa</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ace4cefa-56e6-458f-b3cd-7435be07d3d9">
+          <AttributeID>Nr Lokalizacji</AttributeID>
+          <Name>Nr Lokalizacji</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="9e0fe12b-e280-491f-ba27-b0baaea48e83">
+      <ID>Nazwa</ID>
+      <Name>Nazwa</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="817e887b-d810-44e3-ad57-c45a1b28dc80">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f954e3e3-7e7a-443c-86d4-186db7468b49">
+            <TableID>dbo_Przedstawicielstwo</TableID>
+            <ColumnID>Nazwa</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="ed4688e7-ad3f-40b6-bfe2-5606949b1230">
+      <ID>Nr Lokalizacji</ID>
+      <Name>Nr Lokalizacji</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8bf8c60b-ab82-412a-a730-0b6750c6b053">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="59135920-e494-44bb-a06b-a6787e508f20">
+            <TableID>dbo_Lokalizacja</TableID>
+            <ColumnID>Nr_Lokalizacji</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="ba44fcbd-f9d1-4d61-86d0-b350e7428f56">
+          <AttributeID>Miasto</AttributeID>
+          <Name>Miasto</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7e4db837-5237-470a-bf3e-f220849175d6">
+          <AttributeID>Kraj</AttributeID>
+          <Name>Kraj</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="92a755e3-91a6-4a26-a723-0ebe07eb31f3">
+      <ID>Miasto</ID>
+      <Name>Miasto</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4c10f51d-3a33-4e2a-ad29-f1ac6e9a521e">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6f1a2b3f-b8ae-4f35-bd9e-e80bd61f9f27">
+            <TableID>dbo_Lokalizacja</TableID>
+            <ColumnID>Miasto</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="4be00d82-371c-43ae-95c6-182fa75ec9fa">
+      <ID>Kraj</ID>
+      <Name>Kraj</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="35317507-41c2-4e7f-8060-23fff9463839">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="81ea07c0-653a-428c-8ffb-bf99f6a12b2b">
+            <TableID>dbo_Lokalizacja</TableID>
+            <ColumnID>Kraj</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="fdf5d817-aef4-487d-8a1c-98c20dc8d626">
+      <ID>Nr Dostawcy</ID>
+      <Name>Nr Dostawcy</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="050f7ffd-b432-4e46-899d-dacd0711db39">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="491a32d5-4c5d-4055-946a-487b36888f97">
+            <TableID>dbo_Dostawca</TableID>
+            <ColumnID>Nr_Dostawcy</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="ab14f011-207e-4ffe-b222-dba3d0030d9f">
+          <AttributeID>Dostawca - Nazwa</AttributeID>
+          <Name>Dostawca - Nazwa</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="945dbe83-f49b-40e1-a9e3-2d833c73433d">
+      <ID>Dostawca - Nazwa</ID>
+      <Name>Dostawca - Nazwa</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f858e3ae-0626-4961-be16-9c5a673bcbe2">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e1b1e0fa-158a-48b2-8562-1d628ae76f5c">
+            <TableID>dbo_Dostawca</TableID>
+            <ColumnID>Nazwa</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="9d50b30c-96a6-452b-b58e-d8554f908d10">
+      <ID>Nr Czesci</ID>
+      <Name>Nr Czesci</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="fd243617-3047-4abe-8c61-6b91878a0cf2">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c1fa65a1-357d-4cef-af9f-0e596a5ac9c8">
+            <TableID>dbo_Czesc_Zamienna</TableID>
+            <ColumnID>Nr_Czesci</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="11d74a4a-8906-4785-bf34-90bcf5a21f6b">
+          <AttributeID>Czesc Zamienna - Nazwa</AttributeID>
+          <Name>Czesc Zamienna - Nazwa</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="694d6bde-b357-443d-938c-5816f4c7230f">
+          <AttributeID>Nr Kategorii</AttributeID>
+          <Name>Nr Kategorii</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="75a29437-450a-4791-86ee-41b00fe9182c">
+          <AttributeID>Nr Modelu</AttributeID>
+          <Name>Nr Modelu</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="434ddb89-3ca7-470e-a996-5302bb8368ae">
+      <ID>Czesc Zamienna - Nazwa</ID>
+      <Name>Czesc Zamienna - Nazwa</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b023bd9c-07d1-4cf2-9efd-0d91c2c76213">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="86ce7657-f0f2-4ad7-9015-86b4c75223da">
+            <TableID>dbo_Czesc_Zamienna</TableID>
+            <ColumnID>Nazwa</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="a112db95-690b-4969-8ebf-b516a86ed0e6">
+      <ID>Nr Kategorii</ID>
+      <Name>Nr Kategorii</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="253f842a-75c8-47a6-ab60-627f4019aff4">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="492a1d08-68ed-4cbb-bd5d-e9454abfb6a6">
+            <TableID>dbo_Kategoria_Czesci</TableID>
+            <ColumnID>Nr_Kategorii</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="5dd1146d-ff1f-4cb8-8933-547ef1c52804">
+          <AttributeID>Kategoria Czesci - Nazwa</AttributeID>
+          <Name>Kategoria Czesci - Nazwa</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="a97a6f77-1253-47da-a166-820b3d541fa9">
+      <ID>Kategoria Czesci - Nazwa</ID>
+      <Name>Kategoria Czesci - Nazwa</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9afa1e0f-24e3-4ee6-a3cc-5df3e72ce89d">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4d221b66-f8bd-429f-b8ac-d85683fc4ae8">
+            <TableID>dbo_Kategoria_Czesci</TableID>
+            <ColumnID>Nazwa</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="f07cf2f9-9b75-41f6-85f1-b775f7d2bea9">
+      <ID>Nr Modelu</ID>
+      <Name>Nr Modelu</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4b045ee9-342b-4137-b0d7-7c8fd19d42cb">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ac231baf-428a-443f-9637-97bc2551599a">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Nr_Modelu</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="280490e8-42f9-4de7-aa70-e78fa11f84d3">
+          <AttributeID>Nazwa Modelu</AttributeID>
+          <Name>Nazwa Modelu</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="39df953a-5499-4a3e-b927-2125237462eb">
+          <AttributeID>Typ Silnika</AttributeID>
+          <Name>Typ Silnika</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d0112e50-bd56-4b32-8df3-4e897741f147">
+          <AttributeID>Rok</AttributeID>
+          <Name>Rok</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="d6c5cef9-1c2c-404a-94cb-5e2d6445ab56">
+      <ID>Nazwa Modelu</ID>
+      <Name>Nazwa Modelu</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d0d084e4-789a-4f3c-8c12-d7f67ca2c97f">
+          <DataType>WChar</DataType>
+          <DataSize>150</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c5de8033-19b7-4ac2-99db-ed4d22e5b01d">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Nazwa_Modelu</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="5f2b8780-7ff2-40a2-9583-5080153748f0">
+      <ID>Typ Silnika</ID>
+      <Name>Typ Silnika</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="eb3b3e58-f2f9-4920-a6bf-fb47324dbd94">
+          <DataType>WChar</DataType>
+          <DataSize>150</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="817dde17-703e-4b66-99bc-3da9f3c9cefc">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Typ_Silnika</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="7b521e76-81ad-45d4-bce7-ab5b69626610">
+      <ID>Rok</ID>
+      <Name>Rok</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="28e7f7ca-da7c-4924-8310-9bfc637b2084">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="003b4523-434e-4202-979b-b01776310bc0">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Rok</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="fb0c8b47-7cf3-4485-912e-26e600a0644d">
+      <ID>Nr Magazynu</ID>
+      <Name>Nr Magazynu</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="15829684-320e-4a9b-91b1-5faeec63045d">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="84eb0b82-bfbd-4213-8916-cf1db1e54875">
+            <TableID>dbo_Magazyn</TableID>
+            <ColumnID>Nr_Magazynu</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="9e71233b-4df7-4dbd-aa89-9c91e215d03f">
+          <AttributeID>Magazyn - Nazwa</AttributeID>
+          <Name>Magazyn - Nazwa</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="26775bac-3e94-4757-b0dd-904cc93484fc">
+      <ID>Magazyn - Nazwa</ID>
+      <Name>Magazyn - Nazwa</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b98ca7be-303b-43db-b4bd-bbcfce534cdf">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fac98ff3-f956-4228-84bf-e94e769a5031">
+            <TableID>dbo_Magazyn</TableID>
+            <ColumnID>Nazwa</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+  </Attributes>
+</Dimension>

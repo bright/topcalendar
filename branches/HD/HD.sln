@@ -3,14 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "HD", "HD\HD.dwproj", "{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGenerator", "DataGenerator\DataGenerator.csproj", "{AFDE82B9-26F1-4824-8A49-746A499C3D91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Development|Default = Development|Default
+		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Development|Default.ActiveCfg = Development
-		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Development|Default.Build.0 = Development
-		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Development|Default.Deploy.0 = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Debug|Any CPU.ActiveCfg = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Debug|Any CPU.Build.0 = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Debug|Any CPU.Deploy.0 = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Development|Any CPU.ActiveCfg = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Development|Any CPU.Build.0 = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Development|Any CPU.Deploy.0 = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Release|Any CPU.ActiveCfg = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Release|Any CPU.Build.0 = Development
+		{3FB70ABC-EA35-45B1-946D-0C3D3C6E783F}.Release|Any CPU.Deploy.0 = Development
+		{AFDE82B9-26F1-4824-8A49-746A499C3D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFDE82B9-26F1-4824-8A49-746A499C3D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFDE82B9-26F1-4824-8A49-746A499C3D91}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFDE82B9-26F1-4824-8A49-746A499C3D91}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{AFDE82B9-26F1-4824-8A49-746A499C3D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFDE82B9-26F1-4824-8A49-746A499C3D91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
