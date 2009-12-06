@@ -1,0 +1,231 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="c880e323-3826-43b0-afb7-2a123c57c4cc" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Czesc Zamienna</ID>
+  <Name>Czesc Zamienna</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="9af9927e-401a-450d-b906-34d190067467">
+    <DataSourceViewID>ZamowianiaDsView</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="38e52b18-0423-46cb-810d-d8aaae97861d">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="13430db4-aac5-44c1-aa6b-fa4fc3f77199">
+      <ID>Nr Czesci</ID>
+      <Name>Nr Czesci</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f2c772b3-e051-4ef4-8287-6b5b62ec663c">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="cabf7ad1-d325-41b0-8429-47df6dc5a0ed">
+            <TableID>dbo_Czesc_Zamienna</TableID>
+            <ColumnID>Nr_Czesci</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="ce73466b-c337-4e2e-970a-13ca885c3d9a">
+          <AttributeID>Nr Czesci Nadrzednej</AttributeID>
+          <Name>Nr Czesci Nadrzednej</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="bc3b4555-b640-4b6c-ba0d-720fc834a259">
+          <AttributeID>Nazwa</AttributeID>
+          <Name>Nazwa</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="9ae934a1-2d11-4e6e-8c0d-b9891c8119b5">
+          <AttributeID>Nr Kategorii</AttributeID>
+          <Name>Nr Kategorii</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="47448617-f92c-4072-bc7b-52678db6d83e">
+          <AttributeID>Nr Modelu</AttributeID>
+          <Name>Nr Modelu</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+    </Attribute>
+    <Attribute dwd:design-time-name="03946410-4271-4f1a-b19a-fb92a16a031f">
+      <ID>Nr Czesci Nadrzednej</ID>
+      <Name>Nr Czesci Nadrzednej</Name>
+      <Usage>Parent</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1b9d0048-e758-4db4-b42b-86d8d9411b0f">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9f6cf60c-8238-4775-8c2b-452092a4eeaf">
+            <TableID>dbo_Czesc_Zamienna</TableID>
+            <ColumnID>Nr_Czesci_Nadrzednej</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="accfeea0-fe77-443c-ae91-4c3ce46e0884">
+      <ID>Nazwa</ID>
+      <Name>Nazwa</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3e715c10-d956-4b4b-9b77-44aa0599956e">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fc418558-23e4-47c2-a701-88fe4ad5e5ec">
+            <TableID>dbo_Czesc_Zamienna</TableID>
+            <ColumnID>Nazwa</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="6ddca237-9682-447c-b395-4a4dc8ee5914">
+      <ID>Nr Kategorii</ID>
+      <Name>Nr Kategorii</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c8465dae-29dc-42d2-8486-12f0e8c7ce41">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1e949ef2-de41-4001-b859-0981987f4427">
+            <TableID>dbo_Kategoria_Czesci</TableID>
+            <ColumnID>Nr_Kategorii</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="7be64e3a-8536-4529-991c-c811730b3a31">
+          <AttributeID>Kategoria Czesci - Nazwa</AttributeID>
+          <Name>Kategoria Czesci - Nazwa</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="16e320f4-cb04-46e2-9dbb-ac902026a387">
+      <ID>Kategoria Czesci - Nazwa</ID>
+      <Name>Kategoria Czesci - Nazwa</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="12687411-15d4-4256-b4ff-54185cca6fb0">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fa12f577-89f0-419c-aa3f-448f1ec16f98">
+            <TableID>dbo_Kategoria_Czesci</TableID>
+            <ColumnID>Nazwa</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="8beeeb3e-5370-4b77-948d-c56c3f53f875">
+      <ID>Nr Modelu</ID>
+      <Name>Nr Modelu</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="abd961d5-0c04-4107-a41d-cea37fd4a4c3">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a20f3045-ff41-41d9-bdb3-f8a9fa206c84">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Nr_Modelu</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="da88a678-afb7-463d-b76a-89cfd61f0373">
+          <AttributeID>Nazwa Modelu</AttributeID>
+          <Name>Nazwa Modelu</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="762992e8-c153-4172-8707-b7d52333f983">
+          <AttributeID>Typ Silnika</AttributeID>
+          <Name>Typ Silnika</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6e330e92-999f-4cc8-a7f2-2571fdfeb902">
+          <AttributeID>Rok</AttributeID>
+          <Name>Rok</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="10abce94-dd70-4cc4-989f-2e3b7fed375d">
+      <ID>Nazwa Modelu</ID>
+      <Name>Nazwa Modelu</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7b7ff2b0-b39e-48d1-8df6-f441db716832">
+          <DataType>WChar</DataType>
+          <DataSize>150</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b926b36f-e25d-4dc8-a806-1ce75cb0956b">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Nazwa_Modelu</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="298ef0f6-1fea-4bf8-b089-ac1a887465e5">
+      <ID>Typ Silnika</ID>
+      <Name>Typ Silnika</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3a9febde-2c80-4d96-a138-f628c93fc0e3">
+          <DataType>WChar</DataType>
+          <DataSize>150</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="58192eab-06e1-4581-9b9c-b0bdd3d2d475">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Typ_Silnika</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="45a3330a-34ce-4b0f-8061-f226364ca524">
+      <ID>Rok</ID>
+      <Name>Rok</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ab5d29ab-33da-43f2-8192-8d59850b107d">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="43e0a7df-b96a-454d-aef1-f7e4acd6504b">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Rok</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+  </Attributes>
+</Dimension>

@@ -72,6 +72,8 @@ namespace DataGenerator
 			czesci.Each(cz => cz.Model = db.Models.Random());
 			db.Czesc_Zamiennas.InsertAllOnSubmit(czesci);
 			db.SubmitChanges();
+
+
 			Console.ReadKey();
 		}
 	}

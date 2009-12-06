@@ -11,6 +11,20 @@ using log4net.Core;
 namespace DataGenerator.Extensions
 {		
 
+	public class DateRange
+	{
+		private readonly DateTime _start;
+		private readonly DateTime _end;
+
+		public DateRange(DateTime start, DateTime end)
+		{
+			_start = start;
+			_end = end;
+		}
+
+
+	}
+
 	public static class StringExtensions
 	{
 

@@ -1,0 +1,131 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="14488612-db0a-424e-a35b-5dcda940e91c" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Model</ID>
+  <Name>Model</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="6d7cd927-bbe8-4695-b968-21cc5401491e">
+    <DataSourceViewID>ZamowianiaDsView</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="19bb3c13-7286-471c-9fc8-5583632f46cd">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="dea1ea97-a16e-4dd9-81d2-1a3e12c1a591">
+      <ID>Nr Modelu</ID>
+      <Name>Nr Modelu</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3b018ef5-5cc1-4ebf-989f-1e5fd22cba39">
+          <NullProcessing>UnknownMember</NullProcessing>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="18b1dcde-fc35-46c0-963d-7b301250716a">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Nr_Modelu</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="34bd3828-5abc-4948-b0dd-e124928c6054">
+          <AttributeID>Nazwa Modelu</AttributeID>
+          <Name>Nazwa Modelu</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="037ed7ce-ec02-4a8b-a178-ef5af73d6d9a">
+          <AttributeID>Typ Silnika</AttributeID>
+          <Name>Typ Silnika</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f2553d47-abc9-4cd5-a972-30326ed1419d">
+          <AttributeID>Rok</AttributeID>
+          <Name>Rok</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="87d1c149-878a-4743-b4ce-d14af26df0b8">
+      <ID>Nazwa Modelu</ID>
+      <Name>Nazwa Modelu</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="919c2b3c-df40-45a7-a736-8ddada6c6483">
+          <DataType>WChar</DataType>
+          <DataSize>150</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ebb7ff3f-25d9-4f6f-aabf-16a9154a843d">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Nazwa_Modelu</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="44c12273-2bd3-4237-9dde-33a825dcc323">
+      <ID>Typ Silnika</ID>
+      <Name>Typ Silnika</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="899b5c56-ea48-4db0-aebe-519304651950">
+          <DataType>WChar</DataType>
+          <DataSize>150</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3f2ac39c-9e84-44de-8fe1-1a7d882be7a9">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Typ_Silnika</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="35993c29-3765-40cf-ac9f-e74990cc0e33">
+      <ID>Rok</ID>
+      <Name>Rok</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cd035869-3639-409d-8c45-cfec7f811c9c">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0ff788ba-769e-4663-9d3e-f749794ab813">
+            <TableID>dbo_Model</TableID>
+            <ColumnID>Rok</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+  </Attributes>
+</Dimension>
