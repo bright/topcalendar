@@ -34,12 +34,20 @@
       <FullPath>Data.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Czesc Zamienna.dim</Name>
-      <FullPath>Czesc Zamienna.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Zamowienie.dim</Name>
       <FullPath>Zamowienie.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reklamacja.dim</Name>
+      <FullPath>Reklamacja.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Lokalizacja.dim</Name>
+      <FullPath>Lokalizacja.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Sprzedaz.dim</Name>
+      <FullPath>Sprzedaz.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Dostawca.dim</Name>
@@ -66,16 +74,8 @@
       <FullPath>Kategoria Czesci.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Reklamacja.dim</Name>
-      <FullPath>Reklamacja.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Lokalizacja.dim</Name>
-      <FullPath>Lokalizacja.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Sprzedaz.dim</Name>
-      <FullPath>Sprzedaz.dim</FullPath>
+      <Name>Czesc Zamienna.dim</Name>
+      <FullPath>Czesc Zamienna.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>
