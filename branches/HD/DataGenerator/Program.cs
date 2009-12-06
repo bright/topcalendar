@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define INSERT_DATA 
+//#define LOG_SQL
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +17,16 @@ namespace DataGenerator
 		{
 			var mappingConfiguration = new Configuration();
 			mappingConfiguration.CreateMappings(typeof(Program).Assembly);
-			var db = new HdDataContext {Log = new Log4NetWriter(typeof (Program))};
+			var db = new HdDataContext
+			         	{
+#if LOG_SQL
+			         		Log = new Log4NetWriter(typeof (Program))
+#endif
+			         	};
 						
             db.DeleteAllAndSubmit(db.Zamowienies);
+			db.DeleteAllAndSubmit(db.Sprzedazs);
+			db.DeleteAllAndSubmit(db.Reklamacjas);
 			db.DeleteAllAndSubmit(db.Datas);
 			db.DeleteAllAndSubmit(db.Czesc_Zamiennas);
 			db.DeleteAllAndSubmit(db.Kategoria_Czescis);
@@ -28,7 +37,7 @@ namespace DataGenerator
 			db.DeleteAllAndSubmit(db.Dostawcas);
 			db.DeleteAllAndSubmit(db.Models);
 			
-			
+#if INSERT_DATA			
 
 			var krajs = Mapper.Map<IEnumerable<string>, IEnumerable<Lokalizacja>>(RootEntityNames.Lokalizacje);
 			db.Lokalizacjas.InsertAllOnSubmit(krajs);
@@ -93,14 +102,7 @@ namespace DataGenerator
                     	{
 							for (int i = 0; i < 100.Random(10); ++i)
 							{
-								var dateTime = month.RandomDayOfMonth();
-								Data data = db.Datas.Where(dat=> dat.PK_Date.Equals(dateTime.Date)).FirstOrDefault();
-								if(data == null)
-								{
-									data = Mapper.Map<DateTime, Data>(dateTime);
-									db.Datas.InsertOnSubmit(data);
-									db.SubmitChanges();
-								}
+								var data = db.FindDateOrInsertNew(month.RandomDayOfMonth());
 								var zamowienie = new Zamowienie
 								                 	{
 								                 		Czas_Dostarczenia_Do_Magazynu = 10.Random(2),
@@ -119,6 +121,46 @@ namespace DataGenerator
 								db.SubmitChanges();
 							}
                     	});
+
+			// reklamacje
+
+			dateRange.MonthRange()
+				.Each(month =>
+				      	{
+				      		for(int i=0;i<50.Random(5);++i)
+				      		{
+				      			var data = db.FindDateOrInsertNew(month.RandomDayOfMonth());
+				      			var reklamacja = new Reklamacja
+				      			                 	{
+				      			                 		Czas_Obslugi_Reklamacji = 20.Random(1),
+														Czesc_Zamienna = db.Czesc_Zamiennas.Random(),
+														Data1 = data,
+														Liczba_Reklamacji = 10.Random(4),
+                                                        Koszt_Obslugi_Reklamacji= 10000.Random(1000)/100M,
+                                                        Przedstawicielstwo = db.Przedstawicielstwos.Random()
+				      			                 	};
+								db.Reklamacjas.InsertOnSubmit(reklamacja);
+				      			db.SubmitChanges();
+				      		}
+				      	});
+
+
+			// sprzedaz
+			dateRange.MonthRange()
+				.Each(month =>
+				      	{
+				      		var data = db.FindDateOrInsertNew(month.Date);
+				      		var sprzedaz = new Sprzedaz
+				      		               	{
+				      		               		Data = data,
+				      		               		Firma = db.Firmas.Random(),
+				      		               		Kategoria_Czesci = db.Kategoria_Czescis.Random(),
+				      		               		Wielkosc_sprzedazy = (500000).Random(400000)
+				      		               	};
+							db.Sprzedazs.InsertOnSubmit(sprzedaz);
+				      		db.SubmitChanges();
+				      	});
+#endif
 
 			Console.ReadKey();
 		}

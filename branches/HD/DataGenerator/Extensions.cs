@@ -110,7 +110,7 @@ namespace DataGenerator.Extensions
 		public static DateTime RandomDayOfMonth(this DateTime date)
 		{
 			return new DateTime(date.Year,date.Month,
-					DateTime.DaysInMonth(date.Year,date.Month).Random(1),23.Random(),59.Random(),59.Random(),999.Random()
+					DateTime.DaysInMonth(date.Year,date.Month).Random(1)//,23.Random(),59.Random(),59.Random(),999.Random()
 				);
 		}
 
