@@ -79,32 +79,6 @@
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="652f92fc-d805-4221-bb6f-6068a35b01b6">
-      <ID>Czesc Zamienna</ID>
-      <Name>Czesc Zamienna</Name>
-      <DimensionID>Czesc Zamienna</DimensionID>
-      <Attributes>
-        <Attribute dwd:design-time-name="1101c4e1-4ca6-494f-858e-531798ada316">
-          <AttributeID>Nr Czesci</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="81c1d695-cc12-450c-af42-675d44990b0a">
-          <AttributeID>Nr Modelu</AttributeID>
-        </Attribute>
-      </Attributes>
-    </Dimension>
-    <Dimension dwd:design-time-name="c62ca2d6-71d8-4804-8086-c88bf575faed">
-      <ID>Przedstawicielstwo</ID>
-      <Name>Przedstawicielstwo</Name>
-      <DimensionID>Przedstawicielstwo</DimensionID>
-      <Attributes>
-        <Attribute dwd:design-time-name="281aae57-46d4-4ffb-acf0-7d687531121e">
-          <AttributeID>Nr Przedstawicielstwa</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="e7d30cb0-2081-4cf9-aff2-d690249ea076">
-          <AttributeID>Nr Kraju</AttributeID>
-        </Attribute>
-      </Attributes>
-    </Dimension>
   </Dimensions>
   <MeasureGroups>
     <MeasureGroup dwd:design-time-name="829b5b95-22a0-4e5a-a40a-d869bdbe6c73">
@@ -175,42 +149,6 @@
                   <Source xsi:type="ColumnBinding" dwd:design-time-name="2ad022ad-c064-4eff-8ec3-ef44a7acebd6">
                     <TableID>dbo_Reklamacja</TableID>
                     <ColumnID>Data</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <Type>Granularity</Type>
-            </Attribute>
-          </Attributes>
-        </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="77cf551b-879e-4a6f-98c3-906b1538c811">
-          <CubeDimensionID>Czesc Zamienna</CubeDimensionID>
-          <Attributes>
-            <Attribute dwd:design-time-name="790ea1d8-02e7-4195-ac1e-7ea307de1aca">
-              <AttributeID>Nr Czesci</AttributeID>
-              <KeyColumns>
-                <KeyColumn dwd:design-time-name="642cf1a9-ee82-4975-b42d-c0fd47f32492">
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ca02dc52-6e38-40d4-badd-793421814d5f">
-                    <TableID>dbo_Reklamacja</TableID>
-                    <ColumnID>Nr_Czesci</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <Type>Granularity</Type>
-            </Attribute>
-          </Attributes>
-        </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="96d10962-c71b-44c3-8636-e5852a64300d">
-          <CubeDimensionID>Przedstawicielstwo</CubeDimensionID>
-          <Attributes>
-            <Attribute dwd:design-time-name="bfdae072-78d4-4a6c-99b6-5a79ca95f382">
-              <AttributeID>Nr Przedstawicielstwa</AttributeID>
-              <KeyColumns>
-                <KeyColumn dwd:design-time-name="9019dbc9-03d3-4199-a7d8-96cf6935ca5f">
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="d0a903af-a590-4b18-94b0-1e840c5da125">
-                    <TableID>dbo_Reklamacja</TableID>
-                    <ColumnID>Nr_Przedstawicielstwa</ColumnID>
                   </Source>
                 </KeyColumn>
               </KeyColumns>

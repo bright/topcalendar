@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="hd" Class="HdDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=hd;Integrated Security=True" SettingsObjectName="DataGenerator.Properties.Settings" SettingsPropertyName="hdConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Zamowienie" Member="Zamowienies">
+    <Type Name="Zamowienie">
+      <Column Name="Nr_Zamowienia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Czas_Realizacji" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Zysk" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Wielkosc" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Koszt_Obslugi" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Czas_Dostarczenia_Do_Magazynu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Data_Zamowienia" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Nr_Magazynu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nr_Przedstawicielstwa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Wartosc_Zamowienia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Nr_Czesci" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nr_Dostawcy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Przedstawicielstwo_Zamowienie" Member="Przedstawicielstwo" ThisKey="Nr_Przedstawicielstwa" OtherKey="Nr_Przedstawicielstwa" Type="Przedstawicielstwo" IsForeignKey="true" />
+      <Association Name="Magazyn_Zamowienie" Member="Magazyn" ThisKey="Nr_Magazynu" OtherKey="Nr_Magazynu" Type="Magazyn" IsForeignKey="true" />
+      <Association Name="Data_Zamowienie" Member="Data" ThisKey="Data_Zamowienia" OtherKey="PK_Date" Type="Data" IsForeignKey="true" />
+      <Association Name="Dostawca_Zamowienie" Member="Dostawca" ThisKey="Nr_Dostawcy" OtherKey="Nr_Dostawcy" Type="Dostawca" IsForeignKey="true" />
+      <Association Name="Czesc_Zamienna_Zamowienie" Member="Czesc_Zamienna" ThisKey="Nr_Czesci" OtherKey="Nr_Czesci" Type="Czesc_Zamienna" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sprzedaz" Member="Sprzedazs">
+    <Type Name="Sprzedaz">
+      <Column Name="Nr_Sprzedazy" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_Firmy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nr_Kategorii" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Wielkosc_sprzedazy" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Data_Sprzedazy" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Kategoria_Czesci_Sprzedaz" Member="Kategoria_Czesci" ThisKey="Nr_Kategorii" OtherKey="Nr_Kategorii" Type="Kategoria_Czesci" IsForeignKey="true" />
+      <Association Name="Firma_Sprzedaz" Member="Firma" ThisKey="Nr_Firmy" OtherKey="Nr_Firmy" Type="Firma" IsForeignKey="true" />
+      <Association Name="Data_Sprzedaz" Member="Data" ThisKey="Data_Sprzedazy" OtherKey="PK_Date" Type="Data" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reklamacja" Member="Reklamacjas">
+    <Type Name="Reklamacja">
+      <Column Name="Nr_Reklamacji" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_Czesci" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Koszt_Obslugi_Reklamacji" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Czas_Obslugi_Reklamacji" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Liczba_Reklamacji" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nr_Przedstawicielstwa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Przedstawicielstwo_Reklamacja" Member="Przedstawicielstwo" ThisKey="Nr_Przedstawicielstwa" OtherKey="Nr_Przedstawicielstwa" Type="Przedstawicielstwo" IsForeignKey="true" />
+      <Association Name="Data_Reklamacja" Member="Data1" ThisKey="Data" OtherKey="PK_Date" Type="Data" IsForeignKey="true" />
+      <Association Name="Czesc_Zamienna_Reklamacja" Member="Czesc_Zamienna" ThisKey="Nr_Czesci" OtherKey="Nr_Czesci" Type="Czesc_Zamienna" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Przedstawicielstwo" Member="Przedstawicielstwos">
+    <Type Name="Przedstawicielstwo">
+      <Column Name="Nr_Przedstawicielstwa" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nr_Lokalizacji" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Przedstawicielstwo_Zamowienie" Member="Zamowienies" ThisKey="Nr_Przedstawicielstwa" OtherKey="Nr_Przedstawicielstwa" Type="Zamowienie" />
+      <Association Name="Przedstawicielstwo_Reklamacja" Member="Reklamacjas" ThisKey="Nr_Przedstawicielstwa" OtherKey="Nr_Przedstawicielstwa" Type="Reklamacja" />
+      <Association Name="Lokalizacja_Przedstawicielstwo" Member="Lokalizacja" ThisKey="Nr_Lokalizacji" OtherKey="Nr_Lokalizacji" Type="Lokalizacja" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Model" Member="Models">
+    <Type Name="Model">
+      <Column Name="Nr_Modelu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nazwa_Modelu" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Typ_Silnika" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Rok" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Model_Czesc_Zamienna" Member="Czesc_Zamiennas" ThisKey="Nr_Modelu" OtherKey="Nr_Modelu" Type="Czesc_Zamienna" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magazyn" Member="Magazyns">
+    <Type Name="Magazyn">
+      <Column Name="Nr_Magazynu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nr_Lokalizacji" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magazyn_Zamowienie" Member="Zamowienies" ThisKey="Nr_Magazynu" OtherKey="Nr_Magazynu" Type="Zamowienie" />
+      <Association Name="Lokalizacja_Magazyn" Member="Lokalizacja" ThisKey="Nr_Lokalizacji" OtherKey="Nr_Lokalizacji" Type="Lokalizacja" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lokalizacja" Member="Lokalizacjas">
+    <Type Name="Lokalizacja">
+      <Column Name="Nr_Lokalizacji" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Miasto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Kraj" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Lokalizacja_Przedstawicielstwo" Member="Przedstawicielstwos" ThisKey="Nr_Lokalizacji" OtherKey="Nr_Lokalizacji" Type="Przedstawicielstwo" />
+      <Association Name="Lokalizacja_Magazyn" Member="Magazyns" ThisKey="Nr_Lokalizacji" OtherKey="Nr_Lokalizacji" Type="Magazyn" />
+      <Association Name="Lokalizacja_Firma" Member="Firmas" ThisKey="Nr_Lokalizacji" OtherKey="Nr_Lokalizacji" Type="Firma" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Kategoria_Czesci" Member="Kategoria_Czescis">
+    <Type Name="Kategoria_Czesci">
+      <Column Name="Nr_Kategorii" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Kategoria_Czesci_Sprzedaz" Member="Sprzedazs" ThisKey="Nr_Kategorii" OtherKey="Nr_Kategorii" Type="Sprzedaz" />
+      <Association Name="Kategoria_Czesci_Czesc_Zamienna" Member="Czesc_Zamiennas" ThisKey="Nr_Kategorii" OtherKey="Nr_Kategorii" Type="Czesc_Zamienna" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Firma" Member="Firmas">
+    <Type Name="Firma">
+      <Column Name="Nr_Firmy" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Nr_Lokalizacji" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Firma_Sprzedaz" Member="Sprzedazs" ThisKey="Nr_Firmy" OtherKey="Nr_Firmy" Type="Sprzedaz" />
+      <Association Name="Lokalizacja_Firma" Member="Lokalizacja" ThisKey="Nr_Lokalizacji" OtherKey="Nr_Lokalizacji" Type="Lokalizacja" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Data" Member="Datas">
+    <Type Name="Data">
+      <Column Name="PK_Date" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Day_Of_Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Day_Of_Quarter" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Day_Of_Month" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Day_Of_Week" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Week_Of_Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month_Of_Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month_Of_Quarter" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quarter_Of_Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Data_Zamowienie" Member="Zamowienies" ThisKey="PK_Date" OtherKey="Data_Zamowienia" Type="Zamowienie" />
+      <Association Name="Data_Sprzedaz" Member="Sprzedazs" ThisKey="PK_Date" OtherKey="Data_Sprzedazy" Type="Sprzedaz" />
+      <Association Name="Data_Reklamacja" Member="Reklamacjas" ThisKey="PK_Date" OtherKey="Data" Type="Reklamacja" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dostawca" Member="Dostawcas">
+    <Type Name="Dostawca">
+      <Column Name="Nr_Dostawcy" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Dostawca_Zamowienie" Member="Zamowienies" ThisKey="Nr_Dostawcy" OtherKey="Nr_Dostawcy" Type="Zamowienie" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Czesc_Zamienna" Member="Czesc_Zamiennas">
+    <Type Name="Czesc_Zamienna">
+      <Column Name="Nr_Czesci" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nr_Modelu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nr_Kategorii" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nr_Czesci_Nadrzednej" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Czesc_Zamienna_Zamowienie" Member="Zamowienies" ThisKey="Nr_Czesci" OtherKey="Nr_Czesci" Type="Zamowienie" />
+      <Association Name="Czesc_Zamienna_Reklamacja" Member="Reklamacjas" ThisKey="Nr_Czesci" OtherKey="Nr_Czesci" Type="Reklamacja" />
+      <Association Name="Czesc_Zamienna_Czesc_Zamienna" Member="Czesc_Zamiennas" ThisKey="Nr_Czesci" OtherKey="Nr_Czesci_Nadrzednej" Type="Czesc_Zamienna" />
+      <Association Name="Czesc_Zamienna_Czesc_Zamienna" Member="Czesc_Zamienna1" ThisKey="Nr_Czesci_Nadrzednej" OtherKey="Nr_Czesci" Type="Czesc_Zamienna" IsForeignKey="true" />
+      <Association Name="Kategoria_Czesci_Czesc_Zamienna" Member="Kategoria_Czesci" ThisKey="Nr_Kategorii" OtherKey="Nr_Kategorii" Type="Kategoria_Czesci" IsForeignKey="true" />
+      <Association Name="Model_Czesc_Zamienna" Member="Model" ThisKey="Nr_Modelu" OtherKey="Nr_Modelu" Type="Model" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

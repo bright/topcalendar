@@ -1,6 +1,6 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="a244076c-7fd4-40a1-b2b9-3a001cc063b1" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
-  <ID>Firma</ID>
-  <Name>Firma</Name>
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="6eb94970-ee7c-415e-a34f-8f40fed6512b" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Lokalizacja</ID>
+  <Name>Lokalizacja</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
   <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
   <Annotations>
@@ -42,67 +42,68 @@
   </Annotations>
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="e83382ef-52d5-4d73-8d51-ac0f263ffa07">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="d60b92e3-d118-4d17-97b9-e6f325b0872f">
     <DataSourceViewID>ZamowianiaDsView</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration dwd:design-time-name="62a472cc-4c21-4f97-881a-01524bc99534">
+  <ErrorConfiguration dwd:design-time-name="9ab2ea5d-3194-4331-8ace-25bfe4d9e56a">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="c6b63d7d-2ddd-4d46-ad05-230b0e4f5c70">
-      <ID>Nr Firmy</ID>
-      <Name>Nr Firmy</Name>
+    <Attribute dwd:design-time-name="318ca01d-89fc-41d9-83b5-ba21148d2e56">
+      <ID>Nr Lokalizacji</ID>
+      <Name>Nr Lokalizacji</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="5112b06b-944c-49de-a8be-5c910bd11b44">
+        <KeyColumn dwd:design-time-name="773df642-6ab7-47f6-b4b3-1e86de87694f">
+          <NullProcessing>UnknownMember</NullProcessing>
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="b089bb9b-8def-46ef-ae57-898445292e87">
-            <TableID>dbo_Firma</TableID>
-            <ColumnID>Nr_Firmy</ColumnID>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8c831c73-f467-41c1-b625-d39800fd0e1a">
+            <TableID>dbo_Lokalizacja</TableID>
+            <ColumnID>Nr_Lokalizacji</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="a5cbd93a-76a2-4184-a099-0784f5b66b4b">
-          <AttributeID>Nazwa</AttributeID>
-          <Name>Nazwa</Name>
+        <AttributeRelationship dwd:design-time-name="1ed84ebe-8da0-4473-b2bc-45f9337d359f">
+          <AttributeID>Miasto</AttributeID>
+          <Name>Miasto</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="b18d81f0-0511-4060-b008-04a26c601d5c">
-          <AttributeID>Nr Kraju</AttributeID>
-          <Name>Nr Kraju</Name>
+        <AttributeRelationship dwd:design-time-name="c8b1a886-8582-43fc-a732-464c58a10251">
+          <AttributeID>Kraj</AttributeID>
+          <Name>Kraj</Name>
         </AttributeRelationship>
       </AttributeRelationships>
       <OrderBy>Key</OrderBy>
     </Attribute>
-    <Attribute dwd:design-time-name="094b3d04-8a91-49f3-90ed-46a7161b2a8c">
-      <ID>Nazwa</ID>
-      <Name>Nazwa</Name>
+    <Attribute dwd:design-time-name="07a13541-4273-424a-9a71-60c2a417195c">
+      <ID>Miasto</ID>
+      <Name>Miasto</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="03791a20-0331-4b93-986c-d8d10ecd92e6">
+        <KeyColumn dwd:design-time-name="a27c76cd-4626-4b29-9e61-917412500e14">
           <DataType>WChar</DataType>
           <DataSize>100</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="526c629f-26b5-49f7-9d26-31cfa84c51e1">
-            <TableID>dbo_Firma</TableID>
-            <ColumnID>Nazwa</ColumnID>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d15ab987-18c8-432f-94d4-d206ec054e0e">
+            <TableID>dbo_Lokalizacja</TableID>
+            <ColumnID>Miasto</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <OrderBy>Key</OrderBy>
     </Attribute>
-    <Attribute dwd:design-time-name="8d1cad2e-3e11-457d-aa81-e9ea036f8173">
-      <ID>Nr Kraju</ID>
-      <Name>Nr Kraju</Name>
+    <Attribute dwd:design-time-name="c600451c-b70f-4a6b-ab67-6e21e81e427f">
+      <ID>Kraj</ID>
+      <Name>Kraj</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="8784f98f-d7b3-4f04-86cd-0d05911ac82b">
-          <NullProcessing>UnknownMember</NullProcessing>
-          <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="7ed663d2-6610-4688-8cb1-8aba554b9581">
-            <TableID>dbo_Kraj</TableID>
-            <ColumnID>Nr_Kraju</ColumnID>
+        <KeyColumn dwd:design-time-name="94181b3f-7270-4481-b284-2606068c5918">
+          <DataType>WChar</DataType>
+          <DataSize>100</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0536b885-6ebe-409f-b598-897cd8fba435">
+            <TableID>dbo_Lokalizacja</TableID>
+            <ColumnID>Kraj</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>

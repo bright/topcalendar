@@ -314,52 +314,6 @@
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="f6265001-f9a2-413a-841d-442f194e9a81">
-      <ID>Przedstawicielstwo</ID>
-      <Name>Przedstawicielstwo</Name>
-      <DimensionID>Przedstawicielstwo</DimensionID>
-      <Attributes>
-        <Attribute dwd:design-time-name="54e89387-a8c0-41e5-986e-ccf7863f9eac">
-          <AttributeID>Nr Przedstawicielstwa</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="6e462bf8-719a-4d6a-9382-33ee6ccfc310">
-          <AttributeID>Nr Kraju</AttributeID>
-        </Attribute>
-      </Attributes>
-    </Dimension>
-    <Dimension dwd:design-time-name="8f9fb976-f87a-4033-b6a7-ff0bcb492149">
-      <ID>Dostawca</ID>
-      <Name>Dostawca</Name>
-      <DimensionID>Dostawca</DimensionID>
-      <Attributes>
-        <Attribute dwd:design-time-name="b72dd6b3-22ca-4234-9db2-95ec4e828bdc">
-          <AttributeID>Nr Dostawcy</AttributeID>
-        </Attribute>
-      </Attributes>
-    </Dimension>
-    <Dimension dwd:design-time-name="3f7df687-6f13-4251-aed7-0d332ab47ae7">
-      <ID>Czesc Zamienna</ID>
-      <Name>Czesc Zamienna</Name>
-      <DimensionID>Czesc Zamienna</DimensionID>
-      <Attributes>
-        <Attribute dwd:design-time-name="07def897-5116-4971-a5ce-92decb8d7c43">
-          <AttributeID>Nr Czesci</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="b806b02d-7c58-4b7c-99bf-29947f10c1ed">
-          <AttributeID>Nr Modelu</AttributeID>
-        </Attribute>
-      </Attributes>
-    </Dimension>
-    <Dimension dwd:design-time-name="8ced2fdd-0d40-48d9-afb8-74dabf2bbe80">
-      <ID>Magazyn</ID>
-      <Name>Magazyn</Name>
-      <DimensionID>Magazyn</DimensionID>
-      <Attributes>
-        <Attribute dwd:design-time-name="c6bb7eb5-d7ad-41bc-b2e8-9d2965880565">
-          <AttributeID>Nr Magazynu</AttributeID>
-        </Attribute>
-      </Attributes>
-    </Dimension>
   </Dimensions>
   <MeasureGroups>
     <MeasureGroup dwd:design-time-name="8e684f7b-4f55-4b6c-bcd3-cb760226184b">
@@ -464,82 +418,6 @@
                   <Source xsi:type="ColumnBinding" dwd:design-time-name="ef539f26-fd27-4636-8ad4-509b94dc96df">
                     <TableID>dbo_Zamowienie</TableID>
                     <ColumnID>Data_Zamowienia</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <Type>Granularity</Type>
-            </Attribute>
-          </Attributes>
-        </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="6a532ac9-fc5a-4e59-8109-a061e21621e2">
-          <CubeDimensionID>Przedstawicielstwo</CubeDimensionID>
-          <Attributes>
-            <Attribute dwd:design-time-name="eb54d207-a9f0-43c3-b2b3-6ab1281be88a">
-              <AttributeID>Nr Przedstawicielstwa</AttributeID>
-              <KeyColumns>
-                <KeyColumn dwd:design-time-name="6a3e5b47-7219-4bf7-b084-d36e50808803">
-                  <NullProcessing>UnknownMember</NullProcessing>
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="7a49b6d7-9a22-498a-9965-2bc753c07154">
-                    <TableID>dbo_Zamowienie</TableID>
-                    <ColumnID>Nr_Przedstawicielstwa</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <Type>Granularity</Type>
-            </Attribute>
-          </Attributes>
-        </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="7315b8be-1a19-4bc7-820b-1cf53855ccd4">
-          <CubeDimensionID>Dostawca</CubeDimensionID>
-          <Attributes>
-            <Attribute dwd:design-time-name="286aa3bc-0f64-4e0a-a512-79b3db7f335d">
-              <AttributeID>Nr Dostawcy</AttributeID>
-              <KeyColumns>
-                <KeyColumn dwd:design-time-name="a9cd4011-200f-4950-a341-2ab7caa9c738">
-                  <NullProcessing>UnknownMember</NullProcessing>
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ff7a96a2-e072-4516-939d-41757ebc0323">
-                    <TableID>dbo_Zamowienie</TableID>
-                    <ColumnID>Nr_Dostawcy</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <Type>Granularity</Type>
-            </Attribute>
-          </Attributes>
-        </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="b6099c03-4019-438c-83a2-0772b8a6b14b">
-          <CubeDimensionID>Czesc Zamienna</CubeDimensionID>
-          <Attributes>
-            <Attribute dwd:design-time-name="dd259ef0-1797-4319-b525-6cce03a8ff23">
-              <AttributeID>Nr Czesci</AttributeID>
-              <KeyColumns>
-                <KeyColumn dwd:design-time-name="3656dc5c-5917-450c-8511-7f7ceedad58f">
-                  <NullProcessing>UnknownMember</NullProcessing>
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="6f806867-1e89-48f8-b3d4-a3fdcbac25de">
-                    <TableID>dbo_Zamowienie</TableID>
-                    <ColumnID>Nr_Czesci</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <Type>Granularity</Type>
-            </Attribute>
-          </Attributes>
-        </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="fe439076-1b88-4554-b97e-7582ea9e313c">
-          <CubeDimensionID>Magazyn</CubeDimensionID>
-          <Attributes>
-            <Attribute dwd:design-time-name="487671c7-4516-43a5-aaf3-0a6562a89a2b">
-              <AttributeID>Nr Magazynu</AttributeID>
-              <KeyColumns>
-                <KeyColumn dwd:design-time-name="4cbfb592-521d-4fe5-9fba-e37d4372d271">
-                  <NullProcessing>UnknownMember</NullProcessing>
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="dfba0afb-7096-41cc-87f0-78067295fb1b">
-                    <TableID>dbo_Zamowienie</TableID>
-                    <ColumnID>Nr_Magazynu</ColumnID>
                   </Source>
                 </KeyColumn>
               </KeyColumns>
