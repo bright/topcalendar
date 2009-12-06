@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -22,9 +23,48 @@ namespace DataGenerator.Extensions
 			_end = end;
 		}
 
+		public DateTime Start { get { return _start; } }
+		public DateTime End {get{ return _end;}}
 
+		public IEnumerable<DateTime> MonthRange()
+		{
+			return new MonthRange(this);
+		}
 	}
 
+	public class MonthRange : IEnumerable<DateTime>
+	{
+		private readonly DateRange _range;
+
+		public MonthRange(DateRange range)
+		{
+			_range = range;
+		}
+
+		public IEnumerator<DateTime> GetEnumerator()
+		{
+			return GenerateMonthRange();
+		}
+
+		private IEnumerator<DateTime> GenerateMonthRange()
+		{
+			var monthStart = new DateTime(_range.Start.Year, _range.Start.Month, _range.Start.Day);
+			var monthEdnt = new DateTime(_range.End.Year, _range.End.Month, _range.End.Day, 23, 59, 59);
+			var result = new List<DateTime>();
+			var current = monthStart;
+			while(current.CompareTo(monthEdnt) <= 0)
+			{
+				result.Add(current);
+				current = current.AddMonths(1);
+			}
+			return result.GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
+	}
 	public static class StringExtensions
 	{
 
@@ -33,6 +73,45 @@ namespace DataGenerator.Extensions
 		public static int Random(this int maxValue)
 		{			
 			return RandomInstance.Next(maxValue);
+		}
+
+		public static int Random(this int maxValue, int minValue)
+		{
+			return RandomInstance.Next(minValue, maxValue);
+		}
+		
+		public static int NextInt32(this Random rng)
+		{
+			unchecked
+			{
+				int firstBits = rng.Next(0, 1 << 4) << 28;
+				int lastBits = rng.Next(0, 1 << 28);
+				return firstBits | lastBits;
+			}
+		}
+
+		public static decimal Random(this decimal maxValue, decimal minValue)
+		{
+			var nexdecimal = Math.Abs(RandomInstance.NextDecimal());
+			return nexdecimal/decimal.MaxValue*(maxValue - minValue);
+		}
+
+		public static decimal NextDecimal(this Random rng)
+		{
+			byte scale = (byte)rng.Next(29);
+			bool sign = rng.Next(2) == 1;
+			return new decimal(rng.NextInt32(),
+							   rng.NextInt32(),
+							   rng.NextInt32(),
+							   sign,
+							   scale);
+		}
+
+		public static DateTime RandomDayOfMonth(this DateTime date)
+		{
+			return new DateTime(date.Year,date.Month,
+					DateTime.DaysInMonth(date.Year,date.Month).Random(1)
+				);
 		}
 
 		public static string AsFormat(this string format, params object[] parameters)
