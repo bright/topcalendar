@@ -91,25 +91,33 @@ namespace DataGenerator
 			dateRange.MonthRange()
 				.Each(month =>
                     	{
-                    		var data = Mapper.Map<DateTime, Data>(month.RandomDayOfMonth());
-							db.Datas.InsertOnSubmit(data);
-                    		db.SubmitChanges();
-                    		var zamowienie = new Zamowienie
-                    		                 	{
-                    		                 		Czas_Dostarczenia_Do_Magazynu = 10.Random(2),
-                    		                 		Czas_Realizacji = 10.Random(1),
-                    		                 		Czesc_Zamienna = db.Czesc_Zamiennas.Random(),
-                    		                 		Data = data,
-                    		                 		Dostawca = db.Dostawcas.Random(),
-                    		                 		Koszt_Obslugi = 100000.Random(10000)/100M,
-                    		                 		Magazyn = db.Magazyns.Random(),
-                    		                 		Przedstawicielstwo = db.Przedstawicielstwos.Random(),
-                                                    Wielkosc = 100.Random(10),
-                                                    Zysk = 100000.Random(10000)/100M,
-													Wartosc_Zamowienia = 200000.Random(10000) / 100M
-                    		                 	};
-							db.Zamowienies.InsertOnSubmit(zamowienie);
-                    		db.SubmitChanges();
+							for (int i = 0; i < 100.Random(10); ++i)
+							{
+								var dateTime = month.RandomDayOfMonth();
+								Data data = db.Datas.Where(dat=> dat.PK_Date.Equals(dateTime.Date)).FirstOrDefault();
+								if(data == null)
+								{
+									data = Mapper.Map<DateTime, Data>(dateTime);
+									db.Datas.InsertOnSubmit(data);
+									db.SubmitChanges();
+								}
+								var zamowienie = new Zamowienie
+								                 	{
+								                 		Czas_Dostarczenia_Do_Magazynu = 10.Random(2),
+								                 		Czas_Realizacji = 10.Random(1),
+								                 		Czesc_Zamienna = db.Czesc_Zamiennas.Random(),
+								                 		Data = data,
+								                 		Dostawca = db.Dostawcas.Random(),
+								                 		Koszt_Obslugi = 100000.Random(10000)/100M,
+								                 		Magazyn = db.Magazyns.Random(),
+								                 		Przedstawicielstwo = db.Przedstawicielstwos.Random(),
+								                 		Wielkosc = 100.Random(10),
+								                 		Zysk = 100000.Random(10000)/100M,
+								                 		Wartosc_Zamowienia = 200000.Random(10000)/100M
+								                 	};
+								db.Zamowienies.InsertOnSubmit(zamowienie);
+								db.SubmitChanges();
+							}
                     	});
 
 			Console.ReadKey();
