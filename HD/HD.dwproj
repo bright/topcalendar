@@ -18,6 +18,16 @@
       </Dependencies>
     </ProjectItem>
     <ProjectItem>
+      <Name>Sprzedaz.cube</Name>
+      <FullPath>Sprzedaz.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>Sprzedaz.partitions</Name>
+          <FullPath>Sprzedaz.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Reklamacje.cube</Name>
       <FullPath>Reklamacje.cube</FullPath>
       <Dependencies>
@@ -30,24 +40,12 @@
   </Cubes>
   <Dimensions>
     <ProjectItem>
-      <Name>Data.dim</Name>
-      <FullPath>Data.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Zamowienie.dim</Name>
       <FullPath>Zamowienie.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Reklamacja.dim</Name>
-      <FullPath>Reklamacja.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Lokalizacja.dim</Name>
       <FullPath>Lokalizacja.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Sprzedaz.dim</Name>
-      <FullPath>Sprzedaz.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Dostawca.dim</Name>
@@ -76,6 +74,14 @@
     <ProjectItem>
       <Name>Czesc Zamienna.dim</Name>
       <FullPath>Czesc Zamienna.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Sprzedaz.dim</Name>
+      <FullPath>Sprzedaz.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Data.dim</Name>
+      <FullPath>Data.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>

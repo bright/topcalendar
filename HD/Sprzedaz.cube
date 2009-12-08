@@ -1,0 +1,272 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="c405f7c3-472c-4050-815d-613e964a6c23" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Sprzedaz</ID>
+  <Name>Sprzedaz</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="14" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-7017" scrolltop="-2553" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="17859" y="8255" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01ee0000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Sprzedaz" left="20" top="0" logicalid="7" controlid="1" masterid="0" hint1="0" hint2="0" width="3784" height="3149" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="00080000c80e00004d0c0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Sprzedaz" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Data" left="3933" top="-2553" logicalid="8" controlid="2" masterid="0" hint1="0" hint2="0" width="3651" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="00080000430e000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Data_Zamowienia" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Firma" left="3483" top="3202" logicalid="9" controlid="3" masterid="0" hint1="0" hint2="0" width="3000" height="2302" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="00080000b80b0000fe080000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Firma" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Lokalizacja" left="-1017" top="3202" logicalid="10" controlid="4" masterid="0" hint1="0" hint2="0" width="3000" height="2302" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="00080000b80b0000fe080000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Lokalizacja" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="1683" top="3404" logicalid="11" controlid="5" masterid="0" hint1="0" hint2="0" width="2100" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_Firma_Lokalizacja]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="3" sourceattachpoint="11" destattachpoint="10" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="1983" y="3803" />
+              <point x="3483" y="3803" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Kategoria_Czesci" left="-4017" top="-1614" logicalid="12" controlid="6" masterid="0" hint1="0" hint2="0" width="3000" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="00080000b80b000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Kategoria_Czesci" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-7017</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-2553</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-4017</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-2553</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Dimensions>
+    <Dimension dwd:design-time-name="53f59baf-32c1-4230-87aa-c5f86565458b">
+      <ID>Firma</ID>
+      <Name>Firma</Name>
+      <DimensionID>Firma</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="0befbbf0-960d-449c-9ae1-b30e624479b2">
+          <AttributeID>Nr Firmy</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="06172e5c-d27a-46db-8b80-f2f8a1b9b170">
+          <AttributeID>Nazwa</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="b06cf4b6-d4e2-40d3-9a8f-d3aa39e5e375">
+          <AttributeID>Nr Lokalizacji</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="91724fdd-0203-4e99-8ff1-8d8c9d755d56">
+          <AttributeID>Miasto</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="bb3dffb6-d1d9-40c1-895a-e9a492fa0ba7">
+          <AttributeID>Kraj</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="d9bafb2d-d719-43e3-ae72-6fa58abe46a0">
+      <ID>Kategoria Czesci</ID>
+      <Name>Kategoria Czesci</Name>
+      <DimensionID>Kategoria Czesci</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="4dbddc16-3c79-45b3-a29b-1bd31bce0d71">
+          <AttributeID>Nr Kategorii</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="7f916b2e-f533-4de1-92fc-1684659f7fe1">
+          <AttributeID>Nazwa</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="48b40c59-2e9b-453c-a500-1ea847088afa">
+      <ID>Sprzedaz</ID>
+      <Name>Sprzedaz</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="3ee4877c-1a93-4b72-a983-a629119c5912">
+          <ID>Nr Firmy</ID>
+          <Name>Nr Firmy</Name>
+          <Source dwd:design-time-name="152f8aad-7a94-4703-ad54-90658e883b65">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="608ad786-32d3-4e9e-abc1-1ab62750eb67">
+              <TableID>dbo_Sprzedaz</TableID>
+              <ColumnID>Nr_Firmy</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="207153b1-df7c-4151-9dd3-bf36faf550b6">
+          <ID>Nr Kategorii</ID>
+          <Name>Nr Kategorii</Name>
+          <Source dwd:design-time-name="021cc21f-7654-4b56-8ffb-670eaee58427">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="a66c935c-39ab-433c-b16a-d8cb0d96fa6f">
+              <TableID>dbo_Sprzedaz</TableID>
+              <ColumnID>Nr_Kategorii</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="6866fc4b-1466-433d-a951-eb5576d3be1e">
+          <ID>Wielkosc Sprzedazy</ID>
+          <Name>Wielkosc Sprzedazy</Name>
+          <Source dwd:design-time-name="9f8a882c-c9c9-4c8d-9969-7e923e70615c">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="b749bfc2-35de-4f66-a44d-6dde8ab6cef5">
+              <TableID>dbo_Sprzedaz</TableID>
+              <ColumnID>Wielkosc_sprzedazy</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="3f0c85ef-d7dd-49ca-b17a-85dd031bffbf">
+          <ID>Sprzedaz Count</ID>
+          <Name>Sprzedaz Count</Name>
+          <AggregateFunction>Count</AggregateFunction>
+          <Source dwd:design-time-name="662ac3fc-49e7-4c01-8462-d4f3f4a4ce3e">
+            <DataType>Integer</DataType>
+            <DataSize>4</DataSize>
+            <Source xsi:type="RowBinding" dwd:design-time-name="c36cdbf6-68d2-4ed0-a64e-beee220ba940">
+              <TableID>dbo_Sprzedaz</TableID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="e80a714c-7dce-4d9e-ac79-654671d91f47">
+          <CubeDimensionID>Kategoria Czesci</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="0ce6f188-31a6-4a97-a608-e7e208aaf22d">
+              <AttributeID>Nr Kategorii</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="eee8cb00-c6bc-4089-bd78-819e93e28a8a">
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="48120769-be6b-4aa2-b1a4-69960c5f9e8b">
+                    <TableID>dbo_Sprzedaz</TableID>
+                    <ColumnID>Nr_Kategorii</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="8fd94b3d-07a0-4e3d-90c2-8bf6aaca106e">
+          <CubeDimensionID>Firma</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="1f8fa3e9-3d89-483a-95df-707b83e4ffb8">
+              <AttributeID>Nr Firmy</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="c2eded67-8b79-4054-b841-e0f7ea154ef5">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="68b9bd28-eae5-412d-a5c0-8ae36155887d">
+                    <TableID>dbo_Sprzedaz</TableID>
+                    <ColumnID>Nr_Firmy</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="3a903367-3d81-4394-919f-6df7447f909a">
+    <DataSourceViewID>ZamowianiaDsView</DataSourceViewID>
+  </Source>
+</Cube>

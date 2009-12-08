@@ -52,25 +52,25 @@ namespace DataGenerator.MappingConfiguration
 	}
 
 
-	public class DateTimeToDbDateMapping : IMappingConfiguration
-	{
-		public void CreateMapping()
-		{
-			Mapper.CreateMap<DateTime,Data>()
-				.ConvertUsing(src=> new Data
-				                    	{
-				                    		PK_Date = src,
-				                    		Day_Of_Month = src.Day,
-				                    		Day_Of_Week = (int) src.DayOfWeek,
-				                    		Day_Of_Year = src.DayOfYear,
-				                    		Year = src.Year,
-				                    		Month_Of_Year = src.Month,
-				                    		Month_Of_Quarter = src.Month%4,
-				                    		Quarter_Of_Year = src.Month/4 + 1,
-				                    		Week_Of_Year = src.DayOfYear/7 + 1
-				                    	});
-		}
-	}
+    //public class DateTimeToDbDateMapping : IMappingConfiguration
+    //{
+    //    public void CreateMapping()
+    //    {
+    //        Mapper.CreateMap<DateTime,Data>()
+    //            .ConvertUsing(src=> new Data
+    //                                    {
+    //                                        PK_Date = src,
+    //                                        Day_Of_Month = src.Day,
+    //                                        Day_Of_Week = (int) src.DayOfWeek,
+    //                                        Day_Of_Year = src.DayOfYear,
+    //                                        Year = src.Year,
+    //                                        Month_Of_Year = src.Month,
+    //                                        Month_Of_Quarter = src.Month%4,
+    //                                        Quarter_Of_Year = src.Month/4 + 1,
+    //                                        Week_Of_Year = src.DayOfYear/7 + 1
+    //                                    });
+    //    }
+    //}
 
 	public class StringToMagazynMapping : IMappingConfiguration
 	{
