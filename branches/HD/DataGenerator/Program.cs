@@ -27,7 +27,7 @@ namespace DataGenerator
             db.DeleteAllAndSubmit(db.Zamowienies);
 			db.DeleteAllAndSubmit(db.Sprzedazs);
 			db.DeleteAllAndSubmit(db.Reklamacjas);
-			db.DeleteAllAndSubmit(db.Datas);
+			
 			db.DeleteAllAndSubmit(db.Czesc_Zamiennas);
 			db.DeleteAllAndSubmit(db.Kategoria_Czescis);
 			db.DeleteAllAndSubmit(db.Firmas);
@@ -95,14 +95,14 @@ namespace DataGenerator
 			db.SubmitChanges();
 			
 			// zamowienia
-			var dateRange = new DateRange(new DateTime(2007, 1, 1), new DateTime(2009, 12, 31));
+			var dateRange = new DateRange(new DateTime(2007, 1, 1), new DateTime(2009, 11, 30));
 
 			dateRange.MonthRange()
 				.Each(month =>
                     	{
 							for (int i = 0; i < 100.Random(10); ++i)
 							{
-								var data = db.FindDateOrInsertNew(month.RandomDayOfMonth());
+								var data = db.FindDate(month.RandomDayOfMonth());
 								var zamowienie = new Zamowienie
 								                 	{
 								                 		Czas_Dostarczenia_Do_Magazynu = 10.Random(2),
@@ -129,7 +129,7 @@ namespace DataGenerator
 				      	{
 				      		for(int i=0;i<50.Random(5);++i)
 				      		{
-				      			var data = db.FindDateOrInsertNew(month.RandomDayOfMonth());
+				      			var data = db.FindDate(month.RandomDayOfMonth());
 				      			var reklamacja = new Reklamacja
 				      			                 	{
 				      			                 		Czas_Obslugi_Reklamacji = 20.Random(1),
@@ -149,7 +149,7 @@ namespace DataGenerator
 			dateRange.MonthRange()
 				.Each(month =>
 				      	{
-				      		var data = db.FindDateOrInsertNew(month.Date);
+				      		var data = db.FindDate(month.Date);
 				      		var sprzedaz = new Sprzedaz
 				      		               	{
 				      		               		Data = data,

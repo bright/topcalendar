@@ -2,6 +2,7 @@ using System;
 using System.Data.Linq;
 using System.Linq;
 using AutoMapper;
+using DataGenerator.Extensions;
 
 namespace DataGenerator.Scheme
 {
@@ -14,15 +15,11 @@ namespace DataGenerator.Scheme
 			SubmitChanges();
 		}
 
-		public Data FindDateOrInsertNew(DateTime date)
+		public Data FindDate(DateTime date)
 		{
 			var d = Datas.Where(dat => dat.PK_Date.Equals(date.Date)).FirstOrDefault();
-			if(d == null)
-			{
-				d = Mapper.Map<DateTime, Data>(date);
-				Datas.InsertOnSubmit(d);
-				SubmitChanges();
-			}
+            Check.Require(d != null, "Date not found {0}".AsFormat(date));
+
 			return d;
 		}
 	}
