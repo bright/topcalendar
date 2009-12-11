@@ -40,7 +40,7 @@ namespace TopCalendar.Server.DataLayer
             // and exports a database schema from it
             bool script = false;
             bool export = true;
-            new SchemaExport(config).Create(script, export);
+         //   new SchemaExport(config).Create(script, export);
         }
 
     }
