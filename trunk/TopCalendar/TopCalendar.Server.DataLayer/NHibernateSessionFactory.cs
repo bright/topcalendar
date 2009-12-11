@@ -15,22 +15,27 @@ namespace TopCalendar.Server.DataLayer
     public class NHibernateSessionFactory
     {
         private const string DbFile = "TopCalendarDataBase.db";
-        private static bool DropDataBaseOnStart = false;
+        protected virtual bool DropDataBaseOnStart { get; set;}
 
-        public static ISessionFactory CreateSessionFactory()
+        protected virtual IPersistenceConfigurer DbConfig { get; set; }
+
+        public NHibernateSessionFactory()
+        {
+            DbConfig = SQLiteConfiguration.Standard.UsingFile(DbFile);
+            DropDataBaseOnStart = false;
+        }
+
+        public ISessionFactory CreateSessionFactory()
         {
             return Fluently.Configure()
-              .Database(
-                SQLiteConfiguration.Standard
-                  .UsingFile(DbFile)
-              )
+              .Database(DbConfig)
               .Mappings(m =>
                 m.FluentMappings.AddFromAssemblyOf<User>())
               .ExposeConfiguration(BuildSchema)
               .BuildSessionFactory();
         }
 
-        private static void BuildSchema(Configuration config)
+        private void BuildSchema(Configuration config)
         {
             // delete the existing db on each run
             if (DropDataBaseOnStart &&  File.Exists(DbFile))
@@ -38,9 +43,14 @@ namespace TopCalendar.Server.DataLayer
 
             // this NHibernate tool takes a configuration (with mapping info in)
             // and exports a database schema from it
-            bool script = false;
+            bool script = true;
             bool export = true;
-         //   new SchemaExport(config).Create(script, export);
+
+            if (DropDataBaseOnStart)
+            {
+                new SchemaExport(config).Create(script, export);
+            }
+            
         }
 
     }

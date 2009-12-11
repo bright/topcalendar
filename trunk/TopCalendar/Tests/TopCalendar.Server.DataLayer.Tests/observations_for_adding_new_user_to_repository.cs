@@ -17,7 +17,7 @@ namespace TopCalendar.Server.DataLayer.Tests
                             Password = "PASSWORD"
                         };
             //Kernel.Bind<ISessionFactory>().ToConstant(NHibernateSessionFactory.CreateSessionFactory());
-			ProvideImplementationOf(NHibernateSessionFactory.CreateSessionFactory());
+			ProvideImplementationOf(new InMemoryNHibernateSessionFactory().CreateSessionFactory());
         }
         
     }

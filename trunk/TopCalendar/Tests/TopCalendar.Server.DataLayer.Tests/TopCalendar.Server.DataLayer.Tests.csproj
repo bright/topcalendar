@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InMemoryNHibernateSessionFactory.cs" />
     <Compile Include="when_adding_new_user_to_repository.cs" />
     <Compile Include="observations_for_adding_new_user_to_repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
