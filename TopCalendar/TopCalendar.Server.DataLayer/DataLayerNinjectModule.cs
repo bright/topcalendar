@@ -8,7 +8,7 @@ namespace TopCalendar.Server.DataLayer
     {
         public override void Load()
         {
-            Bind<ISessionFactory>().ToConstant(NHibernateSessionFactory.CreateSessionFactory());
+            Bind<ISessionFactory>().ToConstant(new NHibernateSessionFactory().CreateSessionFactory());
             Bind<IUsersRepository>().To<UsersRepository>();
             Bind<ITasksRepository>().To<TasksRepository>();
         }                                                 
