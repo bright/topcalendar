@@ -53,4 +53,12 @@ namespace TopCalendar.UI.Infrastructure
     public class NewTaskAddedEvent : CompositePresentationEvent<Task>
 	{
 	}
+
+	/// <summary>
+	/// Event publikowany po wybraniu Managera pluginow z menu
+	/// W parametrze nic :)
+	/// </summary>
+	public class ShowPluginsEvent : CompositePresentationEvent<object>
+	{ 
+	}
 }

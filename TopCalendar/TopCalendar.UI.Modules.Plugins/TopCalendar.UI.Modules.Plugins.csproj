@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B1B3F45-6CD5-4D26-A0CD-3E4CE3FFAF23}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TopCalendar.UI.Modules.Plugins</RootNamespace>
+    <AssemblyName>TopCalendar.UI.Modules.Plugins</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IPluginsView.cs" />
+    <Compile Include="IPluginsViewPresentationModel.cs" />
+    <Compile Include="PluginInfo.cs" />
+    <Compile Include="PluginsModule.cs" />
+    <Compile Include="PluginsView.xaml.cs">
+      <DependentUpon>PluginsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PluginsViewPresentationModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
+      <Project>{F807062D-6FC9-4FF0-A9F5-5F94653EDC4D}</Project>
+      <Name>Composite.Presentation.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
+      <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
+      <Name>Composite.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
+      <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
+      <Name>TopCalendar.UI.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.MenuInfrastructure\TopCalendar.UI.MenuInfrastructure.csproj">
+      <Project>{8F89764F-5880-4735-B15D-A1AD962105C0}</Project>
+      <Name>TopCalendar.UI.MenuInfrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
+      <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>
+      <Name>TopCalendar.UI.PluginManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
+      <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
+      <Name>TopCalendar.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="PluginsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
