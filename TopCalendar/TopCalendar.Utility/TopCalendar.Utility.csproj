@@ -75,6 +75,7 @@
     <Compile Include="UI\Converters\DateTimeToMonthAndYearStringConverter.cs" />
     <Compile Include="UI\Converters\DateTimeToShortDateStringConverter.cs" />
     <Compile Include="UI\Converters\DateTimeToShortTimeConverter.cs" />
+    <Compile Include="UI\Converters\SelectedIndexToBoolConverter.cs" />
     <Compile Include="UI\Converters\ValidationErrorToStringConverter.cs" />
     <Compile Include="UI\HelperCollections.cs" />
     <Compile Include="UI\IPresentationModelFor.cs" />

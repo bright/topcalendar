@@ -1,11 +1,18 @@
 ﻿<UserControl x:Class="TopCalendar.UI.Modules.Plugins.PluginsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:Converters="clr-namespace:TopCalendar.Utility.UI.Converters;assembly=TopCalendar.Utility"    
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
     VerticalContentAlignment="Stretch"
     HorizontalAlignment="Stretch"             
     >
-	<Grid Width="800" Height="250">
+
+	<UserControl.Resources>
+		<Converters:SelectedIndexToBoolConverter x:Key="SelectedIndexToBoolConverter"/>
+	</UserControl.Resources>
+
+	<Grid Width="800" Height="800">
 		<Grid.RowDefinitions>
+			<RowDefinition Height="50" />
 			<RowDefinition Height="*" />
 			<RowDefinition Height="50" />
 		</Grid.RowDefinitions>
@@ -15,30 +22,28 @@
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 
-		<Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right">
+		<StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+			<Button Margin="5" Command="{Binding AddPluginCommand}">Dodaj plugin</Button>
+			<Button Margin="5" IsEnabled="{Binding ElementName=PluginsListView, Path=SelectedIndex, Converter={StaticResource SelectedIndexToBoolConverter}}" Command="{Binding RemovePluginCommand}" CommandParameter="{Binding ElementName=PluginsListView, Path=SelectedItem}">Usuń plugin</Button>
+		</StackPanel>
+		
+		<Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right">
 			Pluginy
 		</Label>
 
-		<ListView ItemsSource="{Binding PluginsList}" Grid.Column="1" Grid.Row="0"
-				  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-				  >
+		<ListView ItemsSource="{Binding PluginsList, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" 
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="PluginsListView">
 			<ListView.View>
 				<GridView>
 					<GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Nazwa"/>
-					<GridViewColumn DisplayMemberBinding="{Binding Assembly}" Header="Ścieżka"/>
+					<GridViewColumn DisplayMemberBinding="{Binding Path}" Header="Ścieżka"/>
 				</GridView>
 			</ListView.View>
 		</ListView>
 
-		<StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-			<Button 
-                Margin="5"
-                x:Name="SaveButton"   
-                Command="{Binding SaveCommand}"
-                >Zapisz</Button>
-			<Button 
-                Margin="5"
-                Name="CancelButton" IsCancel="True" Command="{Binding CancelCommand}">Anuluj</Button>
+		<StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+			<Button Margin="5" Command="{Binding SaveCommand}">Zapisz</Button>
+			<Button Margin="5" IsCancel="True" Command="{Binding CancelCommand}">Anuluj</Button>
 		</StackPanel>
 	</Grid>
 </UserControl>

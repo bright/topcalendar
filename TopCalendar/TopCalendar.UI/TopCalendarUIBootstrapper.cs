@@ -5,6 +5,7 @@ using Ninject;
 using NinjectContrib.CompositePresentation;
 using TopCalendar.UI.MenuInfrastructure;
 using TopCalendar.UI.PluginManager;
+using System;
 
 namespace TopCalendar.UI
 {
@@ -29,6 +30,7 @@ namespace TopCalendar.UI
 		protected override DependencyObject CreateShell()
 		{
 			LoadConnectors();
+			SaveWorkingDirectory();
 
 		    var view = Kernel.Get<IShellView>();
 		    view.Model = Kernel.Get<ShellPresentationModel>();
@@ -40,6 +42,14 @@ namespace TopCalendar.UI
 		protected virtual void LoadConnectors()
 		{
 			Kernel.Get<IPluginLoader>().LoadConnectors();
+		}
+
+		private void SaveWorkingDirectory()
+		{
+			if (Application.Current != null)
+			{
+				Application.Current.Properties["workingDir"] = Environment.CurrentDirectory;
+			}
 		}
 	}
 }
