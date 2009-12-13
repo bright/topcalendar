@@ -57,6 +57,7 @@
       <ID>Nr Kategorii</ID>
       <Name>Nr Kategorii</Name>
       <Usage>Key</Usage>
+      <EstimatedCount>8</EstimatedCount>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="79636777-164e-42b6-9798-50bef229d7a8">
           <NullProcessing>UnknownMember</NullProcessing>

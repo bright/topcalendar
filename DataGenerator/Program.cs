@@ -17,7 +17,7 @@ namespace DataGenerator
 
 	class Program
 	{
-		public static int NumberOfRowsInFactTable = 1000;
+		public static int NumberOfRowsInFactTable = 10000;
 		static DateRange dateRange = new DateRange(new DateTime(2007, 1, 1), new DateTime(2009, 11, 30));
 
 		static void Main(string[] args)

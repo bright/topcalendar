@@ -57,6 +57,7 @@
       <ID>Nr Firmy</ID>
       <Name>Nr Firmy</Name>
       <Usage>Key</Usage>
+      <EstimatedCount>4</EstimatedCount>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="f4e65248-d2f7-471d-98ef-c3dac43d325e">
           <DataType>Integer</DataType>
