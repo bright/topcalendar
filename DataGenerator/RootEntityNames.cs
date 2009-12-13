@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using DataGenerator.Extensions;
 using DataGenerator.Scheme;
 
@@ -82,16 +83,7 @@ namespace DataGenerator
 		{
 			get
 			{
-				return new[]
-				       	{
-				       		"Opel Astra 1, 1400 Benzyna, 1992",
-							"Opel Astra 1, 1400 Benzyna, 1994",
-							"Opel Astra 1, 1600 Diesel, 1994",
-							"Opel Astra 2, 1600 Diesel, 1998",
-							"Opel Astra 3, 1800 Diesel, 2002",
-                            "VW Golf 2, 1600 Benzyna, 1992",
-							"VW Golf 3, 1700 Diesel, 1996"
-						};
+				return ReadLinesToStringList("../../auta.txt").Where(s=> s.Length > 0);				
 			}
 		}
 
@@ -116,12 +108,10 @@ namespace DataGenerator
 				return new[]
 				       	{
                             "Olej silnikowy",
-				       		"Uk³ad wtryskowy",
-                            "Pompa wtryskowa",
+				       		"Uk³ad wtryskowy",                            
                             "Korbowód",
                             "Uk³ad hamulcowy",
                             "Silnik",
-                            "Uk³ad napêdowy",
                             "Uk³ad wydechowy",
                             "Uk³ad ch³odzenia",
 							"Œwiat³a"
@@ -148,7 +138,23 @@ namespace DataGenerator
 		{
 			get
 			{
-				return ReadLinesToStringList("../../filtry.txt", 4);
+				return ReadLinesToStringList("../../filtry.txt", 3);
+			}
+		}
+
+		public static IEnumerable<string> Lozyska
+		{
+			get
+			{
+				return ReadLinesToStringList("../../lozyska.txt", 3);
+			}
+		}
+
+		public static IEnumerable<string> Rozne
+		{
+			get
+			{
+				return ReadLinesToStringList("../../rozne.txt", 3);
 			}
 		}
 

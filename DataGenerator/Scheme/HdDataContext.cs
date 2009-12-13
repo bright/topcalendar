@@ -18,8 +18,7 @@ namespace DataGenerator.Scheme
 		public Data FindDate(DateTime date)
 		{
 			var d = Datas.Where(dat => dat.PK_Date.Equals(date.Date)).FirstOrDefault();
-            Check.Require(d != null, "Date not found {0}".AsFormat(date));
-
+            Check.Require(d != null, "Date not found {0}".AsFormat(date));			
 			return d;
 		}
 	}

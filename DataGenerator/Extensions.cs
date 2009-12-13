@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using log4net;
 using log4net.Core;
+using MathNet.Numerics.Distributions;
 
 namespace DataGenerator.Extensions
 {		
@@ -143,6 +144,24 @@ namespace DataGenerator.Extensions
 			var list = collection.ToList();
 			Check.Require(list.Count > 0, "Collection cant be empty");
 			return list[(list.Count-1).Random()];
+		}
+
+		private static Dictionary<Type, NormalDistribution> _collectionDistributions = new Dictionary<Type, NormalDistribution>();
+		
+		public static TType NormalDistribution<TType>(this IEnumerable<TType> collection)
+		{
+			Type elemType = typeof (TType);
+			var max = collection.Count();
+			if(!_collectionDistributions.ContainsKey(elemType))
+				_collectionDistributions[elemType] = new NormalDistribution(0,max);
+			int ix = 0;
+
+			do
+			{
+				var random = _collectionDistributions[elemType].NextDouble();
+				ix = (int) Math.Abs(random);
+			} while (ix >= max);
+			return collection.ToList()[ix];
 		}
 	}
 
