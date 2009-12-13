@@ -115,7 +115,7 @@ namespace DataGenerator.MappingConfiguration
 			Mapper.CreateMap<string,Model>()
 				.ConvertUsing(src=>
 				              	{
-				              		var parts = src.Split(',');
+				              		var parts = src.Split(',');									
 				              		return new Model
 				              		            	{
 				              		            		Nazwa_Modelu =  parts[0].Trim(),                                                        

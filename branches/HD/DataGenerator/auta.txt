@@ -1,0 +1,494 @@
+Audi 80, 2800 Diesel, 2000
+Audi 90, 1600 Benzyna, 1992
+Audi 100, 2100 LPG, 1984
+Audi A2, 2300 Benzyna, 2005
+Audi A3/S3, 3100 Diesel, 1994
+Audi A4/S4, 3100 LPG, 2006
+Audi A5/S5, 1900 CNG, 1997
+Audi A6/S6, 3200 Benzyna, 2002
+Audi A8/S8, 1700 LPG, 1995
+Audi Allroad, 3400 LPG, 2006
+Audi Q5, 3500 LPG, 1988
+Audi Q7, 3300 LPG, 2004
+Audi R8, 1800 Benzyna, 1999
+Audi TT, 2800 LPG, 1984
+Audi V8, 1000 Benzyna, 1990
+AlfaRomeo 33, 1600 LPG, 2005
+AlfaRomeo 75, 1500 CNG, 1989
+AlfaRomeo 145, 1600 CNG, 1989
+AlfaRomeo 146, 2900 Benzyna, 1997
+AlfaRomeo 147, 2400 Diesel, 2004
+AlfaRomeo 155, 1900 CNG, 1996
+AlfaRomeo 156, 3500 Benzyna, 2005
+AlfaRomeo 159, 1900 Diesel, 1983
+AlfaRomeo 164, 1500 Diesel, 1996
+AlfaRomeo 166, 1500 Diesel, 2003
+AlfaRomeo Brera, 3400 Diesel, 1999
+AlfaRomeo GT, 3000 Benzyna, 1990
+AlfaRomeo GTV, 1800 CNG, 1997
+AlfaRomeo MiTo, 2700 LPG, 1995
+AlfaRomeo Spider, 2200 CNG, 1981
+BMW Seria1 , 2000 Diesel, 2000
+BMW Seria3 , 1000 Benzyna, 1989
+BMW Seria5 , 2200 Diesel, 1985
+BMW Seria6 , 2700 Benzyna, 1992
+BMW Seria7 , 2300 CNG, 2008
+BMW Seria8 , 2500 Diesel, 1981
+BMW X3, 3200 LPG, 1988
+BMW X5, 1200 Diesel, 1999
+BMW X6, 3000 Diesel, 1983
+BMW Z3, 1400 LPG, 1992
+BMW Z4, 3400 Benzyna, 1992
+Chevrolet Astro, 2400 Diesel, 2000
+Chevrolet Avalanche, 2800 Diesel, 1983
+Chevrolet Aveo, 2900 CNG, 2002
+Chevrolet Blazer, 2100 Diesel, 1983
+Chevrolet Camaro, 2000 Diesel, 1994
+Chevrolet Captiva, 1800 Diesel, 2003
+Chevrolet Cavalier, 1000 Benzyna, 1990
+Chevrolet Corsica, 1200 Diesel, 1990
+Chevrolet Corvette, 3400 CNG, 2001
+Chevrolet Epica, 1800 Diesel, 1988
+Chevrolet Equinox, 1700 LPG, 1985
+Chevrolet Evanda, 1900 CNG, 2003
+Chevrolet Express, 1500 Diesel, 1999
+Chevrolet HHR, 3500 CNG, 1993
+Chevrolet Impala, 1500 CNG, 1992
+Chevrolet Kalos, 1400 LPG, 1992
+Chevrolet Lacetti, 2000 Diesel, 1990
+Chevrolet Lumina, 2500 Diesel, 1989
+Chevrolet Nubira, 2100 CNG, 1992
+Chevrolet Rezzo, 2000 LPG, 1996
+Chevrolet Silverado, 3100 Benzyna, 2006
+Chevrolet Spark, 2500 CNG, 1993
+Chevrolet Suburban, 1800 CNG, 1982
+Chevrolet Tahoe, 1300 Diesel, 1999
+Chevrolet TrailBlazer, 3100 Benzyna, 1993
+Chevrolet Venture, 2200 CNG, 2006
+Chrysler 300C, 2300 Benzyna, 1994
+Chrysler 300M, 3000 Benzyna, 1984
+Chrysler Aspen, 2300 CNG, 1995
+Chrysler Concorde, 1100 LPG, 1990
+Chrysler Crossfire, 2900 Benzyna, 1982
+Chrysler GrandVoyager , 2800 CNG, 1982
+Chrysler LeBaron , 3300 Diesel, 2002
+Chrysler Neon, 3200 LPG, 1988
+Chrysler NewYorker , 1500 Benzyna, 2004
+Chrysler PTCruiser , 2100 CNG, 1994
+Chrysler Pacifica, 2900 CNG, 1988
+Chrysler Saratoga, 1700 Diesel, 1988
+Chrysler Sebring, 1800 CNG, 1985
+Chrysler Stratus/Cirrus, 3400 Benzyna, 1986
+Chrysler Town& Country , 1100 CNG, 1984
+Chrysler Vision, 3200 CNG, 1987
+Chrysler Voyager, 1600 Diesel, 2001
+Citroen AX, 1800 CNG, 1988
+Citroen BX, 2500 Benzyna, 1984
+Citroen CX, 3100 CNG, 1998
+Citroen XM, 1500 Diesel, 1983
+Citroen ZX, 3000 Diesel, 2002
+Citroen C-Crosser, 1000 CNG, 1992
+Citroen C1, 2200 Benzyna, 1997
+Citroen C2, 2200 CNG, 1998
+Citroen C3, 3100 Diesel, 2000
+Citroen C3Pluriel , 1800 Diesel, 1983
+Citroen C4, 2900 CNG, 1982
+Citroen C4Picasso , 2800 Diesel, 2002
+Citroen C5, 2000 CNG, 1982
+Citroen C6, 1400 LPG, 2001
+Citroen C8, 2800 LPG, 1998
+Citroen Berlingo, 2800 Diesel, 1983
+Citroen Evasion, 2200 CNG, 1993
+Citroen Saxo, 3000 LPG, 1995
+Citroen Xantia, 1100 CNG, 1985
+Citroen Xsara, 1800 Benzyna, 1992
+Daewoo Espero, 1100 CNG, 2006
+Daewoo Korando, 1500 Benzyna, 2005
+Daewoo Lanos, 1700 CNG, 2007
+Daewoo Leganza, 2100 CNG, 2005
+Daewoo Matiz, 2400 CNG, 1984
+Daewoo Musso, 2900 Diesel, 1983
+Daewoo Nexia, 2100 Benzyna, 2006
+Daewoo Nubira, 3500 Diesel, 2004
+Daewoo Tacuma, 1100 CNG, 2001
+Daewoo Tico, 2600 CNG, 1985
+Dodge Avenger, 1700 CNG, 2007
+Dodge Caliber, 1200 LPG, 1985
+Dodge Caravan, 2400 CNG, 2003
+Dodge Challenger, 2900 Benzyna, 1998
+Dodge Charger, 1400 Benzyna, 1988
+Dodge Dakota, 3300 Diesel, 2007
+Dodge Diplomat, 2900 LPG, 2006
+Dodge Durango, 3200 LPG, 1996
+Dodge GrandCaravan , 3100 LPG, 1993
+Dodge Intrepid, 1700 Benzyna, 2004
+Dodge Journey, 1500 Benzyna, 1993
+Dodge Magnum, 1200 Diesel, 1982
+Dodge Neon, 1500 LPG, 1996
+Dodge Nitro, 2700 Benzyna, 2007
+Dodge RAM, 1700 Benzyna, 1990
+Dodge Stealth, 1700 Diesel, 1998
+Dodge Stratus, 2700 LPG, 2000
+Dodge Viper, 1400 Benzyna, 2001
+Fiat 125, 3000 LPG, 2004
+Fiat 126, 1800 Diesel, 1999
+Fiat 500, 2600 Diesel, 1999
+Fiat Albea, 3300 LPG, 1991
+Fiat Barchetta, 3100 Diesel, 1982
+Fiat Brava, 2100 Benzyna, 1991
+Fiat Bravo, 3000 Benzyna, 1980
+Fiat Cinquecento, 3100 Benzyna, 1992
+Fiat Coupe, 1700 CNG, 1990
+Fiat Croma, 2600 LPG, 1981
+Fiat Doblo, 1400 Benzyna, 1995
+Fiat Idea, 3200 CNG, 1984
+Fiat Linea, 1200 Diesel, 1981
+Fiat Marea, 2100 CNG, 2002
+Fiat Multipla, 1600 LPG, 1982
+Fiat PalioWeekend , 2100 Benzyna, 1992
+Fiat Panda, 1600 Benzyna, 1999
+Fiat Punto/GrandePunto , 2600 CNG, 2008
+Fiat Scudo, 2700 LPG, 1995
+Fiat Sedici, 3100 CNG, 1986
+Fiat Seicento, 1600 LPG, 2003
+Fiat Siena, 1800 LPG, 2003
+Fiat Stilo, 2400 CNG, 1995
+Fiat Strada, 2300 LPG, 1989
+Fiat Tempra, 2400 Benzyna, 1991
+Fiat Tipo, 2600 LPG, 1990
+Fiat Ulysse, 3400 LPG, 2000
+Fiat Uno, 3200 Benzyna, 2005
+Ford Aerostar, 3100 LPG, 1996
+Ford C-MAX, 2400 Diesel, 1997
+Ford Cougar, 2200 Benzyna, 1999
+Ford Escort, 3200 Diesel, 1983
+Ford Expedition, 2800 Benzyna, 1981
+Ford Explorer, 2200 CNG, 2006
+Ford Fiesta, 1500 Benzyna, 1992
+Ford Focus, 2200 Diesel, 2004
+Ford FocusC-Max , 2500 Benzyna, 1980
+Ford Fusion, 2100 LPG, 1999
+Ford Galaxy, 3300 CNG, 1994
+Ford Granada, 2500 LPG, 2006
+Ford Ka/Streetka, 3500 Diesel, 2003
+Ford Kuga, 3000 LPG, 1986
+Ford Maverick/Escape, 2700 CNG, 1990
+Ford Mondeo, 3200 Diesel, 1994
+Ford Mustang, 3300 CNG, 1999
+Ford Orion, 2800 CNG, 2000
+Ford Probe, 1300 Benzyna, 1999
+Ford Puma, 2000 LPG, 1981
+Ford Ranger, 1600 Benzyna, 1990
+Ford S-MAX, 1800 Benzyna, 1989
+Ford Scorpio, 2000 CNG, 1984
+Ford SeriaF , 2800 CNG, 2004
+Ford Sierra, 2800 Benzyna, 1980
+Ford Taunus, 3100 Diesel, 1983
+Ford Taurus, 2200 Benzyna, 1983
+Ford Transit(osobowe) , 2100 CNG, 2001
+Ford Windstar, 2800 CNG, 1986
+Honda Accord, 1700 CNG, 1996
+Honda CR-V, 1300 Benzyna, 1980
+Honda CRX, 1300 Diesel, 1989
+Honda City, 3100 LPG, 1994
+Honda Civic, 1600 LPG, 1997
+Honda Concerto, 1700 Benzyna, 1991
+Honda Element, 2900 Diesel, 1989
+Honda FR-V, 2200 Benzyna, 2001
+Honda HR-V, 1800 LPG, 1995
+Honda Integra, 3300 LPG, 2006
+Honda Jazz, 3000 Benzyna, 1994
+Honda Legend, 1800 CNG, 2002
+Honda Odyssey, 1900 Diesel, 1988
+Honda Pilot, 2600 LPG, 1984
+Honda Prelude, 3000 CNG, 2000
+Honda S2000, 1600 Benzyna, 1987
+Honda Shuttle, 1700 LPG, 2006
+Hyundai Accent, 3300 CNG, 1983
+Hyundai Atos/AtosPrime , 1900 Benzyna, 1994
+Hyundai Coupe, 2500 Diesel, 1987
+Hyundai Elantra, 2900 Diesel, 1996
+Hyundai Galloper, 1800 Diesel, 2002
+Hyundai Getz, 1300 Benzyna, 2007
+Hyundai H, 1400 LPG, 2003
+Hyundai Lantra, 2600 Benzyna, 2006
+Hyundai Matrix, 2100 Diesel, 1997
+Hyundai Pony/Excel, 1300 CNG, 1989
+Hyundai SantaFe , 1200 CNG, 1983
+Hyundai Sonata, 1600 CNG, 2002
+Hyundai Terracan, 1300 Benzyna, 1992
+Hyundai Trajet, 2500 Benzyna, 1982
+Hyundai Tucson, 2800 Diesel, 2000
+Hyundai XG, 2500 LPG, 1998
+Hyundai i30, 2800 Benzyna, 1988
+Jeep Cherokee, 3200 CNG, 1993
+Jeep Commander, 1000 Diesel, 1984
+Jeep Compass, 3200 Benzyna, 1983
+Jeep GrandCherokee , 1800 Diesel, 1986
+Jeep Liberty, 2500 LPG, 1998
+Jeep Wrangler, 1800 LPG, 1996
+Kia Carens, 3100 LPG, 1983
+Kia Carnival, 2400 LPG, 1990
+Kia Cee'd, 2700 Benzyna, 1987
+Kia Cerato, 1100 Benzyna, 1990
+Kia Clarus, 3200 Diesel, 1982
+Kia Joice, 1900 Diesel, 1998
+Kia Magentis, 3300 Benzyna, 2006
+Kia Opirus/Amanti, 1600 Benzyna, 2002
+Kia Picanto, 2800 Benzyna, 1993
+Kia Pride, 2400 Benzyna, 1994
+Kia Retona, 3100 LPG, 2002
+Kia Rio, 1400 Benzyna, 1997
+Kia Sephia, 2700 Benzyna, 1981
+Kia Shuma, 1300 LPG, 1995
+Kia Sorento, 1000 LPG, 1985
+Kia Sportage, 1800 CNG, 1981
+Kia Pozosta³e, 2700 CNG, 1980
+LandRover Defender, 3100 Benzyna, 2001
+LandRover Discovery, 1400 CNG, 1989
+LandRover Freelander, 2600 LPG, 1985
+LandRover RangeRover , 3100 LPG, 1997
+Mazda 121, 2100 Benzyna, 1999
+Mazda 2, 2400 CNG, 2004
+Mazda 3, 1400 LPG, 2002
+Mazda 323, 2600 LPG, 1998
+Mazda 323F, 3000 LPG, 2003
+Mazda 5, 2800 Diesel, 2007
+Mazda 6, 2200 Benzyna, 1998
+Mazda 626, 3100 Benzyna, 1981
+Mazda 929, 2900 Diesel, 1991
+Mazda B-seria, 1100 LPG, 1985
+Mazda BT-50, 1000 Diesel, 2004
+Mazda CX-7, 1300 CNG, 2002
+Mazda CX-9, 2700 CNG, 2001
+Mazda Demio, 2800 CNG, 1984
+Mazda MPV, 1600 Benzyna, 1993
+Mazda MX-3, 3100 CNG, 1993
+Mazda MX-5, 3000 Benzyna, 2005
+Mazda MX-6, 2100 CNG, 1983
+Mazda Premacy, 1500 Benzyna, 1996
+Mazda RX-7, 1600 Benzyna, 1985
+Mazda RX-8, 1500 Diesel, 2005
+Mazda Tribute, 1700 LPG, 1999
+Mazda Xedos/Millenia, 2000 LPG, 1988
+Mercedes A-klasa, 2600 CNG, 2008
+Mercedes B-klasa, 1800 Diesel, 2007
+Mercedes C-klasa, 3000 CNG, 2002
+Mercedes E-klasa, 3200 Diesel, 1981
+Mercedes G-klasa, 1300 Diesel, 1996
+Mercedes M-klasa, 1800 CNG, 2001
+Mercedes R-klasa, 2300 CNG, 1983
+Mercedes S-klasa, 1200 CNG, 1999
+Mercedes V-klasa, 1100 Diesel, 1980
+Mercedes CL/SEC, 1500 LPG, 2000
+Mercedes CLK, 3400 LPG, 1994
+Mercedes CLS, 1100 Benzyna, 1995
+Mercedes SL, 1000 LPG, 1992
+Mercedes SLK, 2000 Benzyna, 1980
+Mercedes W123, 2400 Benzyna, 1999
+Mercedes W124, 2300 Benzyna, 1987
+Mercedes W201(190) , 2500 CNG, 1980
+Mitsubishi 3000GT, 1800 LPG, 1987
+Mitsubishi Carisma, 2800 Benzyna, 2008
+Mitsubishi Colt, 2700 Diesel, 1993
+Mitsubishi Eclipse, 2500 Diesel, 1980
+Mitsubishi Galant, 2100 Benzyna, 1989
+Mitsubishi Grandis, 2600 Diesel, 1997
+Mitsubishi L200, 1500 Benzyna, 1987
+Mitsubishi Lancer, 2000 Benzyna, 1981
+Mitsubishi Montero, 2500 LPG, 1980
+Mitsubishi Outlander, 3400 Diesel, 1992
+Mitsubishi Pajero, 1500 LPG, 1988
+Mitsubishi Sigma, 1400 CNG, 1996
+Mitsubishi SpaceGear, 2300 Benzyna, 1997
+Mitsubishi SpaceRunner, 2400 LPG, 1987
+Mitsubishi SpaceStar, 1500 LPG, 1989
+Mitsubishi SpaceWagon, 2000 Diesel, 1983
+Nissan 100NX, 2900 Benzyna, 1996
+Nissan 200SX, 2700 LPG, 1982
+Nissan 350Z, 2900 Benzyna, 1988
+Nissan Almera, 2300 CNG, 1980
+Nissan AlmeraTino , 2000 CNG, 2000
+Nissan Altima, 3300 Benzyna, 1989
+Nissan Maxima, 2600 CNG, 1992
+Nissan Micra, 2500 LPG, 1997
+Nissan Murano, 2900 Benzyna, 1981
+Nissan Navara, 3500 Diesel, 1994
+Nissan Note, 2700 Diesel, 2002
+Nissan Pathfinder, 2500 Benzyna, 1995
+Nissan Patrol, 1800 Diesel, 1993
+Nissan Prairie, 2700 LPG, 2005
+Nissan Primera, 2300 Benzyna, 1986
+Nissan Qashqai, 1100 Diesel, 1998
+Nissan Quest, 3000 Benzyna, 2001
+Nissan Sentra, 1400 LPG, 1981
+Nissan Serena, 1500 Benzyna, 1989
+Nissan Sunny, 3400 LPG, 1984
+Nissan Terrano, 2500 CNG, 2004
+Nissan Tiida, 3200 Diesel, 2004
+Nissan Vanette, 1900 Benzyna, 1989
+Nissan X-Trail, 1800 LPG, 2004
+Opel Agila, 2800 Benzyna, 2000
+Opel Antara, 1400 LPG, 1987
+Opel Ascona, 2500 LPG, 1986
+Opel Astra, 1800 Diesel, 2003
+Opel Calibra, 1500 Diesel, 2007
+Opel Campo, 2500 Benzyna, 1992
+Opel Combo, 3200 Diesel, 1984
+Opel Corsa, 2200 LPG, 1999
+Opel Frontera, 2900 CNG, 1985
+Opel Kadett, 2100 Benzyna, 2002
+Opel Manta, 2900 CNG, 1998
+Opel Meriva, 1900 CNG, 1997
+Opel Monterey, 2200 CNG, 1996
+Opel Omega, 1100 LPG, 1998
+Opel Rekord, 2000 Diesel, 1996
+Opel Senator, 2500 LPG, 1990
+Opel Signum, 1400 CNG, 1983
+Opel Sintra, 1100 Diesel, 1996
+Opel Tigra, 1600 CNG, 1982
+Opel Vectra, 2400 Diesel, 2007
+Opel Zafira, 3500 CNG, 1988
+Peugeot 1007, 2400 CNG, 1996
+Peugeot 106, 3000 Benzyna, 1999
+Peugeot 107, 2400 Benzyna, 1999
+Peugeot 205, 2000 Diesel, 1982
+Peugeot 206, 1400 Benzyna, 2005
+Peugeot 206CC , 1300 Benzyna, 1987
+Peugeot 207, 2300 Benzyna, 1999
+Peugeot 306, 2700 Diesel, 1983
+Peugeot 307, 2500 CNG, 2001
+Peugeot 307CC , 1600 Diesel, 1984
+Peugeot 308, 2700 LPG, 2006
+Peugeot 309, 3200 Diesel, 1997
+Peugeot 405, 1300 LPG, 1999
+Peugeot 406, 1000 Diesel, 1998
+Peugeot 407, 2000 CNG, 1985
+Peugeot 605, 2700 Benzyna, 1998
+Peugeot 607, 2800 LPG, 1981
+Peugeot 806, 3300 LPG, 1994
+Peugeot 807, 1300 Diesel, 2004
+Peugeot Expert, 1400 Benzyna, 2003
+Peugeot Partner, 1700 CNG, 2004
+Peugeot Pozosta³e, 2900 CNG, 1994
+Renault 5, 1500 LPG, 2005
+Renault 19, 1700 Benzyna, 1989
+Renault 21, 3000 CNG, 2001
+Renault 25, 1500 CNG, 1992
+Renault Avantime, 3200 Diesel, 1983
+Renault Clio, 2800 Benzyna, 1982
+Renault Espace, 3300 CNG, 1981
+Renault Kangoo, 2500 Benzyna, 2002
+Renault Laguna, 1800 CNG, 1999
+Renault Megane, 2400 Benzyna, 1993
+Renault Modus, 1400 CNG, 1983
+Renault Safrane, 2600 CNG, 2001
+Renault Scenic, 2800 Benzyna, 2005
+Renault Thalia, 1400 CNG, 1995
+Renault Twingo, 2900 LPG, 1997
+Renault VelSatis , 1200 LPG, 1999
+Rover 25, 2700 Diesel, 1982
+Rover 45, 1100 LPG, 2000
+Rover 75, 1100 Diesel, 1991
+Rover Seria100 , 1700 LPG, 1985
+Rover Seria200 , 2300 Diesel, 1982
+Rover Seria400 , 2200 Diesel, 1991
+Rover Seria600 , 2900 CNG, 1994
+Rover Seria800 , 2000 Benzyna, 1997
+Seat Alhambra, 3500 Benzyna, 1987
+Seat Altea, 3400 Diesel, 1994
+Seat Arosa, 1000 Diesel, 1983
+Seat Cordoba, 1700 LPG, 2003
+Seat Ibiza, 1300 Diesel, 1997
+Seat Inca, 2500 Diesel, 2004
+Seat Leon, 1600 Benzyna, 1998
+Seat Malaga, 1100 Benzyna, 1994
+Seat Marbella, 2600 CNG, 1986
+Seat Toledo, 2700 Benzyna, 1998
+Skoda Fabia, 1400 LPG, 1997
+Skoda Favorit, 2700 Diesel, 1984
+Skoda Felicia, 2000 LPG, 1988
+Skoda Octavia, 1700 Diesel, 2007
+Skoda Roomster, 2700 CNG, 2001
+Skoda Superb, 3300 LPG, 2004
+Subaru Forester, 3500 CNG, 1982
+Subaru Impreza, 3100 Diesel, 1999
+Subaru Justy, 1700 LPG, 1987
+Subaru Legacy, 2800 CNG, 1983
+Subaru Outback, 1900 CNG, 1986
+Subaru Tribeca, 1300 Diesel, 2005
+Suzuki Alto/Maruti, 2400 CNG, 1996
+Suzuki Baleno, 2800 Diesel, 2002
+Suzuki GrandVitara , 1500 CNG, 1985
+Suzuki Ignis, 1500 Diesel, 1999
+Suzuki Jimny, 3400 CNG, 1996
+Suzuki Liana, 1300 LPG, 2000
+Suzuki SX4, 2300 Benzyna, 1985
+Suzuki Samurai, 2000 CNG, 1989
+Suzuki Swift, 2400 CNG, 1988
+Suzuki Vitara, 2200 CNG, 1996
+Suzuki WagonR+ , 2000 LPG, 2007
+Toyota Auris, 2600 Diesel, 1983
+Toyota Avalon, 2300 Benzyna, 1983
+Toyota Avensis, 1600 Diesel, 1987
+Toyota AvensisVerso , 1700 Benzyna, 2004
+Toyota Aygo, 1800 CNG, 1997
+Toyota Camry, 3300 CNG, 1987
+Toyota Carina, 1900 Diesel, 1985
+Toyota Celica, 2200 Diesel, 1999
+Toyota Corolla, 1800 LPG, 2003
+Toyota CorollaVerso , 1800 Benzyna, 1992
+Toyota FJCruiser , 1100 LPG, 1995
+Toyota Hilux, 3200 CNG, 1983
+Toyota LandCruiser , 1700 CNG, 1992
+Toyota MR2, 3000 Benzyna, 1991
+Toyota Matrix, 1900 LPG, 1983
+Toyota Paseo, 3300 Benzyna, 1989
+Toyota Picnic, 1700 Diesel, 1987
+Toyota Previa, 1800 Benzyna, 1985
+Toyota Prius, 3100 Benzyna, 1993
+Toyota RAV4, 3200 CNG, 1985
+Toyota Sienna, 2700 CNG, 2002
+Toyota Starlet, 1000 CNG, 1983
+Toyota Supra, 3300 Benzyna, 1981
+Toyota Tacoma, 1400 LPG, 1999
+Toyota Tundra, 2700 CNG, 1990
+Toyota Yaris, 1100 Benzyna, 1982
+Toyota YarisVerso , 1900 Benzyna, 1995
+Volkswagen Bora, 2600 CNG, 1980
+Volkswagen Caddy, 1100 CNG, 1993
+Volkswagen Corrado, 2600 Diesel, 2005
+Volkswagen Eos, 1300 CNG, 1994
+Volkswagen Fox, 1300 CNG, 1981
+Volkswagen Garbus, 1300 CNG, 2002
+Volkswagen Golf, 3100 Benzyna, 1987
+Volkswagen GolfPlus , 2700 Benzyna, 1995
+Volkswagen Jetta, 2800 LPG, 1996
+Volkswagen Lupo, 1400 Diesel, 1987
+Volkswagen NewBeetle , 3100 CNG, 2003
+Volkswagen Passat, 1100 Benzyna, 1985
+Volkswagen Phaeton, 3100 Diesel, 2000
+Volkswagen Polo, 1600 LPG, 1995
+Volkswagen Scirocco, 2100 LPG, 1981
+Volkswagen Sharan, 1800 Benzyna, 1993
+Volkswagen Tiguan, 2100 LPG, 1997
+Volkswagen Touareg, 1800 LPG, 1999
+Volkswagen Touran, 1400 Diesel, 1981
+Volkswagen Transporter/Multivan, 1100 LPG, 1999
+Volkswagen Vento, 2000 Diesel, 2004
+Volvo C30, 1000 Benzyna, 2003
+Volvo C70, 2500 LPG, 1992
+Volvo S40/V40, 3100 Diesel, 1983
+Volvo S60, 3200 LPG, 1993
+Volvo S70/V70, 2100 Diesel, 2000
+Volvo S80, 3200 Diesel, 1988
+Volvo Seria200 , 1200 CNG, 1992
+Volvo Seria300 , 3000 Diesel, 1995
+Volvo Seria400 , 2400 Diesel, 1982
+Volvo Seria700 , 3200 Diesel, 1993
+Volvo Seria800 , 1300 Diesel, 1985
+Volvo Seria900 , 1400 Diesel, 1999
+Volvo V50, 3200 CNG, 1997
+Volvo XC70, 2000 CNG, 2000
+Volvo XC90, 1500 CNG, 1985
+
