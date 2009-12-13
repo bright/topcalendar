@@ -17,7 +17,7 @@ namespace DataGenerator
 
 	class Program
 	{
-		public static int NumberOfRowsInFactTable = 10000;
+		public static int NumberOfRowsInFactTable = 100000;
 		static DateRange dateRange = new DateRange(new DateTime(2007, 1, 1), new DateTime(2009, 11, 30));
 
 		static void Main(string[] args)
@@ -113,6 +113,7 @@ namespace DataGenerator
 			rozne.Where(r => r.Nazwa.Contains("SILIK")).Each(cz => cz.Kategoria_Czesci = kategoriaChlodzeeni);
 			var kategoriaWydech = db.Kategoria_Czescis.Where(kc => kc.Nazwa.Contains("wydechowy")).First();
 			rozne.Where(r => r.Nazwa.Contains("OPASKA")).Each(cz => cz.Kategoria_Czesci = kategoriaWydech);
+			rozne.Where(r => r.Kategoria_Czesci == null).Each(r => r.Kategoria_Czesci = db.Kategoria_Czescis.NormalDistribution());
 			rozne.Each(czesci.Add);
 			czesci.Each(cz => cz.Model = db.Models.NormalDistribution());
 			db.Czesc_Zamiennas.InsertAllOnSubmit(czesci);
