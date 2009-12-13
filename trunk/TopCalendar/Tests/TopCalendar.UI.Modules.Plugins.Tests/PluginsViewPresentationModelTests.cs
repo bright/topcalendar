@@ -28,9 +28,7 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 			_modules = new List<ModuleInfo>();
 			InsertModules();
 
-			var _moduleCatalog = Dependency<IModuleCatalog>();
-			_moduleCatalog.Stub(mc => mc.Modules).Return(_modules);
-			Dependency<IPluginLoader>().Stub(pl => pl.ModuleCatalog).Return(_moduleCatalog);	
+			Dependency<IPluginLoader>().Stub(pl => pl.ModuleCatalog.Modules).Return(_modules);	
 		}
 
 		protected override void Because()
@@ -58,7 +56,7 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 			{
 				ModuleName = "name",
 				ModuleType = "type",
-				Ref = "ref"
+				Ref = "file:///c:/ref"
 			};
 			_modules.Add(_module); 
 		}
@@ -84,7 +82,7 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 		[Test]
 		public void PluginInfo_object_should_have_correct_assembly()
 		{
-			Sut.PluginsList[0].Assembly.ShouldEqual("ref");
+			Sut.PluginsList[0].Path.ShouldBeEqualIgnoringCase("c:\\ref");
 		}
 	}
 
@@ -97,7 +95,7 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 			{
 				ModuleName = "name1",
 				ModuleType = "type1",
-				Ref = "ref1"
+				Ref = "file:///c:/ref1"
 			};
 			_modules.Add(_module);
 
@@ -105,7 +103,7 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 			{
 				ModuleName = "name2",
 				ModuleType = "type2",
-				Ref = "ref2"
+				Ref = "file:///c:/ref2"
 			};
 			_modules.Add(_module);
 		}
@@ -120,7 +118,7 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 		public void PluginInfo_object_should_contain_first_object()
 		{
 			var result = (from item in Sut.PluginsList
-						  where item.Name == "name1" && item.Type == "type1" && item.Assembly == "ref1"
+						  where item.Name == "name1" && item.Type == "type1" && item.Path == "c:\\ref1"
 						  select item);
 			result.ShouldHaveCount<PluginInfo>(1);
 		}
@@ -129,7 +127,7 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 		public void PluginInfo_object_should_contain_second_object()
 		{
 			var result = (from item in Sut.PluginsList
-						  where item.Name == "name2" && item.Type == "type2" && item.Assembly == "ref2"
+						  where item.Name == "name2" && item.Type == "type2" && item.Path == "c:\\ref2"
 						  select item);
 			result.ShouldHaveCount<PluginInfo>(1);
 		}
@@ -167,6 +165,38 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 		public void plugins_view_should_be_unloaded()
 		{
 			_viewToUnload.ShouldEqual(Dependency<IPluginsView>());
+		}
+	}
+
+	public class when_plugin_is_removed
+		: observations_for_auto_created_sut_of_type<PluginsViewPresentationModel>
+	{
+		private PluginInfo _plugin;
+
+		protected override void EstablishContext()
+		{
+			var _modules = new List<ModuleInfo>();
+			Dependency<IPluginLoader>().Stub(pl => pl.ModuleCatalog.Modules).Return(_modules);
+			
+			_plugin = new PluginInfo(new ModuleInfo()
+				{ ModuleName = "name", ModuleType = "type", Ref = "file:///c://ref" }
+			);
+		}
+
+		protected override void AfterSutCreation()
+		{
+			Sut.PluginsList.Add(_plugin);
+		}
+
+		protected override void Because()
+		{
+			Sut.RemovePluginCommand.Execute(_plugin);
+		}
+
+		[Test]
+		public void plugins_list_should_be_empty()
+		{
+			Sut.PluginsList.ShouldBeEmpty();
 		}
 	}
 }

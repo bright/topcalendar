@@ -11,7 +11,10 @@ namespace TopCalendar.UI.Modules.Plugins
 	public interface IPluginsViewPresentationModel : IPresentationModelFor<IPluginsView>
 	{
 		ObservableCollection<PluginInfo> PluginsList { get; set; }
+
 		ICommand CancelCommand { get; }
 		ICommand SaveCommand { get; }
+		ICommand RemovePluginCommand { get; }
+		ICommand AddPluginCommand { get; }
 	}
 }
