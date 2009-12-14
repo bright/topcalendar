@@ -3,12 +3,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:val="clr-namespace:Bennedik.Validation.Integration.WPF;assembly=Bennedik.Validation.Integration.WPF"
     xmlns:local="clr-namespace:TopCalendar.UI.Modules.Registration"
+    xmlns:Converters="clr-namespace:TopCalendar.Utility.UI.Converters;assembly=TopCalendar.Utility"
     x:Name="UserRegistratorControl"
              >
+
+    <UserControl.Resources>
+        <Converters:BoolToVisibilityConverter x:Key="BoolToVisibleConverter"/>
+    </UserControl.Resources>
+    
     <val:ErrorProvider x:Name="ValidationErrorProvider">
+       
+        <StackPanel>
+        
         <Grid Width="500">
 
             <Grid.RowDefinitions>
+                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
@@ -19,10 +29,33 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+
+                 <RadioButton x:Name="LoginRadioButton" 
+                              GroupName="SelectActionRadioButtonGroup" 
+                              IsChecked="{Binding  
+                                            Path=LoginMode, 
+                                            Mode=TwoWay, 
+                                            UpdateSourceTrigger=PropertyChanged}"
+                              Margin="10 0 10 5">
+                     Mam już swoje konto
+                 </RadioButton>
+                 <RadioButton x:Name="RegisterRadioButton" 
+                              GroupName="SelectActionRadioButtonGroup" 
+                              IsChecked="{Binding  
+                                            Path=RegisterMode, 
+                                            Mode=TwoWay, 
+                                            UpdateSourceTrigger=PropertyChanged}"
+                              Margin="10 0 10 5">
+                     Chcę założyć nowe konto
+                 </RadioButton>                    
+                 
+            </StackPanel>
+
+            <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right">
                 Login
             </Label>
-            <TextBox x:Name="LoginTextBox" Grid.Column="1" Grid.Row="0" 
+            <TextBox x:Name="LoginTextBox" Grid.Column="1" Grid.Row="1" 
                      HorizontalAlignment="Stretch"                  
                      Text="{Binding  
                         Path=Login, 
@@ -30,20 +63,37 @@
                         UpdateSourceTrigger=PropertyChanged}"                 
             />  
             
-            <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right">
                 Password
             </Label>
-            <PasswordBox x:Name="PasswordTextBox" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  
+            <PasswordBox x:Name="PasswordTextBox" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch"  
                       local:PasswordHelper.Attach="true"
                       local:PasswordHelper.Password="{Binding 
                         Path=Password, 
                         Mode=OneWayToSource,
                         UpdateSourceTrigger=PropertyChanged}"                      
             />
-            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                <Button x:Name="RegisterButton" Command="{Binding RegisterCommand}" >Register</Button>
-                <Button Name="CancelButton" IsCancel="True" Command="{Binding CancelCommand}">Cancel</Button>
-            </StackPanel>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                <Button x:Name="RegisterButton" 
+                        Command="{Binding RegisterCommand}"
+                        Visibility="{Binding 
+                                        Path=RegisterMode,
+                                        Mode=TwoWay,
+                                        Converter={StaticResource BoolToVisibleConverter},
+                                        UpdateSourceTrigger=PropertyChanged}">
+                    Rejestruj
+                </Button>
+                    <Button x:Name="LoginButton" 
+                        Command="{Binding LoginCommand}"
+                        Visibility="{Binding 
+                                        Path=LoginMode,
+                                        Mode=TwoWay,
+                                        Converter={StaticResource BoolToVisibleConverter},
+                                        UpdateSourceTrigger=PropertyChanged}">
+                        Zaloguj
+                    </Button>
+                </StackPanel>
         </Grid>
+            </StackPanel>
     </val:ErrorProvider>
 </UserControl>

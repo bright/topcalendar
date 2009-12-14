@@ -9,7 +9,6 @@ namespace TopCalendar.Utility.UI.Converters
 	public class BoolToVisibilityConverter : IValueConverter
 	{
 
-
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			bool isVisible = (bool) value;
