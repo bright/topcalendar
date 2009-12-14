@@ -62,6 +62,7 @@
     <Compile Include="ClientContext.cs" />
     <Compile Include="IClientContext.cs" />
     <Compile Include="ITaskRepository.cs" />
+    <Compile Include="IUserAuthenticator.cs" />
     <Compile Include="IUserRegistrator.cs" />
     <Compile Include="MappingService\PersistentMappingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +73,7 @@
     </Compile>
     <Compile Include="TasksRepository.cs" />
     <Compile Include="Exceptions\UserNotLoggedException.cs" />
+    <Compile Include="UserAuthenticator.cs" />
     <Compile Include="UserRegistrator.cs" />
     <Compile Include="ConnectorModule.cs" />
   </ItemGroup>

@@ -7,40 +7,32 @@ using TopCalendar.Client.Connector.TopCalendarCommunicationService;
 
 namespace TopCalendar.Client.Connector
 {
-    public class UserRegistrator : IUserRegistrator
+    public class UserAuthenticator : IUserAuthenticator
     {
-        #region IUserRegistrator Members
+        #region IUserAuthenticator Members
 
         private readonly ITopCalendarCommunicationService _service;
         private readonly IClientContext _clientContext;
 
-        public UserRegistrator(ITopCalendarCommunicationService service, IClientContext clientContext)
+        public UserAuthenticator(ITopCalendarCommunicationService service, IClientContext clientContext)
         {
             _service = service;
             _clientContext = clientContext;
         }
 
-        public bool IsLoginFree(string login)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Register(string login, string password)
+        public bool Login(string login, string password)
         {
             try
             {
                 UserCredentials userCredentials = new UserCredentials {Login = login, Password = password};
-                RegisterUserResponse response =
-                    _service.RegisterUser(new RegisterUserRequest {UserCredentials = userCredentials});
+                LoginUserResponse response =
+                    _service.LoginUser(new LoginUserRequest {UserCredentials = userCredentials});
 
-                if (response.Success)
-                {
-                    _clientContext.OnUserLogged(userCredentials);
-                }
+                _clientContext.OnUserLogged(userCredentials);
 
                 Console.WriteLine(response);
 
-                return response.Success;
+                return true;
             }
             catch (Exception ex)
             {

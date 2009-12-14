@@ -21,6 +21,7 @@ namespace TopCalendar.Client.Connector
             Bind<IClientContext>().To<ClientContext>().InSingletonScope();
 
             Bind<IUserRegistrator>().To<UserRegistrator>();
+            Bind<IUserAuthenticator>().To<UserAuthenticator>();
             Bind<ITaskRepository>().To<TasksRepository>().InSingletonScope();
             Bind<IMappingService>().To<PersistentMappingService>().InSingletonScope();
         }

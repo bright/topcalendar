@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region
+
 using System.IO;
-using System.Linq;
-using System.Text;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
@@ -10,12 +8,14 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using TopCalendar.Server.DataLayer.Entities;
 
+#endregion
+
 namespace TopCalendar.Server.DataLayer
 {
     public class NHibernateSessionFactory
     {
         private const string DbFile = "TopCalendarDataBase.db";
-        protected virtual bool DropDataBaseOnStart { get; set;}
+        protected virtual bool DropDataBaseOnStart { get; set; }
 
         protected virtual IPersistenceConfigurer DbConfig { get; set; }
 
@@ -28,17 +28,17 @@ namespace TopCalendar.Server.DataLayer
         public ISessionFactory CreateSessionFactory()
         {
             return Fluently.Configure()
-              .Database(DbConfig)
-              .Mappings(m =>
-                m.FluentMappings.AddFromAssemblyOf<User>())
-              .ExposeConfiguration(BuildSchema)
-              .BuildSessionFactory();
+                .Database(DbConfig)
+                .Mappings(m =>
+                          m.FluentMappings.AddFromAssemblyOf<User>())
+                .ExposeConfiguration(BuildSchema)
+                .BuildSessionFactory();
         }
 
         private void BuildSchema(Configuration config)
         {
             // delete the existing db on each run
-            if (DropDataBaseOnStart &&  File.Exists(DbFile))
+            if (DropDataBaseOnStart && File.Exists(DbFile))
                 File.Delete(DbFile);
 
             // this NHibernate tool takes a configuration (with mapping info in)
@@ -50,8 +50,6 @@ namespace TopCalendar.Server.DataLayer
             {
                 new SchemaExport(config).Create(script, export);
             }
-            
         }
-
     }
 }
