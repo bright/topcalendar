@@ -16,6 +16,7 @@ namespace TopCalendar.UI.Modules.Registration
     {
     	private readonly IEventAggregator _eventAggregator;
     	private DelegateCommand<object> _registerCommand;
+        private DelegateCommand<object> _loginCommand;
 
 		[Inject]
 		public ILoggerFacade Log { get; set; }
@@ -33,11 +34,22 @@ namespace TopCalendar.UI.Modules.Registration
             }
         }
 
+        public ICommand LoginCommand
+        {
+            get { return _loginCommand; }
+            private set
+            {
+                _loginCommand = value as DelegateCommand<object>;
+                OnPropertyChanged("LoginCommand");
+            }
+        }
+
     	public RegistrationPresentationModel(IRegistrationView view,IEventAggregator eventAggregator)
 			:base(view)
     	{
     		_eventAggregator = eventAggregator;
     		_registerCommand = new DelegateCommand<object>(Register, CanRegister);
+    	    _loginCommand = new DelegateCommand<object>(LoginAction);
     		_cancelCommand = new DelegateCommand<object>(Cancel);
     		_view.ViewModel = this;
     	}
@@ -90,6 +102,36 @@ namespace TopCalendar.UI.Modules.Registration
 			}
     	}
 
+	    private bool _loginMode = true;
+
+        public bool LoginMode
+        {
+            get { return _loginMode; }
+            set
+            {
+                _loginMode = value;
+                _registerMode = !value;
+                OnPropertyChanged("LoginMode");
+                OnPropertyChanged("RegisterMode");
+                _registerCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        private bool _registerMode = false;
+
+        public bool RegisterMode
+        {
+            get { return _registerMode; }
+            set
+            {
+                _registerMode = value;
+                _loginMode = !value;
+                OnPropertyChanged("RegisterMode");
+                OnPropertyChanged("LoginMode");
+                _registerCommand.RaiseCanExecuteChanged();
+            }
+        }
+
     	private bool CanRegister(object arg)
     	{
     		return Validation.Validate(this).IsValid;
@@ -105,5 +147,16 @@ namespace TopCalendar.UI.Modules.Registration
 			var e = _eventAggregator.GetEvent<RegistrationCompletedEvent>();
 			e.Publish(Login);
     	}
+
+        private void LoginAction(object obj)
+        {
+            Registrator.Register(Login, Password);
+
+            Log.Log(string.Format("{0}, {1} - zarejestrowany", Login, Password), Category.Info, Priority.None);
+
+            _eventAggregator.GetEvent<UnloadViewEvent>().Publish(View);
+            var e = _eventAggregator.GetEvent<RegistrationCompletedEvent>();
+            e.Publish(Login);
+        }
     }
 }
