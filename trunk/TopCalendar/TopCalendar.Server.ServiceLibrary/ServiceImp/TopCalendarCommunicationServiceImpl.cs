@@ -27,6 +27,12 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceImp
         {
             Console.WriteLine("LoginUser, loginUserRequest: " + loginUserRequest);
 
+            // jezeli sterowanie doszlo tutaj to znaczy, ze uzytkownik
+            // podal poprawne dane
+
+            // gdyby podal bledne dane to interceptor wyslalby od niego
+            // komunikat o blednej parze login/password
+
             return new LoginUserResponse {Success = true};
         }
 

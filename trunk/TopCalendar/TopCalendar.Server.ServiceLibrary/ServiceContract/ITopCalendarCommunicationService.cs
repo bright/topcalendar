@@ -10,6 +10,7 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceContract
     public interface ITopCalendarCommunicationService
     {
         [OperationContract]
+        [AttachValidUserInspector]
         LoginUserResponse LoginUser(LoginUserRequest loginUserRequest);
 
         [OperationContract]
