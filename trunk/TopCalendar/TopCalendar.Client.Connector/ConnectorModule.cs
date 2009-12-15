@@ -1,8 +1,11 @@
 #region
 
+using Microsoft.Practices.Composite.Events;
+using Microsoft.Practices.ServiceLocation;
 using Ninject.Modules;
 using TopCalendar.Client.Connector.MappingService;
 using TopCalendar.Client.Connector.TopCalendarCommunicationService;
+using TopCalendar.UI.Infrastructure;
 
 #endregion
 
@@ -22,7 +25,11 @@ namespace TopCalendar.Client.Connector
 
             Bind<IUserRegistrator>().To<UserRegistrator>();
             Bind<IUserAuthenticator>().To<UserAuthenticator>();
-            Bind<ITaskRepository>().To<TasksRepository>().InSingletonScope();
+            Bind<ITaskRepository>().To<TasksRepository>().InSingletonScope()
+				.OnActivation(repository => 
+					ServiceLocator.Current.GetInstance<IEventAggregator>()
+					.GetEvent<DeleteTaskEvent>().Subscribe(task=> repository.RemoveTask(task))
+				);
             Bind<IMappingService>().To<PersistentMappingService>().InSingletonScope();
         }
     }

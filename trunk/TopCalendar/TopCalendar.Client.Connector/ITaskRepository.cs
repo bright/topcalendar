@@ -10,5 +10,6 @@ namespace TopCalendar.Client.Connector
         IList<Task> GetTasksBetweenDates(DateTimeRange dateTimeRange);
         bool UpdateTask(Task task);
         bool AddTask(Task task);
+    	void RemoveTask(Task task);
     }
 }

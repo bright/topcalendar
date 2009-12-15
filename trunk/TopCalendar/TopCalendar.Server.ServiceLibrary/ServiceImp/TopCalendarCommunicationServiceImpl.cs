@@ -14,13 +14,15 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceImp
         private readonly UserRegistrationLogic _userRegistrationLogic;
         private readonly AddNewTasksLogic _addNewTaskLogic;
         private readonly FindTasksLogic _findTasksLogic;
+    	private readonly RemoveTaskLogic _removeTaskLogic;
 
-        public TopCalendarCommunicationServiceImpl(UserRegistrationLogic userRegistrationLogic,
-                                                   AddNewTasksLogic addNewTaskLogic, FindTasksLogic findTasksLogic)
+    	public TopCalendarCommunicationServiceImpl(UserRegistrationLogic userRegistrationLogic,
+                                                   AddNewTasksLogic addNewTaskLogic, FindTasksLogic findTasksLogic, RemoveTaskLogic removeTaskLogic)
         {
             _userRegistrationLogic = userRegistrationLogic;
             _addNewTaskLogic = addNewTaskLogic;
             _findTasksLogic = findTasksLogic;
+        	_removeTaskLogic = removeTaskLogic;
         }
 
         public LoginUserResponse LoginUser(LoginUserRequest loginUserRequest)
@@ -65,5 +67,12 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceImp
 
             return findTasksResponse;
         }
+
+    	public BaseResponse RemoveTask(RemoveTaskRequest deleteTaskRequest)
+    	{
+    		Console.WriteLine("RemoveTask, findTaskRequest" + deleteTaskRequest);
+
+    		return _removeTaskLogic.RemoveTask(deleteTaskRequest);
+    	}
     }
 }

@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract
 {
     [DataContract]
-    public abstract class BaseResponse
+    public class BaseResponse
     {
         [DataMember]
         public bool Success { get; set; }
