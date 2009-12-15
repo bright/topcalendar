@@ -10,6 +10,7 @@
 
     <UserControl.Resources>
         <Converters:BoolToVisibilityConverter x:Key="BoolToVisibleConverter"/>    
+        <Converters:NullableDateTimeToBooleanConverter x:Key="NullableToBooleanConverter"/>
         <Style x:Key="FormButton" TargetType="Button">
             <Setter Property="Margin" Value="5" />
         </Style>
@@ -19,6 +20,7 @@
         <Style x:Key="FormTextBox" TargetType="TextBox">
             <Setter Property="Margin" Value="5" />
         </Style>
+        
     </UserControl.Resources>
     <val:ErrorProvider x:Name="ValidationErrorProvider">
         <Grid Width="500" Height="250">
@@ -40,9 +42,7 @@
                 Nazwa
             </Label>
 
-            <TextBox 
-            Margin="5"
-            x:Name="NameTextBox" Grid.Column="1" Grid.Row="0"
+            <TextBox Margin="5" x:Name="NameTextBox" Grid.Column="1" Grid.Row="0"
                      HorizontalAlignment="Stretch"                  
                      Text="{Binding  
                         Path=Task.Name, 
@@ -55,33 +55,23 @@
                 Data rozpoczęcia
             </Label>
             
-            <avalon:DateTimePicker Grid.Column="1" Grid.Row="1"
-                                                                      
+            <avalon:DateTimePicker Grid.Column="1" Grid.Row="1"                                   
+                                   DateTimeSelected="{Binding Path=Task.StartAt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                   
                                    />
-            <!--DateTimeSelected="{Binding Path=Task.StartAt, UpdateSourceTrigger=PropertyChanged}"-->
-            <!--<TextBox 
-            Margin="5"
-            x:Name="StartAtTextBox" Grid.Column="1" Grid.Row="1"
-                     HorizontalAlignment="Stretch"                  
-                     Text="{Binding  
-                        Path=Task.StartAt,
-                        UpdateSourceTrigger=PropertyChanged}"                 
-            />-->
-
+     
             <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right">
                 Data zakończenia
             </Label>
-            <avalon:DateTimePicker Grid.Column="1" Grid.Row="2"
-                                   DateTimeSelected="{Binding Path=Task.FinishAt, UpdateSourceTrigger=PropertyChanged}"
-                                   />
-            <!--<TextBox             
-           Margin="5"
-            x:Name="EndAtTextBox" Grid.Column="1" Grid.Row="2"
-                     HorizontalAlignment="Stretch"                  
-                     Text="{Binding  
-                        Path=Task.FinishAt,  
-                        UpdateSourceTrigger=PropertyChanged}"                 
-        />-->
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" >
+            <avalon:DateTimePicker DateTimeSelected="{Binding Path=Task.FinishAt, Mode=TwoWay}"
+                                       MinDate="{Binding Path=Task.StartAt}"
+                                       IsEnabled="{Binding ElementName=EndDateEnabledCheckBox, Path=IsChecked}"
+                                       />
+                <CheckBox x:Name="EndDateEnabledCheckBox" VerticalAlignment="Center"
+                          IsChecked="{Binding Path=Task.FinishAt, Mode=OneWay, Converter={StaticResource NullableToBooleanConverter}}"
+                          />
+                <Label VerticalAlignment="Center">Zadanie z ustalonym końcem ?</Label>
+            </StackPanel>
 
             <Label 
             
@@ -100,18 +90,15 @@
 
             <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
                 <Button 
-                Margin="5"
-                x:Name="UpdateButton"   
-                Visibility="{Binding UpdateButtonVisible, Converter={StaticResource BoolToVisibleConverter}}"
-                Command="{Binding UpdateCommand}"
-                CommandParameter="{Binding Task}"
-                >Aktualizuj</Button>
-                <Button 
-                Margin="5"
-                Visibility="{Binding AddButtonVisible, Converter={StaticResource BoolToVisibleConverter}}"
-                Name="AddButton" Command="{Binding AddCommand}"
-                CommandParameter="{Binding Task}"
-                >Dodaj</Button>
+                    Margin="5"
+                    x:Name="UpdateButton"   
+                    Visibility="{Binding UpdateButtonVisible, Converter={StaticResource BoolToVisibleConverter}}"
+                    Command="{Binding UpdateCommand}"
+                    CommandParameter="{Binding Task}">Aktualizuj</Button>
+                <Button Margin="5"
+                        Visibility="{Binding AddButtonVisible, Converter={StaticResource BoolToVisibleConverter}}"
+                        Name="AddButton" Command="{Binding AddCommand}"
+                        CommandParameter="{Binding Task}">Dodaj</Button>
                 <Button 
                 Margin="5"
                 Name="CancelButton" IsCancel="True" Command="{Binding CancelCommand}">Anuluj</Button>

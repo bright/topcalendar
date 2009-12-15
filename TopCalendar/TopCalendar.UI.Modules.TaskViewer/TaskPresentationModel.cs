@@ -36,7 +36,7 @@ namespace TopCalendar.UI.Modules.TaskViewer
     	public void ShowAddNewTaskView(DateTime? newDateTime)
         {
         	IsNewTask = true;
-            Task = new Task("Nazwa", newDateTime != null ? (DateTime)newDateTime : DateTime.Now);            
+            Task = new Task("Nazwa", newDateTime ?? DateTime.Now);            
         }
 
     	public bool IsNewTask

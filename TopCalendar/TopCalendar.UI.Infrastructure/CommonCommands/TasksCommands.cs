@@ -1,8 +1,10 @@
 using System;
 using System.Windows.Input;
 using Microsoft.Practices.Composite.Events;
+using Microsoft.Practices.Composite.Presentation.Commands;
 using Microsoft.Practices.Composite.Presentation.Events;
 using Microsoft.Practices.ServiceLocation;
+using TopCalendar.Client.DataModel;
 
 namespace TopCalendar.UI.Infrastructure.CommonCommands
 {
@@ -10,27 +12,35 @@ namespace TopCalendar.UI.Infrastructure.CommonCommands
 	{
 		public ICommand ShowTaskEditor
 		{
-			get { return new ShowTaskEditorCommand(); }
+			get { return new ShowAddNewTaskCommand(); }
 		}
 	}
 
-	public class ShowTaskEditorCommand : ICommand
+	public class DeleteTaskCommand : DelegateCommand<Task>
 	{
-		public void Execute(object parameter)
+		public DeleteTaskCommand():base(DeleteTask, dt=>true)
+		{
+		}
+
+		private static void DeleteTask(Task taskToDelete)
+		{
+			ServiceLocator.Current.GetInstance<IEventAggregator>()
+				.GetEvent<DeleteTaskEvent>().Publish(taskToDelete);
+		}
+	}
+
+	public class ShowAddNewTaskCommand : DelegateCommand<DateTime?>
+	{
+		public ShowAddNewTaskCommand() : base(ShowAddNewTask, dt=> true)
+		{
+		}
+
+		private static void ShowAddNewTask(DateTime? dateTime)
 		{
 			var eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
-			eventAggregator.GetEvent<ShowTaskEditorEvent>().Publish((DateTime?)parameter);
-		}
-
-		public bool CanExecute(object parameter)
-		{
-			return true;
-		}
-
-		public event EventHandler CanExecuteChanged;
+			eventAggregator.GetEvent<ShowAddNewTaskViewEvent>().Publish(dateTime);
+		}		
 	}
 
-	public class ShowTaskEditorEvent : CompositePresentationEvent<DateTime?>
-	{
-	}
+	
 }

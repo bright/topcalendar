@@ -9,10 +9,14 @@
     HorizontalAlignment="Stretch"             
              >
     <UserControl.Resources>        
-        <Converters:DateTimeToShortTimeConverter x:Key="DateToTimeStringConverter"/>
+        <!--<Converters:DateTimeToShortTimeConverter x:Key="DateToTimeStringConverter"/>-->
         <Converters:DateTimeToShortDateStringConverter x:Key="DateToDateStringConverter"/>
+        <Converters:DateTimeToMonthAndYearStringConverter x:Key="DateTimeToMonthAndYearStringConverter"/>        
+        
+        <CommonCommands:ShowAddNewTaskCommand x:Key="ShowAddNewTask" />        
+        <CommonCommands:DeleteTaskCommand x:Key="DeleteTaskCommand"/>
         <Style x:Key="CellListView" TargetType="{x:Type ListView}">
-            <Setter Property="Width" Value="130" />                        
+            <Setter Property="Width" Value="140" />                        
             <Setter Property="Margin" Value="2"/>
             <Setter Property="Opacity" Value="0.50"  />
             <Setter Property="Background" Value="{StaticResource LightBrush}" />            
@@ -21,15 +25,15 @@
             <Setter Property="Height" Value="100" />            
         </Style>
         <DataTemplate x:Key="TaskDataTemplate" DataType="{x:Type Model:Task}">
-            <StackPanel Orientation="Horizontal" Opacity="1" >                
-                <TextBlock Text="{Binding Name}"  />
-                <TextBlock> </TextBlock>
-                <TextBlock Text="{Binding StartAt, Converter={StaticResource DateToTimeStringConverter}}" />
-                <TextBlock>-</TextBlock>
-                <TextBlock Text="{Binding FinishAt, Converter={StaticResource DateToTimeStringConverter}}" />                
+            <StackPanel Orientation="Horizontal" Opacity="1" HorizontalAlignment="Left"  >                
+                <Button Style="{StaticResource XIconButtonTemplate}"
+                        Command="{StaticResource DeleteTaskCommand}"
+                        CommandParameter="{Binding}"
+                        />
+                <TextBlock Text="{Binding Name}"  />                
             </StackPanel>
         </DataTemplate>
-        <CommonCommands:ShowTaskEditorCommand x:Key="ShowTaskEditor" />
+        
         
         <DataTemplate x:Key="CellDataTemplate" >            
             <ListView ItemsSource="{Binding TaskList}"                       
@@ -38,14 +42,23 @@
                       >
                 <ListView.InputBindings>                    
                     <MouseBinding MouseAction="LeftClick"
-                                  Command="{StaticResource ShowTaskEditor}" />
+                                  Command="{StaticResource ShowAddNewTask}" />
                 </ListView.InputBindings>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn                                                         
-                            Header="{Binding Day, Converter={StaticResource DateToDateStringConverter}}" 
+                        <GridViewColumn                                                                                     
                             CellTemplate="{DynamicResource TaskDataTemplate}"   							                                      
-                            />                        
+                            >
+                            <GridViewColumnHeader>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Day, Converter={StaticResource DateToDateStringConverter}}"  Width="80" />
+                                    <Button Style="{StaticResource PlusIconButtonTemplate}" 
+                                            Command="{StaticResource ShowAddNewTask}"
+                                            CommandParameter="{Binding Day}"
+                                            />
+                                </StackPanel>
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>                
             </ListView>            
@@ -64,7 +77,7 @@
         <Utilites:HelperCollections x:Key="HelperCollections" />
 
         <Style x:Key="DayNameTextBlockStyle" TargetType="{x:Type TextBlock}">
-            <Setter Property="Width" Value="130" />            
+            <Setter Property="Width" Value="140" />            
             <Setter Property="Opacity" Value="0.7" />
             <Setter Property="Margin" Value="2" />
             <Setter Property="TextAlignment" Value="Center" />
@@ -81,7 +94,7 @@
                        
                        Style="{StaticResource DayNameTextBlockStyle}"/>
         </DataTemplate>
-        <Converters:DateTimeToMonthAndYearStringConverter x:Key="DateTimeToMonthAndYearStringConverter"/>               
+        
     </UserControl.Resources>
             
     <Grid>

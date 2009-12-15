@@ -61,4 +61,11 @@ namespace TopCalendar.UI.Infrastructure
 	public class ShowPluginsEvent : CompositePresentationEvent<object>
 	{ 
 	}
+
+	/// <summary>
+	/// Publikowany gdy nalezy usunac zadanie
+	/// </summary>
+	public class DeleteTaskEvent : CompositePresentationEvent<Task>
+	{		
+	}
 }

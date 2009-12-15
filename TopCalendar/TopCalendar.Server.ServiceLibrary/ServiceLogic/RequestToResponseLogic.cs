@@ -29,5 +29,24 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
                                      };
             return response;
         }
+
+		protected TResponse ExecuteAndReturn(TRequest request,  Action<TRequest> doJob)
+		{
+			try
+			{
+				doJob(request);
+			}catch(Exception ex)
+			{
+				return ErrorSituationResponse(ex.Message);
+			}
+			return SuccessSituationResponse();
+		}
+
+		/// <summary>
+		/// przydala by sie taka metoda ;]
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+    	///protected abstract TResponse Execute(TRequest request);
     }
 }

@@ -30,12 +30,17 @@ namespace TopCalendar.UI.Modules.MonthViewer
 			GoToNextMonth = new DelegateCommand<object>(GoToNextMonthCommandImpl);
 			GoToPreviousMonth = new DelegateCommand<object>(GoToPreviousMonthCommandImpl);
 			ShowAddTask = new DelegateCommand<DateTime?>(ShowAddTaskImpl);
-			Initialize();
+			InitializeTasks();
+			SubscribeToEvents();
 		}
 
-		
+		private void SubscribeToEvents()
+		{
+			_eventAggregator.GetEvent<NewTaskAddedEvent>().Subscribe((t) => InitializeTasks());
+		}
 
-		private void Initialize()
+
+		private void InitializeTasks()
 		{
 			Tasks = _taskLoader.GetTasksForMonth(CurrentMonth);
 		}

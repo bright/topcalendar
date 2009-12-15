@@ -67,7 +67,12 @@ namespace TopCalendar.Client.Connector
             //Todo: should call TaskAddedEvent
         }
 
-        /// <summary>
+    	public void RemoveTask(Task task)
+    	{
+    		//Todo: Michale jak zupdatowac referencje do serwisu	
+    	}
+
+    	/// <summary>
         /// Update zadania
         /// </summary>
         /// <param name="task">task</param>
@@ -79,27 +84,4 @@ namespace TopCalendar.Client.Connector
         }
     }
 
-   /* public static class Fake
-    {
-        private static IList<Task> _taskList = new List<Task>
-                                                   {
-                                                       new Task
-                                                           {
-                                                               Name = "Pierwsze",
-                                                               StartAt = DateTime.Now,
-                                                               FinishAt = DateTime.Now.AddDays(1)
-                                                           },
-                                                       new Task
-                                                           {
-                                                               Name = "Drugie",
-                                                               StartAt = DateTime.Now,
-                                                               FinishAt = DateTime.Now.AddHours(1)
-                                                           }
-                                                   };
-
-        public static IList<Task> TaskList()
-        {
-            return _taskList;
-        }
-    }*/
 }
