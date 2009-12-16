@@ -25,11 +25,7 @@ namespace TopCalendar.Client.Connector
 
             Bind<IUserRegistrator>().To<UserRegistrator>();
             Bind<IUserAuthenticator>().To<UserAuthenticator>();
-            Bind<ITaskRepository>().To<TasksRepository>().InSingletonScope()
-				.OnActivation(repository => 
-					ServiceLocator.Current.GetInstance<IEventAggregator>()
-					.GetEvent<DeleteTaskEvent>().Subscribe(task=> repository.RemoveTask(task))
-				);
+        	Bind<ITaskRepository>().To<TasksRepository>().InSingletonScope();				
             Bind<IMappingService>().To<PersistentMappingService>().InSingletonScope();
         }
     }

@@ -36,7 +36,13 @@ namespace TopCalendar.UI.Modules.MonthViewer
 
 		private void SubscribeToEvents()
 		{
-			_eventAggregator.GetEvent<NewTaskAddedEvent>().Subscribe((t) => InitializeTasks());
+			_eventAggregator.GetEvent<NewTaskAddedEvent>().Subscribe((t) => LoadAndUpdateTaskList());
+			_eventAggregator.GetEvent<TaskListChangedEvent>().Subscribe(t => LoadAndUpdateTaskList());
+		}
+
+		private void LoadAndUpdateTaskList()
+		{
+			UpdateTaskList(_taskLoader.GetTasksForMonth(CurrentMonth));
 		}
 
 

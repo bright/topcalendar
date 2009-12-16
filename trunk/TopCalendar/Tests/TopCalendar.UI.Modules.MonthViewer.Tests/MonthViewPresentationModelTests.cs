@@ -14,12 +14,32 @@ using TopCalendar.Utility.UI;
 namespace TopCalendar.UI.Modules.MonthViewer.Tests
 {
 	
+	public abstract class observations_for_month_view_persenetstion_model : observations_for_presentation_model_with_stubbed_view<MonthViewPresentationModel,IMonthView>
+	{
+		protected NewTaskAddedEvent _newTaskAddedEvent;
+		protected TaskListChangedEvent _taskListChangedEvent;
+
+		protected override void EstablishContext()
+		{
+			base.EstablishContext();
+			_newTaskAddedEvent = new NewTaskAddedEvent();
+			Dependency<IEventAggregator>().Stub(aggregator => aggregator.GetEvent<NewTaskAddedEvent>())
+				.IgnoreArguments()
+				.Return(_newTaskAddedEvent);
+			_taskListChangedEvent = new TaskListChangedEvent();
+			Dependency<IEventAggregator>().Stub(aggregator => aggregator.GetEvent<TaskListChangedEvent>())
+				.IgnoreArguments()
+				.Return(_taskListChangedEvent);
+		}
+	}
+
 	public class when_showing_add_new_task_from_month_view_presentation_model
-		: observations_for_presentation_model_with_stubbed_view<MonthViewPresentationModel,IMonthView>
+		: observations_for_month_view_persenetstion_model
 	{
 		private DateTime? _date;
 		private ShowAddNewTaskViewEvent _addNewTaskEvent;
 		private DateTime? _calledDate;
+		
 
 		protected override void Because()
 		{
@@ -31,7 +51,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 			base.EstablishContext();
 			_addNewTaskEvent = new ShowAddNewTaskViewEvent();
 			_addNewTaskEvent.Subscribe(dateTime =>  _calledDate = dateTime );
-			Dependency<IEventAggregator>().Stub(aggr => aggr.GetEvent<ShowAddNewTaskViewEvent>()).Return(_addNewTaskEvent);
+			Dependency<IEventAggregator>().Stub(aggr => aggr.GetEvent<ShowAddNewTaskViewEvent>()).Return(_addNewTaskEvent);			
 		}
 
 		[Test]
@@ -42,15 +62,16 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 	}
 
 	public class when_getting_view_from_presentation_model
-		: observations_for_presentation_model_with_stubbed_view<MonthViewPresentationModel, IMonthView> 
+		: observations_for_month_view_persenetstion_model
 	{
 		private IMonthView _view;
 		private ObservableCollection<ObservableCollection<DayTaskList>> _returnedList;
+		
 
 		protected override void EstablishContext()
 		{
-			base.EstablishContext();
-			_returnedList = new ObservableCollection<ObservableCollection<DayTaskList>>();
+			base.EstablishContext();			
+			_returnedList = new ObservableCollection<ObservableCollection<DayTaskList>>();		
 			Dependency<IMonthTaskLoader>()
 				.Stub(loader => loader.GetTasksForMonth(DateTime.Now))
 				.IgnoreArguments()
@@ -90,16 +111,14 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 
 	
 	public abstract class observations_for_month_view_presentation_model_changing_months
-		: observations_for_presentation_model_with_stubbed_view<MonthViewPresentationModel, IMonthView>
+		: observations_for_month_view_persenetstion_model
 	{
-		private ObservableCollection<ObservableCollection<DayTaskList>> _fromTaskLoader;
+		private ObservableCollection<ObservableCollection<DayTaskList>> _fromTaskLoader;		
 
 		protected override void EstablishContext()
 		{
 			base.EstablishContext();
-			_fromTaskLoader = new ObservableCollection<ObservableCollection<DayTaskList>>();
-			// i know this is ugly but will be changed when separate class 
-			//for monthview task list will be implemented
+			_fromTaskLoader = new ObservableCollection<ObservableCollection<DayTaskList>>();			
 			new object[5].Each(d => _fromTaskLoader.Add(new ObservableCollection<DayTaskList>()));
 			_fromTaskLoader.Each(week => new object[7].Each(o => week.Add(new DayTaskList(DateTime.Now))));
 			Dependency<IMonthTaskLoader>()
@@ -132,6 +151,21 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 				.AssertWasCalled(
 					loader=> loader.GetTasksForMonth(Arg.Is(Sut.CurrentMonth))
 				);
+		}
+	}
+
+	public class when_task_list_changed_event_occures_in_month_view_presentation_model
+		: observations_for_month_view_presentation_model_changing_months
+	{
+		protected override void Because()
+		{
+			_taskListChangedEvent.Publish(DateTime.Now);
+		}
+
+		[Test]
+		public void should_load_task_for_current_month()
+		{
+			Dependency<IMonthTaskLoader>().AssertWasCalled(loader=> loader.GetTasksForMonth(Arg.Is(Sut.CurrentMonth)), o=> o.Repeat.Twice());
 		}
 	}
 

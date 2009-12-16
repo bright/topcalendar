@@ -57,4 +57,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RemoveTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" minOccurs="0" name="deleteTaskRequest" nillable="true" type="q9:RemoveTaskRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveTaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" minOccurs="0" name="RemoveTaskResult" nillable="true" type="q10:BaseResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

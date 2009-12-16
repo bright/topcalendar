@@ -71,6 +71,10 @@
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
       <Name>Composite.Desktop</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\TopCalendar.Client.Connector\TopCalendar.Client.Connector.csproj">
+      <Project>{15968E5F-9795-4391-BD4E-3D51247BCFCF}</Project>
+      <Name>TopCalendar.Client.Connector</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj">
       <Project>{2DD936B1-4635-4A59-BFA4-385A76BDE801}</Project>
       <Name>TopCalendar.Utility.Tests</Name>

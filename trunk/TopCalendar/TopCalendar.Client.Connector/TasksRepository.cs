@@ -14,23 +14,26 @@ using TopCalendar.Utility.BasicExtensions;
 
 namespace TopCalendar.Client.Connector
 {
-    public class TasksRepository : ITaskRepository
-    {
-        private readonly ITopCalendarCommunicationService _service;
+	public class TasksRepository : ServiceClient, ITaskRepository
+    {        
         private readonly IMappingService _mappingService;
-        private readonly IEventAggregator _eventAggregator;
-        private readonly IClientContext _clientContext;
+        private readonly IEventAggregator _eventAggregator;        
 
         public TasksRepository(ITopCalendarCommunicationService service, IMappingService mappingService,
                                IEventAggregator eventAggregator, IClientContext clientContext)
-        {
-            _service = service;
+			:base(service,clientContext)
+        {            
             _mappingService = mappingService;
             _eventAggregator = eventAggregator;
-            _clientContext = clientContext;
+        	SubscribeToEvents();
         }
 
-        public IList<Task> GetTasksBetweenDates(DateTimeRange dateTimeRange)
+		private void SubscribeToEvents()
+		{
+			_eventAggregator.GetEvent<DeleteTaskEvent>().Subscribe(RemoveTask);
+		}
+
+		public IList<Task> GetTasksBetweenDates(DateTimeRange dateTimeRange)
         {
 
             TaskSpecificationDto taskSpecificationDto = new TaskSpecificationDto
@@ -38,13 +41,9 @@ namespace TopCalendar.Client.Connector
                                                                 StartAtFrom = dateTimeRange.StartAt,
                                                                 StartAtTo = dateTimeRange.FinishAt
                                                             };
-            FindTasksRequest findTasksRequest = new FindTasksRequest
-                                                    {
-                                                        TaskSpecificationDto = taskSpecificationDto,
-                                                        UserCredentials = _clientContext.UserCredentials
-                                                    };
+        	FindTasksRequest findTasksRequest = Request<FindTasksRequest>(r => r.TaskSpecificationDto = taskSpecificationDto);
 
-            FindTasksResponse findTasksResponse = _service.FindTasks(findTasksRequest);
+            FindTasksResponse findTasksResponse = Service.FindTasks(findTasksRequest);
 
             TaskDto[] tasks = findTasksResponse.Tasks;
 
@@ -61,7 +60,7 @@ namespace TopCalendar.Client.Connector
         public bool AddTask(Task task)
         {
             TaskDto taskDto = _mappingService.ToDto(task);
-            _service.AddNewTask(new AddNewTaskRequest {Task = taskDto, UserCredentials = _clientContext.UserCredentials});
+            Service.AddNewTask(Request<AddNewTaskRequest>(r=> r.Task=taskDto));
             _eventAggregator.GetEvent<NewTaskAddedEvent>().Publish(task);
             return true;
             //Todo: should call TaskAddedEvent
@@ -69,7 +68,9 @@ namespace TopCalendar.Client.Connector
 
     	public void RemoveTask(Task task)
     	{
-    		//Todo: Michale jak zupdatowac referencje do serwisu	
+    		TaskDto taskDto = _mappingService.ToDto(task);
+    		Service.RemoveTask(Request<RemoveTaskRequest>(r => r.TaskId = taskDto.Id));
+			_eventAggregator.GetEvent<TaskListChangedEvent>().Publish(task.StartAt);
     	}
 
     	/// <summary>

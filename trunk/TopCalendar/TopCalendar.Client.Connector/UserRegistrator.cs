@@ -7,17 +7,13 @@ using TopCalendar.Client.Connector.TopCalendarCommunicationService;
 
 namespace TopCalendar.Client.Connector
 {
-    public class UserRegistrator : IUserRegistrator
+    public class UserRegistrator : ServiceClient, IUserRegistrator
     {
         #region IUserRegistrator Members
-
-        private readonly ITopCalendarCommunicationService _service;
-        private readonly IClientContext _clientContext;
-
+        
         public UserRegistrator(ITopCalendarCommunicationService service, IClientContext clientContext)
+			:base(service,clientContext)
         {
-            _service = service;
-            _clientContext = clientContext;
         }
 
         public bool IsLoginFree(string login)
@@ -31,11 +27,11 @@ namespace TopCalendar.Client.Connector
             {
                 UserCredentials userCredentials = new UserCredentials {Login = login, Password = password};
                 RegisterUserResponse response =
-                    _service.RegisterUser(new RegisterUserRequest {UserCredentials = userCredentials});
+                    Service.RegisterUser(new RegisterUserRequest {UserCredentials = userCredentials});
 
                 if (response.Success)
                 {
-                    _clientContext.OnUserLogged(userCredentials);
+                    ClientContext.OnUserLogged(userCredentials);
                 }
 
                 Console.WriteLine(response);
