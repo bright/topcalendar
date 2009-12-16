@@ -1,6 +1,7 @@
 ﻿using Microsoft.Practices.Composite.Events;
 using NUnit.Framework;
 using Rhino.Mocks;
+using TopCalendar.Client.Connector;
 using TopCalendar.UI.Infrastructure;
 using TopCalendar.Utility.Tests;
 using TopCalendar.Utility.UI;
@@ -70,6 +71,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 				.Stub(ea => ea.GetEvent<RegistrationCompletedEvent>())
 				.IgnoreArguments()
 				.Return(regCompletedSubscriber);
+			Dependency<IUserRegistrator>().Stub(registrator => registrator.Register(null, null)).IgnoreArguments().Return(true);
 		}		
 
 		protected override void AfterSutCreation()
@@ -81,7 +83,13 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		protected override void Because()
 		{		
 			Sut.RegisterCommand.Execute(null);
-		}			
+		}
+
+		[Test]
+		public void should_call_registrator()
+		{
+			Dependency<IUserRegistrator>().AssertWasCalled(registrator=> registrator.Register(Arg.Is(Sut.Login),Arg.Is(Sut.Password)));
+		}
 
 		[Test]
 		public void can_execute_register()

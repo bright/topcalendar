@@ -65,6 +65,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.Plug
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Modules.Plugins.Tests", "Tests\TopCalendar.UI.Modules.Plugins.Tests\TopCalendar.UI.Modules.Plugins.Tests.csproj", "{4373158D-D56F-4A43-96CC-6295A64410CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCalendar.UI.Infrastructure.Tests", "TopCalendar.UI.Infrastructure.Tests\TopCalendar.UI.Infrastructure.Tests.csproj", "{74E0C89D-1F5F-42A9-9A92-30AAA1FF4241}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -187,6 +189,10 @@ Global
 		{4373158D-D56F-4A43-96CC-6295A64410CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4373158D-D56F-4A43-96CC-6295A64410CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4373158D-D56F-4A43-96CC-6295A64410CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74E0C89D-1F5F-42A9-9A92-30AAA1FF4241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74E0C89D-1F5F-42A9-9A92-30AAA1FF4241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74E0C89D-1F5F-42A9-9A92-30AAA1FF4241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74E0C89D-1F5F-42A9-9A92-30AAA1FF4241}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -210,5 +216,6 @@ Global
 		{DB45EEF8-632C-4179-B5E7-E42EB829C6C9} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{41E0A974-E7D9-43BB-B7FA-3E294369DC65} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 		{4373158D-D56F-4A43-96CC-6295A64410CC} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
+		{74E0C89D-1F5F-42A9-9A92-30AAA1FF4241} = {3AE1B67E-6742-45CD-9D05-E010DF674B33}
 	EndGlobalSection
 EndGlobal

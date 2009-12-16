@@ -53,6 +53,12 @@ namespace TopCalendar.UI.Infrastructure
     public class NewTaskAddedEvent : CompositePresentationEvent<Task>
 	{
 	}
+	/// <summary>
+	/// Event is published when user task list has changed
+	/// the parameter is StartAt property of changed task
+	/// </summary>
+	public class TaskListChangedEvent : CompositePresentationEvent<DateTime>
+	{}
 
 	/// <summary>
 	/// Event publikowany po wybraniu Managera pluginow z menu

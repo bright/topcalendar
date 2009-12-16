@@ -75,7 +75,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ServiceRequest.cs" />
+    <Compile Include="ServiceClient.cs" />
     <Compile Include="TasksRepository.cs" />
     <Compile Include="Exceptions\UserNotLoggedException.cs" />
     <Compile Include="UserAuthenticator.cs" />
@@ -111,6 +111,9 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\TopCalendarCommunicationService\TopCalendar.Client.Connector.TopCalendarCommunicationService.AddNewTaskResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TopCalendarCommunicationService\TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\TopCalendarCommunicationService\TopCalendar.Client.Connector.TopCalendarCommunicationService.FindTasksResponse.datasource">
