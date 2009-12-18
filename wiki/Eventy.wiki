@@ -5,6 +5,9 @@ Trzeba rzetelnie spisywać wszystkie Eventy, jakie dane moduły publikują i co 
 
 Wszystkie eventy powinny być zdefiniowane w {{{TopCalendar.UI.Infrastructure.Events}}} i muszą dziedziczyć po {{{CompositePresentationEvent<T>}}}.
 
+Dodatkowo jesli chcemy aby jakiś przycisk, akcja publikowala event wystarczy użyć 
+[http://code.google.com/p/topcalendar/source/browse/trunk/TopCalendar/TopCalendar.UI.Infrastructure/CommonCommands/EventPublisherCommand.cs EventPublisherCommand]
+
 || *Event Name* || *Parametr* || *Opis* || *Moduł publikujący* || *Moduły subskrybujące* ||
 || {{{CloseAppEvent}}} || - || Polecenie "Zakończ" z menu || Shell (menu) || Shell ||
 || {{{UnloadViewEvent}}} || _IView_ Obiekt widoku do wywalenia || Żądanie usunięcia widoku z UI || dowolny moduł || PluginManager ||
