@@ -45,6 +45,16 @@
         <Setter Property="Height" Value="15px" />
     </Style>
 
+    <Style x:Key="EditIconButtonTemplate" TargetType="{x:Type Button}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="edit.png" Stretch="UniformToFill" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Width" Value="15px" />
+        <Setter Property="Height" Value="15px" />
+    </Style>
+
 
     <!-- Fill Brushes -->        
 

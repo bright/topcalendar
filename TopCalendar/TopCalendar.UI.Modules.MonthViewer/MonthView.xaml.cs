@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using TopCalendar.UI.Modules.MonthViewer;
 
 namespace TopCalendar.UI.Modules.MonthViewer
@@ -20,4 +22,8 @@ namespace TopCalendar.UI.Modules.MonthViewer
 			set { DataContext = value; }
 		}
 	}
+
+
+
+    
 }
