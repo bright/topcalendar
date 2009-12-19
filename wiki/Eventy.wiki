@@ -14,6 +14,7 @@ Dodatkowo jesli chcemy aby jakiś przycisk, akcja publikowala event wystarczy u�
 || {{{UnloadModuleEvent}}} || _IModule_ Moduł do wywalenia || Żądanie usunięcia referencji do modułu || dowolny moduł || PluginManager ||
 || {{{RegistrationCompletedEvent}}} || _string_ Login nowego usera || Po rejestracji zakończonej sukcesem || Registration || MonthViewerModule ||
 || {{{ShowAddNewTaskViewEvent}}} || _DateTime_ data rozpoczęcia zadania  || Pokazuje w regionie MainContent formularz dodania nowego zadania  || Shell (menu) || TaskViewerModule || 
+|| {{{ShowEditTaskViewEvent}}} || _Task_ zadanie do edycji  || Pokazuje w regionie MainContent formularz edytowania nowego zadania  || MonthViewerModule(Button edycji przy zadaniu) || TaskViewerModule ||
 || {{{NewTaskAddedEvent}}} || _Task_ dodane zadanie || Event jest publikowany po pomyślnym dodaniu zadania do repozytorium || tylko Repozytorium || MonthViewerModule ||
 || {{{ShowPluginsEvent}}} || - || Polecenie "Manager pluginów" z menu || Shell (menu) || PluginsModule ||
 || ... ||   ||  ||  ||  ||
