@@ -80,7 +80,8 @@ namespace TopCalendar.Client.Connector
         /// <returns>true jeœli operacja sie powiedzie, jak nie to false</returns>
         public bool UpdateTask(Task task)
         {
-            // TODO 
+    	    TaskDto taskDto = _mappingService.ToDto(task);
+            //Service.
             return true;
         }
     }

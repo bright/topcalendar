@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Modularity;
 using Ninject;
+using TopCalendar.Client.DataModel;
 using TopCalendar.UI.Infrastructure;
 using TopCalendar.UI.PluginManager;
 using TopCalendar.Utility.UI;
@@ -47,6 +48,7 @@ namespace TopCalendar.UI.Modules.TaskViewer
 
 			_eventAggregator.GetEvent<RegistrationCompletedEvent>().Subscribe(HandleRegistrationCompletedEvent);
             _eventAggregator.GetEvent<ShowAddNewTaskViewEvent>().Subscribe(HandleShowAddNewTaskViewEvent);
+            _eventAggregator.GetEvent<ShowEditTaskViewEvent>().Subscribe(HandleShowEditTaskEvent);
         }
 
 		private void HandleRegistrationCompletedEvent(string login)
@@ -62,6 +64,16 @@ namespace TopCalendar.UI.Modules.TaskViewer
                 RegionNames.MainContent, taskPresentationModel.View);
 
             taskPresentationModel.ShowAddNewTaskView(time);
+        }
+
+        private void HandleShowEditTaskEvent(Task taskToEdit)
+        {
+            var taskPresentationModel = _kernel.Get<ITaskPresentationModel>();
+
+            _pluginLoader.RegisterViewWithRegion(
+                RegionNames.MainContent, taskPresentationModel.View);
+
+            taskPresentationModel.ShowEditTaskView(taskToEdit);
         }
     }
 }

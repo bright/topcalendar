@@ -48,6 +48,12 @@ namespace TopCalendar.UI.Infrastructure
     }
 
     /// <summary>
+    /// Event publikowany gdy ma się pojawić okno edycji zadania
+    /// W parametrze zadanie przeznaczone do edycji
+    /// </summary>
+    public class ShowEditTaskViewEvent : CompositePresentationEvent<Task>{}
+
+    /// <summary>
     /// Event is Published if new task is added to repository
     /// </summary>
     public class NewTaskAddedEvent : CompositePresentationEvent<Task>

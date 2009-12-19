@@ -30,16 +30,20 @@ namespace TopCalendar.UI.Modules.TaskViewer
 			_view.ViewModel = this;        	
         }
 
-   
-    
-
     	public void ShowAddNewTaskView(DateTime? newDateTime)
         {
         	IsNewTask = true;
             Task = new Task("Nazwa", newDateTime ?? DateTime.Now);            
         }
 
-    	public bool IsNewTask
+        public void ShowEditTaskView(Task taskToEdit)
+        {
+            IsNewTask = false;
+            Task = taskToEdit;
+        }
+
+
+        public bool IsNewTask
     	{    		
 			get
 			{
@@ -54,8 +58,6 @@ namespace TopCalendar.UI.Modules.TaskViewer
 
     	private readonly IEventAggregator _eventAggregator;
         private readonly ITaskRepository _taskRepository;
-        
-
         
 		private Task _task;
     	public Task Task
@@ -177,7 +179,6 @@ namespace TopCalendar.UI.Modules.TaskViewer
 			_addCommand.RaiseCanExecuteChanged();
 			_updateCommand.RaiseCanExecuteChanged();
 		}
-
 
 		private void UnBindCanExecuteCommands()
 		{
