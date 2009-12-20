@@ -14,7 +14,8 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 
 		public BaseResponse RemoveTask(RemoveTaskRequest request)
 		{
-			return ExecuteAndReturn(request, r => _taskRepository.Remove(_taskRepository.GetById(request.TaskId)));
+			return WithinTransactionDo(s => _taskRepository.Remove(_taskRepository.GetById(request.TaskId)))
+				.OnErrorFillResposneWithException();			
 		}
 	}
 }

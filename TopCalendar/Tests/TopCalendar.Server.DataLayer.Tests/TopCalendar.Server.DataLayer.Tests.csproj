@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InMemoryNHibernateSessionFactory.cs" />
+    <Compile Include="observations_with_in_memory_database_of_sut_of_type.cs" />
     <Compile Include="when_adding_new_user_to_repository.cs" />
     <Compile Include="observations_for_adding_new_user_to_repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

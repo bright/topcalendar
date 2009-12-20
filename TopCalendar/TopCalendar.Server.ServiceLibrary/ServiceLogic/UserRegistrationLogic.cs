@@ -2,8 +2,8 @@
 
 using System;
 using TopCalendar.Server.DataLayer.Entities;
+using TopCalendar.Server.DataLayer.Exceptions;
 using TopCalendar.Server.DataLayer.Repositories;
-using TopCalendar.Server.DataLayer.Repositories.Exceptions;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.StatusReason;
 
@@ -25,23 +25,21 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
         }
 
         public RegisterUserResponse RegisterUser(RegisterUserRequest registerUserRequest)
-        {
-            User user = new User
-                            {
-                                Login = registerUserRequest.UserCredentials.Login,
-                                Password = registerUserRequest.UserCredentials.Password
-                            };
-
-            try
-            {
-                _usersRepository.Add(user);
-
-                return SuccessSituationResponse();
-            }
-            catch (UserLoginAlreadyTakenException)
-            {
-                return ErrorSituationResponse(StatusReasonFor.RegisterUser.LOGIN_ALREADY_TAKEN);
-            }
+        {			
+        	return WithinTransactionDo(s =>
+        	{
+        		var user = _usersRepository.GetByLoginAndPassword(registerUserRequest.UserCredentials.Login, registerUserRequest.UserCredentials.Password);
+				if(user == null)
+				{
+					_usersRepository.Add(
+						new User(registerUserRequest.UserCredentials.Login, registerUserRequest.UserCredentials.Password)
+					);                 	
+				}
+				else
+				{
+					throw new UserLoginAlreadyTakenException();
+				}       		
+        	}).OnErrorSetMessage(StatusReasonFor.RegisterUser.LOGIN_ALREADY_TAKEN);                                    
         }
 
         public LoginUserResponse CheckUser(LoginUserRequest loginUserRequest)

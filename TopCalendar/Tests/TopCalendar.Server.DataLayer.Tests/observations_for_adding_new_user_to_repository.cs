@@ -8,16 +8,19 @@ namespace TopCalendar.Server.DataLayer.Tests
     public abstract class observations_for_adding_new_user_to_repository : observations_for_auto_created_sut_of_type<UsersRepository>
     {
         protected User _user;
+    	protected ISession session;
 
-        protected override void EstablishContext()
+
+    	protected override void EstablishContext()
         {
-            _user = new User
-                        {
-                            Login = "LOGIN",
-                            Password = "PASSWORD"
-                        };
+            _user = new User( "LOGIN","PASSWORD");
             //Kernel.Bind<ISessionFactory>().ToConstant(NHibernateSessionFactory.CreateSessionFactory());
-			ProvideImplementationOf(new InMemoryNHibernateSessionFactory().CreateSessionFactory());
+        	var sessionFactory = new InMemoryNHibernateSessionFactory().CreateSessionFactory();
+			// just for now, I'll changed it tomorow ;-) Piotr
+    		session = sessionFactory.OpenSession();    		
+        	ProvideImplementationOf(sessionFactory);
+			ProvideImplementationOf(session);
+
         }
         
     }
