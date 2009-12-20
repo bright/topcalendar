@@ -151,7 +151,7 @@ namespace TopCalendar.Utility.Tests
 		{
 			Assert.Contains(expected, actual);
 		}
-
+		
 		public static void ShouldContain<T>(this IEnumerable<T> actual, T expected)
 		{
 			if (actual.Count(t => t.Equals(expected)) == 0)
@@ -163,6 +163,12 @@ namespace TopCalendar.Utility.Tests
 		public static void ShouldNotBeEmpty<T>(this IEnumerable<T> actual)
 		{
 			Assert.Greater(actual.Count(), 0, "The list should have at least one element");
+		}
+
+		public static void ShouldNotContain<T>(this IEnumerable<T> actual, Func<T,bool> match)
+		{
+			var result = actual.Where(match);
+			Assert.That(result.Count().Equals(0), "Not expected item found in collection");
 		}
 
 		public static void ShouldNotContain<T>(this IEnumerable<T> actual, T expected)
@@ -329,6 +335,7 @@ namespace TopCalendar.Utility.Tests
 
 		public static IEnumerable<T> ShouldHaveCount<T>(this IEnumerable<T> actual, int expected)
 		{
+			actual.ShouldNotBeNull();
 			actual.Count().ShouldEqual(expected);
 			return actual;
 		}

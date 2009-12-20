@@ -26,20 +26,9 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 
         public RegisterUserResponse RegisterUser(RegisterUserRequest registerUserRequest)
         {			
-        	return WithinTransactionDo(s =>
-        	{
-        		var user = _usersRepository.GetByLoginAndPassword(registerUserRequest.UserCredentials.Login, registerUserRequest.UserCredentials.Password);
-				if(user == null)
-				{
-					_usersRepository.Add(
-						new User(registerUserRequest.UserCredentials.Login, registerUserRequest.UserCredentials.Password)
-					);                 	
-				}
-				else
-				{
-					throw new UserLoginAlreadyTakenException();
-				}       		
-        	}).OnErrorSetMessage(StatusReasonFor.RegisterUser.LOGIN_ALREADY_TAKEN);                                    
+        	return WithinTransactionDo(s => _usersRepository.Add(
+        	                                	new User(registerUserRequest.UserCredentials.Login, registerUserRequest.UserCredentials.Password)
+        	                                	)).OnErrorSetMessage(StatusReasonFor.RegisterUser.LOGIN_ALREADY_TAKEN);                                    
         }
 
         public LoginUserResponse CheckUser(LoginUserRequest loginUserRequest)

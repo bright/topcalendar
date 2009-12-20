@@ -4,17 +4,21 @@
 
 #endregion
 
+using TopCalendar.Utility;
+using TopCalendar.Utility.BasicExtensions;
+
 namespace TopCalendar.Server.DataLayer.Entities
 {
     public class User
     {
-
 		protected User()
 		{
 		}
 
     	public User(string login, string password)
     	{
+    		Check.Guard(!login.IsEmpty(), "User login should not be empty");
+    		Check.Guard(!password.IsEmpty(), "User password should not be empty");
     		Login = login;
     		Password = password;
     	}

@@ -3,6 +3,8 @@
 using System;
 using Microsoft.Practices.ServiceLocation;
 using NHibernate;
+using Ninject;
+using Ninject.Parameters;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.StatusReason;
 
@@ -10,13 +12,40 @@ using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.StatusReaso
 
 namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 {
-    public abstract class RequestToResponseLogic<TRequest, TResponse> where TResponse : BaseResponse, new()
+    public abstract class RequestToResponseLogic<TRequest, TResponse> 
+		: ResponseLogic<TResponse>
+		where TResponse : BaseResponse, new()
     {    	    	
 		protected ITransactionHandler<TResponse> WithinTransactionDo(Action<IServiceLocator> doJob)
 		{
-			return new TransactionHandler<TResponse>(doJob);						
+			var kenel = ServiceLocator.Current.GetInstance<IKernel>();
+			return kenel.Get<ITransactionHandler<TResponse>>(new ConstructorArgument("action", doJob));			
 		}
+
     }
+
+	public abstract class ResponseLogic<TResponse> where TResponse : BaseResponse, new()
+	{
+		public static TResponse ErrorSituationResponse(String statusReason)
+		{
+			return Response(statusReason, false);
+		}
+
+		public static TResponse SuccessSituationResponse()
+		{
+			return Response(StatusReasonFor.All.OK, true);
+		}
+
+		private static TResponse Response(String statusReason, Boolean success)
+		{
+			TResponse response = new TResponse
+			{
+				StatusReason = statusReason,
+				Success = success
+			};
+			return response;
+		}
+	}
 
 	public class TransactionHandler<TResponse> : ITransactionHandler<TResponse>
 		where TResponse : BaseResponse, new() 
@@ -46,10 +75,10 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 			try
 			{
 				WithinTransactionDo(()=> _action(_serviceLocator));
-				return SuccessSituationResponse();
+				return ResponseLogic<TResponse>.SuccessSituationResponse();
 			}catch
 			{
-				return ErrorSituationResponse(message);
+				return ResponseLogic<TResponse>.ErrorSituationResponse(message);
 			}
 		}
 
@@ -58,10 +87,10 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 			try
 			{
 				WithinTransactionDo(() => _action(_serviceLocator));
-				return SuccessSituationResponse();
+				return ResponseLogic<TResponse>.SuccessSituationResponse();
 			}catch(Exception ex)
 			{
-				var resposne = ErrorSituationResponse(ex.Message);
+				var resposne = ResponseLogic<TResponse>.ErrorSituationResponse(ex.Message);
 				setThings(resposne);
 				return resposne;
 			}
@@ -72,32 +101,14 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 			try
 			{
 				WithinTransactionDo(() => _action(_serviceLocator));
-				return SuccessSituationResponse();
+				return ResponseLogic<TResponse>.SuccessSituationResponse();
 			}catch(Exception ex)
 			{
-				return ErrorSituationResponse(ex.Message);
+				return ResponseLogic<TResponse>.ErrorSituationResponse(ex.Message);
 			}
 		}
 
-		protected TResponse ErrorSituationResponse(String statusReason)
-        {
-            return Response(statusReason, false);
-        }
-
-        protected TResponse SuccessSituationResponse()
-        {
-            return Response(StatusReasonFor.All.OK, true);
-        }
-
-        private TResponse Response(String statusReason, Boolean success)
-        {
-            TResponse response = new TResponse
-                                     {
-                                         StatusReason = statusReason,
-                                         Success = success
-                                     };
-            return response;
-        }
+		
 	}
 
 	public interface ITransactionHandler<TResponse>

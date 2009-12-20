@@ -20,16 +20,8 @@ namespace TopCalendar.Server.DataLayer.Repositories
         {
         }
 
-        public override Task Add(Task entity)
-        {
-            Check.Guard(entity.User != null, "Task without User");
-            return base.Add(entity);
-        }
-
         public IList<Task> Find(TaskSpecification taskSpecification)
-        {
-            Check.Guard(taskSpecification.User != null, "TaskSpecification without user");
-            
+        {                        
             var query = Session.CreateCriteria(typeof (Task));
 
             query.Add(Restrictions.Eq("User", taskSpecification.User));

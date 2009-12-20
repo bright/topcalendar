@@ -86,13 +86,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InMemoryNHibernateSessionFactory.cs" />
+    <Compile Include="New.cs" />
     <Compile Include="observations_with_in_memory_database_of_sut_of_type.cs" />
-    <Compile Include="when_adding_new_user_to_repository.cs" />
-    <Compile Include="observations_for_adding_new_user_to_repository.cs" />
+    <Compile Include="TasksRepositoryTests.cs" />
+    <Compile Include="when_adding_user_to_repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="when_adding_new_user_with_existing_login_to_repository.cs" />
+    <Compile Include="UsersTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TopCalendar.Utility\TopCalendar.Utility.csproj">
+      <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
+      <Name>TopCalendar.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj">
       <Project>{2DD936B1-4635-4A59-BFA4-385A76BDE801}</Project>
       <Name>TopCalendar.Utility.Tests</Name>
