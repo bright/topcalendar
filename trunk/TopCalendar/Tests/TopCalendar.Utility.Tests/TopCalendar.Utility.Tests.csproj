@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="BasicExtensionsTests.cs" />
     <Compile Include="DateTimeRangeTests.cs" />
+    <Compile Include="observations_for_auto_created_sut_of_type_with_eventaggregator.cs" />
     <Compile Include="observations_for_system_of_type.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecificationExtensions.cs" />
@@ -99,6 +100,10 @@
     <Compile Include="Validators\StringNullableLengthValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
+      <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
+      <Name>Composite.Desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\TopCalendar.Utility\TopCalendar.Utility.csproj">
       <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
       <Name>TopCalendar.Utility</Name>

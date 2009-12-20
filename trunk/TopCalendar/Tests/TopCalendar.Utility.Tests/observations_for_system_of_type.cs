@@ -154,7 +154,7 @@ namespace TopCalendar.Utility.Tests
 		protected T Dependency<T>()
 			where T : class 
 		{
-			T result;
+			T result = null;
 			try
 			{
 				result = _mockingKernel.Get<T>();
@@ -165,7 +165,7 @@ namespace TopCalendar.Utility.Tests
 			}
 			catch
 			{
-				result = null;
+				//result = null;
 			}
 			return result;
 		}

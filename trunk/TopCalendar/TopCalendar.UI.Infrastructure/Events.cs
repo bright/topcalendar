@@ -80,4 +80,11 @@ namespace TopCalendar.UI.Infrastructure
 	public class DeleteTaskEvent : CompositePresentationEvent<Task>
 	{		
 	}
+
+	/// <summary>
+	/// Publickowany gdy widok tygodnia ma sie pokazac
+	/// </summary>
+	public class ShowWeekViewEvent : CompositePresentationEvent<DateTime?>
+	{		
+	}
 }

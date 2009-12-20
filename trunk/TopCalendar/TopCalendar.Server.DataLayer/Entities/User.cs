@@ -23,7 +23,7 @@ namespace TopCalendar.Server.DataLayer.Entities
     		Password = password;
     	}
 
-        public virtual int Id { get; protected set; }
+        public virtual int Id { get; private set; }
         public virtual string Login { get; set; }
         public virtual string Password { get; set; }
 

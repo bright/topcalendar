@@ -12,22 +12,39 @@ using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.TaskViewer.Tests
 {
-    public abstract class observations_for_task_view_presentation_model : observations_for_auto_created_sut_of_type<TaskPresentationModel>
+    public abstract class observations_for_task_view_presentation_model : observations_for_auto_created_sut_of_type_with_eventaggregator<TaskPresentationModel>
     {
 		protected UnloadViewEvent _unloadViewEvent;
         protected ITaskView _taskView;
+    	private IView _argument;
 
-        protected override void EstablishContext()
+    	protected override void EstablishContext()
         {
             base.EstablishContext();
-			_unloadViewEvent = MockRepository.GenerateMock<UnloadViewEvent>();
-			Dependency<IEventAggregator>().Stub(aggregator => aggregator.GetEvent<UnloadViewEvent>()).Return(
-				_unloadViewEvent);
+        	_unloadViewEvent = EventAggr.GetEvent<UnloadViewEvent>();
+        	_unloadViewEvent.Subscribe(_unloadViewEventAction);
             _taskView = Dependency<ITaskView>();
         }
+
+    	private void _unloadViewEventAction(IView obj)
+    	{
+    		_argument = obj;
+    	}
+
+    	protected void assert_unload_view_event_was_called_with_argument<TType>(TType argument)
+		{
+    		_argument.ShouldEqual(argument);
+		}
+
+		protected void assert_unload_view_event_was_not_called_with_argument<TType>(TType argument)
+		{
+			_argument.ShouldNotEqual(argument);
+		}
+
+
     }
 
-    [TestFixture]
+    
     public class TaskViewPresentationModel_when_CancelCommand_is_executed : observations_for_task_view_presentation_model
     {
 
@@ -39,14 +56,11 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         [Test]
         public void View_should_be_unloaded()
         {
-
-            var viewToUnload = Dependency<ITaskView>();
-
-			_unloadViewEvent.AssertWasCalled(x => x.Publish(viewToUnload));
+            assert_unload_view_event_was_called_with_argument(Dependency<ITaskView>());
         }
     }
 
-    [TestFixture]
+    
     public class TaskViewPresentationModel_when_UpdateCommand_is_executed : observations_for_task_view_presentation_model
     {
 
@@ -62,7 +76,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         }
     }
 
-    [TestFixture]
+    
     public class TaskViewPresentationModel_when_UpdateCommand_is_executed_and_UpdateTask_ended_successfull
         : observations_for_task_view_presentation_model
     {
@@ -81,11 +95,11 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         [Test]
         public void TaskView_should_be_unregistered()
         {
-			_unloadViewEvent.AssertWasCalled(x => x.Publish(_taskView));
+			assert_unload_view_event_was_called_with_argument(_taskView);
         }
     }
 
-    [TestFixture]
+    
     public class TaskViewPresentationModel_when_UpdateCommand_is_executed_and_UpdateTask_fail
         : observations_for_task_view_presentation_model
     {
@@ -104,11 +118,11 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         [Test]
         public void TaskView_should_not_be_unregistered()
         {
-			_unloadViewEvent.AssertWasNotCalled(x => x.Publish(_taskView));
+			assert_unload_view_event_was_not_called_with_argument(_taskView);
         }
     }
 
-    [TestFixture]
+    
     public class TaskPresentationModel_when_AddCommand_is_executed : observations_for_task_view_presentation_model
     {
         protected override void Because()
@@ -123,7 +137,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         }
     }
 
-    [TestFixture]
+    
     public class TaskPresentationModel_when_AddCommand_is_executed_and_AddTask_success : observations_for_task_view_presentation_model
     {
         protected override void EstablishContext()
@@ -140,11 +154,11 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         [Test]
         public void TaskView_should_be_unregistered()
         {
-            _unloadViewEvent.AssertWasCalled(x => x.Publish(_taskView));
+            assert_unload_view_event_was_called_with_argument(_taskView);
         }
     }
 
-    [TestFixture]
+    
     public class TaskPresentationModel_when_AddCommand_is_executed_and_AddTask_fail : observations_for_task_view_presentation_model
     {
         protected override void EstablishContext()
@@ -161,7 +175,7 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         [Test]
         public void TaskView_should_not_be_unregistered()
         {
-			_unloadViewEvent.AssertWasNotCalled(x => x.Publish(_taskView));
+			assert_unload_view_event_was_not_called_with_argument(_taskView);
         }
     }
 
