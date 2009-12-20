@@ -3,6 +3,7 @@
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Dispatcher;
+using Microsoft.Practices.ServiceLocation;
 using TopCalendar.Server.DataLayer.Entities;
 using TopCalendar.Server.DataLayer.Repositories;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
@@ -12,20 +13,15 @@ using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
 namespace TopCalendar.Server.ServiceLibrary.ServiceBehavior
 {
     public class ValidUserParameterInspector : IParameterInspector
-    {
-        private readonly IUsersRepository _usersRepository;
-
-        public ValidUserParameterInspector(IUsersRepository usersRepository)
-        {
-            _usersRepository = usersRepository;
-        }
-
+    {        
         public void AfterCall(string operationName, object[] outputs, object returnValue, object correlationState)
         {
         }
 
         public object BeforeCall(string operationName, object[] inputs)
         {
+        	var _usersRepository = ServiceLocator.Current.GetInstance<IUsersRepository>();
+
             RequestWithCredentials requestWithCredentials = ObtainRequestWithCredentials(inputs);
 
             if (requestWithCredentials == null)

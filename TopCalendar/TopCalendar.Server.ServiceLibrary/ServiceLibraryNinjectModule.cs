@@ -18,7 +18,7 @@ namespace TopCalendar.Server.ServiceLibrary
             Bind<AddNewTasksLogic>().ToSelf();
             Bind<ValidUserParameterInspector>().ToSelf();
             Bind<ITopCalendarCommunicationService>().To<TopCalendarCommunicationServiceImpl>();
-            Bind<DtoMappingService>().ToConstant(new DtoMappingService());
+            Bind<DtoMappingService>().ToConstant(new DtoMappingService());			
         }
     }
 }

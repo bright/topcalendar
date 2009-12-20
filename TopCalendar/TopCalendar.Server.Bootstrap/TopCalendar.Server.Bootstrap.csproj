@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{46EE4EDF-AB17-408C-ABE9-10E45ECAC614}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -97,6 +97,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultNinjectModule.cs" />
+    <Compile Include="NHSessionCallContextInitializer.cs" />
+    <Compile Include="NHSessionProvider.cs" />
     <Compile Include="NinjectWcf\NinjectServiceHostFactory.cs" />
     <Compile Include="NinjectWcf\KernelContainer.cs" />
     <Compile Include="NinjectWcf\NinjectInstanceProvider.cs" />
