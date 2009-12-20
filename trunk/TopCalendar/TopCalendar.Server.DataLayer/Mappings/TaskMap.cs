@@ -12,7 +12,7 @@ namespace TopCalendar.Server.DataLayer.Mappings
             Map(x => x.Description);
             Map(x => x.StartAt);
             Map(x => x.FinishAt);
-            References(x => x.User);
+            References(x => x.User).Not.Nullable();
         }
     }
 }

@@ -76,6 +76,7 @@
     <Compile Include="ServiceContract\DataContract\Dto\TaskDto.cs" />
     <Compile Include="ServiceContract\DataContract\StatusReason\StatusReasonFor.cs" />
     <Compile Include="ServiceContract\DataContract\TaskSpecificationDto.cs" />
+    <Compile Include="ServiceContract\DataContract\UpdateTaskRequest.cs" />
     <Compile Include="ServiceContract\DataContract\UserCredentials.cs" />
     <Compile Include="ServiceContract\ITopCalendarCommunicationService.cs" />
     <Compile Include="ServiceContract\DataContract\RegisterUserRequest.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="ServiceLogic\FindTasksLogic.cs" />
     <Compile Include="ServiceLogic\RemoveTaskLogic.cs" />
     <Compile Include="ServiceLogic\RequestToResponseLogic.cs" />
+    <Compile Include="ServiceLogic\UpdateTaskLogic.cs" />
     <Compile Include="ServiceLogic\UserRegistrationLogic.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +99,10 @@
     <ProjectReference Include="..\TopCalendar.Server.DataLayer\TopCalendar.Server.DataLayer.csproj">
       <Project>{D50862E2-68AF-4F70-A641-72D55294D780}</Project>
       <Name>TopCalendar.Server.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
+      <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
+      <Name>TopCalendar.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

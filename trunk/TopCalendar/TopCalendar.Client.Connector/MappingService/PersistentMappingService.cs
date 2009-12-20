@@ -30,6 +30,8 @@ namespace TopCalendar.Client.Connector.MappingService
         {
             Mapper.CreateMap<Task, TaskDto>();
             Mapper.CreateMap<TaskDto, Task>();
+        	Mapper.CreateMap<TaskDto, TaskDto>()
+				.ForMember(dst=> dst.Id, opt=> opt.Ignore());
         }
 
         /// <summary>
@@ -46,7 +48,9 @@ namespace TopCalendar.Client.Connector.MappingService
         {
             if (_tasksBusinessToDto.ContainsKey(taskBusiness))
             {
-                return _tasksBusinessToDto[taskBusiness];
+				// piotr: uaktualnia stan dto, nie wiem czy to tak powinno byc
+                _tasksBusinessToDto[taskBusiness] = Mapper.Map(taskBusiness,_tasksBusinessToDto[taskBusiness]);
+            	return _tasksBusinessToDto[taskBusiness];
             }
 
             return Mapper.Map<Task, TaskDto>(taskBusiness);

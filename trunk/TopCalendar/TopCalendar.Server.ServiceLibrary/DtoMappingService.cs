@@ -17,7 +17,8 @@ namespace TopCalendar.Server.ServiceLibrary
         {
             Mapper.CreateMap<Task, TaskDto>();
             Mapper.CreateMap<TaskDto, Task>();
-            Mapper.CreateMap<TaskSpecificationDto, TaskSpecification>();
+            Mapper.CreateMap<TaskSpecificationDto, TaskSpecification>()
+				.ForMember(dst=> dst.User, opt=> opt.Ignore());
         }
 
         public TaskDto ToDto(Task task)
@@ -37,8 +38,8 @@ namespace TopCalendar.Server.ServiceLibrary
 
         public TaskSpecification FromDto(TaskSpecificationDto taskSpecificationDto, User user)
         {
-            TaskSpecification taskSpecification = Mapper.Map<TaskSpecificationDto, TaskSpecification>(taskSpecificationDto);
-            taskSpecification.User = user;
+			TaskSpecification taskSpecification = new TaskSpecification(user);
+            taskSpecification = Mapper.Map(taskSpecificationDto,taskSpecification);            
             return taskSpecification;
         }
     }

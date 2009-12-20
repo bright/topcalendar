@@ -23,13 +23,17 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 
         public AddNewTaskResponse AddNewTask(AddNewTaskRequest addNewTaskRequest)
         {
-            TaskDto taskDto = addNewTaskRequest.Task;			
-			// there should not be anny mapping from dtos to domain 
-            Task task = _mappingService.FromDto(taskDto);
-        	var user = addNewTaskRequest.CurrentUser;
-
+			TaskDto taskDto = addNewTaskRequest.Task;			
+			// there should not be anny mapping from dtos to domain                     	
 			return WithinTransactionDo(s =>
 			                           	{
+			                           		var task = new Task(addNewTaskRequest.CurrentUser)
+			                           		        	{
+			                           		        		Name = taskDto.Name,
+															Description =taskDto.Description,
+															FinishAt = taskDto.FinishAt,
+															StartAt = taskDto.StartAt
+			                           		        	};
 			                           		_tasksRepository.Add(task);
 			                           	})
         		.OnErrorFillResponse(r => r.Task = taskDto);            

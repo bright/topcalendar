@@ -71,4 +71,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" minOccurs="0" name="updateTaskRequest" nillable="true" type="q11:UpdateTaskRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract" minOccurs="0" name="UpdateTaskResult" nillable="true" type="q12:BaseResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

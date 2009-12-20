@@ -31,5 +31,10 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceContract
     	[FaultContract(typeof (DataAccessFault))]
     	[AttachValidUserInspector]
     	BaseResponse RemoveTask(RemoveTaskRequest deleteTaskRequest);
+
+    	[OperationContract]
+    	[FaultContract(typeof (DataAccessFault))]
+    	[AttachValidUserInspector]
+    	BaseResponse UpdateTask(UpdateTaskRequest updateTaskRequest);
     }
 }

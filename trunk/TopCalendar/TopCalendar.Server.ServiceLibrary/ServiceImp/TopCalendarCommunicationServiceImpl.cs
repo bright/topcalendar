@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using Microsoft.Practices.ServiceLocation;
 using TopCalendar.Server.ServiceLibrary.ServiceContract;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
 using TopCalendar.Server.ServiceLibrary.ServiceLogic;
@@ -15,14 +16,18 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceImp
         private readonly AddNewTasksLogic _addNewTaskLogic;
         private readonly FindTasksLogic _findTasksLogic;
     	private readonly RemoveTaskLogic _removeTaskLogic;
+    	private readonly UpdateTaskLogic _updateTaskLogic;
 
     	public TopCalendarCommunicationServiceImpl(UserRegistrationLogic userRegistrationLogic,
-                                                   AddNewTasksLogic addNewTaskLogic, FindTasksLogic findTasksLogic, RemoveTaskLogic removeTaskLogic)
+                                                   AddNewTasksLogic addNewTaskLogic, FindTasksLogic findTasksLogic, RemoveTaskLogic removeTaskLogic,
+												   UpdateTaskLogic updateTaskLogic
+			)
         {
             _userRegistrationLogic = userRegistrationLogic;
             _addNewTaskLogic = addNewTaskLogic;
             _findTasksLogic = findTasksLogic;
         	_removeTaskLogic = removeTaskLogic;
+    		_updateTaskLogic = updateTaskLogic;
         }
 
         public LoginUserResponse LoginUser(LoginUserRequest loginUserRequest)
@@ -73,6 +78,13 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceImp
     		Console.WriteLine("RemoveTask, findTaskRequest" + deleteTaskRequest);
 
     		return _removeTaskLogic.RemoveTask(deleteTaskRequest);
+    	}
+
+    	public BaseResponse UpdateTask(UpdateTaskRequest updateTaskRequest)
+    	{
+			Console.WriteLine("UpdateTask, updateTaskRequest" + updateTaskRequest);
+
+    		return _updateTaskLogic.UpdateTask(updateTaskRequest);
     	}
     }
 }

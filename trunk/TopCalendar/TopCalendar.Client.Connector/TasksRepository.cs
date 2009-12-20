@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.Practices.Composite.Events;
 using TopCalendar.Client.Connector.MappingService;
 using TopCalendar.Client.Connector.TopCalendarCommunicationService;
@@ -80,8 +81,9 @@ namespace TopCalendar.Client.Connector
         /// <returns>true jeœli operacja sie powiedzie, jak nie to false</returns>
         public bool UpdateTask(Task task)
         {
-    	    TaskDto taskDto = _mappingService.ToDto(task);
-            //Service.
+    	    TaskDto taskDto = Mapper.Map(task,_mappingService.ToDto(task));
+    		Service.UpdateTask(Request<UpdateTaskRequest>(r => r.Task = taskDto));
+			_eventAggregator.GetEvent<TaskListChangedEvent>().Publish(task.StartAt);
             return true;
         }
     }

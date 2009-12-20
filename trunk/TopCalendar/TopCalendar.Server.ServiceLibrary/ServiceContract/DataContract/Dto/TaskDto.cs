@@ -11,7 +11,7 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.Dto
     public class TaskDto
     {
         [DataMember]
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
         [DataMember]
         public string Name { get; set; }

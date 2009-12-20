@@ -9,7 +9,11 @@ using TopCalendar.Utility;
 namespace TopCalendar.Server.DataLayer.Specifications
 {
     public class TaskSpecification
-    {    	
+    {
+    	public TaskSpecification()
+    	{    		
+    	}
+
     	public TaskSpecification(User user)
     	{
     		Check.Guard(user != null, "Cant create task specification without user");
