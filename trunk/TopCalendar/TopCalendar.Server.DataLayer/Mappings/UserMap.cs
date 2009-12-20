@@ -13,7 +13,7 @@ namespace TopCalendar.Server.DataLayer.Mappings
         {
             Id(x => x.Id);
             Map(x => x.Login).Not.Nullable().Unique();
-            Map(x => x.Password).Not.Nullable();
+            Map(x => x.Password).Not.Nullable();			
         }
     }
 }

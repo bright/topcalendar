@@ -19,6 +19,8 @@ namespace TopCalendar.Server.DataLayer
 
         protected virtual IPersistenceConfigurer DbConfig { get; set; }
 
+		protected virtual Configuration Configuration { get; private set; }
+
         public NHibernateSessionFactory()
         {
             DbConfig = SQLiteConfiguration.Standard.UsingFile(DbFile);
@@ -27,15 +29,21 @@ namespace TopCalendar.Server.DataLayer
 
         public ISessionFactory CreateSessionFactory()
         {
-            return Fluently.Configure()
-                .Database(DbConfig)
-                .Mappings(m =>
-                          m.FluentMappings.AddFromAssemblyOf<User>())
-                .ExposeConfiguration(BuildSchema)
-                .BuildSessionFactory();
+        	BuildConfiguration();			
+        	var sessionFacotry = Configuration.BuildSessionFactory();
+			SchemaExport(Configuration);
+        	return sessionFacotry;
         }
 
-        private void BuildSchema(Configuration config)
+    	private void BuildConfiguration()
+    	{
+    		Configuration = Fluently.Configure()
+    			.Database(DbConfig)
+    			.Mappings(m =>
+    			          m.FluentMappings.AddFromAssemblyOf<User>()).BuildConfiguration();
+    	}	
+
+    	protected void SchemaExport(Configuration config)
         {
             // delete the existing db on each run
             if (DropDataBaseOnStart && File.Exists(DbFile))

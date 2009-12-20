@@ -3,8 +3,10 @@
 using System;
 using NUnit.Framework;
 using Rhino.Mocks;
+using TopCalendar.Server.DataLayer.Entities;
 using TopCalendar.Server.DataLayer.Exceptions;
 using TopCalendar.Server.DataLayer.Repositories;
+using TopCalendar.Server.DataLayer.Tests;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.StatusReason;
 using TopCalendar.Server.ServiceLibrary.ServiceLogic;
@@ -14,8 +16,39 @@ using TopCalendar.Utility.Tests;
 
 namespace TopCalendar.Server.ServiceLibrary.Tests
 {
-    public class when_trying_to_register_already_regitered_user :
-        observations_for_auto_created_sut_of_type<UserRegistrationLogic>
+
+	public class when_registering_new_user 
+		: observations_for_request_to_respone_logic<UserRegistrationLogic,RegisterUserRequest,RegisterUserResponse>
+	{
+		private UserCredentials _userCredentials;
+		private RegisterUserResponse _result;
+
+		protected override void Because()
+		{
+			_result = Sut.RegisterUser(ServiceRequest.Of<RegisterUserRequest>(r => r.UserCredentials = _userCredentials));
+		}
+
+		protected override void EstablishContext()
+		{
+			base.EstablishContext();
+			_userCredentials = new UserCredentials {Login = Guid.NewGuid().ToString(), Password = Guid.NewGuid().ToString()};
+		}
+
+		[Test]
+		public void should_add_user_to_repository()
+		{
+			Dependency<IUsersRepository>().AssertWasCalled(repository=> repository.Add(Arg<User>.Matches(u=> u.Login.Equals(_userCredentials.Login) && u.Password.Equals(_userCredentials.Password))));
+		}
+
+		[Test]
+		public void should_return_success()
+		{
+			_result.Success.ShouldBeTrue();
+		}
+	}
+
+	public class when_trying_to_register_already_registered_user :
+        observations_for_request_to_respone_logic<UserRegistrationLogic,RegisterUserRequest,RegisterUserResponse>
     {
         private RegisterUserRequest _inputData;
 
@@ -26,6 +59,7 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
 
         protected override void EstablishContext()
         {
+        	base.EstablishContext();
             _inputData = new RegisterUserRequest
                              {
                                  UserCredentials = new UserCredentials
@@ -34,13 +68,11 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
                                                            Password = PasswordConst
                                                       }
                              };
-            _result = null;
-
+            _result = null;        	
             Dependency<IUsersRepository>()
                 .Stub(x => x.Add(null))
                 .IgnoreArguments()
                 .Throw(new UserLoginAlreadyTakenException());
-
         }
 
         protected override void Because()
@@ -59,5 +91,11 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
         {
             _result.Success.ShouldEqual(false);
         }
+
+    	[Test]
+    	public void should_call_add_user_to_repository()
+    	{
+    		Dependency<IUsersRepository>().AssertWasCalled(repository=> repository.Add(Arg<User>.Matches(u=> u.Login.Equals(_inputData.UserCredentials.Login))));
+    	}
     }
 }

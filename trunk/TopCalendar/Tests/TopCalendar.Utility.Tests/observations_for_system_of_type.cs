@@ -97,14 +97,6 @@ namespace TopCalendar.Utility.Tests
 			ServiceLocator.SetLocatorProvider(() => _mockingKernel.Get<IServiceLocator>());
 			base.Setup();
 		}
-
-/*
-		protected IAutoMockingRepository AutoMockingRepository { get { return _mockingKernel; } }
-*/
-
-/*
-		protected IKernel Kernel { get { return _mockingKernel; } }		
-*/
 		
 		/// <summary>
 		/// Instruuje AutoMockingKernel ze typ ma byc stubem
@@ -139,20 +131,6 @@ namespace TopCalendar.Utility.Tests
 			return _mockingKernel.IsBinded<T>();
 		}
 
-/*
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		protected T DynamickMock<T>()
-		{
-			_mockingKernel.MarkDynamickMock<T>();
-			return _mockingKernel.Get<T>();
-		}
-*/
-
-
 		/// <summary>
 		/// Binduje typ do sta³ej
 		/// </summary>
@@ -161,6 +139,16 @@ namespace TopCalendar.Utility.Tests
 		protected void ProvideImplementationOf<TType>(TType implementation)
 		{
 			_mockingKernel.Bind<TType>().ToConstant(implementation);
+		}
+
+		protected void ProvideBindingOf<TWath,TWiht>() where TWiht : TWath
+		{
+			_mockingKernel.Bind<TWath>().To<TWiht>().InSingletonScope();
+		}
+
+		protected void ProvideBindingOf(Type what, Type with)
+		{
+			_mockingKernel.Bind(what).To(with).InSingletonScope();
 		}
 
 		protected T Dependency<T>()
