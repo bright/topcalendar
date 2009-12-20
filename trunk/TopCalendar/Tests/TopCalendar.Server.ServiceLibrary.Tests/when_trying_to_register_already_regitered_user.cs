@@ -3,8 +3,8 @@
 using System;
 using NUnit.Framework;
 using Rhino.Mocks;
+using TopCalendar.Server.DataLayer.Exceptions;
 using TopCalendar.Server.DataLayer.Repositories;
-using TopCalendar.Server.DataLayer.Repositories.Exceptions;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.StatusReason;
 using TopCalendar.Server.ServiceLibrary.ServiceLogic;

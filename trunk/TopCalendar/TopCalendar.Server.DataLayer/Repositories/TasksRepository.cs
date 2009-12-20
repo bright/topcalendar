@@ -15,8 +15,8 @@ namespace TopCalendar.Server.DataLayer.Repositories
 {
     public class TasksRepository : BaseRepository<Task, int>, ITasksRepository
     {
-        public TasksRepository(ISessionFactory sessionFactory)
-            : base(sessionFactory)
+        public TasksRepository(ISession session)
+            : base(session)
         {
         }
 
@@ -29,26 +29,24 @@ namespace TopCalendar.Server.DataLayer.Repositories
         public IList<Task> Find(TaskSpecification taskSpecification)
         {
             Check.Guard(taskSpecification.User != null, "TaskSpecification without user");
+            
+            var query = Session.CreateCriteria(typeof (Task));
 
-            using (var session = GetSession())
+            query.Add(Restrictions.Eq("User", taskSpecification.User));
+            
+            if (taskSpecification.StartAtFrom != null)
             {
-                var query = session.CreateCriteria(typeof (Task));
-
-                query.Add(Expression.Eq("User", taskSpecification.User));
-                
-                if (taskSpecification.StartAtFrom != null)
-                {
-                    query.Add(Expression.Ge("StartAt", taskSpecification.StartAtFrom));   
-                }
-
-                if (taskSpecification.StartAtTo != null)
-                {
-                    query.Add(Expression.Le("StartAt", taskSpecification.StartAtTo));
-                }
-           
-                var results = query.List<Task>();
-                return results;
+                query.Add(Restrictions.Ge("StartAt", taskSpecification.StartAtFrom));   
             }
+
+            if (taskSpecification.StartAtTo != null)
+            {
+                query.Add(Restrictions.Le("StartAt", taskSpecification.StartAtTo));
+            }
+       
+            var results = query.List<Task>();
+            return results;
+
         }
     }
 }

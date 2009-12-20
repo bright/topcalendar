@@ -8,63 +8,48 @@ using NHibernate;
 
 namespace TopCalendar.Server.DataLayer.Repositories
 {
-    public abstract class BaseRepository<T, TPk> : IRepository<T, TPk>
+    public abstract class BaseRepository<TEntity, TPk> : IRepository<TEntity, TPk>
+		where TEntity : class 
     {
-        private readonly ISessionFactory _sessionFactory;
+    	private readonly ISession _session;
+    	
 
-        protected BaseRepository(ISessionFactory sessionFactory)
+        protected BaseRepository(ISession session)
         {
-            _sessionFactory = sessionFactory;
+        	_session = session;
+        
         }
 
-        public ISession GetSession()
+    	public ISession Session
+    	{
+			get { return _session; }
+    	}
+
+
+        public TEntity GetById(TPk id)
         {
-            return _sessionFactory.OpenSession();
+            return Session.Get<TEntity>(id);            
         }
 
-        public T GetById(TPk id)
-        {
-            using (var session = GetSession())
-            {
-                return session.Get<T>(id);
-            }
+        public IList<TEntity> GetAll()
+        {            
+            return Session.CreateCriteria(typeof (TEntity)).List<TEntity>();            
         }
 
-        public IList<T> GetAll()
-        {
-            using (var session = GetSession())
-            {
-                return session.CreateCriteria(typeof (T)).List<T>();
-            }
+        public virtual TEntity Add(TEntity entity)
+        {            
+            Session.Save(entity);
+        	return entity;
         }
 
-        public virtual T Add(T entity)
+        public void Remove(TEntity entity)
         {
-            using (ISession session = GetSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                try
-                {
-                    session.Save(entity);
-                    transaction.Commit();
-                    return entity;
-                }
-                catch (Exception)
-                {      
-                   transaction.Rollback();
-                   throw;
-                }
-            }
+            Session.Delete(entity);             
         }
 
-        public void Remove(T entity)
-        {
-            using (ISession session = GetSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                session.Delete(entity);
-                transaction.Commit();
-            }
-        }
+		public virtual ICriteria CreateCriteria()
+		{
+			return Session.CreateCriteria<TEntity>();
+		}
     }
 }

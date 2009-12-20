@@ -26,17 +26,17 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
         public FindTasksResponse FindTasks(FindTasksRequest findTasksRequest)
         {
             TaskSpecificationDto taskSpecificationDto = findTasksRequest.TaskSpecificationDto;
-            User user = findTasksRequest.CurrentUser;
-            TaskSpecification taskSpecification = _mappingService.FromDto(taskSpecificationDto, user);
+            
+			// there should not be any mapping from dto to domain 
+            TaskSpecification taskSpecification = _mappingService.FromDto(taskSpecificationDto, findTasksRequest.CurrentUser);
+        	IList<Task> specifiedTasks = new List<Task>();
+        	var response = WithinTransactionDo(s =>
+                       		{
+                       			specifiedTasks = _tasksRepository.Find(taskSpecification);
+                       		}).OnErrorSetMessage("Error finding tasks");
+        	response.Tasks = _mappingService.ToDto(specifiedTasks);
 
-            IList<Task> specifiedTasks = _tasksRepository.Find(taskSpecification);
-
-            IList<TaskDto> specifiedTasksDto = _mappingService.ToDto(specifiedTasks);
-
-            FindTasksResponse successResponse = SuccessSituationResponse();
-            successResponse.Tasks = specifiedTasksDto;
-
-            return successResponse;
+        	return response;
         }
     }
   

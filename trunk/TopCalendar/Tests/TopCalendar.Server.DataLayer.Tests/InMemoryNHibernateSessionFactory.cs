@@ -13,7 +13,7 @@ namespace TopCalendar.Server.DataLayer.Tests
     {
         public InMemoryNHibernateSessionFactory()
         {
-            DbConfig = SQLiteConfiguration.Standard.InMemory()
+            DbConfig = SQLiteConfiguration.Standard.InMemory().ShowSql()
             .Provider<SQLiteInMemoryTestConnectionProvider>();
             DropDataBaseOnStart = true;
         }
