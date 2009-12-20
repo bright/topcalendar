@@ -30,10 +30,10 @@ namespace TopCalendar.Server.DataLayer.Entities
 		// todo : should be moved to base class for domain objects
 		public override bool Equals(object obj)
 		{
-			if(!typeof(User).Equals(obj))
+			if(!typeof(User).Equals(obj.GetType()))
 				return false;
 			var otherUser = (User) obj;
-			if(Id == otherUser.Id)
+			if(Id >0 && Id == otherUser.Id)
 				return true;
 			return GetHashCode().Equals(otherUser.GetHashCode());			
 		}
