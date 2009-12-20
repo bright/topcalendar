@@ -3,6 +3,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
+using Ninject;
 
 namespace TopCalendar.Server.Bootstrap.NinjectWcf
 {
@@ -25,6 +26,10 @@ namespace TopCalendar.Server.Bootstrap.NinjectWcf
                 foreach (EndpointDispatcher ed in cd.Endpoints)
                 {
                     ed.DispatchRuntime.InstanceProvider = new NinjectInstanceProvider(serviceDescription.ServiceType);
+					foreach(var operation in ed.DispatchRuntime.Operations)
+					{
+						operation.CallContextInitializers.Add(KernelContainer.Kernel.Get<ICallContextInitializer>());
+					}
                 }
             }
         }

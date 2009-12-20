@@ -11,34 +11,9 @@ namespace TopCalendar.Server.DataLayer
     {
         public override void Load()
         {
-			//Todo : change session bindign
-            Bind<ISessionFactory>().ToConstant(new NHibernateSessionFactory().CreateSessionFactory());
-        	Bind<ISession>().ToProvider<NHiberanteSessionProvider>()
-				.InThreadScope()
-				.OnDeactivation(
-					CloseSession()
-				);
+        	Bind<ISessionFactory>().ToConstant(new NHibernateSessionFactory().CreateSessionFactory());
             Bind<IUsersRepository>().To<UsersRepository>();
             Bind<ITasksRepository>().To<TasksRepository>();
         }
-
-    	private Action<ISession> CloseSession()
-    	{
-    		return session=> session.Dispose();
-    	}
     }
-
-	public class NHiberanteSessionProvider : IProvider
-	{
-		public object Create(IContext context)
-		{
-			var sessionFactory = context.Kernel.Get<ISessionFactory>();
-			return sessionFactory.OpenSession();
-		}		
-
-		public Type Type
-		{
-			get { return typeof (ISession); }
-		}
-	}
 }

@@ -18,7 +18,7 @@ namespace TopCalendar.Server.Bootstrap.NinjectWcf
             return GetInstance(instanceContext, null);
         }
         public object GetInstance(InstanceContext instanceContext, Message message)
-        {
+        {			
             return KernelContainer.Kernel.Get(serviceType);
         }
         public void ReleaseInstance(InstanceContext instanceContext, object instance)
