@@ -116,4 +116,14 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="RemoveTaskRequest" nillable="true" type="tns:RemoveTaskRequest" />
+  <xs:complexType name="UpdateTaskRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestWithCredentials">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract.Dto" minOccurs="0" name="Task" nillable="true" type="q3:TaskDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateTaskRequest" nillable="true" type="tns:UpdateTaskRequest" />
 </xs:schema>

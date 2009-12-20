@@ -22,6 +22,7 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.AddNewTaskRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.FindTasksRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.RemoveTaskRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.UpdateTaskRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.LoginUserRequest))]
     public partial class RequestWithCredentials : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -201,6 +202,30 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
                 if ((this.TaskIdField.Equals(value) != true)) {
                     this.TaskIdField = value;
                     this.RaisePropertyChanged("TaskId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateTaskRequest", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+        "Contract.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class UpdateTaskRequest : TopCalendar.Client.Connector.TopCalendarCommunicationService.RequestWithCredentials {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TopCalendar.Client.Connector.TopCalendarCommunicationService.TaskDto TaskField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TopCalendar.Client.Connector.TopCalendarCommunicationService.TaskDto Task {
+            get {
+                return this.TaskField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TaskField, value) != true)) {
+                    this.TaskField = value;
+                    this.RaisePropertyChanged("Task");
                 }
             }
         }
@@ -539,6 +564,12 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
             "t", Name="DataAccessFault", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
             "Contract.DataContract")]
         TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse RemoveTask(TopCalendar.Client.Connector.TopCalendarCommunicationService.RemoveTaskRequest deleteTaskRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITopCalendarCommunicationService/UpdateTask", ReplyAction="http://tempuri.org/ITopCalendarCommunicationService/UpdateTaskResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TopCalendar.Client.Connector.TopCalendarCommunicationService.DataAccessFault), Action="http://tempuri.org/ITopCalendarCommunicationService/UpdateTaskDataAccessFaultFaul" +
+            "t", Name="DataAccessFault", Namespace="http://schemas.datacontract.org/2004/07/TopCalendar.Server.ServiceLibrary.Service" +
+            "Contract.DataContract")]
+        TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse UpdateTask(TopCalendar.Client.Connector.TopCalendarCommunicationService.UpdateTaskRequest updateTaskRequest);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -586,6 +617,10 @@ namespace TopCalendar.Client.Connector.TopCalendarCommunicationService {
         
         public TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse RemoveTask(TopCalendar.Client.Connector.TopCalendarCommunicationService.RemoveTaskRequest deleteTaskRequest) {
             return base.Channel.RemoveTask(deleteTaskRequest);
+        }
+        
+        public TopCalendar.Client.Connector.TopCalendarCommunicationService.BaseResponse UpdateTask(TopCalendar.Client.Connector.TopCalendarCommunicationService.UpdateTaskRequest updateTaskRequest) {
+            return base.Channel.UpdateTask(updateTaskRequest);
         }
     }
 }

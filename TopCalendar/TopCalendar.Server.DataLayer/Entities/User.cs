@@ -23,8 +23,24 @@ namespace TopCalendar.Server.DataLayer.Entities
     		Password = password;
     	}
 
-        public virtual int Id { get; private set; }
+        public virtual int Id { get; protected set; }
         public virtual string Login { get; set; }
         public virtual string Password { get; set; }
+
+		// todo : should be moved to base class for domain objects
+		public override bool Equals(object obj)
+		{
+			if(!typeof(User).Equals(obj))
+				return false;
+			var otherUser = (User) obj;
+			if(Id == otherUser.Id)
+				return true;
+			return GetHashCode().Equals(otherUser.GetHashCode());			
+		}
+
+		public override int GetHashCode()
+		{
+			return (typeof (User).GetHashCode() + "|" + Login + "|" + Password).GetHashCode();
+		}
     }
 }

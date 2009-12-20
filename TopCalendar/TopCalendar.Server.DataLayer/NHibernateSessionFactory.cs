@@ -23,7 +23,7 @@ namespace TopCalendar.Server.DataLayer
 
         public NHibernateSessionFactory()
         {
-            DbConfig = SQLiteConfiguration.Standard.UsingFile(DbFile);
+            DbConfig = SQLiteConfiguration.Standard.UsingFile(DbFile).ShowSql();
             DropDataBaseOnStart = false;
         }
 

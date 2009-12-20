@@ -8,7 +8,7 @@ namespace TopCalendar.Server.DataLayer.Tests
 	/// <summary>
 	/// creates entity objectes
 	/// </summary>
-	public class New
+	public partial class New
 	{
 		public static UserBuilder User()
 		{
@@ -27,7 +27,7 @@ namespace TopCalendar.Server.DataLayer.Tests
 		private DateTime _startAt = DateTime.Now;
 		private string _name = Guid.NewGuid().ToString();
 		private DateTime? _finishAt = DateTime.Now;
-		private User _user;
+		private User _user = New.User();
 
 		public TaskBuilder()
 		{			
@@ -73,12 +73,42 @@ namespace TopCalendar.Server.DataLayer.Tests
 
 	public class UserBuilder : Builder<User>
 	{
+
 		private string _password = Guid.NewGuid().ToString();
-		private string _login = Guid.NewGuid().ToString();
+		private string _login = Guid.NewGuid().ToString();		
+
+		public UserBuilder()
+		{			
+		}
+
+		private UserBuilder(string login, string password)
+		{
+			_login = login;
+			_password = password;			
+		}
 
 		public override User Build()
 		{
-			return new User(_login,_password);
+			return new User(_login,_password);			
+		}
+
+		public UserBuilder WithLogin(string login)
+		{
+			return NewBuilderInstance(ub => ub._login = login);
+		}
+        
+		
+
+		private UserBuilder NewBuilderInstance(Action<UserBuilder> setThings)
+		{
+			var ub = new UserBuilder(_login, _password);
+			setThings(ub);
+			return ub;
+		}
+
+		public UserBuilder WithPassword(string password)
+		{
+			return NewBuilderInstance(ub => ub._password = password);
 		}
 	}
 }

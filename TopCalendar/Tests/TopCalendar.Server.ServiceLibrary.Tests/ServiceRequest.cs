@@ -1,4 +1,5 @@
 using System;
+using TopCalendar.Server.DataLayer.Tests;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
 
 namespace TopCalendar.Server.ServiceLibrary.Tests
@@ -10,6 +11,7 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
 		{
 			var req = Activator.CreateInstance<TRequest>();
 			req.UserCredentials = new UserCredentials {Login = Guid.NewGuid().ToString(), Password = Guid.NewGuid().ToString()};
+			req.CurrentUser = New.User().WithLogin(req.UserCredentials.Login).WithPassword(req.UserCredentials.Password);
 			setRequest(req);
 			return req;
 		}
