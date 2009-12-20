@@ -9,7 +9,7 @@ using Microsoft.Practices.Composite.Modularity;
 namespace TopCalendar.UI.Modules.Registration.Tests
 {
 	public abstract class observations_for_removing_view
-		: observations_for_auto_created_sut_of_type<RegistrationModule>
+		: observations_for_auto_created_sut_of_type_with_eventaggregator<RegistrationModule>
 	{
 		protected UnloadModuleEvent moduleEvent;
 		protected UnloadViewEvent viewEvent;
@@ -18,21 +18,11 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 
 		protected override void EstablishContext()
 		{
-			moduleEvent = new UnloadModuleEvent();
+			base.EstablishContext();
+			moduleEvent = EventAggr.GetEvent<UnloadModuleEvent>();
 			moduleEvent.Subscribe(execute_action);
 			_unloadModuleExecuted = false;
-
-			viewEvent = new UnloadViewEvent();
-
-			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<UnloadModuleEvent>())
-				.IgnoreArguments()
-				.Return(moduleEvent);
-
-			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<UnloadViewEvent>())
-				.IgnoreArguments()
-				.Return(viewEvent);
+			viewEvent = EventAggr.GetEvent<UnloadViewEvent>();			
 		}
 
 		protected override void AfterSutCreation()
@@ -64,7 +54,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 	public class when_removing_other_than_registration_view : observations_for_removing_view
 	{
 		protected override void Because()
-		{
+		{			
 			var view = Stub<IView>();
 			viewEvent.Publish(view);
 		}

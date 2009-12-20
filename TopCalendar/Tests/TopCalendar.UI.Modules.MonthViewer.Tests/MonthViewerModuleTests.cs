@@ -13,7 +13,8 @@ using TopCalendar.Utility.UI;
 namespace TopCalendar.UI.Modules.MonthViewer.Tests
 {
 
-	public class when_raising_registration_completed_event_with_month_viewer : observations_for_auto_created_sut_of_type<MonthViewerModule>
+	public class when_raising_registration_completed_event_with_month_viewer 
+		: observations_for_auto_created_sut_of_type_with_eventaggregator<MonthViewerModule>
 	{
 		private RegistrationCompletedEvent _registrationCompleted;
 
@@ -31,9 +32,8 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 
 		protected override void EstablishContext()
 		{
-			_registrationCompleted = new RegistrationCompletedEvent();			
-			Dependency<IEventAggregator>()
-				.Stub(eventaggr => eventaggr.GetEvent<RegistrationCompletedEvent>()).Return(_registrationCompleted);
+			base.EstablishContext();
+			_registrationCompleted = EventAggr.GetEvent<RegistrationCompletedEvent>();						
 		}
 
 		[Test]
@@ -44,17 +44,14 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 	}
 
 	public class when_initializing_month_viewer_module
-		: observations_for_auto_created_sut_of_type<MonthViewerModule>
+		: observations_for_auto_created_sut_of_type_with_eventaggregator<MonthViewerModule>
 	{
 		private RegistrationCompletedEvent _registrationCompletedEvent;
 
 
 		protected override void EstablishContext()
-		{
-			_registrationCompletedEvent = new RegistrationCompletedEvent();						
-			Dependency<IEventAggregator>()
-				.Stub(agg => agg.GetEvent<RegistrationCompletedEvent>()).Return(_registrationCompletedEvent);
-
+		{			
+			base.EstablishContext();
 			MarkNonMocked<IPresentationModelFor<IMonthView>>();
 			MarkNonMocked<IMonthView>();
 			MarkNonMocked<IMonthTaskLoader>();
@@ -63,12 +60,6 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 		protected override void Because()
 		{
 			Sut.Initialize();
-		}
-
-		[Test]
-		public void should_subscribe_to_registration_completed()
-		{
-			Dependency<IEventAggregator>().AssertWasCalled(eventaggr=> eventaggr.GetEvent<RegistrationCompletedEvent>());
 		}
 
 		[Test]
@@ -88,7 +79,7 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 		{
 			IsTypeBinded<IMonthTaskLoader>().ShouldBeTrue();
 		}
-
 	}
+
 	
 }

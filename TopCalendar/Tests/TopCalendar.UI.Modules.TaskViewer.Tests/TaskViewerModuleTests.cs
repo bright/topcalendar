@@ -12,7 +12,7 @@ using TopCalendar.Utility.UI;
 namespace TopCalendar.UI.Modules.TaskViewer.Tests
 {
 
-    public abstract class observation_for_task_viewer_module : observations_for_auto_created_sut_of_type<TaskViewerModule>
+    public abstract class observation_for_task_viewer_module : observations_for_auto_created_sut_of_type_with_eventaggregator<TaskViewerModule>
     {
 
         protected ShowAddNewTaskViewEvent _showAddNewTaskEvent;
@@ -27,19 +27,10 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
 
         protected override void EstablishContext()
         {
+        	base.EstablishContext();            
 
-            IEventAggregator eventAggregator = Dependency<IEventAggregator>();
-
-            _showAddNewTaskEvent = new ShowAddNewTaskViewEvent();
-            _showEditTaskEvent = new ShowEditTaskViewEvent();
-
-            eventAggregator.Stub(aggregator => aggregator.GetEvent<ShowAddNewTaskViewEvent>()).Return(_showAddNewTaskEvent);
-
-            eventAggregator.Stub(aggregator => aggregator.GetEvent<ShowEditTaskViewEvent>()).Return(_showEditTaskEvent);
-
-            eventAggregator.Stub(aggregator =>
-                aggregator.GetEvent<RegistrationCompletedEvent>()).Return(new RegistrationCompletedEvent());
-
+            _showAddNewTaskEvent = EventAggr.GetEvent<ShowAddNewTaskViewEvent>();
+            _showEditTaskEvent = EventAggr.GetEvent<ShowEditTaskViewEvent>();
             _taskView = Dependency<ITaskView>();
             Dependency<ITaskPresentationModel>().Stub(x => x.View).Return(_taskView);
         }

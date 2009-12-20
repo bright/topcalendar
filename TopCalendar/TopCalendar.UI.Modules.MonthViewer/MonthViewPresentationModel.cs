@@ -22,8 +22,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		private ObservableCollection<ObservableCollection<DayTaskList>> _tasks = new ObservableCollection<ObservableCollection<DayTaskList>>();
 	
 		public MonthViewPresentationModel(IMonthView view, IMonthTaskLoader taskLoader, IEventAggregator eventAggregator) : base(view)
-		{
-			_view = view;
+		{			
 			_taskLoader = taskLoader;
 			_eventAggregator = eventAggregator;
 			_view.ViewModel = this;

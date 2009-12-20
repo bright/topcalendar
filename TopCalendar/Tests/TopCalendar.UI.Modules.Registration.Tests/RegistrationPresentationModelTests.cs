@@ -9,7 +9,7 @@ using TopCalendar.Utility.UI;
 namespace TopCalendar.UI.Modules.Registration.Tests
 {
 	public class when_executing_cancel
-		: observations_for_auto_created_sut_of_type<RegistrationPresentationModel>
+		: observations_for_auto_created_sut_of_type_with_eventaggregator<RegistrationPresentationModel>
 	{
 		private UnloadViewEvent subscriber;
 		
@@ -22,13 +22,10 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 
 		protected override void EstablishContext()
 		{
-			subscriber = new UnloadViewEvent();
+			base.EstablishContext();
+			subscriber = EventAggr.GetEvent<UnloadViewEvent>();
 			subscriber.Subscribe(execute_action);
-			_cancelActionExecuted = false;	
-			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<UnloadViewEvent>())
-				.IgnoreArguments()
-				.Return(subscriber);
+			_cancelActionExecuted = false;				
 		}
 
 		[Test]
@@ -44,7 +41,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 	}
 	
 	public class when_filling_login_and_password
-		: observations_for_auto_created_sut_of_type<RegistrationPresentationModel>
+		: observations_for_auto_created_sut_of_type_with_eventaggregator<RegistrationPresentationModel>
 	{
 		private RegistrationCompletedEvent regCompletedSubscriber;
 		private UnloadViewEvent unloadSubscriber;
@@ -55,22 +52,14 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 
 		protected override void EstablishContext()
 		{
-			unloadSubscriber = new UnloadViewEvent();			
+			base.EstablishContext();
+			unloadSubscriber = EventAggr.GetEvent<UnloadViewEvent>();			
 			unloadSubscriber.Subscribe(execute_unload);
 
-			regCompletedSubscriber = new RegistrationCompletedEvent();
+			regCompletedSubscriber = EventAggr.GetEvent<RegistrationCompletedEvent>();
 			regCompletedSubscriber.Subscribe(execute_register);
 
-			_viewShouldDieExecuted = false;
-
-			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<UnloadViewEvent>())
-				.IgnoreArguments()
-				.Return(unloadSubscriber);
-			Dependency<IEventAggregator>()
-				.Stub(ea => ea.GetEvent<RegistrationCompletedEvent>())
-				.IgnoreArguments()
-				.Return(regCompletedSubscriber);
+			_viewShouldDieExecuted = false;			
 			Dependency<IUserRegistrator>().Stub(registrator => registrator.Register(null, null)).IgnoreArguments().Return(true);
 		}		
 

@@ -1,11 +1,6 @@
-﻿using System;
-using Microsoft.Practices.Composite.Events;
-using Microsoft.Practices.Composite.Modularity;
-using Microsoft.Practices.Composite.Presentation.Regions;
+﻿using Microsoft.Practices.Composite.Presentation.Regions;
 using Microsoft.Practices.Composite.Regions;
-using Ninject;
 using NUnit.Framework;
-using Rhino.Mocks;
 using TopCalendar.UI.Infrastructure;
 using TopCalendar.Utility.Tests;
 using TopCalendar.Utility.UI;
@@ -13,7 +8,7 @@ using TopCalendar.Utility.UI;
 namespace TopCalendar.UI.PluginManager.Tests
 {
 	public abstract class observations_for_PluginLoader
-		: observations_for_auto_created_sut_of_type<PluginLoader>
+		: observations_for_auto_created_sut_of_type_with_eventaggregator<PluginLoader>
 	{
 		protected UnloadViewEvent _unloadEvent;
 		protected IRegionManager _regionManager;
@@ -23,15 +18,11 @@ namespace TopCalendar.UI.PluginManager.Tests
 
 		protected override void EstablishContext()
 		{
-			_unloadEvent = new UnloadViewEvent();
+			base.EstablishContext();
+			_unloadEvent = EventAggr.GetEvent<UnloadViewEvent>();
 			_view = Dependency<IView>();
-			_regionManager = new RegionManager();
-			//Kernel.Bind<IRegionManager>().To<RegionManager>().InSingletonScope();
+			_regionManager = new RegionManager();			
 			ProvideImplementationOf(_regionManager);			
-
-			Dependency<IEventAggregator>().Stub(
-				ea => ea.GetEvent<UnloadViewEvent>()
-			).IgnoreArguments().Return(_unloadEvent);
 		}
 	}
 
