@@ -86,10 +86,6 @@
       <Project>{9E852629-FE80-4E03-AC7D-C3DFAF9E2559}</Project>
       <Name>TopCalendar.Client.DataModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.UI.Infrastructure.Tests\TopCalendar.UI.Infrastructure.Tests.csproj">
-      <Project>{74E0C89D-1F5F-42A9-9A92-30AAA1FF4241}</Project>
-      <Name>TopCalendar.UI.Infrastructure.Tests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
       <Name>TopCalendar.UI.Infrastructure</Name>
