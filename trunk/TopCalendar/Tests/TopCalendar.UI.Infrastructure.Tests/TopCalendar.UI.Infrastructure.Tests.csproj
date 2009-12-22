@@ -33,14 +33,14 @@
   <ItemGroup>
     <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\Lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\Rhino.Mocks.dll</HintPath>
+      <HintPath>..\..\..\Lib\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -60,19 +60,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
+    <ProjectReference Include="..\..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
       <Project>{F807062D-6FC9-4FF0-A9F5-5F94653EDC4D}</Project>
       <Name>Composite.Presentation.Desktop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
+    <ProjectReference Include="..\..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
       <Name>Composite.Desktop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tests\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj">
+    <ProjectReference Include="..\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj">
       <Project>{2DD936B1-4635-4A59-BFA4-385A76BDE801}</Project>
       <Name>TopCalendar.Utility.Tests</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
+    <ProjectReference Include="..\..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
       <Name>TopCalendar.UI.Infrastructure</Name>
     </ProjectReference>
