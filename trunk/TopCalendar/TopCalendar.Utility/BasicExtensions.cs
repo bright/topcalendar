@@ -34,6 +34,32 @@ namespace TopCalendar.Utility.BasicExtensions
 			return me.CompareTo(start) >= 0 && me.CompareTo(stop) <= 0;
 		}
 
+		public static DateTime AtWeekStart(this DateTime date)
+		{
+			return date.Subtract(TimeSpan.FromDays(DayInWeek(date)));
+		}
+
+		public static int DayInWeek(this DateTime date)
+		{
+			return ((int) date.DayOfWeek + 6)%7;
+		}
+
+		public static IEnumerable<DateTime> Range(this DateTime from,DateTime to, TimeSpan step)
+		{
+			var current = from;
+			while(current.CompareTo(to) < 0)
+			{
+				yield return current;
+				current = current.Add(step);
+			}
+			yield break;
+		}
+
+		public static DateTime AtWeekEnd(this DateTime date)
+		{
+			return date.AtWeekStart().AddDays(7).Subtract(TimeSpan.FromTicks(1));
+		}
+
 		public static DateTime AtMonthStart(this DateTime date)
 		{
 			return new DateTime(date.Year, date.Month, 1);

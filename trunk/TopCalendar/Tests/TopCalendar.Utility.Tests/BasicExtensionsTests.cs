@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using NUnit.Framework;
 using TopCalendar.Utility.BasicExtensions;
 using TopCalendar.Utility.Tests;
@@ -21,6 +22,36 @@ namespace TopCalendar.Utility.BasicExtensions.Tests
 			result.Day.ShouldEqual(30);
 			result.Hour.ShouldEqual(23);
 			result.Minute.ShouldEqual(59);
+		}
+
+		[Test]
+		public void AtWeekStart_should_return_week_start_date()
+		{
+			var date = new DateTime(2009, 12, 20);
+			var result = date.AtWeekStart();
+			result.Year.ShouldEqual(date.Year);
+			result.Month.ShouldEqual(date.Month);
+			result.Day.ShouldEqual(14);
+		}
+
+		[Test]
+		public void Range_should_generate_enumerable_of_proper_size()
+		{
+			var start = DateTime.Now;
+			var stop = DateTime.Now.AddDays(1).AddHours(1);
+			start.Range(stop, TimeSpan.FromHours(1))
+				.Each(dt => dt.IsBetween(start, stop).ShouldBeTrue())
+				.Count().ShouldEqual(25);
+		}
+
+		[Test]
+		public void AtWeekEnd_should_return_week_end_date()
+		{
+			var date = new DateTime(2009, 12, 20);
+			var result = date.AtWeekEnd();
+			result.Year.ShouldEqual(date.Year);
+			result.Month.ShouldEqual(date.Month);
+			result.Day.ShouldEqual(20);
 		}
 
 		[Test]

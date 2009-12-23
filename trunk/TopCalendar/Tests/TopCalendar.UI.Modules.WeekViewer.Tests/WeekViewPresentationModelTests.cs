@@ -43,6 +43,12 @@ namespace TopCalendar.UI.Modules.WeekViewer.Tests
 		{
 			Sut.Tasks.First().ShouldContain(_fakeTaskList);
 		}
+
+		[Test]
+		public void should_set_views_view_model_properly()
+		{
+			Sut.View.ViewModel.ShouldEqual(Sut);
+		}
 	}
 
 	public class when_going_to_next_week : observations_for_presentation_model_with_stubbed_view<WeekViewPresentationModel,IWeekView>

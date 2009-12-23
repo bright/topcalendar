@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HourTaskList.cs" />
     <Compile Include="WeekTaskLoader.cs" />
     <Compile Include="WeekView.xaml.cs">
       <DependentUpon>WeekView.xaml</DependentUpon>

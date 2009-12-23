@@ -59,11 +59,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HourTaskListTests.cs" />
     <Compile Include="WeekTaskLoaderTests.cs" />
     <Compile Include="WeekViewPresentationModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TopCalendar.Client.Connector\TopCalendar.Client.Connector.csproj">
+      <Project>{15968E5F-9795-4391-BD4E-3D51247BCFCF}</Project>
+      <Name>TopCalendar.Client.Connector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TopCalendar.Client.DataModel\TopCalendar.Client.DataModel.csproj">
+      <Project>{9E852629-FE80-4E03-AC7D-C3DFAF9E2559}</Project>
+      <Name>TopCalendar.Client.DataModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Utility.Tests\TopCalendar.Utility.Tests.csproj">
       <Project>{2DD936B1-4635-4A59-BFA4-385A76BDE801}</Project>
       <Name>TopCalendar.Utility.Tests</Name>
