@@ -1,8 +1,9 @@
 using System;
 using System.Collections.ObjectModel;
 using TopCalendar.Client.Connector;
-
-using TopCalendar.Utility.UI;
+using TopCalendar.Client.DataModel;
+using TopCalendar.Utility;
+using TopCalendar.Utility.BasicExtensions;
 
 namespace TopCalendar.UI.Modules.WeekViewer
 {
@@ -19,33 +20,25 @@ namespace TopCalendar.UI.Modules.WeekViewer
 
 		public ObservableCollection<ObservableCollection<HourTaskList>> GetTasksForWeek(DateTime time)
 		{
-			var result = GetResultList();
+			var result = PrepareResultList(time);
+			var tasks = _taskRepository.GetTasksBetweenDates(new DateTimeRange(time.AtWeekStart(), time.AtWeekEnd()));
+			tasks.Each(t => result[t.StartAt.DayInWeek()][t.StartAt.Hour].AddTask(t));
 			return result;
 		}
 
-		private ObservableCollection<ObservableCollection<HourTaskList>> GetResultList()
+		private ObservableCollection<ObservableCollection<HourTaskList>> PrepareResultList(DateTime dayInWeek)
 		{
 			var result = new ObservableCollection<ObservableCollection<HourTaskList>>();
-			for (int i = 0; i < DaysInWeek; ++i)
-			{
-				var hourTaskLists = new ObservableCollection<HourTaskList>();
-				result.Add(hourTaskLists);
-				for (var h = 0; h < HoursInDay; ++h)
-					hourTaskLists.Add(new HourTaskList(DateTime.Now));
-			}
+			var weekStart = dayInWeek.AtWeekStart();
+			weekStart.Range(weekStart.AddDays(DaysInWeek), TimeSpan.FromDays(1))
+				.Each(day =>
+					{
+						var hourTaskLists = new ObservableCollection<HourTaskList>();						
+						day.Range(day.AddHours(HoursInDay), TimeSpan.FromHours(1))
+							.Each(dt => hourTaskLists.Add(new HourTaskList(dt)));
+						result.Add(hourTaskLists);
+				    });			
 			return result;
 		}
-	}
-
-	public class HourTaskList : NotifyPropertyChanged
-	{
-		private readonly DateTime _time;
-
-		public HourTaskList(DateTime time)
-		{
-			_time = new DateTime(time.Year,time.Month, time.Day, time.Hour, 0,0);
-		}
-
-		public DateTime Time { get { return _time; } }
 	}
 }
