@@ -42,7 +42,8 @@ namespace TopCalendar.UI.MenuInfrastructure
 			set
 			{
 				_canExecute = value;
-				CanExecuteChanged(null, EventArgs.Empty);
+				if(CanExecuteChanged != null)
+					CanExecuteChanged(null, EventArgs.Empty);
 			}
 		}
 	}

@@ -22,14 +22,8 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 		protected override void EstablishContext()
 		{
 			base.EstablishContext();
-			_newTaskAddedEvent = new NewTaskAddedEvent();
-			Dependency<IEventAggregator>().Stub(aggregator => aggregator.GetEvent<NewTaskAddedEvent>())
-				.IgnoreArguments()
-				.Return(_newTaskAddedEvent);
-			_taskListChangedEvent = new TaskListChangedEvent();
-			Dependency<IEventAggregator>().Stub(aggregator => aggregator.GetEvent<TaskListChangedEvent>())
-				.IgnoreArguments()
-				.Return(_taskListChangedEvent);
+			_newTaskAddedEvent = EventAggr.GetEvent<NewTaskAddedEvent>();
+			_taskListChangedEvent = EventAggr.GetEvent<TaskListChangedEvent>();
 		}
 	}
 
@@ -49,9 +43,8 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 		protected override void EstablishContext()
 		{
 			base.EstablishContext();
-			_addNewTaskEvent = new ShowAddNewTaskViewEvent();
-			_addNewTaskEvent.Subscribe(dateTime =>  _calledDate = dateTime );
-			Dependency<IEventAggregator>().Stub(aggr => aggr.GetEvent<ShowAddNewTaskViewEvent>()).Return(_addNewTaskEvent);			
+			_addNewTaskEvent = EventAggr.GetEvent<ShowAddNewTaskViewEvent>();
+			_addNewTaskEvent.Subscribe(dateTime =>  _calledDate = dateTime );			
 		}
 
 		[Test]

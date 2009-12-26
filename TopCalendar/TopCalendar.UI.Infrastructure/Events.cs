@@ -87,4 +87,12 @@ namespace TopCalendar.UI.Infrastructure
 	public class ShowWeekViewEvent : CompositePresentationEvent<DateTime?>
 	{		
 	}
+
+
+	/// <summary>
+	/// Publickowany gdy widok miesiaca ma sie pokazac
+	/// </summary>
+	public class ShowMonthViewEvent : CompositePresentationEvent<DateTime?>
+	{
+	}
 }

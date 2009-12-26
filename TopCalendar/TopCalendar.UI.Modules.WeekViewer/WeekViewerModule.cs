@@ -19,13 +19,16 @@ namespace TopCalendar.UI.Modules.WeekViewer
 		private readonly IEventAggregator _eventAggregator;
 		private readonly ILoggerFacade _loggerFacade;
 		private readonly IMenuManager _menuManager;
+		private readonly IPluginLoader _pluginLoader;
+		private CommandCanExecuteHelper _canExecuteShowWeekView;
 
-		public WeekViewerModule(IKernel kernel, IEventAggregator eventAggregator, ILoggerFacade loggerFacade, IMenuManager menuManager )
+		public WeekViewerModule(IKernel kernel, IEventAggregator eventAggregator, ILoggerFacade loggerFacade, IMenuManager menuManager, IPluginLoader pluginLoader )
 		{
 			_kernel = kernel;
 			_eventAggregator = eventAggregator;
 			_loggerFacade = loggerFacade;
 			_menuManager = menuManager;
+			_pluginLoader = pluginLoader;
 		}
 
 		public void Initialize()
@@ -37,17 +40,24 @@ namespace TopCalendar.UI.Modules.WeekViewer
 
 		private void AddItemsToMenus()
 		{
-			_menuManager.AddItemToMenu<ShowWeekViewEvent, DateTime?>("TasksMenu", "WeekView", "Widok tygodnia");
+			_canExecuteShowWeekView = new CommandCanExecuteHelper(false);
+			_menuManager.AddItemToMenu<ShowWeekViewEvent, DateTime?>("TasksMenu", "WeekView", "Widok tygodnia", _canExecuteShowWeekView);
 		}
 
 		private void SubscribeToDefaultEvents()
 		{
-			_eventAggregator.GetEvent<ShowWeekViewEvent>().Subscribe(HandleShowWeekViewEvent);
+			_eventAggregator.GetEvent<ShowWeekViewEvent>().Subscribe(HandleShowWeekViewEvent);			
+			_eventAggregator.GetEvent<RegistrationCompletedEvent>().Subscribe(HandleRegistrationCompletedEvent);
+		}
+
+		private void HandleRegistrationCompletedEvent(string obj)
+		{
+			_canExecuteShowWeekView.CanExecute = true;
 		}
 
 		private void HandleShowWeekViewEvent(DateTime? obj)
 		{
-			_kernel.Get<IPluginLoader>().RegisterViewWithRegion(RegionNames.MainContent, ()=> _kernel.Get<IPresentationModelFor<IWeekView>>().View);
+			_pluginLoader.RegisterViewWithRegion(RegionNames.MainContent, ()=> _kernel.Get<IPresentationModelFor<IWeekView>>().View);
 		}
 
 		private void RegisterViewsAndServices()

@@ -63,6 +63,7 @@ namespace TopCalendar.Client.Connector
             TaskDto taskDto = _mappingService.ToDto(task);
             Service.AddNewTask(Request<AddNewTaskRequest>(r=> r.Task=taskDto));
             _eventAggregator.GetEvent<NewTaskAddedEvent>().Publish(task);
+			_eventAggregator.GetEvent<TaskListChangedEvent>().Publish(task.StartAt);
             return true;
             //Todo: should call TaskAddedEvent
         }
