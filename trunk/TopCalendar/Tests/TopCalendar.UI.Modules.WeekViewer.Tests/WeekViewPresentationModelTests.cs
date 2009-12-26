@@ -5,11 +5,39 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using Rhino.Mocks;
+using TopCalendar.UI.Infrastructure;
 using TopCalendar.Utility.Tests.UI;
 using TopCalendar.Utility.Tests;
 
 namespace TopCalendar.UI.Modules.WeekViewer.Tests
 {
+
+	public class when_publishing_task_list_changed_event_for_week_view_presentation_model
+		: observations_for_presentation_model_with_stubbed_view<WeekViewPresentationModel, IWeekView>
+	{
+		private HourTaskList _fakeTaskList;
+
+		protected override void Because()
+		{
+			EventAggr.GetEvent<TaskListChangedEvent>().Publish(DateTime.Now);
+		}
+
+		protected override void EstablishContext()
+		{
+			base.EstablishContext();
+			_fakeTaskList = new HourTaskList(DateTime.Now);
+			Dependency<IWeekTaskLoader>().Stub(loader => loader.GetTasksForWeek(DateTime.Now))
+				.IgnoreArguments().Return(new ObservableCollection<ObservableCollection<HourTaskList>> {new ObservableCollection<HourTaskList> {_fakeTaskList}})
+				.Repeat.Twice();
+		}
+
+		[Test]
+		public void should_update_task_list()
+		{
+			Dependency<IWeekTaskLoader>().AssertWasCalled(loader=> loader.GetTasksForWeek(Arg.Is(Sut.CurrentWeek)), o=> o.Repeat.Twice());
+		}
+	}
+
 	public class when_creating_week_view_presetnetaion_model : observations_for_presentation_model_with_stubbed_view<WeekViewPresentationModel,IWeekView>
 	{
 		private HourTaskList _fakeTaskList;
@@ -23,7 +51,7 @@ namespace TopCalendar.UI.Modules.WeekViewer.Tests
 			base.EstablishContext();
 			_fakeTaskList = new HourTaskList(DateTime.Now);
 			Dependency<IWeekTaskLoader>().Stub(loader => loader.GetTasksForWeek(DateTime.Now))
-				.IgnoreArguments().Return(new ObservableCollection<ObservableCollection<HourTaskList>> { new ObservableCollection<HourTaskList> { _fakeTaskList } });				
+				.IgnoreArguments().Return(new ObservableCollection<ObservableCollection<HourTaskList>> { new ObservableCollection<HourTaskList> { _fakeTaskList } });							
 		}
 
 		[Test]
@@ -49,6 +77,8 @@ namespace TopCalendar.UI.Modules.WeekViewer.Tests
 		{
 			Sut.View.ViewModel.ShouldEqual(Sut);
 		}
+
+
 	}
 
 	public class when_going_to_next_week : observations_for_presentation_model_with_stubbed_view<WeekViewPresentationModel,IWeekView>

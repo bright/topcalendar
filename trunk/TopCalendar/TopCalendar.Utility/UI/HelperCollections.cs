@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using TopCalendar.Utility.BasicExtensions;
 
 namespace TopCalendar.Utility.UI
 {	
@@ -45,6 +47,16 @@ namespace TopCalendar.Utility.UI
 							"Listopad",
 							"Grudzieñ"
 						}
+					);
+			}
+		}
+
+		public static ObservableCollection<DateTime> HoursInDay
+		{
+			get
+			{
+				return new ObservableCollection<DateTime>(
+						DateTime.Now.AtDayStart().Range(DateTime.Now.AtDayEnd(), TimeSpan.FromHours(1))
 					);
 			}
 		}

@@ -1,10 +1,210 @@
 ﻿<UserControl x:Class="TopCalendar.UI.Modules.WeekViewer.WeekView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Height="300" Width="300">
+    xmlns:Converters="clr-namespace:TopCalendar.Utility.UI.Converters;assembly=TopCalendar.Utility"
+    xmlns:Utilites="clr-namespace:TopCalendar.Utility.UI;assembly=TopCalendar.Utility"        
+    xmlns:Model="clr-namespace:TopCalendar.Client.DataModel;assembly=TopCalendar.Client.DataModel"        
+    xmlns:CommonCommands="clr-namespace:TopCalendar.UI.Infrastructure.CommonCommands;assembly=TopCalendar.UI.Infrastructure"        
+    xmlns:WeekViewer="clr-namespace:TopCalendar.UI.Modules.WeekViewer"        
+    xmlns:System="clr-namespace:System;assembly=mscorlib"       
+    VerticalContentAlignment="Stretch"
+    HorizontalAlignment="Stretch">
+    
+    <UserControl.Resources>
+        <Converters:DateTimeToShortDateStringConverter x:Key="DateToDateStringConverter"/>
+        <Converters:DateTimeToMonthAndYearStringConverter x:Key="DateTimeToMonthAndYearStringConverter"/>
+        <Converters:DateTimeToHourStringConverter x:Key="DateTimeToHourStringConverter"/>
+        
+        <CommonCommands:ShowAddNewTaskCommand x:Key="ShowAddNewTask" />
+        <CommonCommands:DeleteTaskCommand x:Key="DeleteTaskCommand"/>
+        <CommonCommands:ShowEditTaskCommand x:Key="ShowEditTask" />
+
+        <Utilites:HelperCollections x:Key="HelperCollections" />        
+
+        <Style x:Key="DayNameTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Width" Value="130" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="Background" Value="{StaticResource DarkBrush}" />
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="Foreground" Value="{StaticResource LightBrush}" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+        <Style x:Key="HourListBoxStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="Width" Value="35" />
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Opacity" Value="0.50"  />
+            <Setter Property="Background" Value="{StaticResource LightBrush}" />
+        </Style>
+        <Style x:Key="CellListView" TargetType="{x:Type ListView}">
+            <Setter Property="Width" Value="130" />
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Opacity" Value="0.50"  />
+            <Setter Property="Background" Value="{StaticResource LightBrush}" />
+        </Style>
+
+        <DataTemplate x:Key="DayNamesDataTemplate">
+            <TextBlock 
+                Text="{Binding}"                                           
+                Style="{StaticResource DayNameTextBlockStyle}"  />
+        </DataTemplate>
+        
+        <DataTemplate x:Key="TaskDataTemplate" DataType="{x:Type Model:Task}">
+            <StackPanel Orientation="Horizontal" Opacity="1" HorizontalAlignment="Left"  >
+                <Button Style="{StaticResource XIconButtonTemplate}"
+                            Command="{StaticResource DeleteTaskCommand}"
+                            CommandParameter="{Binding}"
+                            />
+                <Button Style="{StaticResource EditIconButtonTemplate}" 
+                                                Command="{StaticResource ShowEditTask}"
+                                                CommandParameter="{Binding}"
+                                                />
+                <TextBlock Text="{Binding Name}"  />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HourTaskListDataTemplate" DataType="{x:Type WeekViewer:HourTaskList}">
+            <ListBox 
+                     MinHeight="15"
+                     ItemsSource="{Binding Tasks}" 
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     VerticalContentAlignment="Stretch"
+                     ItemTemplate="{DynamicResource TaskDataTemplate}" />            
+        </DataTemplate>                    
+        
+        <DataTemplate x:Key="ColumnDataTemplate">
+            <ListView ItemsSource="{Binding}"                             
+                      Style="{StaticResource CellListView}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="130"
+                                        CellTemplate="{DynamicResource HourTaskListDataTemplate}"
+                                        >
+                            <GridViewColumnHeader Width="130">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions
+                                        >
+                                    <TextBlock 
+                                        Grid.Column="0"
+                                        Text="{Binding [0].Time, Converter={StaticResource DateToDateStringConverter}, Mode=OneWay}"  Width="80" />
+                                    <Button 
+                                        Grid.Column="1"
+                                        Style="{StaticResource PlusIconButtonTemplate}" 
+                                                Command="{StaticResource ShowAddNewTask}"
+                                                CommandParameter="{Binding [0].Time, Mode=OneWay}"
+                                                />
+                                </Grid>                                                                
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>                
+            </ListView>
+        </DataTemplate>
+            
+        <DataTemplate x:Key="HourLabelsDataTemplate" DataType="{x:Type System:DateTime}">
+            <TextBlock Text="{Binding ., Converter={StaticResource DateTimeToHourStringConverter}}" 
+                       MinHeight="15"                       
+                       />
+        </DataTemplate>
+        
+
+    </UserControl.Resources>
+
     <Grid>
-        <TextBlock>
-            Widok Miesiaca
-        </TextBlock> 
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Grid.Column="1">
+            <Button x:Name="ToPreviousMonthButton" Margin="5"
+                    Command="{Binding GoToPreviousWeek}"
+                    >
+                <TextBlock Style="{StaticResource TextBlockButtonLabel}" >
+                    Poprzedni
+                </TextBlock>
+            </Button>
+            <TextBlock Style="{StaticResource TextBlockButtonLabel}" 
+                       Text="{Binding CurrentWeek, Converter={StaticResource DateToDateStringConverter}}"
+                       Width="130"                       
+                       Margin="5"
+                       />
+            <Button x:Name="ToNextMonthButton" Margin="5" 
+                    Command="{Binding GoToNextWeek}"
+                    >
+                <TextBlock Style="{StaticResource TextBlockButtonLabel}">
+                    Następny
+                </TextBlock>
+            </Button>
+
+        </StackPanel>
+
+        
+      
+        <ListView  
+            Grid.Row="2"
+            Style="{StaticResource CellListView}"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            ItemsSource="{Binding 
+                            Source={StaticResource HelperCollections}, 
+                            Path=HoursInDay, 
+                            Mode=OneTime}"             
+                       >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn 
+                        Width="40"
+                        CellTemplate="{DynamicResource HourLabelsDataTemplate}">
+                        <TextBlock                             
+                            Width="40"  Text="gg:mm" />
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+
+        <ItemsControl x:Name="_headersDayNames"
+                      Grid.Column="1"
+                      Grid.Row="1"
+                      ItemTemplate="{StaticResource DayNamesDataTemplate}"
+                      ItemsSource="{Binding 
+                                        Source={StaticResource HelperCollections}, 
+                                        Path=WeekDayNames, 
+                                        Mode=OneTime}"                               
+                     >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"  />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        
+        <ItemsControl x:Name="_weekViewModel" 
+                      Grid.Column="1"
+                      Grid.Row="2"
+                      ItemsSource="{Binding Tasks}"
+                      ItemTemplate="{DynamicResource ColumnDataTemplate}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        
     </Grid>
 </UserControl>

@@ -36,7 +36,7 @@ namespace TopCalendar.Utility.BasicExtensions
 
 		public static DateTime AtWeekStart(this DateTime date)
 		{
-			return date.Subtract(TimeSpan.FromDays(DayInWeek(date)));
+			return date.Subtract(TimeSpan.FromDays(DayInWeek(date))).AtDayStart();
 		}
 
 		public static int DayInWeek(this DateTime date)
@@ -57,7 +57,7 @@ namespace TopCalendar.Utility.BasicExtensions
 
 		public static DateTime AtWeekEnd(this DateTime date)
 		{
-			return date.AtWeekStart().AddDays(7).Subtract(TimeSpan.FromTicks(1));
+			return date.AtWeekStart().AddDays(7).Subtract(TimeSpan.FromTicks(1)).AtDayEnd();
 		}
 
 		public static DateTime AtMonthStart(this DateTime date)

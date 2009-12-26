@@ -1,8 +1,10 @@
-﻿using Microsoft.Practices.Composite.Events;
+﻿using System;
+using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Logging;
 using Microsoft.Practices.Composite.Modularity;
 using Ninject;
 using TopCalendar.UI.Infrastructure;
+using TopCalendar.UI.MenuInfrastructure;
 using TopCalendar.UI.Modules.MonthViewer.Services;
 using TopCalendar.UI.PluginManager;
 using TopCalendar.Utility;
@@ -15,24 +17,36 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		private readonly IKernel _kernel;		
 		private readonly IEventAggregator _eventAggregator;
 		private readonly ILoggerFacade _loggerFacade;
+		private readonly IMenuManager _menuManager;
+		private CommandCanExecuteHelper _canExecuteShowWeekView;
 
-		public MonthViewerModule(IKernel kernel, IEventAggregator eventAggregator, ILoggerFacade loggerFacade)
+		public MonthViewerModule(IKernel kernel, IEventAggregator eventAggregator, ILoggerFacade loggerFacade, IMenuManager menuManager)
 		{
 			_kernel = kernel;			
 			_eventAggregator = eventAggregator;
 			_loggerFacade = loggerFacade;
+			_menuManager = menuManager;
 		}
 
 		public void Initialize()
 		{
 			ExecuteBootsrapTasks();
 			RegisterViewsAndServices();
-			SubscribeToDefaultEvents();
+			AddItemsToMenus();
+			SubscribeToDefaultEvents();			
+		}
+
+		private void AddItemsToMenus()
+		{
+			_canExecuteShowWeekView = new CommandCanExecuteHelper(false);
+			_menuManager.AddItemToMenu<ShowMonthViewEvent, DateTime?>("TasksMenu", "MonthView", "Widok miesiąca", _canExecuteShowWeekView);
 		}
 
 		private void SubscribeToDefaultEvents()
 		{
 			_eventAggregator.GetEvent<RegistrationCompletedEvent>().Subscribe(login => LoadMonthView());
+			_eventAggregator.GetEvent<RegistrationCompletedEvent>().Subscribe(l => _canExecuteShowWeekView.CanExecute = true);
+			_eventAggregator.GetEvent<ShowMonthViewEvent>().Subscribe(dt => LoadMonthView());
 		}
 
 		private void LoadMonthView()
