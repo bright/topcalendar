@@ -19,7 +19,6 @@ namespace TopCalendar.Client.DataModel
     		_startAt = startAt;
     	}
 
-
     	[StringLengthValidator(1, 50)]
     	public string Name
     	{

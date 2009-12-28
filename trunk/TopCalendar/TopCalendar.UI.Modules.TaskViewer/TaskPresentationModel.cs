@@ -6,6 +6,7 @@ using Microsoft.Practices.Composite.Logging;
 using Microsoft.Practices.Composite.Presentation.Commands;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
+using AutoMapper;
 using Ninject;
 using TopCalendar.Client.Connector;
 using TopCalendar.Client.DataModel;
@@ -23,11 +24,13 @@ namespace TopCalendar.UI.Modules.TaskViewer
             : base(view)
         {
             _eventAggregator = eventAggregator;
-            _taskRepository = taskRepository;            
+            _taskRepository = taskRepository;
             _cancelCommand = new DelegateCommand<object>(Cancel);
             _updateCommand = new DelegateCommand<Task>(Update, CanUpdate);
 			_addCommand = new DelegateCommand<Task>(Add, CanAdd);
-			_view.ViewModel = this;        	
+			_view.ViewModel = this;
+            
+            Mapper.CreateMap<Task, Task>();
         }
 
     	public void ShowAddNewTaskView(DateTime? newDateTime)
@@ -39,7 +42,9 @@ namespace TopCalendar.UI.Modules.TaskViewer
         public void ShowEditTaskView(Task taskToEdit)
         {
             IsNewTask = false;
-            Task = taskToEdit;
+            _originalTask = taskToEdit;
+            this.Task = new Task();
+            Task = Mapper.Map(_originalTask, Task);
         }
 
 
@@ -58,7 +63,8 @@ namespace TopCalendar.UI.Modules.TaskViewer
 
     	private readonly IEventAggregator _eventAggregator;
         private readonly ITaskRepository _taskRepository;
-        
+
+        private Task _originalTask;
 		private Task _task;
     	public Task Task
     	{
@@ -144,7 +150,8 @@ namespace TopCalendar.UI.Modules.TaskViewer
 
         private void Update(Task task)
         {
-			bool success = _taskRepository.UpdateTask(task);
+            Mapper.Map(task,_originalTask);
+			bool success = _taskRepository.UpdateTask(_originalTask);
             if (success)
             {
                 Cancel(null);
