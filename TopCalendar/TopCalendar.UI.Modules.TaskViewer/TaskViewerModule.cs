@@ -69,7 +69,7 @@ namespace TopCalendar.UI.Modules.TaskViewer
         private void HandleShowEditTaskEvent(Task taskToEdit)
         {
             var taskPresentationModel = _kernel.Get<ITaskPresentationModel>();
-
+            
             _pluginLoader.RegisterViewWithRegion(
                 RegionNames.MainContent, taskPresentationModel.View);
 
