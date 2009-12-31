@@ -12,6 +12,7 @@ using Microsoft.Practices.Composite.Regions;
 using Ninject;
 using NinjectContrib.CompositePresentation.KernelModules;
 using NinjectContrib.CompositePresentation.Properties;
+using TopCalendar.UI.Infrastructure.Regions;
 using ActivationException=Ninject.ActivationException;
 
 
@@ -121,7 +122,7 @@ namespace NinjectContrib.CompositePresentation
 					defaultRegionBehaviorTypesDictionary.AddIfMissing(AutoPopulateRegionBehavior.BehaviorKey, typeof(AutoPopulateRegionBehavior));
 					defaultRegionBehaviorTypesDictionary.AddIfMissing(BindRegionContextToDependencyObjectBehavior.BehaviorKey, typeof(BindRegionContextToDependencyObjectBehavior));
 					//defaultRegionBehaviorTypesDictionary.AddIfMissing("ActiveAware", typeof(RegionActiveAwareBehavior));
-                    defaultRegionBehaviorTypesDictionary.AddIfMissing(LastViewIsActiveBehavior.BehaviorKey, typeof(LastViewIsActiveBehavior));
+                    defaultRegionBehaviorTypesDictionary.AddIfMissing(LastViewIsActiveRegionBehavior.BehaviorKey, typeof(LastViewIsActiveRegionBehavior));
 					defaultRegionBehaviorTypesDictionary.AddIfMissing(SyncRegionContextWithHostBehavior.BehaviorKey, typeof(SyncRegionContextWithHostBehavior));
 					defaultRegionBehaviorTypesDictionary.AddIfMissing(RegionManagerRegistrationBehavior.BehaviorKey, typeof(RegionManagerRegistrationBehavior));
 				}
