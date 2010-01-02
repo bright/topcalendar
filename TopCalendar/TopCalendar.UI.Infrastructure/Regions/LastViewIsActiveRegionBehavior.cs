@@ -17,9 +17,7 @@ namespace TopCalendar.UI.Infrastructure.Regions
         /// </summary>
         public const string BehaviorKey = "LastIsActive";
 
-        protected IActiveAware lastView;
-
-        /// <summary>
+    	/// <summary>
         /// The region that this behavior is extending
         /// </summary>
         public IRegion Region { get; set; }
@@ -29,7 +27,7 @@ namespace TopCalendar.UI.Infrastructure.Regions
         /// </summary>
         public void Attach()
         {
-            INotifyCollectionChanged collection = this.GetCollection();
+            INotifyCollectionChanged collection = GetCollection();
             if (collection != null)
             {
                 collection.CollectionChanged += OnCollectionChanged;
@@ -41,23 +39,23 @@ namespace TopCalendar.UI.Infrastructure.Regions
         /// </summary>
         public void Detach()
         {
-            INotifyCollectionChanged collection = this.GetCollection();
+            INotifyCollectionChanged collection = GetCollection();
             if (collection != null)
             {
                 collection.CollectionChanged -= OnCollectionChanged;
             }
         }
 
-        protected List<object> LatestActiveViews = new List<object>();
+        protected readonly List<object> LatestActiveViews = new List<object>();
 
         protected void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                if (!this.Region.ActiveViews.Contains(e.NewItems[0]))
-                    LatestActiveViews.Add(this.Region.ActiveViews.First());
+                if (!Region.ActiveViews.Contains(e.NewItems[0]))
+                    LatestActiveViews.Add(Region.ActiveViews.First());
 
-                this.Region.Activate(e.NewItems[0]);
+                Region.Activate(e.NewItems[0]);
             }
             else if (e.Action == NotifyCollectionChangedAction.Remove)
             {
@@ -71,7 +69,7 @@ namespace TopCalendar.UI.Infrastructure.Regions
                         {
                             var viewToActivate = LatestActiveViews[LatestActiveViews.Count - 1];
 
-                            this.Region.Activate(viewToActivate);
+                            Region.Activate(viewToActivate);
                             LatestActiveViews.Remove(viewToActivate);
                         }
                     }
@@ -85,7 +83,7 @@ namespace TopCalendar.UI.Infrastructure.Regions
 
         private INotifyCollectionChanged GetCollection()
         {
-            return this.Region.Views;
+            return Region.Views;
         }
     }
 }

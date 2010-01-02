@@ -67,7 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayerNinjectModule.cs" />
+    <Compile Include="Entities\DomainObject.cs" />
+    <Compile Include="Entities\PluginData.cs" />
     <Compile Include="Entities\Task.cs" />
+    <Compile Include="Mappings\PluginDataMap.cs" />
     <Compile Include="Mappings\TaskMap.cs" />
     <Compile Include="NHibernateSessionFactory.cs" />
     <Compile Include="Entities\User.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Repositories\TasksRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
     <Compile Include="Specifications\TaskSpecification.cs" />
+    <Compile Include="WithinNhTransactionWorker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">

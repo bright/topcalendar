@@ -29,7 +29,7 @@ namespace TopCalendar.UI.Modules.Registration
 				 ()=>_kernel.Get<IRegistrationPresentationModel>().View
 			);
 
-			_eventAggregator.GetEvent<UnloadViewEvent>().Subscribe(UnloadModule);
+			_eventAggregator.GetEvent<DeactivateViewEvent>().Subscribe(UnloadModule);
 		}
 
 		private void UnloadModule(IView view)

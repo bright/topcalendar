@@ -87,8 +87,11 @@
     <Compile Include="ServiceLibraryNinjectModule.cs" />
     <Compile Include="ServiceLogic\AddNewTasksLogic.cs" />
     <Compile Include="ServiceLogic\FindTasksLogic.cs" />
+    <Compile Include="ServiceLogic\ITransactionHandler.cs" />
     <Compile Include="ServiceLogic\RemoveTaskLogic.cs" />
     <Compile Include="ServiceLogic\RequestToResponseLogic.cs" />
+    <Compile Include="ServiceLogic\ResponseLogic.cs" />
+    <Compile Include="ServiceLogic\TransactionHandler.cs" />
     <Compile Include="ServiceLogic\UpdateTaskLogic.cs" />
     <Compile Include="ServiceLogic\UserRegistrationLogic.cs" />
   </ItemGroup>

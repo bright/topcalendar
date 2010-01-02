@@ -105,7 +105,7 @@ namespace TopCalendar.UI.Modules.Plugins
 
 		private void Cancel(object obj)
 		{
-			_eventAggregator.GetEvent<UnloadViewEvent>().Publish(View);
+			_eventAggregator.GetEvent<DeactivateViewEvent>().Publish(View);
 		}
 
 		private void Save(object obj)
@@ -115,7 +115,7 @@ namespace TopCalendar.UI.Modules.Plugins
 
 			MessageBox.Show("Zmiany zapisane. Uruchom program ponownie\nWersja 2.0 nie bêdzie wymaga³a restartu ;)");
 
-			_eventAggregator.GetEvent<UnloadViewEvent>().Publish(View);
+			_eventAggregator.GetEvent<DeactivateViewEvent>().Publish(View);
 		}
 
 		#endregion

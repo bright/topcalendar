@@ -41,18 +41,19 @@ namespace TopCalendar.UI.Modules.Plugins
 
 		private void LoadPluginsView(object obj)
 		{
-			_kernel.Get<IPluginLoader>().RegisterViewWithRegion(
-				RegionNames.MainContent,
-				_kernel.Get<IPluginsViewPresentationModel>().View
-			);
+			_kernel.Get<IPluginLoader>().ActivateView(RegionNames.MainContent, _kernel.Get<IPluginsView>());
 		}
 
 		private void RegisterViewsAndServices()
-		{
+		{			
 			_kernel.Bind<IPluginsView>().To<PluginsView>().InSingletonScope();
 			_kernel.Bind<IPresentationModelFor<IPluginsView>>().To<PluginsViewPresentationModel>().InSingletonScope();
 			_kernel.Bind<IViewForModel<IPluginsView, PluginsViewPresentationModel>>().To<PluginsView>().InSingletonScope();
 			_kernel.Bind<IPluginsViewPresentationModel>().To<PluginsViewPresentationModel>().InSingletonScope();
+			_kernel.Get<IPluginLoader>().RegisterInActiveViewWithRegion(
+				RegionNames.MainContent,
+				() => _kernel.Get<IPluginsViewPresentationModel>().View
+			);
 		}
 	}
 }

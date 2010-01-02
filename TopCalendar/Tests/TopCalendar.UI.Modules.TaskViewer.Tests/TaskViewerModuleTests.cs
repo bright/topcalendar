@@ -54,11 +54,11 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         }
 
         [Test]
-        public void task_view_should_be_registered_with_MainContent_region()
+        public void task_view_should_be_activated()
         {
             Dependency<IPluginLoader>().AssertWasCalled(loader =>
-                loader.RegisterViewWithRegion(
-                    Arg<string>.Is.Equal(RegionNames.MainContent),
+                loader.ActivateView(
+                    Arg<string>.Is.Equal(RegionNames.ModalPopupContent),
                     Arg<IView>.Is.Equal(_taskView)
                 )
             );
@@ -82,11 +82,11 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
         }
 
         [Test]
-        public void task_view_should_be_registered_with_MainContent_region()
+		public void task_view_should_be_activated()
         {
             Dependency<IPluginLoader>().AssertWasCalled(loader =>
-                loader.RegisterViewWithRegion(
-                    Arg<string>.Is.Equal(RegionNames.MainContent),
+                loader.ActivateView(
+                    Arg<string>.Is.Equal(RegionNames.ModalPopupContent),
                     Arg<IView>.Is.Equal(_taskView)
                 )
             );

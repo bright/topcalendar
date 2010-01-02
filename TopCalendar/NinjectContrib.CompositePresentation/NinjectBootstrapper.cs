@@ -121,8 +121,8 @@ namespace NinjectContrib.CompositePresentation
 				{
 					defaultRegionBehaviorTypesDictionary.AddIfMissing(AutoPopulateRegionBehavior.BehaviorKey, typeof(AutoPopulateRegionBehavior));
 					defaultRegionBehaviorTypesDictionary.AddIfMissing(BindRegionContextToDependencyObjectBehavior.BehaviorKey, typeof(BindRegionContextToDependencyObjectBehavior));
-					//defaultRegionBehaviorTypesDictionary.AddIfMissing("ActiveAware", typeof(RegionActiveAwareBehavior));
-                    defaultRegionBehaviorTypesDictionary.AddIfMissing(LastViewIsActiveRegionBehavior.BehaviorKey, typeof(LastViewIsActiveRegionBehavior));
+					defaultRegionBehaviorTypesDictionary.AddIfMissing(RegionActiveAwareBehavior.BehaviorKey, typeof(RegionActiveAwareBehavior));
+                    //defaultRegionBehaviorTypesDictionary.AddIfMissing(LastViewIsActiveRegionBehavior.BehaviorKey, typeof(LastViewIsActiveRegionBehavior));
 					defaultRegionBehaviorTypesDictionary.AddIfMissing(SyncRegionContextWithHostBehavior.BehaviorKey, typeof(SyncRegionContextWithHostBehavior));
 					defaultRegionBehaviorTypesDictionary.AddIfMissing(RegionManagerRegistrationBehavior.BehaviorKey, typeof(RegionManagerRegistrationBehavior));
 				}

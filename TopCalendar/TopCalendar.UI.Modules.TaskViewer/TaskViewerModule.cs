@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Modularity;
+using Microsoft.Practices.Composite.Regions;
 using Ninject;
 using TopCalendar.Client.DataModel;
 using TopCalendar.UI.Infrastructure;
@@ -52,27 +53,23 @@ namespace TopCalendar.UI.Modules.TaskViewer
         }
 
 		private void HandleRegistrationCompletedEvent(string login)
-		{
-			_canBeRun.CanExecute = true;
+		{			
+			var view = _kernel.Get<ITaskPresentationModel>().View;
+			view.IsActiveChanged += (o, e) => _canBeRun.CanExecute = !view.IsActive;			                        	
+			_pluginLoader.RegisterInActiveViewWithRegion( RegionNames.ModalPopupContent, view);						
 		}
 
         private void HandleShowAddNewTaskViewEvent(DateTime? time)
         {
             var taskPresentationModel = _kernel.Get<ITaskPresentationModel>();
-
-            _pluginLoader.RegisterViewWithRegion(
-                RegionNames.MainContent, taskPresentationModel.View);
-
+			_pluginLoader.ActivateView(RegionNames.ModalPopupContent, taskPresentationModel.View);
             taskPresentationModel.ShowAddNewTaskView(time);
         }
 
         private void HandleShowEditTaskEvent(Task taskToEdit)
         {
-            var taskPresentationModel = _kernel.Get<ITaskPresentationModel>();
-            
-            _pluginLoader.RegisterViewWithRegion(
-                RegionNames.MainContent, taskPresentationModel.View);
-
+			var taskPresentationModel = _kernel.Get<ITaskPresentationModel>();
+			_pluginLoader.ActivateView(RegionNames.ModalPopupContent, taskPresentationModel.View);
             taskPresentationModel.ShowEditTaskView(taskToEdit);
         }
     }

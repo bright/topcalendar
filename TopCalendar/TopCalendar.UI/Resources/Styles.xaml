@@ -79,8 +79,7 @@
                 <GradientStop Color="#CCC" Offset="1.0"/>
             </GradientStopCollection>
         </GradientBrush.GradientStops>
-    </LinearGradientBrush>
-
+    </LinearGradientBrush>   
     <LinearGradientBrush x:Key="LightBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientBrush.GradientStops>
             <GradientStopCollection>

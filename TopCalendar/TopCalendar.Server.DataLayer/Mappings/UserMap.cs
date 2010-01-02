@@ -11,7 +11,7 @@ namespace TopCalendar.Server.DataLayer.Mappings
     {
         public UserMap()
         {
-            Id(x => x.Id);
+            Id(x => x.Id).Unique();
             Map(x => x.Login).Not.Nullable().Unique();
             Map(x => x.Password).Not.Nullable();			
         }

@@ -64,8 +64,7 @@ namespace TopCalendar.Client.Connector
             Service.AddNewTask(Request<AddNewTaskRequest>(r=> r.Task=taskDto));
             _eventAggregator.GetEvent<NewTaskAddedEvent>().Publish(task);
 			_eventAggregator.GetEvent<TaskListChangedEvent>().Publish(task.StartAt);
-            return true;
-            //Todo: should call TaskAddedEvent
+            return true;            
         }
 
     	public void RemoveTask(Task task)
