@@ -145,11 +145,11 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 
 		protected override void EstablishContext()
 		{
-			var unloadViewEvent = new UnloadViewEvent();
+			var unloadViewEvent = new DeactivateViewEvent();
 			unloadViewEvent.Subscribe(HandleEvent);
 
 			Dependency<IEventAggregator>().Stub(aggregator =>
-				aggregator.GetEvent<UnloadViewEvent>()).Return(unloadViewEvent);
+				aggregator.GetEvent<DeactivateViewEvent>()).Return(unloadViewEvent);
 
 			Dependency<IPluginLoader>().Stub(
 				x => x.ModuleCatalog.Modules).Return(new List<ModuleInfo>()

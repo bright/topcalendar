@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using TopCalendar.Utility;
 
 namespace TopCalendar.Server.DataLayer.Entities
 {
-    public class Task
+	public class Task : DomainObject<int>
     {
     	protected Task()
     	{    		
@@ -13,9 +14,7 @@ namespace TopCalendar.Server.DataLayer.Entities
     	{
     		Check.Guard(user != null, "Cant create task without user");
     		User = user;
-    	}
-
-    	public virtual int Id { get; private set; }
+    	}  	
 
         public virtual string Name { get; set; }
 
@@ -26,5 +25,7 @@ namespace TopCalendar.Server.DataLayer.Entities
         public virtual string Description { get; set; }
 
         public virtual User User { get; set; }
+
+		public virtual IList<PluginData> PluginDatas { get; set; }
     }
 }

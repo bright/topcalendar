@@ -18,5 +18,7 @@ namespace TopCalendar.UI.Modules.Plugins
 			get { return DataContext as PluginsViewPresentationModel;}
 			set { DataContext = value; }
 		}
+
+	
 	}
 }

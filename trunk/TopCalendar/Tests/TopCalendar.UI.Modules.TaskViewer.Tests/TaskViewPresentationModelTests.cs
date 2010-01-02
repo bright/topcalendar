@@ -14,15 +14,15 @@ namespace TopCalendar.UI.Modules.TaskViewer.Tests
 {
     public abstract class observations_for_task_view_presentation_model : observations_for_auto_created_sut_of_type_with_eventaggregator<TaskPresentationModel>
     {
-		protected UnloadViewEvent _unloadViewEvent;
+		protected DeactivateViewEvent DeactivateViewEvent;
         protected ITaskView _taskView;
     	private IView _argument;
 
     	protected override void EstablishContext()
         {
             base.EstablishContext();
-        	_unloadViewEvent = EventAggr.GetEvent<UnloadViewEvent>();
-        	_unloadViewEvent.Subscribe(_unloadViewEventAction);
+        	DeactivateViewEvent = EventAggr.GetEvent<DeactivateViewEvent>();
+        	DeactivateViewEvent.Subscribe(_unloadViewEventAction);
             _taskView = Dependency<ITaskView>();
         }
 

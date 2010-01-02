@@ -14,7 +14,7 @@ using TopCalendar.UI.MenuInfrastructure;
 namespace TopCalendar.UI.Modules.Plugins.Tests
 {
 	public class when_ShowPluginsEvent_is_published
-		: observations_for_auto_created_sut_of_type<PluginsModule>
+		: observations_for_auto_created_sut_of_type_with_eventaggregator<PluginsModule>
 	{
 		private ShowPluginsEvent _showEvent;
 		private IPluginsView _pluginsView;
@@ -31,41 +31,31 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 
 		protected override void EstablishContext()
 		{
-			IEventAggregator eventAggregator = Dependency<IEventAggregator>();
-
-			_showEvent = new ShowPluginsEvent();
-
-			eventAggregator.Stub(aggregator =>
-				aggregator.GetEvent<ShowPluginsEvent>()).Return(_showEvent);
-
+			base.EstablishContext();
+			_showEvent = EventAggr.GetEvent<ShowPluginsEvent>();
 			_pluginsView = Dependency<IPluginsView>();
 			Dependency<IPluginsViewPresentationModel>().Stub(x => x.View).Return(_pluginsView);
 		}
 
 		[Test]
-		public void plugins_view_should_be_registered_with_MainContent_region()
+		public void should_acitevate_plugins_view()
 		{
 			Dependency<IPluginLoader>().AssertWasCalled(loader =>
-				loader.RegisterViewWithRegion(
+				loader.ActivateView(
 					Arg<string>.Is.Equal(RegionNames.MainContent),
-					Arg<IView>.Is.Equal(_pluginsView)
+					Arg<IView>.Is.NotNull
 				)
 			);
 		}
+
 	}
 
 	public class when_PluginsModule_is_created
-		: observations_for_auto_created_sut_of_type<PluginsModule>
+		: observations_for_auto_created_sut_of_type_with_eventaggregator<PluginsModule>
 	{
 		protected override void Because()
 		{
 			Sut.Initialize();
-		}
-
-		protected override void EstablishContext()
-		{
-			Dependency<IEventAggregator>().Stub(aggregator =>
-				aggregator.GetEvent<ShowPluginsEvent>()).Return(new ShowPluginsEvent());
 		}
 
 		[Test]
@@ -78,6 +68,13 @@ namespace TopCalendar.UI.Modules.Plugins.Tests
 					Arg<string>.Is.Anything
 				)
 			);
+		}
+
+		[Test]
+		public void should_register_plugins_view()
+		{
+			Dependency<IPluginLoader>().AssertWasCalled(pl=>
+				pl.RegisterInActiveViewWithRegion(Arg<string>.Is.NotNull, Arg<Func<IView>>.Is.NotNull));
 		}
 	}
 }

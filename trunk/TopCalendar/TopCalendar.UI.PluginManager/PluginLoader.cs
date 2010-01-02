@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Modularity;
@@ -30,7 +31,7 @@ namespace TopCalendar.UI.PluginManager
 
 			_connectors = _kernel.Get<IConnectorsListProvider>();
 
-			_eventAggregator.GetEvent<UnloadViewEvent>().Subscribe(UnloadView);
+			_eventAggregator.GetEvent<DeactivateViewEvent>().Subscribe(DeactivateView);
 		}
 
 		/// <summary>
@@ -48,21 +49,22 @@ namespace TopCalendar.UI.PluginManager
 				return _moduleCatalog;
 			}
 		}
-
-		/// <summary>
-		/// Wywala podany widok z wszystkich regionow, w ktorych jest zarejestrowany
-		/// </summary>
-		/// <param name="moduleView">Widok do wywalenia</param>
-		private void UnloadView(IView moduleView)
+        
+		private void DeactivateView(IView moduleView)
 		{
-			var regions = from item in _kernel.Get<IRegionManager>().Regions
-			              where item.Views.Contains(moduleView)
-			              select item;
+			var regions = GetRegionsContaningView(moduleView);
 
 			foreach (var region in regions)
 			{
-				region.Remove(moduleView);
+				region.Deactivate(moduleView);
 			}
+		}
+
+		private IEnumerable<IRegion> GetRegionsContaningView(IView moduleView)
+		{
+			return from item in _kernel.Get<IRegionManager>().Regions
+			       where item.Views.Contains(moduleView)
+			       select item;
 		}
 
 		/// <summary>
@@ -94,6 +96,30 @@ namespace TopCalendar.UI.PluginManager
 		public void RegisterViewWithRegion(string regionName, Func<IView> viewProvider)
 		{
 			RegisterViewWithRegion(regionName, viewProvider());
+		}
+
+		public void ActivateView(string regionName, IView view)
+		{
+			var region = _regionManager.Regions[regionName];
+			if(region == null)
+				return;
+			region.Activate(view);
+		}
+
+		public void ActivateView(string regionName, Func<IView> viewProvider)
+		{
+			ActivateView(regionName,viewProvider());
+		}
+
+		public void RegisterInActiveViewWithRegion(string regionName, IView view)
+		{
+			RegisterViewWithRegion(regionName, view);
+			_regionManager.Regions[regionName].Deactivate(view);
+		}
+
+		public void RegisterInActiveViewWithRegion(string regionName, Func<IView> view)
+		{
+			RegisterInActiveViewWithRegion(regionName, view());
 		}
 	}
 }

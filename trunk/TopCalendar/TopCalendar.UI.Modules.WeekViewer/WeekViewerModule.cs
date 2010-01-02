@@ -53,16 +53,17 @@ namespace TopCalendar.UI.Modules.WeekViewer
 		private void HandleRegistrationCompletedEvent(string obj)
 		{
 			_canExecuteShowWeekView.CanExecute = true;
+			_pluginLoader.RegisterViewWithRegion(RegionNames.MainContent, () => _kernel.Get<IPresentationModelFor<IWeekView>>().View);
 		}
 
 		private void HandleShowWeekViewEvent(DateTime? obj)
 		{
-			_pluginLoader.RegisterViewWithRegion(RegionNames.MainContent, ()=> _kernel.Get<IPresentationModelFor<IWeekView>>().View);
+			_kernel.Get<IPluginLoader>().ActivateView(RegionNames.MainContent, ()=> _kernel.Get<IWeekView>());	
 		}
 
 		private void RegisterViewsAndServices()
 		{
-			_kernel.Bind<IWeekView>().To<WeekView>();
+			_kernel.Bind<IWeekView>().To<WeekView>().InSingletonScope();
 			_kernel.Bind<IPresentationModelFor<IWeekView>>().To<WeekViewPresentationModel>();
 			_kernel.Bind<IWeekTaskLoader>().To<WeekTaskLoader>();
 		}

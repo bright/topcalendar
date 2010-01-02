@@ -19,7 +19,7 @@ namespace TopCalendar.UI.Infrastructure
 	/// Event publikowany przez moduly, ktore chca, zeby je wyladowac z regionu
 	/// W parametrze obiekt widoku do wywalenia
 	/// </summary>
-	public class UnloadViewEvent : CompositePresentationEvent<IView>
+	public class DeactivateViewEvent : CompositePresentationEvent<IView>
 	{
 	}
 

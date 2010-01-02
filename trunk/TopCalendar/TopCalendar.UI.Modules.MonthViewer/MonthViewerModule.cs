@@ -44,15 +44,20 @@ namespace TopCalendar.UI.Modules.MonthViewer
 
 		private void SubscribeToDefaultEvents()
 		{
-			_eventAggregator.GetEvent<RegistrationCompletedEvent>().Subscribe(login => LoadMonthView());
+			_eventAggregator.GetEvent<RegistrationCompletedEvent>().Subscribe(login => LoadAndShowMonthView());
 			_eventAggregator.GetEvent<RegistrationCompletedEvent>().Subscribe(l => _canExecuteShowWeekView.CanExecute = true);
-			_eventAggregator.GetEvent<ShowMonthViewEvent>().Subscribe(dt => LoadMonthView());
+			_eventAggregator.GetEvent<ShowMonthViewEvent>().Subscribe(dt => ShowMonthView());
 		}
 
-		private void LoadMonthView()
+		private void LoadAndShowMonthView()
 		{
-			_kernel.Get<IPluginLoader>()
-				.RegisterViewWithRegion(RegionNames.MainContent, ()=> _kernel.Get<IPresentationModelFor<IMonthView>>().View);
+			_kernel.Get<IPluginLoader>().RegisterViewWithRegion(RegionNames.MainContent, () => _kernel.Get<IPresentationModelFor<IMonthView>>().View);
+			ShowMonthView();
+		}
+
+		private void ShowMonthView()
+		{
+			_kernel.Get<IPluginLoader>().ActivateView(RegionNames.MainContent,()=> _kernel.Get<IMonthView>());
 		}
 
 		private void ExecuteBootsrapTasks()
@@ -65,7 +70,7 @@ namespace TopCalendar.UI.Modules.MonthViewer
 		{			
 			_kernel.Bind<IMonthView>().To<MonthView>().InSingletonScope();
 			_kernel.Bind<IPresentationModelFor<IMonthView>>().To<MonthViewPresentationModel>().InSingletonScope();
-			_kernel.Bind<IMonthTaskLoader>().To<MonthTaskLoader>().InSingletonScope();
+			_kernel.Bind<IMonthTaskLoader>().To<MonthTaskLoader>().InSingletonScope();			
 		}
 	}
 }

@@ -1,3 +1,4 @@
+using Microsoft.Practices.Composite;
 using TopCalendar.Utility.UI;
 
 namespace TopCalendar.UI.Modules.Plugins

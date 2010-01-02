@@ -11,7 +11,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 	public class when_executing_cancel
 		: observations_for_auto_created_sut_of_type_with_eventaggregator<RegistrationPresentationModel>
 	{
-		private UnloadViewEvent subscriber;
+		private DeactivateViewEvent subscriber;
 		
 		private bool _cancelActionExecuted;
 
@@ -23,7 +23,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		protected override void EstablishContext()
 		{
 			base.EstablishContext();
-			subscriber = EventAggr.GetEvent<UnloadViewEvent>();
+			subscriber = EventAggr.GetEvent<DeactivateViewEvent>();
 			subscriber.Subscribe(execute_action);
 			_cancelActionExecuted = false;				
 		}
@@ -44,7 +44,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		: observations_for_auto_created_sut_of_type_with_eventaggregator<RegistrationPresentationModel>
 	{
 		private RegistrationCompletedEvent regCompletedSubscriber;
-		private UnloadViewEvent unloadSubscriber;
+		private DeactivateViewEvent _deactivateSubscriber;
 
 
 		private bool _viewShouldDieExecuted;
@@ -53,8 +53,8 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		protected override void EstablishContext()
 		{
 			base.EstablishContext();
-			unloadSubscriber = EventAggr.GetEvent<UnloadViewEvent>();			
-			unloadSubscriber.Subscribe(execute_unload);
+			_deactivateSubscriber = EventAggr.GetEvent<DeactivateViewEvent>();			
+			_deactivateSubscriber.Subscribe(execute_unload);
 
 			regCompletedSubscriber = EventAggr.GetEvent<RegistrationCompletedEvent>();
 			regCompletedSubscriber.Subscribe(execute_register);

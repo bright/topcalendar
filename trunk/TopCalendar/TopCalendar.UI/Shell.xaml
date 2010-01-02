@@ -5,7 +5,17 @@
     xmlns:region="clr-namespace:Microsoft.Practices.Composite.Presentation.Regions;assembly=Microsoft.Practices.Composite.Presentation"
     Title="TopCalendar" Height="768" Width="1024" WindowStartupLocation="CenterScreen" WindowState="Maximized"
      ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-    
+    <Window.Resources>
+        <LinearGradientBrush x:Key="LightOpacityBrush" StartPoint="0,0" EndPoint="0,1" Opacity="0.5">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="#FFF" Offset="0.0"/>
+                    <GradientStop Color="#444" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+    </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="Resources/background.png"  Stretch="UniformToFill"/>
     </Window.Background>
@@ -22,7 +32,7 @@
         
         <Grid Grid.Row="1" HorizontalAlignment="Stretch">
             
-            <ContentControl x:Name="MainContent" 
+            <ContentControl x:Name="MainContent"                             
                             region:RegionManager.RegionName="{x:Static inf:RegionNames.MainContent}">
                 <ContentControl.Template>
                     <ControlTemplate TargetType="ContentControl">
@@ -33,6 +43,19 @@
                 </ContentControl.Template>
             </ContentControl>
             
+            <ContentControl x:Name="ModalPopupContent"                            
+                            region:RegionManager.RegionName="{x:Static inf:RegionNames.ModalPopupContent}"                          
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            >
+                <ContentControl.Template>
+                    <ControlTemplate TargetType="ContentControl">
+                        <Grid Background="{StaticResource LightOpacityBrush}">
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                        </Grid>
+                    </ControlTemplate>
+                </ContentControl.Template>
+            </ContentControl>
         </Grid>
     </Grid>
 </Window>

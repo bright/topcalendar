@@ -12,7 +12,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 		: observations_for_auto_created_sut_of_type_with_eventaggregator<RegistrationModule>
 	{
 		protected UnloadModuleEvent moduleEvent;
-		protected UnloadViewEvent viewEvent;
+		protected DeactivateViewEvent viewEvent;
 		
 		protected bool _unloadModuleExecuted;
 
@@ -22,7 +22,7 @@ namespace TopCalendar.UI.Modules.Registration.Tests
 			moduleEvent = EventAggr.GetEvent<UnloadModuleEvent>();
 			moduleEvent.Subscribe(execute_action);
 			_unloadModuleExecuted = false;
-			viewEvent = EventAggr.GetEvent<UnloadViewEvent>();			
+			viewEvent = EventAggr.GetEvent<DeactivateViewEvent>();			
 		}
 
 		protected override void AfterSutCreation()
