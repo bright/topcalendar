@@ -36,7 +36,8 @@ namespace TopCalendar.UI.Modules.TaskViewer
     	public void ShowAddNewTaskView(DateTime? newDateTime)
         {
         	IsNewTask = true;
-            Task = new Task("Nazwa", newDateTime ?? DateTime.Now);            
+            Task = new Task("Nazwa", newDateTime ?? DateTime.Now);
+    	    Task.FinishAt = Task.StartAt.AddHours(1);
         }
 
         public void ShowEditTaskView(Task taskToEdit)
@@ -45,6 +46,23 @@ namespace TopCalendar.UI.Modules.TaskViewer
             _originalTask = taskToEdit;
             this.Task = new Task();
             Task = Mapper.Map(_originalTask, Task);
+        }
+
+        private DateTime _finishAtDate;
+        public DateTime FinishAtDate
+        {
+            get
+            {
+                return _finishAtDate;
+            }
+            set
+            {
+                _finishAtDate = value;
+                if(!IsEndDateEnabled)
+                    Task.FinishAt = null;
+                else
+                    Task.FinishAt = value;
+            }
         }
 
 
@@ -80,13 +98,23 @@ namespace TopCalendar.UI.Modules.TaskViewer
     			UnBindCanExecuteCommands();
     		_task = value;
     		BindCanExecuteCommands();
-    		OnPropertyChanged(()=>Task);
-    	}
 
+            if (value.FinishAt == null)
+            {
+                _finishAtDate = value.StartAt.AddHours(1);
+                IsEndDateEnabled = false;
+            }
+            else
+            {
+                _finishAtDate = (DateTime) value.FinishAt;
+                IsEndDateEnabled = true;
+            }
+
+    	    OnPropertyChanged(()=>Task);
+    	}
 
     	[Inject]
         public ILoggerFacade Log { get; set; }
-
     
 
         private DelegateCommand<object> _cancelCommand;
@@ -124,6 +152,20 @@ namespace TopCalendar.UI.Modules.TaskViewer
             }
         }
 
+        private bool _isEndDateEnabled;
+        public bool IsEndDateEnabled
+        {
+            get
+            {
+                return _isEndDateEnabled;
+            } 
+            set
+            {
+                _isEndDateEnabled = value;
+                FinishAtDate = FinishAtDate;
+            }
+        }
+
     	private bool _addButtonVisible;
     	public bool AddButtonVisible
     	{
@@ -149,11 +191,11 @@ namespace TopCalendar.UI.Modules.TaskViewer
         }
 
         private void Update(Task task)
-        {
+       { 
             Mapper.Map(task,_originalTask);
 			bool success = _taskRepository.UpdateTask(_originalTask);
             if (success)
-            {
+           { 
                 Cancel(null);
             }
         }
@@ -180,7 +222,6 @@ namespace TopCalendar.UI.Modules.TaskViewer
 		{
 			_task.PropertyChanged += RaiseCommandCanExecuteChanged;
 		}
-
 		private void RaiseCommandCanExecuteChanged(object sender, PropertyChangedEventArgs args)
 		{
 			_addCommand.RaiseCanExecuteChanged();
@@ -191,5 +232,6 @@ namespace TopCalendar.UI.Modules.TaskViewer
 		{
 			_task.PropertyChanged -= RaiseCommandCanExecuteChanged;
 		}
+
     }
 }

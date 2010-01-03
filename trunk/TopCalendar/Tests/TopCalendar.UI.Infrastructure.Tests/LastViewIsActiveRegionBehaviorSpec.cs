@@ -23,9 +23,13 @@ namespace TopCalendar.UI.Infrastructure.Tests
 	//    }
 	//}
 
-	////public class ViewsCollectionMock : IViewsCollection
-	////{
-	////    protected List<object> _list;
+    public class LastViewIsActiveRegionBehavior_PrepareForTests : LastViewIsActiveRegionBehavior
+    {
+        public void RaiseOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            this.OnCollectionChanged(sender,e);
+        }
+    }
 
 	////    public ViewsCollectionMock(List<object> list)
 	////    {
@@ -63,8 +67,11 @@ namespace TopCalendar.UI.Infrastructure.Tests
 	//public abstract class LastViewIsActiveRegionBehaviorSpecBase : observations_for_auto_created_sut_of_type<LastViewIsActiveRegionBehavior_ForTests>
 	//{
 
-	//    protected IViewsCollection _views;
-	//    protected IRegion _region;
+    public abstract class LastViewIsActiveRegionBehaviorSpecBase :
+        observations_for_auto_created_sut_of_type<LastViewIsActiveRegionBehavior_PrepareForTests>
+    {
+        
+    }
 
 	//    protected override void EstablishContext()
 	//    {
@@ -89,10 +96,29 @@ namespace TopCalendar.UI.Infrastructure.Tests
 	//        Sut.RaiseOnCollectionChanged(null,new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
 	//    }
 
-	//    [Test]
-	//    public void gg()
-	//    {
+    public class LastViewIsActiveRegionBehavior_when_we_add_new_view : LastViewIsActiveRegionBehaviorSpecBase
+    {
 
-	//    }
-	//}
+        protected NotifyCollectionChangedEventArgs _notifyCollecitonChangedEventArgs;
+        protected List<object> _newItems;
+        protected List<object> _oldItems;
+
+        protected override void Because()
+        {
+            Sut.RaiseOnCollectionChanged(null,new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
+        }
+
+        protected override void EstablishContext()
+        {
+
+            _notifyCollecitonChangedEventArgs =
+                new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, _newItems, _oldItems);
+        }
+
+        //[Test]
+        //public void gg()
+        //{
+
+        //}
+    }
 }
