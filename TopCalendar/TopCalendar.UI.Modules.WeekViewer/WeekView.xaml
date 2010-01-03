@@ -15,9 +15,7 @@
         <Converters:DateTimeToMonthAndYearStringConverter x:Key="DateTimeToMonthAndYearStringConverter"/>
         <Converters:DateTimeToHourStringConverter x:Key="DateTimeToHourStringConverter"/>
         
-        <CommonCommands:ShowAddNewTaskCommand x:Key="ShowAddNewTask" />
-        <CommonCommands:DeleteTaskCommand x:Key="DeleteTaskCommand"/>
-        <CommonCommands:ShowEditTaskCommand x:Key="ShowEditTask" />
+        <CommonCommands:ShowAddNewTaskCommand x:Key="ShowAddNewTask" />     
 
         <Utilites:HelperCollections x:Key="HelperCollections" />        
 
@@ -52,20 +50,7 @@
                 Style="{StaticResource DayNameTextBlockStyle}"  />
         </DataTemplate>
         
-        <DataTemplate x:Key="TaskDataTemplate" DataType="{x:Type Model:Task}">
-            <StackPanel Orientation="Horizontal" Opacity="1" HorizontalAlignment="Left"  >
-                <Button Style="{StaticResource XIconButtonTemplate}"
-                            Command="{StaticResource DeleteTaskCommand}"
-                            CommandParameter="{Binding}"
-                            />
-                <Button Style="{StaticResource EditIconButtonTemplate}" 
-                                                Command="{StaticResource ShowEditTask}"
-                                                CommandParameter="{Binding}"
-                                                />
-                <TextBlock Text="{Binding Name}"  />
-            </StackPanel>
-        </DataTemplate>
-
+     
         <DataTemplate x:Key="HourTaskListDataTemplate" DataType="{x:Type WeekViewer:HourTaskList}">
             <ListBox 
                      MinHeight="15"

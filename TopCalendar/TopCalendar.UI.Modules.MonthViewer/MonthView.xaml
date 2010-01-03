@@ -9,16 +9,13 @@
     HorizontalAlignment="Stretch"             
              >
     <UserControl.Resources>   
-        
-
-        
+               
         <!--<Converters:DateTimeToShortTimeConverter x:Key="DateToTimeStringConverter"/>-->
         <Converters:DateTimeToShortDateStringConverter x:Key="DateToDateStringConverter"/>
         <Converters:DateTimeToMonthAndYearStringConverter x:Key="DateTimeToMonthAndYearStringConverter"/>        
         
         <CommonCommands:ShowAddNewTaskCommand x:Key="ShowAddNewTask" />        
-        <CommonCommands:DeleteTaskCommand x:Key="DeleteTaskCommand"/>
-        <CommonCommands:ShowEditTaskCommand x:Key="ShowEditTask" />
+  
         
         <Style x:Key="CellListView" TargetType="{x:Type ListView}">
             <Setter Property="Width" Value="140" />                        
@@ -29,32 +26,14 @@
         <Style x:Key="RowStackPanel" TargetType="{x:Type StackPanel}">
             <Setter Property="Height" Value="100" />            
         </Style>
-        <DataTemplate x:Key="TaskDataTemplate" DataType="{x:Type Model:Task}">
-            <StackPanel Orientation="Horizontal" Opacity="1" HorizontalAlignment="Left"  >                
-                <Button Style="{StaticResource XIconButtonTemplate}"
-                        Command="{StaticResource DeleteTaskCommand}"
-                        CommandParameter="{Binding}"
-                        />
-                <Button Style="{StaticResource EditIconButtonTemplate}" 
-                                            Command="{StaticResource ShowEditTask}"
-                                            CommandParameter="{Binding}"
-                                            />
-                <TextBlock Text="{Binding Name}"  />                
-            </StackPanel>
-        </DataTemplate>
-        
+            
         
         <DataTemplate x:Key="CellDataTemplate" >            
             <ListView ItemsSource="{Binding TaskList}"                       
                       ItemTemplate="{DynamicResource TaskDataTemplate}"
                       Style="{StaticResource CellListView}"                        
                       >
-                <ListView.InputBindings>                    
-                    <MouseBinding MouseAction="LeftClick"
-                                  Command="{StaticResource ShowAddNewTask}" />
-                    
-                </ListView.InputBindings>
-                <ListView.View>
+            <ListView.View>
                     <GridView>
                         <GridViewColumn                                                                                     
                             CellTemplate="{DynamicResource TaskDataTemplate}"   							                                      

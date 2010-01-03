@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B3A8B8D7-A744-41B3-B1F7-B18BE2EEDCD2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -110,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\TopCalendarResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\WindowRegionResource.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,6 +147,7 @@
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
     <Compile Include="ShellPresentationModel.cs" />
+    <Compile Include="TaskToMenuItemConverter.cs" />
     <Compile Include="TopCalendarUIBootstrapper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,6 +155,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="plugins.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -176,6 +184,10 @@
     <ProjectReference Include="..\TopCalendar.Client.Connector\TopCalendar.Client.Connector.csproj">
       <Project>{15968E5F-9795-4391-BD4E-3D51247BCFCF}</Project>
       <Name>TopCalendar.Client.Connector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.Client.DataModel\TopCalendar.Client.DataModel.csproj">
+      <Project>{9E852629-FE80-4E03-AC7D-C3DFAF9E2559}</Project>
+      <Name>TopCalendar.Client.DataModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
       <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>

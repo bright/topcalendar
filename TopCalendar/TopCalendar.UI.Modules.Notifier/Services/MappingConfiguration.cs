@@ -10,6 +10,7 @@ namespace TopCalendar.UI.Modules.Notifier.Services
 		{
 			Mapper.CreateMap<SmtpServerConfiguration, SmtpServerConfiguration>();
 			Mapper.CreateMap<ISmtpServerConfiguration, SmtpServerConfiguration>();
+			Mapper.CreateMap<SmtpServerConfigurationSection, SmtpServerConfiguration>();
 		}
 	}
 }

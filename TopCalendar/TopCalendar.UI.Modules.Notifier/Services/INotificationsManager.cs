@@ -28,8 +28,8 @@ namespace TopCalendar.UI.Modules.Notifier.Services
 		private void SendPendingNotifications()
 		{
 			var now = DateTime.Now;
-			_notifications.Where(n => n.NotifyAt.CompareTo(now) <= 0)
-				.Each(Notify);
+			var toNotfiy = _notifications.Where(n => n.NotifyAt.CompareTo(now) <= 0).ToList();
+			toNotfiy.Each(Notify);
 		}
 
 		private void Notify(INotification notification)

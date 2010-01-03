@@ -7,7 +7,9 @@ namespace TopCalendar.Server.DataLayer.Mappings
 	{
 		public PluginDataMap()
 		{
-			Id(x => x.Id).GeneratedBy.Assigned().Unique().Not.Nullable();
+			Id(x => x.Id).Not.Nullable().Unique();
+			Map(x => x.PluginIdentifier).Not.Nullable();
+			Map(x => x.Data);
 			References(x => x.Task).Not.Nullable();
 		}
 	}

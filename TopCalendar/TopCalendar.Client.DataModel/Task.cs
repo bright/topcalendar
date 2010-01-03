@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using TopCalendar.Utility.UI;
 using TopCalendar.Utility.Validators;
@@ -55,6 +56,6 @@ namespace TopCalendar.Client.DataModel
     		set { _description = value; 
 				OnPropertyChanged(()=>Description);
 			}
-    	}
+    	}		
     }
 }

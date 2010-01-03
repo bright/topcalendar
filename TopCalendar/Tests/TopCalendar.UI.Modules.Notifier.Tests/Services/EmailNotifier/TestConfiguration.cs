@@ -6,7 +6,7 @@ namespace TopCalendar.UI.Modules.Notifier.Tests.Services.EmailNotifier
 {
 	public class TestConfiguration : ISmtpServerConfiguration
 	{
-		public readonly string userName = "";//"piotr.mionskowski@gmail.com";
+		public readonly string userName = "piotr.mionskowski@gmail.com";
 		public readonly string password = "";
 
 		public string Host

@@ -35,9 +35,43 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="AvalonControlsLibrary, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\AvalonControlsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Bennedik.Validation.Integration.WPF, Version=2.0.3592.5018, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Bennedik.Validation.Integration.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LIB\Desktop\CommonServiceLocation\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -47,14 +81,26 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailNotificationView.xaml.cs">
+      <DependentUpon>EmailNotificationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmailNotificationViewModel.cs" />
+    <Compile Include="NotifierModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailNotifier\EmailNotification.cs" />
     <Compile Include="Services\EmailNotifier\EmailSender.cs" />
     <Compile Include="Services\EmailNotifier\IEmailNotification.cs" />
     <Compile Include="Services\EmailNotifier\ISmtpServerConfiguration.cs" />
     <Compile Include="Services\EmailNotifier\ISmtpServerConfigurator.cs" />
+    <Compile Include="Services\EmailNotifier\SmtpServerConfigurationSection.cs" />
     <Compile Include="Services\INotificationsManager.cs" />
     <Compile Include="Services\MappingConfiguration.cs" />
     <Compile Include="Services\EmailNotifier\SmtpServerConfiguration.cs" />
@@ -63,16 +109,45 @@
     <Compile Include="Services\INotification.cs" />
     <Compile Include="Services\INotificationSender.cs" />
     <Compile Include="Services\Notification.cs" />
+    <Compile Include="Services\ServicesNinjectModule.cs" />
+    <Compile Include="ShowEmailNotiferEvent.cs" />
+    <Compile Include="ShowEmailNotifierCommand.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
+      <Project>{F807062D-6FC9-4FF0-A9F5-5F94653EDC4D}</Project>
+      <Name>Composite.Presentation.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
+      <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
+      <Name>Composite.Desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Client.DataModel\TopCalendar.Client.DataModel.csproj">
       <Project>{9E852629-FE80-4E03-AC7D-C3DFAF9E2559}</Project>
       <Name>TopCalendar.Client.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
+      <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
+      <Name>TopCalendar.UI.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.MenuInfrastructure\TopCalendar.UI.MenuInfrastructure.csproj">
+      <Project>{8F89764F-5880-4735-B15D-A1AD962105C0}</Project>
+      <Name>TopCalendar.UI.MenuInfrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
+      <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>
+      <Name>TopCalendar.UI.PluginManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\TopCalendar.Utility\TopCalendar.Utility.csproj">
       <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
       <Name>TopCalendar.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="EmailNotificationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
