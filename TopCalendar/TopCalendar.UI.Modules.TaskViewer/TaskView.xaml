@@ -63,13 +63,15 @@
                 Data zakończenia
             </Label>
             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" >
-            <avalon:DateTimePicker DateTimeSelected="{Binding Path=Task.FinishAt, Mode=TwoWay}"
+            <avalon:DateTimePicker DateTimeSelected="{Binding Path=FinishAtDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        MinDate="{Binding Path=Task.StartAt}"
                                        IsEnabled="{Binding ElementName=EndDateEnabledCheckBox, Path=IsChecked}"
                                        />
+                
                 <CheckBox x:Name="EndDateEnabledCheckBox" VerticalAlignment="Center"
-                          IsChecked="{Binding Path=Task.FinishAt, Mode=OneWay, Converter={StaticResource NullableToBooleanConverter}}"
+                          IsChecked="{Binding Path=IsEndDateEnabled, Mode=TwoWay}"
                           />
+                
                 <Label VerticalAlignment="Center">Zadanie z ustalonym końcem ?</Label>
             </StackPanel>
 
