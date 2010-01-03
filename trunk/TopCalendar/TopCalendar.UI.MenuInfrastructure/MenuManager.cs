@@ -1,5 +1,13 @@
-﻿using Microsoft.Practices.ServiceLocation;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Mime;
+using System.Windows;
+using System.Windows.Controls;
+using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Composite.Presentation.Events;
+using Ninject;
+using TopCalendar.UI.Infrastructure.CommonCommands;
+using TopCalendar.UI.MenuInfrastructure;
 
 namespace TopCalendar.UI.MenuInfrastructure
 {
@@ -8,9 +16,9 @@ namespace TopCalendar.UI.MenuInfrastructure
         private readonly IServiceLocator _serviceLocator;
         private readonly IMenuProvider _menuProvider;
 
-        public MenuManager(IServiceLocator serviceLocator)
+        public MenuManager()
         {
-            _serviceLocator = serviceLocator;
+            _serviceLocator = ServiceLocator.Current;
             _menuProvider = _serviceLocator.GetInstance<IMenuProvider>();
         }
 
@@ -53,5 +61,15 @@ namespace TopCalendar.UI.MenuInfrastructure
 		{
 			AddItemToMenu<T>(topLevelMenuName, menuName, header, null);
 		}
-    }
+
+
+    	public void AddLabeledCommand<TCommand, TEvent, TArgmunet>() 
+			where TCommand: LabeledEventPublisherCommand<TEvent,TArgmunet>
+			where TEvent : CompositePresentationEvent<TArgmunet>
+    	{
+    		//todo: refactor this
+    		var kernel = _serviceLocator.GetInstance<IKernel>();
+    		kernel.Bind<ILabeledCommand<TArgmunet>>().To<TCommand>();
+    	}
+    }	
 }

@@ -15,6 +15,7 @@ namespace TopCalendar.UI.Infrastructure
     {
     }
 
+
 	/// <summary>
 	/// Event publikowany przez moduly, ktore chca, zeby je wyladowac z regionu
 	/// W parametrze obiekt widoku do wywalenia

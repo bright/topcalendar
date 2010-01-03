@@ -1,4 +1,5 @@
 using Microsoft.Practices.Composite.Presentation.Events;
+using TopCalendar.UI.Infrastructure.CommonCommands;
 
 namespace TopCalendar.UI.MenuInfrastructure
 {
@@ -30,5 +31,10 @@ namespace TopCalendar.UI.MenuInfrastructure
 
 		void AddItemToMenu<T>(string topLevelMenuName, string menuName, string header)
 			where T : CompositePresentationEvent<object>;
+
+    	void AddLabeledCommand<TCommand, TEvent, TArgmunet>()
+    		where TCommand : LabeledEventPublisherCommand<TEvent, TArgmunet>
+    		where TEvent : CompositePresentationEvent<TArgmunet>;
+
     }
 }

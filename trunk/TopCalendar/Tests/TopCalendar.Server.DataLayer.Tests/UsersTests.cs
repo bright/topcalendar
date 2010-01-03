@@ -7,7 +7,7 @@ using TopCalendar.Utility.Tests;
 namespace TopCalendar.Server.DataLayer.Tests
 {
 	public class when_creating_user_without_password : observations_for_sut
-	{
+ 	{
 		private Exception _exception;
 
 		protected override void Because()

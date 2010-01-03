@@ -26,9 +26,10 @@ namespace TopCalendar.Server.DataLayer.Tests
 			_inMemoryNHibernateSessionFactory.SchemaExport();
 		}
 
-		protected void Persist<TType>(TType entity)
+		protected TType Persist<TType>(TType entity)
 		{
-			WithinTransactionDo((s) => s.Save(entity));			
+			WithinTransactionDo((s) => s.Save(entity));
+			return entity;
 		}
 
 		protected void WithinTransactionDo(Action<ISession> doJob)
@@ -40,6 +41,11 @@ namespace TopCalendar.Server.DataLayer.Tests
 			}
 			
 			Session.Clear();
+		}
+
+		protected void WithEntityInDatabaseDo<TEntity>(int pk, Action<TEntity> doJob)
+		{
+			WithEntityInDatabaseDo<int,TEntity>(pk, doJob);
 		}
 
 		protected void WithEntityInDatabaseDo<TPk,TEntity>(TPk pk, Action<TEntity> doJob)

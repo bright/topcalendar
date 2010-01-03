@@ -88,6 +88,7 @@
     <Compile Include="InMemoryNHibernateSessionFactory.cs" />
     <Compile Include="New.cs" />
     <Compile Include="observations_with_in_memory_database_of_sut_of_type.cs" />
+    <Compile Include="TaskDataAccessTests.cs" />
     <Compile Include="TasksRepositoryTests.cs" />
     <Compile Include="when_adding_user_to_repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

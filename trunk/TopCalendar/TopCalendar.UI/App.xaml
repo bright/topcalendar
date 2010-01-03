@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="Resources/WindowRegionResource.xaml"/>                
                 <ResourceDictionary Source="Resources/Styles.xaml"/>
                 <ResourceDictionary Source="/AvalonControlsLibrary;component/Themes/Generic.xaml"/>
+                <ResourceDictionary Source="Resources/TopCalendarResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

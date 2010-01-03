@@ -13,7 +13,9 @@ namespace TopCalendar.Server.DataLayer.Mappings
             Map(x => x.StartAt).Not.Nullable();
             Map(x => x.FinishAt);
             References(x => x.User).Not.Nullable();
-        	HasMany(x => x.PluginDatas).Inverse().Cascade.AllDeleteOrphan();
+        	HasMany(x => x.PluginDatas)				
+				.AsBag()
+				.Inverse().Cascade.AllDeleteOrphan();
         }
     }
 }

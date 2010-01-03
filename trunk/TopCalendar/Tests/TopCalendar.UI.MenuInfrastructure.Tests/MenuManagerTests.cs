@@ -1,7 +1,10 @@
-﻿using Microsoft.Practices.Composite.Presentation.Events;
+﻿using System;
+using Microsoft.Practices.Composite.Presentation.Events;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Rhino.Mocks.Constraints;
+using TopCalendar.UI.Infrastructure;
+using TopCalendar.UI.Infrastructure.CommonCommands;
 using TopCalendar.Utility.Tests;
 using Microsoft.Practices.ServiceLocation;
 using System.Windows.Input;
@@ -150,6 +153,29 @@ namespace TopCalendar.UI.MenuInfrastructure.Tests
 		{
 			var command = _menuProvider.Menus[0].Items.As<List<MenuEntry>>()[0].Command;
 			command.CanExecute(null).ShouldBeTrue();
+		}
+	}
+
+	public class TestEvent : CompositePresentationEvent<string>{}	
+	public class TestLabeledCommand : LabeledEventPublisherCommand<TestEvent,string> {
+		
+		public override string Header
+		{
+			get { return ""; }
+		}
+	}
+
+	public class when_adding_labled_command : observations_for_auto_created_sut_of_type<MenuManager>
+	{
+		protected override void Because()
+		{
+			Sut.AddLabeledCommand<TestLabeledCommand,TestEvent,string>();
+		}
+
+		[Test]
+		public void should_bind_command()
+		{
+			IsTypeBinded<ILabeledCommand<string>>().ShouldBeTrue();
 		}
 	}
 }

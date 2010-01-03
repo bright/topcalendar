@@ -13,7 +13,7 @@ namespace TopCalendar.UI.Modules.Notifier.Services.EmailNotifier
 
 		public EmailNotification(Task task, DateTime notificationDate, IEmailNotificationSender sender):base(task, task.Name)
 		{			
-			Check.Guard(task.StartAt.CompareTo(notificationDate) < 0, "Notification date {0} should be grater than task start date {1}".ToFormat(notificationDate, task.StartAt));						
+//			Check.Guard(task.StartAt.CompareTo(notificationDate) > 0, "Notification date {0} should be smaller than task start date {1}".ToFormat(notificationDate, task.StartAt));						
 			_notificationDate = notificationDate;
 			_sender = sender;
 		}

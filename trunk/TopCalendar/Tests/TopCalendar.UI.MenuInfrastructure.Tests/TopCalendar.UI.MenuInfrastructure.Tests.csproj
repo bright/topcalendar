@@ -79,6 +79,10 @@
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
       <Name>Composite.Desktop</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
+      <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
+      <Name>TopCalendar.UI.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\TopCalendar.UI.MenuInfrastructure\TopCalendar.UI.MenuInfrastructure.csproj">
       <Project>{8F89764F-5880-4735-B15D-A1AD962105C0}</Project>
       <Name>TopCalendar.UI.MenuInfrastructure</Name>

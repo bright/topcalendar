@@ -39,6 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\Rhino.Mocks.dll</HintPath>
@@ -57,7 +60,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotifierModuleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmailNotificationViewModelTests.cs" />
     <Compile Include="Services\EmailNotifier\EmailNotificationSenderTests.cs" />
     <Compile Include="Services\EmailNotifier\EmailNotificationTests.cs" />
     <Compile Include="Services\EmailNotifier\EmailSenderTests.cs" />
@@ -68,13 +73,33 @@
     <Compile Include="Services\NotificationsManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CAL\Desktop\Composite.Presentation\Composite.Presentation.Desktop.csproj">
+      <Project>{F807062D-6FC9-4FF0-A9F5-5F94653EDC4D}</Project>
+      <Name>Composite.Presentation.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\CAL\Desktop\Composite\Composite.Desktop.csproj">
+      <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
+      <Name>Composite.Desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\TopCalendar.Client.DataModel\TopCalendar.Client.DataModel.csproj">
       <Project>{9E852629-FE80-4E03-AC7D-C3DFAF9E2559}</Project>
       <Name>TopCalendar.Client.DataModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\TopCalendar.UI.Infrastructure\TopCalendar.UI.Infrastructure.csproj">
+      <Project>{E6755CE2-F09A-4A91-AE11-C61C1EEE0932}</Project>
+      <Name>TopCalendar.UI.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TopCalendar.UI.MenuInfrastructure\TopCalendar.UI.MenuInfrastructure.csproj">
+      <Project>{8F89764F-5880-4735-B15D-A1AD962105C0}</Project>
+      <Name>TopCalendar.UI.MenuInfrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\TopCalendar.UI.Modules.Notifier\TopCalendar.UI.Modules.Notifier.csproj">
       <Project>{3118F17D-6C0B-489E-AD69-AD327DF37B92}</Project>
       <Name>TopCalendar.UI.Modules.Notifier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TopCalendar.UI.PluginManager\TopCalendar.UI.PluginManager.csproj">
+      <Project>{461E3737-E30B-4C6F-87C3-9FE12969795A}</Project>
+      <Name>TopCalendar.UI.PluginManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\TopCalendar.Utility\TopCalendar.Utility.csproj">
       <Project>{31DDCAB6-45F0-424A-A526-BDB73D45C226}</Project>
@@ -84,6 +109,9 @@
       <Project>{2DD936B1-4635-4A59-BFA4-385A76BDE801}</Project>
       <Name>TopCalendar.Utility.Tests</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
