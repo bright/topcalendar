@@ -77,4 +77,35 @@ namespace TopCalendar.Server.DataLayer.Tests
 			_exception.ShouldNotBeNull();
 		}
 	}
+
+	public class when_removing_task_with_empty_plugin_data : observations_with_in_memory_database_of_sut_of_type<TasksRepository>
+	{
+		private Task _task;
+		private Exception _exception;
+
+		protected override void Because()
+		{
+			_exception = ((Action)(()=>WithinTransactionDo(s=> Sut.Remove(Sut.GetById(_task.Id))))).ThrownException();
+		}
+
+		protected override void EstablishContext()
+		{
+			base.EstablishContext();
+			_task = Persist(
+					New.Task().WithUser(Persist(New.User().Build())).Build()
+				);
+		}
+
+		[Test]
+		public void should_throw_no_exception()
+		{
+			_exception.ShouldBeNull();
+		}
+
+		[Test]
+		public void should_remove_task()
+		{
+			WithEntityInDatabaseDo<Task>(_task.Id, t=> t.ShouldBeNull());
+		}
+	}
 }

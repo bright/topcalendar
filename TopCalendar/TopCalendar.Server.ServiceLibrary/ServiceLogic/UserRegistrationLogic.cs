@@ -24,16 +24,11 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
             _usersRepository = usersRepository;
         }
 
-        public RegisterUserResponse RegisterUser(RegisterUserRequest registerUserRequest)
+        public override RegisterUserResponse Process(RegisterUserRequest registerUserRequest)
         {			
         	return WithinTransactionDo(s => _usersRepository.Add(
         	                                	new User(registerUserRequest.UserCredentials.Login, registerUserRequest.UserCredentials.Password)
         	                                	)).OnErrorSetMessage(StatusReasonFor.RegisterUser.LOGIN_ALREADY_TAKEN);                                    
-        }
-
-        public LoginUserResponse CheckUser(LoginUserRequest loginUserRequest)
-        {
-            throw new NotImplementedException();
         }
     }
 }

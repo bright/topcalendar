@@ -12,10 +12,13 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 			_taskRepository = taskRepository;
 		}
 
-		public BaseResponse RemoveTask(RemoveTaskRequest request)
+		public override BaseResponse Process(RemoveTaskRequest request)
 		{
-			return WithinTransactionDo(s => _taskRepository.Remove(_taskRepository.GetById(request.TaskId)))
-				.OnErrorFillResposneWithException();			
+			return WithinTransactionDo(s => 
+			{
+				var task = _taskRepository.GetById(request.TaskId);				
+			    _taskRepository.Remove(task);
+			}).OnErrorFillResposneWithException();			
 		}
 	}
 }

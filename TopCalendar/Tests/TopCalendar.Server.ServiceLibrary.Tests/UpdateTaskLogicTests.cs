@@ -20,7 +20,7 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
 
 		protected override void Because()
 		{
-			_result = Sut.UpdateTask(_request);
+			_result = Sut.Process(_request);
 		}
 
 		protected override void EstablishContext()
@@ -71,7 +71,7 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
 
 		protected override void Because()
 		{
-			_result = Sut.UpdateTask(_request);
+			_result = Sut.Process(_request);
 		}
 
 		protected override void EstablishContext()

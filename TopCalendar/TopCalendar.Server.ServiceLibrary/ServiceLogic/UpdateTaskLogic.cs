@@ -13,7 +13,7 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 			_tasksRepository = tasksRepository;			
 		}
 
-		public BaseResponse UpdateTask(UpdateTaskRequest request)
+		public override BaseResponse Process(UpdateTaskRequest request)
 		{
 			return WithinTransactionDo(s =>
            	{

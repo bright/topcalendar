@@ -1,6 +1,10 @@
 ﻿#region
 
 using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Xml;
 using Microsoft.Practices.ServiceLocation;
 using TopCalendar.Server.ServiceLibrary.ServiceContract;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
@@ -12,24 +16,9 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceImp
 {
     public class TopCalendarCommunicationServiceImpl : ITopCalendarCommunicationService
     {
-        private readonly UserRegistrationLogic _userRegistrationLogic;
-        private readonly AddNewTasksLogic _addNewTaskLogic;
-        private readonly FindTasksLogic _findTasksLogic;
-    	private readonly RemoveTaskLogic _removeTaskLogic;
-    	private readonly UpdateTaskLogic _updateTaskLogic;
-
-    	public TopCalendarCommunicationServiceImpl(UserRegistrationLogic userRegistrationLogic,
-                                                   AddNewTasksLogic addNewTaskLogic, FindTasksLogic findTasksLogic, RemoveTaskLogic removeTaskLogic,
-												   UpdateTaskLogic updateTaskLogic
-			)
+    	public TopCalendarCommunicationServiceImpl()
         {
-            _userRegistrationLogic = userRegistrationLogic;
-            _addNewTaskLogic = addNewTaskLogic;
-            _findTasksLogic = findTasksLogic;
-        	_removeTaskLogic = removeTaskLogic;
-    		_updateTaskLogic = updateTaskLogic;
         }
-
         public LoginUserResponse LoginUser(LoginUserRequest loginUserRequest)
         {
             Console.WriteLine("LoginUser, loginUserRequest: " + loginUserRequest);
@@ -45,46 +34,52 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceImp
 
         public RegisterUserResponse RegisterUser(RegisterUserRequest registerUserRequest)
         {
-            Console.WriteLine("RegisterUser, registerUserRequest: " + registerUserRequest);
-
-            RegisterUserResponse registerUserResponse =
-                _userRegistrationLogic.RegisterUser(registerUserRequest);
-
-            return registerUserResponse;
+			return InvokeLogicAndReturnResponse<RegisterUserRequest, RegisterUserResponse>(registerUserRequest);
         }
 
         public AddNewTaskResponse AddNewTask(AddNewTaskRequest addNewTaskRequest)
         {
-            Console.WriteLine("AddNewTask, addNewTaskRequest: " + addNewTaskRequest);
-
-            AddNewTaskResponse addNewTaskResponse =
-                _addNewTaskLogic.AddNewTask(addNewTaskRequest);
-
-            return addNewTaskResponse;
+			return InvokeLogicAndReturnResponse<AddNewTaskRequest, AddNewTaskResponse>(addNewTaskRequest);
         }
 
         public FindTasksResponse FindTasks(FindTasksRequest findTasksRequest)
         {
-            Console.WriteLine("FindTasks, findTasksRequest: " + findTasksRequest);
-
-            FindTasksResponse findTasksResponse =
-                _findTasksLogic.FindTasks(findTasksRequest);
-
-            return findTasksResponse;
+			return InvokeLogicAndReturnResponse<FindTasksRequest, FindTasksResponse>(findTasksRequest);
         }
 
     	public BaseResponse RemoveTask(RemoveTaskRequest deleteTaskRequest)
     	{
-    		Console.WriteLine("RemoveTask, findTaskRequest" + deleteTaskRequest);
-
-    		return _removeTaskLogic.RemoveTask(deleteTaskRequest);
+			return InvokeLogicAndReturnResponse<RemoveTaskRequest, BaseResponse>(deleteTaskRequest);
     	}
 
     	public BaseResponse UpdateTask(UpdateTaskRequest updateTaskRequest)
     	{
-			Console.WriteLine("UpdateTask, updateTaskRequest" + updateTaskRequest);
+			return InvokeLogicAndReturnResponse<UpdateTaskRequest,BaseResponse>(updateTaskRequest);
+    	}
 
-    		return _updateTaskLogic.UpdateTask(updateTaskRequest);
+		protected TResponse InvokeLogicAndReturnResponse<TRequest,TResponse>(TRequest request)
+		{
+			LogMessage(request);
+			var logicHandler = ServiceLocator.Current.GetInstance<IRequestToResponseLogic<TRequest, TResponse>>();
+			var response = logicHandler.Process(request);
+			LogMessage(response);
+			return response;
+		}
+		// todo: this method is quite inefficient
+    	private void LogMessage(object dataContract)
+    	{
+    		var serializer = new DataContractSerializer(dataContract.GetType());
+    		Console.WriteLine();
+			using (var standardOutput = Console.OpenStandardOutput())
+			using(var xw =new XmlTextWriter(standardOutput, Encoding.UTF8))
+			{
+				xw.Formatting = Formatting.Indented;
+				xw.Indentation = 4;
+				serializer.WriteObject(xw, dataContract);				
+				standardOutput.Flush();
+				Console.WriteLine();
+				Console.WriteLine();
+			}
     	}
     }
 }

@@ -25,7 +25,7 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
 
 		protected override void Because()
 		{
-			_result = Sut.RegisterUser(ServiceRequest.Of<RegisterUserRequest>(r => r.UserCredentials = _userCredentials));
+			_result = Sut.Process(ServiceRequest.Of<RegisterUserRequest>(r => r.UserCredentials = _userCredentials));
 		}
 
 		protected override void EstablishContext()
@@ -77,7 +77,7 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
 
         protected override void Because()
         {
-            _result = Sut.RegisterUser(_inputData);
+            _result = Sut.Process(_inputData);
         }
 
         [Test]

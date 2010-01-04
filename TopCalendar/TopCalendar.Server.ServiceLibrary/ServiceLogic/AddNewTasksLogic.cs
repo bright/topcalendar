@@ -1,5 +1,6 @@
 #region
 
+using System;
 using TopCalendar.Server.DataLayer.Entities;
 using TopCalendar.Server.DataLayer.Repositories;
 using TopCalendar.Server.ServiceLibrary.ServiceContract.DataContract;
@@ -21,7 +22,7 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
             _mappingService = mappingService;
         }
 
-        public AddNewTaskResponse AddNewTask(AddNewTaskRequest addNewTaskRequest)
+        public override AddNewTaskResponse Process(AddNewTaskRequest addNewTaskRequest)
         {
 			TaskDto taskDto = addNewTaskRequest.Task;			
 			// there should not be anny mapping from dtos to domain                     	
@@ -37,6 +38,6 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
 			                           		_tasksRepository.Add(task);
 			                           	})
         		.OnErrorFillResponse(r => r.Task = taskDto);            
-        }
+        }		
     }
 }

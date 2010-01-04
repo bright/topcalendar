@@ -49,7 +49,7 @@ namespace TopCalendar.Client.DataModel
 
     	private string _description;
 		
-		[StringNullableLengthValidator(1,200)]
+		[StringNullableLengthValidator(0,200)]
     	public string Description
     	{
     		get { return _description; }
