@@ -23,7 +23,7 @@ namespace TopCalendar.Server.ServiceLibrary.ServiceLogic
             _mappingService = mappingService;
         }
 
-        public FindTasksResponse FindTasks(FindTasksRequest findTasksRequest)
+        public override FindTasksResponse Process(FindTasksRequest findTasksRequest)
         {
             TaskSpecificationDto taskSpecificationDto = findTasksRequest.TaskSpecificationDto;
             

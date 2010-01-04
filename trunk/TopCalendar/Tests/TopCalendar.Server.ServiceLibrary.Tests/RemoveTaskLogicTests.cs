@@ -18,7 +18,7 @@ namespace TopCalendar.Server.ServiceLibrary.Tests
 
 		protected override void Because()
 		{
-			_result = Sut.RemoveTask(ServiceRequest.Of<RemoveTaskRequest>(r => r.TaskId = _taskId));
+			_result = Sut.Process(ServiceRequest.Of<RemoveTaskRequest>(r => r.TaskId = _taskId));
 		}
 		protected override void EstablishContext()
 		{

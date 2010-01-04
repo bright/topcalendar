@@ -66,6 +66,7 @@
     <Compile Include="ResponseLogicTests.cs" />
     <Compile Include="ServiceRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TopCalendarCommunicationServiceImplTests.cs" />
     <Compile Include="UpdateTaskLogicTests.cs" />
     <Compile Include="UserRegistrationLogicTests.cs" />
   </ItemGroup>
