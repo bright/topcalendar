@@ -10,16 +10,16 @@
 		<Converters:SelectedIndexToBoolConverter x:Key="SelectedIndexToBoolConverter"/>
 	</UserControl.Resources>
 
-	<Grid Width="800" Height="800">
+	<Grid Margin="20">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="50" />
-			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="50" />
 		</Grid.RowDefinitions>
 
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="100" />
-			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
 		</Grid.ColumnDefinitions>
 
 		<StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">

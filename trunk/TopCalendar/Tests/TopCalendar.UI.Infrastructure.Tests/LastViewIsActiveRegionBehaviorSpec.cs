@@ -11,12 +11,15 @@ using NUnit.Framework;
 using Rhino.Mocks;
 using TopCalendar.UI.Infrastructure.Regions;
 using TopCalendar.Utility.Tests;
+using Microsoft.Practices.Composite.Events;
 
 namespace TopCalendar.UI.Infrastructure.Tests
 {
 
 	public class LastViewIsActiveRegionBehavior_PrepareForTests : LastViewIsActiveRegionBehavior
     {
+		public LastViewIsActiveRegionBehavior_PrepareForTests(IEventAggregator e) : base(e) { }
+
         public void RaiseOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             this.OnCollectionChanged(sender,e);
