@@ -46,9 +46,6 @@ namespace TopCalendar.UI.Modules.MonthViewer.Tests
 	public class when_initializing_month_viewer_module
 		: observations_for_auto_created_sut_of_type_with_eventaggregator<MonthViewerModule>
 	{
-		private RegistrationCompletedEvent _registrationCompletedEvent;
-
-
 		protected override void EstablishContext()
 		{			
 			base.EstablishContext();

@@ -10,6 +10,7 @@ using TopCalendar.UI.PluginManager;
 using TopCalendar.UI.Infrastructure;
 using TopCalendar.Utility.UI;
 using TopCalendar.UI.MenuInfrastructure;
+using Microsoft.Practices.Composite.Regions;
 
 namespace TopCalendar.UI.Modules.Plugins
 {
@@ -41,7 +42,9 @@ namespace TopCalendar.UI.Modules.Plugins
 
 		private void LoadPluginsView(object obj)
 		{
-			_kernel.Get<IPluginLoader>().ActivateView(RegionNames.MainContent, _kernel.Get<IPluginsView>());
+			_kernel.Get<IPluginLoader>().ActivateView(
+				RegionNames.MainContent, _kernel.Get<IPluginsView>()
+			);
 		}
 
 		private void RegisterViewsAndServices()

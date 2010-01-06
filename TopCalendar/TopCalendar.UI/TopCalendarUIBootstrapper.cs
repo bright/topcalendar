@@ -6,6 +6,11 @@ using NinjectContrib.CompositePresentation;
 using TopCalendar.UI.MenuInfrastructure;
 using TopCalendar.UI.PluginManager;
 using System;
+using Microsoft.Practices.Composite.Regions;
+using TopCalendar.UI.Infrastructure;
+using TopCalendar.UI.Infrastructure.Regions;
+using Microsoft.Practices.Composite.Presentation.Regions;
+using Microsoft.Practices.Composite.Events;
 
 namespace TopCalendar.UI
 {
@@ -42,6 +47,20 @@ namespace TopCalendar.UI
 		protected virtual void LoadConnectors()
 		{
 			Kernel.Get<IPluginLoader>().LoadConnectors();
+		}
+
+		protected override void InitializeModules()
+		{
+			base.InitializeModules();
+
+			var rm = Kernel.Get<IRegionManager>();
+			if (rm.Regions.ContainsRegionWithName(RegionNames.MainContent))
+			{
+				rm.Regions[RegionNames.MainContent].Behaviors.Add(
+					LastViewIsActiveRegionBehavior.BehaviorKey,
+					new LastViewIsActiveRegionBehavior(Kernel.Get<IEventAggregator>())
+				);
+			}
 		}
 
 		private void SaveWorkingDirectory()
